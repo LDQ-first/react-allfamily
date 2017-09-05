@@ -22,7 +22,7 @@ const devConfig = (baseConfig, {
         /*contentBase: path.join(__dirname, '../dist'),*/
         historyApiFallback: true,
         /*host: '0.0.0.0',*/  //手机局域网访问
-        /*hot: true,*/
+        hot: true,
         /*inline: true, //实时刷新*/
         port: 5050
     }
