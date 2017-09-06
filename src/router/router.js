@@ -11,6 +11,9 @@ import Counter from 'bundle-loader?lazy&name=counter!../views/Counter/Counter'
 import UserInfo from 'bundle-loader?lazy&name=userInfo!../views/UserInfo/UserInfo'
 import NotFound from 'bundle-loader?lazy&name=notFound!../views/NotFound/NotFound'
 
+
+import Nav from '../styled/nav'
+
 const createComponent = (component) => () => (
     <Bundle load={component}>
         {
@@ -22,12 +25,15 @@ const createComponent = (component) => () => (
 const getRouter = () => (
     <Router>
         <div>
-            <ul>
-                <li><Link to="/">首页</Link></li>
-                <li><Link to="/page1">Page1</Link></li>
-                <li><Link to="/counter">Counter</Link></li>
-                <li><Link to="/userinfo">UserInfo</Link></li>
-            </ul>
+            <Nav>
+                <ul>
+                    <li><Link to="/">首页</Link></li>
+                    <li><Link to="/page1">Page1</Link></li>
+                    <li><Link to="/counter">Counter</Link></li>
+                    <li><Link to="/userinfo">UserInfo</Link></li>
+                </ul>
+            </Nav>
+            
 
             <Switch>
                 <Route exact path='/' component={createComponent(Home)}/>

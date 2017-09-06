@@ -1,4 +1,5 @@
 import {injectGlobal} from 'styled-components'
+import styled from 'styled-components'
 
 export default injectGlobal`
     html,
@@ -65,3 +66,12 @@ export default injectGlobal`
     }
 
 `
+
+const container = styled.div`
+    padding: 1em;
+    padding-left: 10rem;
+`
+
+module.exports = {
+    container
+}

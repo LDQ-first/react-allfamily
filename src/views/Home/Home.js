@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import {container} from '../../styled/'
 
 export default class Home extends Component {
     constructor(props) {
