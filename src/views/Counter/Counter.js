@@ -5,10 +5,11 @@ import {connect} from 'react-redux'
 
 class Counter extends Component {
     render() {
-        const {increment, decrement, reset} = this.props
+        const {increment, decrement, reset, counter } = this.props
+        console.log(counter)
         return (
             <div>
-                <div>当前计数为(显示redux计数)</div>
+                <div>当前计数为{counter.count}(显示redux计数)</div>
                 <button onClick={() => {
                     increment()
                 }}>自增
