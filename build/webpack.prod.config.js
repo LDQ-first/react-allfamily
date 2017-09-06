@@ -73,11 +73,11 @@ module.exports = (baseConfig, {
         ]
     },
     plugins: [
+        new CleanWebpackPlugin(['dist']),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin(),
         extractCSS,
         extractSASS,
-        new CleanWebpackPlugin(['dist']),
         new webpack.HashedModuleIdsPlugin(),
         new webpack.DefinePlugin({
           'process.env': {
