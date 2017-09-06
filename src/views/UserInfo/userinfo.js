@@ -13,6 +13,7 @@ class UserInfo extends Component {
     render() {
         const {userInfo, isLoading, errorMsg} = this.props.userInfo
         const {getUserInfo} = this.props
+        console.log(this.props)
         return (
             <Container>
                 {

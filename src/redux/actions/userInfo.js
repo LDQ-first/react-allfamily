@@ -28,7 +28,7 @@ export const getUserInfoFail = () => {
 }
 
 /* user dispatch */
-export const getUserInfo = () => {
+/*export const getUserInfo = () => {
     return (dispatch) => {
         dispatch(getUserInfoRequest())
 
@@ -43,4 +43,18 @@ export const getUserInfo = () => {
                     })
 
     }
+}*/
+
+
+export const getUserInfo = () => async (dispatch) => {
+   try {
+       dispatch(getUserInfoRequest())
+       let res = await axios.get(`${userApi}`)
+       await setTimeout(() => {
+           dispatch(getUserInfoSuccess(res.data))
+       }, 1000)
+   } catch (err) {
+       console.log('err:', err)
+       dispatch(getUserInfoFail())
+   }
 }

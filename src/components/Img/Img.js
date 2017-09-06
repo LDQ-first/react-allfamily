@@ -16,21 +16,24 @@ export default class Imgs extends Component {
     }
 
     
+     
+    _check () {
+        const {winTop, winHeight} = this.state
+        if( winTop + winHeight > this.imgs.offsetTop  && 
+            winTop < this.imgs.offsetTop + this.imgs.offsetHeight) {
+            this.setState({
+                show: true
+            })
+        }
+    }
+    
     componentDidMount() {
-        this.setState({
-            imgsHeight: this.imgs.offsetHeight,
-            imgsTop: this.imgs.offsetTop
-        })
+        this._check ()
         window.addEventListener('scroll', () => {
-            const {winTop, winHeight, imgsHeight, imgsTop} = this.state
             this.setState({
                 winTop: window.scrollY
             })
-            if( winTop + winHeight > imgsTop && winTop < imgsTop + imgsHeight) {
-                this.setState({
-                    show: true
-                })
-            }
+            this._check()
         })
     }
 
@@ -38,18 +41,15 @@ export default class Imgs extends Component {
     componentWillUnmount() {
         window.removeEventListener('scroll')
     }
-    
-    
-    
 
     
-    handleImageLoaded() {
+    _handleImageLoaded() {
         this.setState({ 
             imageStatus: 200
         })
     }
     
-    handleImageErrored() {
+    _handleImageErrored() {
         this.setState({ imageStatus: 404 })
     }
 
@@ -60,10 +60,10 @@ export default class Imgs extends Component {
         return (
             <div ref={div => this.imgs = div}>
                 <Img src={img} alt={alt} title={title} 
-                    show={imageStatus != 200 ? true: false}/>
+                    show={imageStatus !== 200 ? true: false}/>
                 <Img src={img} alt={alt} title={title} 
-                onLoad={this.handleImageLoaded.bind(this)}
-                onError={this.handleImageErrored.bind(this)} 
+                onLoad={this._handleImageLoaded.bind(this)}
+                onError={this._handleImageErrored.bind(this)} 
                 show={imageStatus === 200 ? true: false}/> 
             </div>   
         )
