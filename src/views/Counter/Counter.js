@@ -3,8 +3,16 @@ import {increment, decrement, reset} from '../../redux/actions/counter'
 import {connect} from 'react-redux'
 import {Container} from '../../styled'
 import Button from '../../styled/button'
+import PropTypes from 'prop-types'
 
 class Counter extends Component {
+    static PropTypes = {
+       increment: PropTypes.func.isRequired, 
+       decrement: PropTypes.func.isRequired,
+       reset: PropTypes.func.isRequired,
+       counter: PropTypes.object.isRequired
+    }
+
     render() {
         const {increment, decrement, reset, counter } = this.props
 

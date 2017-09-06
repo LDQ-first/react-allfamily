@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
 import Img from '../../styled/img'
 import loadingGif from '../../../static/img/loading.gif'
+import PropTypes from 'prop-types'
 
 export default class Imgs extends Component {
+    static PropTypes = {
+       src: PropTypes.string, 
+       alt: PropTypes.string,
+       title: PropTypes.string
+    }
+
+
 
     constructor(props) {
         super(props)

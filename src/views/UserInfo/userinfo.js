@@ -8,9 +8,16 @@ import AvatarImg from '../../styled/AvatarImg'
 import LazyImg from '../../styled/LazyImg'
 import bea from '../../../static/img/002.jpg'
 import Button from '../../styled/button'
+import PropTypes from 'prop-types'
 
 
 class UserInfo extends Component {
+    static PropTypes = {
+       userInfo: PropTypes.object.isRequired, 
+       isLoading: PropTypes.bool.isRequired,
+       errorMsg: PropTypes.string.isRequired
+    }
+
     render() {
         const {userInfo, isLoading, errorMsg} = this.props.userInfo
         const {getUserInfo} = this.props

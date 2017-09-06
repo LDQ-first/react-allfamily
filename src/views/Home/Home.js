@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Container} from '../../styled'
 import Button from '../../styled/button'
 
+
 export default class Home extends Component {
     constructor(props) {
         super(props)
