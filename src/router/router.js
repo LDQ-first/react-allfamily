@@ -2,10 +2,14 @@ import React from 'react'
 
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
 
-import Home from '../views/Home/Home'
-import Page1 from '../views/Page1/Page1'
-import Counter from '../views/Counter/Counter'
-import UserInfo from '../views/UserInfo/UserInfo'
+import Bundle from './bundle'
+
+import Home from 'bundle-loader?lazy&name=home!../views/Home/Home'
+import Page1 from 'bundle-loader?lazy&name=page1!../views/Page1/Page1'
+import Counter from 'bundle-loader?lazy&name=counter!../views/Counter/Counter'
+import UserInfo from 'bundle-loader?lazy&name=userInfo!../views/UserInfo/UserInfo'
+
+
 
 import {injectGlobal} from 'styled-components'
 
@@ -75,6 +79,19 @@ injectGlobal`
 
 `
 
+const Loading = () => (
+    <div>Loading . . .</div>
+)
+
+const createComponent = (component) => () => (
+    <Bundle load={component}>
+        {
+            (Component) => Component ? <Component/> : <Loading/>
+        }
+    </Bundle>
+)
+
+
 const getRouter = () => (
     <Router>
         <div>
@@ -86,10 +103,10 @@ const getRouter = () => (
             </ul>
 
             <Switch>
-                <Route exact path='/' component={Home}/>
-                <Route path='/page1' component={Page1}/>
-                <Route path='/counter' component={Counter}/>
-                <Route path="/userinfo" component={UserInfo}/>
+                <Route exact path='/' component={createComponent(Home)}/>
+                <Route path='/page1' component={createComponent(Page1)}/>
+                <Route path='/counter' component={createComponent(Counter)}/>
+                <Route path="/userinfo" component={createComponent(UserInfo)}/>
             </Switch>
         </div>
     </Router>

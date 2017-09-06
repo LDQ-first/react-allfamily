@@ -1,9 +1,11 @@
 import {
     GET_USER_INFO_REQUEST,
     GET_USER_INFO_SUCCESS,
-    GET_USER_INFO_FAIL
+    GET_USER_INFO_FAIL,
+    GET_USER_AVATER_SUCCESS
 } from '../const/const'
 import axios from 'axios'
+import {userApi} from '../../api/api'
 
 /*action creator*/
 export const getUserInfoRequest = () => {
@@ -25,16 +27,14 @@ export const getUserInfoFail = () => {
     }
 }
 
-
 /* user dispatch */
 export const getUserInfo = () => {
     return (dispatch) => {
         dispatch(getUserInfoRequest())
 
-        return axios.get('http://localhost:5050/src/api/user.json')
+        return axios.get(userApi)
                     .then(res => res.data)
                     .then(data => {
-                       console.log(data)
                        setTimeout(() => {
                            dispatch(getUserInfoSuccess(data))
                        }, 1000)
