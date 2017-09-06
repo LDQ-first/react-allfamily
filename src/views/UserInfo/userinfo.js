@@ -5,6 +5,7 @@ import {getUserInfo} from '../../redux/actions/userInfo'
 import AvatarImg from '../../styled/AvatarImg'
 import Img from '../../components/Img/Img'
 import {Container} from '../../styled'
+import Loading from '../../components/Loading/Loading'
 
 
 class UserInfo extends Component {
@@ -14,7 +15,7 @@ class UserInfo extends Component {
         return (
             <Container>
                 {
-                    isLoading ? '请求信息中......':
+                    isLoading ? <Loading/>:
                     (
                         errorMsg ? errorMsg  :
                         <div>
