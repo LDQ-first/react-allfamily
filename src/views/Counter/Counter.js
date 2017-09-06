@@ -33,6 +33,7 @@ const mapStateToProps = (state) => {
     }
 }
 
+
 const mapDispatchToProps  = (dispatch) => {
     return {
         increment: () => {
@@ -46,6 +47,7 @@ const mapDispatchToProps  = (dispatch) => {
         }
     }
 }
+
 
 export default connect(
     mapStateToProps,

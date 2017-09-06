@@ -36,7 +36,7 @@ export const getUserInfo = () => {
                     .then(data => {
                        console.log(data)
                        setTimeout(() => {
-                           dispatch(getUserInfoSuccess())
+                           dispatch(getUserInfoSuccess(data))
                        }, 1000)
                     }).catch( err => {
                         dispatch(getUserInfoFail())

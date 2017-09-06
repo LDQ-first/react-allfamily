@@ -13,18 +13,19 @@ const initState = {
 
 
 export default (state = initState, action) => {
-    switch(state.type) {
+    switch(action.type) {
         case GET_USER_INFO_REQUEST:
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
+                userInfo: {},
             }
         case GET_USER_INFO_SUCCESS:
             return {
                 ...state,
                 status: 200,
                 isLoading: false,
-                userInfo: action.userInfo
+                userInfo: action.userInfo,
             }
         case GET_USER_INFO_FAIL:
             return {
