@@ -14,6 +14,7 @@ export default injectGlobal`
     body {
         height: 100%;
         padding: 1em;
+        line-height: 1.6;
         background: linear-gradient(135deg,
         rgba(104, 201, 182, 1), rgba(54, 119, 206, 1)) no-repeat;
         background-attachment: fixed;
@@ -38,9 +39,6 @@ export default injectGlobal`
         margin: 0;
         padding: 0;
         list-style: none;
-    }
-    li {
-        margin: 10px 0;
     }
     a {
         text-decoration: none;

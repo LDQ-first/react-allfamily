@@ -26,10 +26,10 @@ class NavMenu extends Component {
                    <img src={menu} />
                 </a>
                 <ul className="menu-list" onClick={() => {toggleMenu()}}>
-                    <li><Link to="/">首页</Link></li>
-                    <li><Link to="/page1">Page1</Link></li>
-                    <li><Link to="/counter">Counter</Link></li>
-                    <li><Link to="/userinfo">UserInfo</Link></li>
+                    <li className="menu-item"><Link to="/">首页</Link></li>
+                    <li className="menu-item"><Link to="/page1">Page1</Link></li>
+                    <li className="menu-item"><Link to="/counter">Counter</Link></li>
+                    <li className="menu-item"><Link to="/userinfo">UserInfo</Link></li>
                 </ul>
             </Nav>
         )

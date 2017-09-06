@@ -33,11 +33,18 @@ export default styled.nav`
         width: 30px;
         display: none;
     }
+    .menu-list {
+        .menu-item {
+            margin: 10px 0;
+        }
+    }
+    
     @media (max-width: 50em) {
         width: 100%;
         height: auto;
         .menu-list {
            height: ${props => props.open ? 'calc(100vh - 66px)' : '0'};
+           padding: ${props => props.open ? '10px' : '0'};
            overflow: ${props => props.open ? 'auto' : 'hidden'};
            transition: all 0.8s ease-in-out;
            z-index: 10;
