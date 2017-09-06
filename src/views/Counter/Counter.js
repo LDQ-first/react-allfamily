@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import {increment, decrement, reset} from '../../redux/actions/counter'
 import {connect} from 'react-redux'
-
+import {Container} from '../../styled'
 
 class Counter extends Component {
     render() {
         const {increment, decrement, reset, counter } = this.props
-        console.log(counter)
+
         return (
-            <div>
+            <Container>
                 <div>当前计数为{counter.count}(显示redux计数)</div>
                 <button onClick={() => {
                     increment()
@@ -22,7 +22,7 @@ class Counter extends Component {
                     reset()
                 }}>重置
                 </button>
-            </div>
+            </Container>
         )
     }
 }

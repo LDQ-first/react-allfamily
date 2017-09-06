@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {container} from '../../styled/'
+import {Container} from '../../styled'
 
 export default class Home extends Component {
     constructor(props) {
@@ -17,11 +17,11 @@ export default class Home extends Component {
 
     render() {
         return (
-            <div>
+            <Container>
                 this is home~<br/>
                 当前计数：{this.state.count}<br/>
                 <button onClick={() => this._handleClick()}>自增</button>
-            </div>
+            </Container>
         )
     }
 }

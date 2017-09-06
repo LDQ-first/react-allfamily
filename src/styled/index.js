@@ -2,10 +2,10 @@ import {injectGlobal} from 'styled-components'
 import styled from 'styled-components'
 
 export default injectGlobal`
-    html,
-    body {
+    * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
     }
     body {
         padding: 1em;
@@ -45,6 +45,9 @@ export default injectGlobal`
             color: #FF6C09;
         }
     }
+    p {
+        margin: 10px 0;
+    }
     button {
         display: inline-block;
         cursor: pointer;
@@ -67,11 +70,11 @@ export default injectGlobal`
 
 `
 
-const container = styled.div`
+const Container = styled.div`
     padding: 1em;
     padding-left: 10rem;
 `
 
 module.exports = {
-    container
+    Container
 }

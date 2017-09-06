@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
+import {Container} from '../../styled'
+
 
 export default class Page1 extends Component {
     render() {
         return (
-            <div>
+            <Container>
                 this is Page1~
-            </div>
+            </Container>
         )
     }
 }

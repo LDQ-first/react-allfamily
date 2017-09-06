@@ -3,13 +3,15 @@ import {connect} from 'react-redux'
 import {getUserInfo} from '../../redux/actions/userInfo'
 
 import AvatarImg from '../../styled/AvatarImg'
+import {Container} from '../../styled'
+
 
 class UserInfo extends Component {
     render() {
         const {userInfo, isLoading, errorMsg} = this.props.userInfo
         const {getUserInfo} = this.props
         return (
-            <div>
+            <Container>
                 {
                     isLoading ? '请求信息中......':
                     (
@@ -26,7 +28,7 @@ class UserInfo extends Component {
                 <button onClick={() => getUserInfo()}>
                     获取用户信息
                 </button>
-            </div>
+            </Container>
         )
     }
 }
