@@ -21,12 +21,14 @@ class UserInfo extends Component {
                             <p>用户信息：</p>
                             <p>用户名：{userInfo.name}</p>
                             <p>介绍：{userInfo.intro}</p>
-                            <AvatarImg>
-                                <Img src={userInfo.avatar} />
-                            </AvatarImg>
                         </div>
                     )
                 }
+                <div>
+                    <AvatarImg>
+                        <Img src={userInfo.avatar} title={userInfo.name} alt={userInfo.name}/>
+                    </AvatarImg>
+                </div>
                 <button onClick={() => getUserInfo()}>
                     获取用户信息
                 </button>

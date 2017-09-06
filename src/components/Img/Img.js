@@ -7,7 +7,7 @@ export default class Imgs extends Component {
         const {src, alt, title} = this.props
 
         return (
-            <Img src={src} alt={alt} title='222' />
+            <Img src={src} alt={alt} title={title} />
         )
     }
 }
