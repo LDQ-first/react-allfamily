@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Container} from '../../styled'
+import Button from '../../styled/button'
 
 export default class Home extends Component {
     constructor(props) {
@@ -20,7 +21,7 @@ export default class Home extends Component {
             <Container>
                 this is home~<br/>
                 当前计数：{this.state.count}<br/>
-                <button onClick={() => this._handleClick()}>自增</button>
+                <Button onClick={() => this._handleClick()}>自增</Button>
             </Container>
         )
     }

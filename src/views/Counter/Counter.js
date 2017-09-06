@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {increment, decrement, reset} from '../../redux/actions/counter'
 import {connect} from 'react-redux'
 import {Container} from '../../styled'
+import Button from '../../styled/button'
 
 class Counter extends Component {
     render() {
@@ -10,18 +11,18 @@ class Counter extends Component {
         return (
             <Container>
                 <div>当前计数为{counter.count}(显示redux计数)</div>
-                <button onClick={() => {
+                <Button onClick={() => {
                     increment()
                 }}>自增
-                </button>
-                <button onClick={() => {
+                </Button>
+                <Button onClick={() => {
                     decrement()
                 }}>自减
-                </button>
-                <button onClick={() => {
+                </Button>
+                <Button onClick={() => {
                     reset()
                 }}>重置
-                </button>
+                </Button>
             </Container>
         )
     }

@@ -26,20 +26,22 @@ export default class Imgs extends Component {
             })
         }
     }
+
+    _showImg () {
+        this.setState({
+                winTop: window.scrollY
+            })
+        this._check()
+    }
     
     componentDidMount() {
         this._check ()
-        window.addEventListener('scroll', () => {
-            this.setState({
-                winTop: window.scrollY
-            })
-            this._check()
-        })
+        window.addEventListener('scroll', this._showImg.bind(this))
     }
 
     
     componentWillUnmount() {
-        window.removeEventListener('scroll')
+        window.removeEventListener('scroll', this._showImg())
     }
 
     

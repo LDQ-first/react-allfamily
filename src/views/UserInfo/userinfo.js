@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {getUserInfo} from '../../redux/actions/userInfo'
-
-import AvatarImg from '../../styled/AvatarImg'
 import Img from '../../components/Img/Img'
-import {Container} from '../../styled'
 import Loading from '../../components/Loading/Loading'
+import {Container} from '../../styled'
+import AvatarImg from '../../styled/AvatarImg'
 import LazyImg from '../../styled/LazyImg'
 import bea from '../../../static/img/002.jpg'
+import Button from '../../styled/button'
+
 
 class UserInfo extends Component {
     render() {
@@ -32,9 +33,9 @@ class UserInfo extends Component {
                         <Img src={userInfo.avatar} title={userInfo.name} alt={userInfo.name}/>
                     </AvatarImg>
                 </div>
-                <button onClick={() => getUserInfo()}>
+                <Button onClick={() => getUserInfo()} >
                     获取用户信息
-                </button>
+                </Button>
                 <LazyImg>
                     <Img src={bea}/>
                 </LazyImg>
