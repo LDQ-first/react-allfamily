@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Img from '../../styled/img'
 import loadingGif from '../../../static/img/loading.gif'
 import PropTypes from 'prop-types'
+import pureRender from 'pure-render-decorator'
 
 export default class Imgs extends Component {
     static PropTypes = {
@@ -15,9 +16,9 @@ export default class Imgs extends Component {
     constructor(props) {
         super(props)
         this.state = { 
-            imageStatus: 0,
-            imgUrl: loadingGif,
-            show: false,
+            imageStatus: Immutable(0),
+            imgUrl: Immutable(loadingGif),
+            show: Immutable(false),
             winHeight: window.innerHeight,
             winTop: window.scrollY
         }

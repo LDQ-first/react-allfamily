@@ -10,7 +10,6 @@ import bea from '../../../static/img/002.jpg'
 import Button from '../../styled/button'
 import PropTypes from 'prop-types'
 
-
 class UserInfo extends Component {
     static PropTypes = {
        userInfo: PropTypes.object.isRequired, 

@@ -19,7 +19,8 @@
     "sass": "cnpm install --save-dev sass-loader node-sass",
     "sc": "cnpm install --save styled-components classnames",
     "dll": "webpack --config ./build/webpack.dll.config.js",
-    "rhl": " cnpm i --save-dev react-hot-loader@^3.0.0-beta.7"
+    "rhl": " cnpm i --save-dev react-hot-loader@^3.0.0-beta.7",
+    "imp": "cnpm i --save seamless-immutable pure-render-decorator redux-immutable"
   },
   "repository": {
     "type": "git",
@@ -76,6 +77,7 @@
     "history": "^4.7.2",
     "immutable": "^3.8.1",
     "prop-types": "^15.5.10",
+    "pure-render-decorator": "^1.2.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-hot-loader": "^3.0.0-beta.7",
@@ -84,9 +86,11 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
+    "redux-immutable": "^4.0.0",
     "redux-promise": "^0.5.3",
     "redux-saga": "^0.15.6",
     "redux-thunk": "^2.2.0",
+    "seamless-immutable": "^7.1.2",
     "styled-components": "^2.1.2"
   }
 }
