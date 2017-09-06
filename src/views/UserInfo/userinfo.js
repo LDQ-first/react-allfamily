@@ -6,7 +6,8 @@ import AvatarImg from '../../styled/AvatarImg'
 import Img from '../../components/Img/Img'
 import {Container} from '../../styled'
 import Loading from '../../components/Loading/Loading'
-
+import LazyImg from '../../styled/LazyImg'
+import bea from '../../../static/img/002.jpg'
 
 class UserInfo extends Component {
     render() {
@@ -33,6 +34,9 @@ class UserInfo extends Component {
                 <button onClick={() => getUserInfo()}>
                     获取用户信息
                 </button>
+                <LazyImg>
+                    <Img src={bea}/>
+                </LazyImg>
             </Container>
         )
     }
