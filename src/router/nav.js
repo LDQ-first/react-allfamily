@@ -11,7 +11,6 @@ import {connect} from 'react-redux'
 class NavMenu extends Component {
     render() {
         const {open,toggleMenu} = this.props
-        console.log(this.props)
         return (
             <Nav open={open}>
                 <span className="logo">

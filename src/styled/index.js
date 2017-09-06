@@ -7,7 +7,11 @@ export default injectGlobal`
         padding: 0;
         box-sizing: border-box;
     }
+    html {
+        height: 100%;
+    }
     body {
+        height: 100%;
         padding: 1em;
         background: linear-gradient(135deg,
         rgba(104, 201, 182, 1), rgba(54, 119, 206, 1)) no-repeat;
@@ -73,9 +77,9 @@ export default injectGlobal`
 const Container = styled.div`
     padding: 1em;
     padding-left: 12rem;
-    @media (max-width: 40em) {
+    @media (max-width: 50em) {
         padding: 1em;
-        padding-top: calc(70px + 1em);
+        margin-top: calc(60px + 1em);
     }
 `
 

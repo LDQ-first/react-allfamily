@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {getUserInfo} from '../../redux/actions/userInfo'
 
 import AvatarImg from '../../styled/AvatarImg'
+import Img from '../../components/Img/Img'
 import {Container} from '../../styled'
 
 
@@ -20,8 +21,9 @@ class UserInfo extends Component {
                             <p>用户信息：</p>
                             <p>用户名：{userInfo.name}</p>
                             <p>介绍：{userInfo.intro}</p>
-                            <AvatarImg src={userInfo.avatar} 
-                            />
+                            <AvatarImg>
+                                <Img src={userInfo.avatar} />
+                            </AvatarImg>
                         </div>
                     )
                 }
