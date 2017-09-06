@@ -9,3 +9,4 @@ const AvatarImg = styled.img`
 `
 
 module.exports = AvatarImg
+
