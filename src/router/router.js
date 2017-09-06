@@ -12,7 +12,10 @@ import UserInfo from 'bundle-loader?lazy&name=userInfo!../views/UserInfo/UserInf
 import NotFound from 'bundle-loader?lazy&name=notFound!../views/NotFound/NotFound'
 
 
-import Nav from '../styled/nav'
+import NavMenu from './nav'
+
+
+
 
 const createComponent = (component) => () => (
     <Bundle load={component}>
@@ -22,19 +25,12 @@ const createComponent = (component) => () => (
     </Bundle>
 )
 
+let open = false
+
 const getRouter = () => (
     <Router>
         <div>
-            <Nav>
-                <ul>
-                    <li><Link to="/">首页</Link></li>
-                    <li><Link to="/page1">Page1</Link></li>
-                    <li><Link to="/counter">Counter</Link></li>
-                    <li><Link to="/userinfo">UserInfo</Link></li>
-                </ul>
-            </Nav>
-            
-
+            <NavMenu></NavMenu>
             <Switch>
                 <Route exact path='/' component={createComponent(Home)}/>
                 <Route path='/page1' component={createComponent(Page1)}/>

@@ -49,7 +49,7 @@ module.exports = (baseConfig, {
                 })
             },
             {
-            test: /\.(png|svg|jpe?g|gif)$/,
+            test: /\.(png|svg|jpe?g|gif|ico)$/,
                 use: [
                     {
                         loader: 'url-loader',
@@ -63,7 +63,7 @@ module.exports = (baseConfig, {
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf|svg)((-|\?)?.*)?$/,
-                exclude: /static\/img/,
+                include: /static\/css\/font/,
                 loader: 'url-loader',
                 options: {
                     name: 'css/font/[name].[hash:8].[ext]',

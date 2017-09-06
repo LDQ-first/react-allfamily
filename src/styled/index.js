@@ -73,6 +73,10 @@ export default injectGlobal`
 const Container = styled.div`
     padding: 1em;
     padding-left: 10rem;
+    @media (max-width: 40em) {
+        padding: 1em;
+        padding-top: calc(70px + 1em);
+    }
 `
 
 module.exports = {
