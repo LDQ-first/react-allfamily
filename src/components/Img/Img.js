@@ -26,10 +26,6 @@ export default class Imgs extends Component {
             this.setState({
                 winTop: window.scrollY
             })
-            console.log(' winTop + winHeight: ',  winTop + winHeight )
-            console.log(' imgsTop: ',  imgsTop )
-            console.log(' winTop: ',  winTop )
-            console.log(' imgsTop + imgsHeight: ',  imgsTop + imgsHeight )
             if( winTop + winHeight > imgsTop && winTop < imgsTop + imgsHeight) {
                 this.setState({
                     show: true
