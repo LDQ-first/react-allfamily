@@ -7,6 +7,19 @@ import store from './redux/store'
 import {Provider} from 'react-redux'
 
 
+
+
+const renderWithHotReload = (RootElement) => {
+    ReactDom.render(
+        <AppContainer>
+            <Provider store={store}>
+                {RootElement}
+            </Provider>
+        </AppContainer>, 
+    document.getElementById('app'))
+}
+
+
 /*初始化*/
 renderWithHotReload(getRouter())
 
@@ -18,14 +31,5 @@ if (module.hot) {
     })
 }
 
-function renderWithHotReload (RootElement) {
-    ReactDom.render(
-        <AppContainer>
-            <Provider store={store}>
-                {RootElement}
-            </Provider>
-        </AppContainer>, 
-    document.getElementById('app'))
-}
 
 

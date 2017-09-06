@@ -30,12 +30,7 @@ module.exports = {
         // ================================
         // 自定义路径别名
         // ================================
-        '@': path.join(__dirname, '../src'),
-        views: path.join(__dirname, '../src/views'),
-        components: path.join(__dirname, '../src/components'),
-        router: path.join(__dirname, '../src/router'),
-        actions: path.join(__dirname, '../src/redux/actions'),
-        reducers: path.join(__dirname, '../src/redux/reducers')
+        '@': path.join(__dirname, '../src')
         }
     },
      module: {
