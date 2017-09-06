@@ -8,7 +8,13 @@ import logo from '../../static/img/favicon.ico'
 import {taggleMenu} from '../redux/actions/nav'
 import {connect} from 'react-redux'
 
+import PropTypes from 'prop-types'
+
 class NavMenu extends Component {
+    static PropTypes = {
+       open: PropTypes.bool.isRequired, 
+       toggleMenu: PropTypes.func.isRequired,
+    }
     render() {
         const {open,toggleMenu} = this.props
         return (

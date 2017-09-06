@@ -15,7 +15,7 @@ import NotFound from 'bundle-loader?lazy&name=notFound!../views/NotFound/NotFoun
 import NavMenu from './nav'
 
 
-
+import createHistory from 'history/createBrowserHistory'
 
 const createComponent = (component) => () => (
     <Bundle load={component}>
@@ -28,7 +28,7 @@ const createComponent = (component) => () => (
 let open = false
 
 const getRouter = () => (
-    <Router>
+    <Router history={createHistory()}>
         <div>
             <NavMenu></NavMenu>
             <Switch>
