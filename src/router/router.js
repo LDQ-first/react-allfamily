@@ -70,6 +70,7 @@ injectGlobal`
         box-shadow: 0 1px 6px rgba(0,0,0,.4),
                     0 1px 4px rgba(0,0,0,.2);
         margin: 10px;
+        padding: 0 10px;
     }
 
 `
