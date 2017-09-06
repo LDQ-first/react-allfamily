@@ -4,8 +4,9 @@ import {getUserInfo} from '../../redux/actions/userInfo'
 
 
 class UserInfo extends Component {
-    cosnt {userInfo, isLoading, errorMsg} = this.props.userInfo
     render() {
+        const {userInfo, isLoading, errorMsg} = this.props.userInfo
+        console.log(this.props)
         return (
             <div>
                 {
@@ -19,22 +20,20 @@ class UserInfo extends Component {
                         </div>
                     )
                 }
-                <button onClick={() => getUserInfo()}></button>
+                <button onClick={() => this.props.getUserInfo()}>
+                    获取用户信息
+                </button>
             </div>
         )
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        userInfo: state.userInfo
-    }
-}
+const mapStateToProps = (state) => ({
+    userInfo: state.userInfo
+})
 
-const mapDispatchToProps = (UserInfo) => {
-    return {
-        getUserInfo
-    }
+const mapDispatchToProps = {
+    getUserInfo
 }
 
 
