@@ -1,13 +1,15 @@
 import styled from 'styled-components'
-
+import bg1 from '../../static/img/bg1.jpg'
 
 const NotFoundDiv = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 16px * 3);
+    height: calc(100vh);
+    background: url('../../static/img/bg1.jpg') no-repeat center / cover;
+    background-attachment: fixed;
     @media (max-width: 50em) {
-        height: calc(100vh - (60px + 1em) - 16px * 3);
+        height: calc(100vh - 60px);
     }
     .title {
        height: 1.6em;

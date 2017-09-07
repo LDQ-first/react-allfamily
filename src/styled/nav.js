@@ -5,6 +5,7 @@ export default styled.nav`
     padding: 1em;
     background: linear-gradient(20deg, rgb(219,112,147), #daa357);
     position: fixed;
+    z-index: 100;
     left: 0;
     top: 0;
     height: 100%;

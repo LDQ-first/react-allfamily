@@ -8,13 +8,14 @@ export default injectGlobal`
         box-sizing: border-box;
     }
     html {
-        height: 100%;
+        height: 100vh;
         overflow: auto;
     }
     body {
-        height: 100%;
-        padding: 1em;
+        height: 100vh;
         line-height: 1.6;
+        min-width: 320px;
+        overflow: auto;
         background: linear-gradient(135deg,
         rgba(104, 201, 182, 1), rgba(54, 119, 206, 1)) no-repeat;
         background-attachment: fixed;
@@ -64,10 +65,18 @@ export default injectGlobal`
 const Container = styled.div`
     padding: 1em;
     padding-left: 12rem;
+    &.per {
+        padding: 0;
+        padding-left: 10rem;
+    } 
     @media (max-width: 50em) {
         padding: 1em;
-        margin-top: calc(60px + 1em);
+        margin-top: calc(60px);
+        &.per {
+            padding: 0;
+        } 
     }
+    
 `
 
 module.exports = {

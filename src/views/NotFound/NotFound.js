@@ -5,7 +5,7 @@ import NotFoundDiv from '../../styled/NotFound'
 export default class NotFound extends Component {
     render() {
         return (
-            <Container>
+            <Container className="per">
                <NotFoundDiv>
                    <h1 className="title">404</h1>
                </NotFoundDiv>
