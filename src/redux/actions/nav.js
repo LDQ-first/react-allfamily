@@ -1,10 +1,10 @@
 import {
-    TAGGLE_MENU
+    TOGGLE_MENU
 } from '../const/const'
 
-export const taggleMenu = () => {
+export const toggleMenu = () => {
     return {
-        type: TAGGLE_MENU
+        type: TOGGLE_MENU
     }
 }
 

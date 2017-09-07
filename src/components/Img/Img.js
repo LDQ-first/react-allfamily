@@ -18,9 +18,9 @@ export default class Imgs extends Component {
     constructor(props) {
         super(props)
         this.state = { 
-            imageStatus: Immutable(0),
-            imgUrl: Immutable(loadingGif),
-            show: Immutable(false),
+            imageStatus: 0,
+            imgUrl: loadingGif,
+            show: false,
             winHeight: window.innerHeight,
             winTop: window.scrollY
         }

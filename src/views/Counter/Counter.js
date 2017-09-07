@@ -11,16 +11,16 @@ class Counter extends Component {
             increment: PropTypes.func.isRequired, 
             decrement: PropTypes.func.isRequired,
             reset: PropTypes.func.isRequired,
-            counter: PropTypes.object.isRequired
+            count: PropTypes.number.isRequired
         }
     }
 
     render() {
-        const {increment, decrement, reset, counter } = this.props
-
+        const {increment, decrement, reset, count } = this.props
+        console.log(this.props)
         return (
             <Container>
-                <div>当前计数为{counter.count}(显示redux计数)</div>
+                <div>当前计数为{count}(显示redux计数)</div>
                 <Button onClick={() => {
                     increment()
                 }}>自增
@@ -41,7 +41,7 @@ class Counter extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        counter: state.counter
+        count: state.getIn(['counter','count'])
     }
 }
 

@@ -13,17 +13,19 @@ import PropTypes from 'prop-types'
 class UserInfo extends Component {
     static get propTypes() { 
         return { 
-            userInfo: PropTypes.object.isRequired, 
+            userInfos: PropTypes.object.isRequired, 
             isLoading: PropTypes.bool.isRequired,
             errorMsg: PropTypes.string.isRequired,
-            getUserInfo: PropTypes.func.isRequired
+            getUserInfo: PropTypes.func.isRequired,
+            name: PropTypes.string,
+            intro: PropTypes.string,
+            avatar: PropTypes.string
         }
     }
 
     render() {
-        const {userInfo, isLoading, errorMsg} = this.props.userInfo
-        const {getUserInfo} = this.props
-        console.log(this.props)
+        const {getUserInfo, isLoading, errorMsg , userInfos, name, intro, avatar } = this.props
+        
         return (
             <Container>
                 {
@@ -32,14 +34,14 @@ class UserInfo extends Component {
                         errorMsg ? errorMsg  :
                         <div>
                             <p>用户信息：</p>
-                            <p>用户名：{userInfo.name}</p>
-                            <p>介绍：{userInfo.intro}</p>
+                            <p>用户名：{name}</p>
+                            <p>介绍：{intro}</p>
                         </div>
                     )
                 }
                 <div>
                     <AvatarImg>
-                        <Img src={userInfo.avatar} title={userInfo.name} alt={userInfo.name}/>
+                        <Img src={avatar} title={name} alt={name}/>
                     </AvatarImg>
                 </div>
                 <Button onClick={() => getUserInfo()} >
@@ -54,7 +56,12 @@ class UserInfo extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    userInfo: state.userInfo
+    userInfos: state.getIn(['userInfo', 'userInfos']),
+    isLoading: state.getIn(['userInfo', 'isLoading']),
+    errorMsg: state.getIn(['userInfo', 'errorMsg']),
+    name: state.getIn(['userInfo', 'userInfos', 'name']),    
+    intro: state.getIn(['userInfo', 'userInfos', 'intro']),    
+    avatar: state.getIn(['userInfo', 'userInfos', 'avatar'])    
 })
 
 const mapDispatchToProps = {

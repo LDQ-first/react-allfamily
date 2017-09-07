@@ -4,7 +4,7 @@ const baseConfig = require('./webpack.base.config')
 const merge = require('webpack-merge')
 
 const devConfig = (baseConfig, {
-    devtool: 'cheap-module-source-map',
+    devtool: 'cheap-eval-source-map',
     entry: {
         app: [
             'react-hot-loader/patch',

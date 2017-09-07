@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
+import { ConnectedRouter } from 'react-router-redux'
 
 import Bundle from './bundle'
 import Loading from '../components/Loading/Loading'
@@ -28,7 +29,7 @@ const createComponent = (component) => () => (
 let open = false
 
 const getRouter = () => (
-    <Router history={createHistory()}>
+    <ConnectedRouter history={createHistory()}>
         <div>
             <NavMenu></NavMenu>
             <Switch>
@@ -39,6 +40,6 @@ const getRouter = () => (
                 <Route component={createComponent(NotFound)}/>
             </Switch>
         </div>
-    </Router>
+    </ConnectedRouter>
 )
 export default getRouter
