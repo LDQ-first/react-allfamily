@@ -5,10 +5,11 @@ import Nav from '../styled/nav'
 import menu from '../../static/img/menu.svg'
 import logo from '../../static/img/favicon.ico'
 
-import {toggleMenu} from '../redux/actions/nav'
+/*import {toggleMenu} from '../redux/actions/nav'*/
+import * as navActions from '../redux/actions/nav'
 import {connect} from 'react-redux'
-
 import PropTypes from 'prop-types'
+import { openSelector } from '../selector/nav'
 
 class NavMenu extends Component {
     static get propTypes() { 
@@ -43,21 +44,21 @@ class NavMenu extends Component {
 
 
 const mapStateToProps = (state) => ({
-    open: state.getIn(['global','nav','open'])
+    open: openSelector(state)
 })
 
-const mapDispatchToProps = (dispatch) => {
+/*const mapDispatchToProps = (dispatch) => {
     return {
         toggleMenu: () => {
             dispatch(toggleMenu())
         }
     }
 }
-
+*/
 
 
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    navActions
 )(NavMenu)

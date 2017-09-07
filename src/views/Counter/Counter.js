@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
-import {increment, decrement, reset} from '../../redux/actions/counter'
+/*import {increment, decrement, reset} from '../../redux/actions/counter'*/
+import * as counterActions from '../../redux/actions/counter'
 import {connect} from 'react-redux'
 import {Container} from '../../styled'
 import Button from '../../styled/button'
 import PropTypes from 'prop-types'
+import {
+    countSelector
+} from '../../selector/counter'
+
 
 class Counter extends Component {
     static get propTypes() { 
@@ -39,14 +44,12 @@ class Counter extends Component {
 }
 
 
-const mapStateToProps = (state) => {
-    return {
-        count: state.getIn(['counter','count'])
-    }
-}
+const mapStateToProps = (state) => ({
+    count: countSelector(state)
+})
 
 
-const mapDispatchToProps  = (dispatch) => {
+/*const mapDispatchToProps  = (dispatch) => {
     return {
         increment: () => {
             dispatch(increment())
@@ -58,10 +61,10 @@ const mapDispatchToProps  = (dispatch) => {
             dispatch(reset())
         }
     }
-}
+}*/
 
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    counterActions
 )(Counter)

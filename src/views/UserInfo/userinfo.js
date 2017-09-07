@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {getUserInfo} from '../../redux/actions/userInfo'
+/*import {getUserInfo} from '../../redux/actions/userInfo'*/
+import * as userInfoActions  from '../../redux/actions/userInfo'
 import Img from '../../components/Img/Img'
 import Loading from '../../components/Loading/Loading'
 import {Container} from '../../styled'
@@ -69,13 +70,13 @@ const mapStateToProps = (state) => ({
     avatar: avatarSelector(state)
 })
 
-const mapDispatchToProps = {
+/*const mapDispatchToProps = {
     getUserInfo
-}
+}*/
 
 
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    userInfoActions
 )(UserInfo)
