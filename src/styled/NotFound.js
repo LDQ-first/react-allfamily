@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import bg1 from '../../static/img/bg1.jpg'
 
 const NotFoundDiv = styled.div`
     display: flex;
@@ -9,7 +8,7 @@ const NotFoundDiv = styled.div`
     background: url('../../static/img/bg1.jpg') no-repeat center / cover;
     background-attachment: fixed;
     @media (max-width: 50em) {
-        height: calc(100vh - 60px);
+        background: url('../../static/img/bg2.jpg') no-repeat center / cover;
     }
     .title {
        height: 1.6em;

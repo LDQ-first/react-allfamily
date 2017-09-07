@@ -29,7 +29,7 @@ class NavMenu extends Component {
                     <img src={logo} alt="React" title="React"/>
                 </span>
                 <a className="menu-svg" onClick={() => {toggleMenu()}}>
-                   <img src={menu} />
+                    <img src={menu} />
                 </a>
                 <ul className="menu-list" onClick={() => {toggleMenu()}}>
                     <li className="menu-item"><Link to="/">首页</Link></li>

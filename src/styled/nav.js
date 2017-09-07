@@ -33,6 +33,10 @@ export default styled.nav`
         height: 30px;
         width: 30px;
         display: none;
+        img {
+            width: 30px;
+            height: 30px;
+        }
     }
     .menu-list {
         .menu-item {
@@ -43,6 +47,7 @@ export default styled.nav`
     @media (max-width: 50em) {
         width: 100%;
         height: auto;
+        padding: 0.5em;
         .menu-list {
            height: ${props => props.open ? 'calc(100vh - 66px)' : '0'};
            padding: ${props => props.open ? '10px' : '0'};

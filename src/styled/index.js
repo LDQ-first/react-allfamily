@@ -15,7 +15,7 @@ export default injectGlobal`
         height: 100vh;
         line-height: 1.6;
         min-width: 320px;
-        overflow: auto;
+       /* overflow: scroll;*/
         background: linear-gradient(135deg,
         rgba(104, 201, 182, 1), rgba(54, 119, 206, 1)) no-repeat;
         background-attachment: fixed;
@@ -71,7 +71,7 @@ const Container = styled.div`
     } 
     @media (max-width: 50em) {
         padding: 1em;
-        margin-top: calc(60px);
+        /*margin-top: calc(53px);*/
         &.per {
             padding: 0;
         } 

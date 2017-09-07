@@ -39,6 +39,7 @@ export default class Imgs extends Component {
     }
 
     _showImg () {
+         
         this.setState({
                 winTop: window.scrollY
             })
@@ -47,12 +48,12 @@ export default class Imgs extends Component {
     
     componentDidMount() {
         this._check ()
-        window.addEventListener('scroll', this._showImg.bind(this))
+        window.addEventListener('scroll',this._showImg.bind(this))
     }
 
     
     componentWillUnmount() {
-        window.removeEventListener('scroll', this._showImg())
+        window.removeEventListener('scroll', this._showImg)
     }
 
     
