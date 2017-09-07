@@ -20,7 +20,8 @@
     "sc": "cnpm install --save styled-components classnames",
     "dll": "webpack --config ./build/webpack.dll.config.js",
     "rhl": " cnpm i --save-dev react-hot-loader@^3.0.0-beta.7",
-    "imp": "cnpm i --save seamless-immutable pure-render-decorator redux-immutable"
+    "imp": "cnpm i --save seamless-immutable pure-render-decorator redux-immutable",
+    "eslint": "cnpm i -D eslint eslint-loader eslint-plugin-react eslint-config-standard  eslint-plugin-standard eslint-plugin-promise"
   },
   "repository": {
     "type": "git",
@@ -56,6 +57,12 @@
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
+    "eslint": "^4.6.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.3.0",
+    "eslint-plugin-standard": "^3.0.1",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",

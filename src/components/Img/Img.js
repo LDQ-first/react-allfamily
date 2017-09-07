@@ -5,12 +5,14 @@ import PropTypes from 'prop-types'
 import pureRender from 'pure-render-decorator'
 
 export default class Imgs extends Component {
-    static PropTypes = {
-       src: PropTypes.string, 
-       alt: PropTypes.string,
-       title: PropTypes.string
+    
+    static get propTypes() { 
+        return { 
+            src: PropTypes.string, 
+            alt: PropTypes.string,
+            title: PropTypes.string
+        }
     }
-
 
 
     constructor(props) {

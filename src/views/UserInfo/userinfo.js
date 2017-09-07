@@ -11,10 +11,13 @@ import Button from '../../styled/button'
 import PropTypes from 'prop-types'
 
 class UserInfo extends Component {
-    static PropTypes = {
-       userInfo: PropTypes.object.isRequired, 
-       isLoading: PropTypes.bool.isRequired,
-       errorMsg: PropTypes.string.isRequired
+    static get propTypes() { 
+        return { 
+            userInfo: PropTypes.object.isRequired, 
+            isLoading: PropTypes.bool.isRequired,
+            errorMsg: PropTypes.string.isRequired,
+            getUserInfo: PropTypes.func.isRequired
+        }
     }
 
     render() {

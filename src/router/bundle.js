@@ -1,6 +1,14 @@
 import React, {Component} from 'react'
 
 class Bundle extends Component {
+    static get propTypes() { 
+        return { 
+            mod: PropTypes.object, 
+            load: PropTypes.func,
+            children: PropTypes.func
+        }
+    }
+
     state = {
         // short for "module" but that's a keyword in js, so "mod"
         mod: null

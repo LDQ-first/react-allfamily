@@ -6,11 +6,13 @@ import Button from '../../styled/button'
 import PropTypes from 'prop-types'
 
 class Counter extends Component {
-    static PropTypes = {
-       increment: PropTypes.func.isRequired, 
-       decrement: PropTypes.func.isRequired,
-       reset: PropTypes.func.isRequired,
-       counter: PropTypes.object.isRequired
+    static get propTypes() { 
+        return { 
+            increment: PropTypes.func.isRequired, 
+            decrement: PropTypes.func.isRequired,
+            reset: PropTypes.func.isRequired,
+            counter: PropTypes.object.isRequired
+        }
     }
 
     render() {
