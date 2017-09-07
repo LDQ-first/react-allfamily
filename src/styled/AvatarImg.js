@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-
 const AvatarImg = styled.div`
     display: inline-block;
     margin: 10px;
