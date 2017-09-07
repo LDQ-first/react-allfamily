@@ -43,7 +43,7 @@ class NavMenu extends Component {
 
 
 const mapStateToProps = (state) => ({
-    open: state.getIn(['nav','open'])
+    open: state.getIn(['global','nav','open'])
 })
 
 const mapDispatchToProps = (dispatch) => {

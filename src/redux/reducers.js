@@ -25,8 +25,10 @@ const routeReducer = (state = routeInitialState, action) => {
 
 export default combineReducers({
     route: routeReducer,
-    counter,
-    userInfo,
-    nav
+    global: combineReducers({
+      counter,
+      userInfo,
+      nav
+    })
 })
 

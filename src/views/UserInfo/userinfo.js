@@ -9,11 +9,17 @@ import LazyImg from '../../styled/LazyImg'
 import bea from '../../../static/img/002.jpg'
 import Button from '../../styled/button'
 import PropTypes from 'prop-types'
+import {
+    nameSelector,
+    introSelector,
+    avatarSelector,
+    isLoadingSelector,
+    errorMsgSelector
+} from '../../selector/userinfo'
 
 class UserInfo extends Component {
     static get propTypes() { 
         return { 
-            userInfos: PropTypes.object.isRequired, 
             isLoading: PropTypes.bool.isRequired,
             errorMsg: PropTypes.string.isRequired,
             getUserInfo: PropTypes.func.isRequired,
@@ -24,7 +30,7 @@ class UserInfo extends Component {
     }
 
     render() {
-        const {getUserInfo, isLoading, errorMsg , userInfos, name, intro, avatar } = this.props
+        const {getUserInfo, isLoading, errorMsg , name, intro, avatar } = this.props
         
         return (
             <Container>
@@ -56,12 +62,11 @@ class UserInfo extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    userInfos: state.getIn(['userInfo', 'userInfos']),
-    isLoading: state.getIn(['userInfo', 'isLoading']),
-    errorMsg: state.getIn(['userInfo', 'errorMsg']),
-    name: state.getIn(['userInfo', 'userInfos', 'name']),    
-    intro: state.getIn(['userInfo', 'userInfos', 'intro']),    
-    avatar: state.getIn(['userInfo', 'userInfos', 'avatar'])    
+    isLoading: isLoadingSelector(state),
+    errorMsg: errorMsgSelector(state),   
+    name: nameSelector(state),  
+    intro: introSelector(state),
+    avatar: avatarSelector(state)
 })
 
 const mapDispatchToProps = {
