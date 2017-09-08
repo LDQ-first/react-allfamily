@@ -37,7 +37,7 @@ export default class GithubUser extends Component {
                         onKeyDown = {(e) => {this._keySearch(e)}}
                     />
                     <span className="search-icon">  
-                        <IconButton color="primary" aria-label="To Search User">
+                        <IconButton color="primary" aria-label="To Search Org">
                             <Search onClick = {() => {this._iconSearch()}}/>
                         </IconButton>
                     </span>
