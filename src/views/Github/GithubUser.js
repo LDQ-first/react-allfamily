@@ -5,6 +5,14 @@ import IconButton from 'material-ui/IconButton'
 import Search from 'material-ui-icons/search'
 import SearchCom from '../../components/Search/Search'
 
+import {
+    isLoadingSelector,
+    errorMsgSelector
+} from '../../selector/userinfo'
+
+
+
+
 export default class GithubUser extends Component {
     
     _searchUser (value) {
