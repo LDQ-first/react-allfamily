@@ -1,5 +1,8 @@
 import {injectGlobal} from 'styled-components'
 import styled from 'styled-components'
+import { lightBlue, deepPurple } from 'material-ui/colors'
+const bgBlue = lightBlue[400]
+const bgPurple = deepPurple[200]
 
 export default injectGlobal`
     * {
@@ -16,10 +19,18 @@ export default injectGlobal`
         line-height: 1.6;
         min-width: 320px;
         color: #2c3e50;
-        background: linear-gradient(135deg,
-        rgba(104, 201, 182, 1), rgba(54, 119, 206, 1)) no-repeat;
+        /*background: linear-gradient(135deg, 
+            rgba(78, 167, 224, 1) , 
+            rgba(182, 173, 230, 1) 70%,
+            rgba(165, 153, 224, 0.6) );*/
+        background: linear-gradient(135deg, ${bgBlue}, ${bgPurple});
         background-attachment: fixed;
-        font-family: "Helvetica Neue", "Arial", " Segoe UI", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif !important;
+        font-family: "Helvetica Neue", "Arial", " Segoe UI",
+                     "PingFang SC", "Hiragino Sans GB", "STHeiti",
+                      "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", 
+                      "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", 
+                      "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei",
+                      SimSun, sans-serif !important;
     }
     ::-webkit-scrollbar {
         width: 0.5em
