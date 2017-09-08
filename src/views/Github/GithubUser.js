@@ -12,7 +12,40 @@ import {
     errorMsgSelector,
     nameSelector,
     avatarSelector,
+    createdAtSelector,
+    updatedAtSelector,
+    githubUrlSelector,
+    reposUrlSelector,
+    publicReposSelector,
+    publicGistsSelector,
+    followersSelector,
+    followingSelector,
+    emailSelector,
+    companySelector,
+    blogSelector,
+    locationSelector,
+    bioSelector
 } from '../../selector/githubUser'
+
+
+const mapStateToProps = (state) => ({
+    isLoading: isLoadingSelector(state),
+    errorMsg: errorMsgSelector(state),   
+    name: nameSelector(state),  
+    avatar: avatarSelector(state),
+    createdAt: createdAtSelector(state),
+    updatedAt: updatedAtSelector(state),
+    githubUrl: githubUrlSelector(state),
+    reposUrl: reposUrlSelector(state),
+    publicRepos: publicReposSelector(state),
+    publicGists: publicGistsSelector(state),
+    followers: followersSelector(state),
+    following: followingSelector(state),
+    company: companySelector(state),
+    blog: blogSelector(state),
+    location: locationSelector(state),
+    bio: bioSelector(state)
+})
 
 
 class GithubUser extends Component {
@@ -77,13 +110,6 @@ class GithubUser extends Component {
     }
 }
 
-
-const mapStateToProps = (state) => ({
-    isLoading: isLoadingSelector(state),
-    errorMsg: errorMsgSelector(state),   
-    name: nameSelector(state),  
-    avatar: avatarSelector(state)
-})
 
 
 

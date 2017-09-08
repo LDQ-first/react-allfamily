@@ -35,9 +35,7 @@ export const getGithubUserInfoFail = () => {
         return axios.get(`${githubApi.githubUser}/${user}`)
                     .then(res => res.data)
                     .then(data => {
-                       setTimeout(() => {
-                           dispatch(getGithubUserInfoSuccess(data))
-                       }, 1000)
+                        dispatch(getGithubUserInfoSuccess(data))
                     }).catch( err => {
                         dispatch(getGithubUserInfoFail())
                     })
