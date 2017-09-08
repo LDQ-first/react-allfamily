@@ -5,7 +5,6 @@ import Toolbar from 'material-ui/Toolbar'
 
 
 export default styled.nav`
-    width: 10rem;
     padding: 1em;
     background: linear-gradient(20deg, rgb(219,112,147), #daa357);
     position: fixed;
@@ -30,9 +29,8 @@ export default styled.nav`
     a {
         color: #FBFBFB;
         display: inline-block;
-        &:hover {
-            color: #0086CC;
-        }
+        width: 100%;
+        padding: 0 16px;
     }
     .logo {
         display: inline-block;
@@ -55,8 +53,12 @@ export default styled.nav`
     }
     .menu-list {
         width: 100%;
+        .list-icon {
+             fill: #007bba;
+        }
         .menu-item {
-            margin: 10px 0;
+            padding-left: 4px;
+            padding-right: 4px;
         }
     }
     

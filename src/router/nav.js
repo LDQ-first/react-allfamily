@@ -15,6 +15,9 @@ import Button from 'material-ui/Button'
 import IconButton from 'material-ui/IconButton'
 import MenuIcon from 'material-ui-icons/Menu'
 import BottomNavLink from '../styled/BottomNavLink'
+import List, { ListItem, ListItemText } from 'material-ui/List'
+import Avatar from 'material-ui/Avatar'
+import FolderIcon from 'material-ui-icons/Folder'
 
 class NavMenu extends Component {
     static get propTypes() { 
@@ -41,12 +44,47 @@ class NavMenu extends Component {
                         <MenuIcon />
                     </IconButton>
                 </div>
-                <ul className="menu-list" onClick={() => {toggleMenu()}}>
+                <List className="menu-list" onClick={() => {toggleMenu()}}>  
+                    <ListItem button className="menu-item">
+                        <Avatar>
+                            <FolderIcon className="list-icon"/>
+                        </Avatar>
+                        <Link to="/">
+                            <ListItemText primary="首页" secondary="" />
+                        </Link>
+                    </ListItem>
+                    <ListItem button className="menu-item">
+                        <Avatar>
+                            <FolderIcon className="list-icon"/>
+                        </Avatar>
+                        <Link to="/page1">
+                            <ListItemText primary="Page1" secondary="" />
+                        </Link>
+                    </ListItem>
+                    <ListItem button className="menu-item">
+                        <Avatar>
+                            <FolderIcon className="list-icon"/>
+                        </Avatar>
+                        <Link to="/counter">
+                            <ListItemText primary="Counter" secondary="" />
+                        </Link>
+                    </ListItem>
+                    <ListItem button className="menu-item">
+                        <Avatar>
+                            <FolderIcon className="list-icon"/>
+                        </Avatar>
+                        <Link to="/userinfo">
+                            <ListItemText primary="UserInfo" secondary="" />
+                        </Link>
+                    </ListItem>
+                        
+                </List>
+                {/*<ul className="menu-list" onClick={() => {toggleMenu()}}>
                     <li className="menu-item"><Link to="/">首页</Link></li>
                     <li className="menu-item"><Link to="/page1">Page1</Link></li>
                     <li className="menu-item"><Link to="/counter">Counter</Link></li>
                     <li className="menu-item"><Link to="/userinfo">UserInfo</Link></li>
-                </ul>
+                </ul>*/}
             </Nav>
         )
     }

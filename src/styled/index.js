@@ -44,9 +44,8 @@ export default injectGlobal`
     a {
         text-decoration: none;
         color: #0060E9;
-        &:hover {
-            text-decoration: underline;
-            color: #FF6C09;
+        &:hover, &:hover * {
+            color: #007bba;
         }
     }
     p {
@@ -64,7 +63,7 @@ export default injectGlobal`
 
 const Container = styled.div`
     padding: 1em;
-    padding-left: 12rem;
+    padding-left: 13rem;
     &.per {
         padding: 0;
         padding-left: 10rem;
