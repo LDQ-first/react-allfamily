@@ -3,6 +3,7 @@ import { GithubUserDiv } from '../../styled/Github'
 import TextField from 'material-ui/TextField'
 import IconButton from 'material-ui/IconButton'
 import Search from 'material-ui-icons/search'
+import SearchCom from '../../components/Search/Search'
 
 export default class GithubUser extends Component {
     
@@ -43,6 +44,16 @@ export default class GithubUser extends Component {
                        </IconButton>
                     </span>   
                 </section>
+                <SearchCom
+                     label = "User"
+                     placeholder= '请输入用户名（Please input username）'
+                     helperText = "To Search User!"
+                     _keySearch = {this._keySearch}
+                     ariaLabel = "To Search User"
+                     _iconSearch = {this._iconSearch} 
+                     _searchUser = {this._searchUser} 
+                     _this = {this}
+                />
             </GithubUserDiv>
         )
     }
