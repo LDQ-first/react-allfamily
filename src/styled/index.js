@@ -71,7 +71,7 @@ const Container = styled.div`
     } 
     @media (max-width: 50em) {
         padding: 1em;
-        /*margin-top: calc(53px);*/
+        padding-top: 70px;
         &.per {
             padding: 0;
         } 

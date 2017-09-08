@@ -51,7 +51,7 @@ class UserInfo extends Component {
                         <Img src={avatar} title={name} alt={name}/>
                     </AvatarImg>
                 </div>
-                <Button onClick={() => getUserInfo()} >
+                <Button className="btn" onClick={() => getUserInfo()} >
                     获取用户信息
                 </Button>
                 <LazyImg>

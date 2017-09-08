@@ -26,15 +26,15 @@ class Counter extends Component {
         return (
             <Container>
                 <div>当前计数为{count}(显示redux计数)</div>
-                <Button onClick={() => {
+                <Button className="btn" onClick={() => {
                     increment()
                 }}>自增
                 </Button>
-                <Button onClick={() => {
+                <Button className="btn" onClick={() => {
                     decrement()
                 }}>自减
                 </Button>
-                <Button onClick={() => {
+                <Button className="btn" onClick={() => {
                     reset()
                 }}>重置
                 </Button>
