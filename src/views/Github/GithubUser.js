@@ -7,6 +7,7 @@ export default class GithubUser extends Component {
         return (
             <GithubUserDiv>
                 <h1 className="title">Find Github User</h1>
+
             </GithubUserDiv>
         )
     }

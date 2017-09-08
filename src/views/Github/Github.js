@@ -1,13 +1,35 @@
 import React, { Component } from 'react'
 import GithubUser from './GithubUser'
+import GithubOrg from './GithubOrg'
 import {Container} from '../../styled'
+import AppBar from 'material-ui/AppBar'
+import Tabs, { Tab } from 'material-ui/Tabs'
+
 
 export default class Github extends Component {
+    constructor (props) {
+        super(props)
+        this.state = {
+            value: 0
+        }
+    }
+
+
     render() {
+        const { value } = this.state
+
         return (
-            <Container>
-                <GithubUser/>
+            <Container className="topPadding">
+               <AppBar position="static">
+                    <Tabs value={value} onChange={this.handleChange}>
+                        <Tab label="GithubUser" />
+                        <Tab label="GithubOrg" />
+                    </Tabs>
+              </AppBar>
+                {value === 0 && <GithubUser />}
+                {value === 1 && <GithubOrg />}
             </Container>
         )
     }
 }
+

@@ -7,6 +7,14 @@ const GithubUserDiv = styled.div`
     }
 `
 
+const GithubOrgDiv = styled.div`
+    outline: 1px solid red;
+    .title {
+        text-align: center;
+    }
+`
+
 export {
-    GithubUserDiv
+    GithubUserDiv,
+    GithubOrgDiv
 }
