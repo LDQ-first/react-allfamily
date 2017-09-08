@@ -9,6 +9,20 @@ const GithubItemDiv = styled.div`
     .title {
         text-align: center;
     }
+    .searchArea {
+        display: flex;
+        align-items: center;
+        .search-input {
+            flex: 1;
+        }
+        .search-icon {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+    }
+    
 `
 
 
