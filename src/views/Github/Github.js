@@ -14,6 +14,12 @@ export default class Github extends Component {
         }
     }
 
+    _handleChange(e, value) {
+        this.setState({
+            value
+        })
+    }
+
 
     render() {
         const { value } = this.state
@@ -21,7 +27,7 @@ export default class Github extends Component {
         return (
             <Container className="topPadding">
                <AppBar position="static">
-                    <Tabs value={value} onChange={this.handleChange}>
+                    <Tabs value={value} onChange={this._handleChange.bind(this)}>
                         <Tab label="GithubUser" />
                         <Tab label="GithubOrg" />
                     </Tabs>
