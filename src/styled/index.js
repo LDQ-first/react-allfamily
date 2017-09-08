@@ -15,7 +15,7 @@ export default injectGlobal`
         height: 100vh;
         line-height: 1.6;
         min-width: 320px;
-       /* overflow: scroll;*/
+        color: #2c3e50;
         background: linear-gradient(135deg,
         rgba(104, 201, 182, 1), rgba(54, 119, 206, 1)) no-repeat;
         background-attachment: fixed;

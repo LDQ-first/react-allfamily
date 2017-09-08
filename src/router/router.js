@@ -11,6 +11,7 @@ import Page1 from 'bundle-loader?lazy&name=page1!../views/Page1/Page1'
 import Counter from 'bundle-loader?lazy&name=counter!../views/Counter/Counter'
 import UserInfo from 'bundle-loader?lazy&name=userInfo!../views/UserInfo/UserInfo'
 import NotFound from 'bundle-loader?lazy&name=notFound!../views/NotFound/NotFound'
+import Github from 'bundle-loader?lazy&name=github!../views/Github/Github'
 
 
 import NavMenu from './nav'
@@ -38,6 +39,7 @@ const getRouter = () => (
                 <Route path='/page1' component={createComponent(Page1)}/>
                 <Route path='/counter' component={createComponent(Counter)}/>
                 <Route path="/userinfo" component={createComponent(UserInfo)}/>
+                <Route path="/github" component={createComponent(Github)}/>
                 <Route component={createComponent(NotFound)}/>
             </Switch>
         </div>

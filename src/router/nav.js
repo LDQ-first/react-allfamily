@@ -77,14 +77,15 @@ class NavMenu extends Component {
                             <ListItemText primary="UserInfo" secondary="" />
                         </Link>
                     </ListItem>
-                        
+                    <ListItem button className="menu-item">
+                        <Avatar>
+                            <FolderIcon className="list-icon"/>
+                        </Avatar>
+                        <Link to="/github">
+                            <ListItemText primary="Github" secondary="" />
+                        </Link>
+                    </ListItem>
                 </List>
-                {/*<ul className="menu-list" onClick={() => {toggleMenu()}}>
-                    <li className="menu-item"><Link to="/">首页</Link></li>
-                    <li className="menu-item"><Link to="/page1">Page1</Link></li>
-                    <li className="menu-item"><Link to="/counter">Counter</Link></li>
-                    <li className="menu-item"><Link to="/userinfo">UserInfo</Link></li>
-                </ul>*/}
             </Nav>
         )
     }
