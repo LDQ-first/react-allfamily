@@ -48,10 +48,7 @@ export default class GithubUser extends Component {
                      label = "User"
                      placeholder= '请输入用户名（Please input username）'
                      helperText = "To Search User!"
-                     _keySearch = {this._keySearch}
                      ariaLabel = "To Search User"
-                     _iconSearch = {this._iconSearch} 
-                     _searchUser = {this._searchUser} 
                      _this = {this}
                 />
             </GithubUserDiv>
