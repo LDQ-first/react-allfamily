@@ -7,7 +7,15 @@ export default class GithubUser extends Component {
         return (
             <GithubUserDiv>
                 <h1 className="title">Find Github User</h1>
-
+                <TextField
+                    id="placeholder"
+                    label="User"
+                    InputProps={{ placeholder: '请输入用户名（Please input username）' }}
+                    helperText="To Search User!"
+                    fullWidth
+                    multiline
+                    margin="normal"
+                />
             </GithubUserDiv>
         )
     }
