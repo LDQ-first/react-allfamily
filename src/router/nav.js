@@ -29,8 +29,6 @@ class NavMenu extends Component {
 
     render() {
         const { open,toggleMenu } = this.props
-        console.log(open)
-        console.log(toggleMenu)
         return (
             <Nav open={open}>
                 <div className="control">

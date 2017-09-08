@@ -7,6 +7,7 @@ export const githubUserSelector = createSelector(
     appState => appState.get('githubUser')
 )
 
+
 export const githubUserInfosSelector = createSelector(
     githubUserSelector,
     githubUserState => githubUserState.get('githubUserInfos')
@@ -29,7 +30,7 @@ export const nameSelector = createSelector(
 
 export const avatarSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('avatar')
+    githubUserInfosState => githubUserInfosState.get('avatar_url')
 )
 
 

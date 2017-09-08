@@ -28,7 +28,6 @@ const createComponent = (component) => () => (
 )
 
 let open = false
-console.log(NotFound)
 
 const getRouter = () => (
     <ConnectedRouter history={createHistory()}>

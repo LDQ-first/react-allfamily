@@ -5,7 +5,7 @@ import {
     GET_GITHUBUSER_AVATER_SUCCESS
 } from '../const/const'
 import axios from 'axios'
-/*import {githubUserApi} from '../../api/api'*/
+import {githubApi} from '../../api/api'
 
 /*action creator*/
 export const getGithubUserInfoRequest = () => {
@@ -14,10 +14,10 @@ export const getGithubUserInfoRequest = () => {
     }
 }
 
-export const getGithubUserInfoSuccess = (GithubUserInfo) => {
+export const getGithubUserInfoSuccess = (githubUserInfo) => {
     return {
         type: GET_GITHUBUSER_INFO_SUCCESS,
-        GithubUserInfo: GithubUserInfo
+        githubUserInfo: githubUserInfo
     }
 }
 
@@ -47,14 +47,15 @@ export const getGithubUserInfoFail = () => {
 
 
 export const getGithubUser = (user) => async (dispatch) => {
-   /*try {
+    console.log(user)
+    console.log(githubApi)
+   try {
        dispatch(getGithubUserInfoRequest())
-       let res = await axios.get(`${githubUserApi}`)
-       await setTimeout(() => {
-           dispatch(getGithubUserInfoSuccess(res.data))
-       }, 1000)
+       let res = await axios.get(`${githubApi.githubUser}/${user}`)
+       console.log('data: ', res.data)
+       await dispatch(getGithubUserInfoSuccess(res.data))
    } catch (err) {
        console.log('err:', err)
        dispatch(getGithubUserInfoFail())
-   }*/
+   }
 }
