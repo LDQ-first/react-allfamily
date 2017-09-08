@@ -4,23 +4,77 @@ import TextField from 'material-ui/TextField'
 import IconButton from 'material-ui/IconButton'
 import Search from 'material-ui-icons/search'
 import SearchCom from '../../components/Search/Search'
+import * as githubOrgInfoActions  from '../../redux/actions/githubOrg'
+import {connect} from 'react-redux'
 
-export default class GithubUser extends Component {
+import {
+    isLoadingSelector,
+    errorMsgSelector,
+    nameSelector,
+    avatarSelector,
+    createdAtSelector,
+    updatedAtSelector,
+    githubUrlSelector,
+   /* reposUrlSelector,
+    publicReposSelector,
+    publicGistsSelector,
+    followersSelector,
+    followingSelector,
+    emailSelector,
+    companySelector,
+    blogSelector,
+    locationSelector,
+    bioSelector*/
+} from '../../selector/githubUser'
 
-    _searchUser (value) {
+
+const mapStateToProps = (state) => ({
+    isLoading: isLoadingSelector(state),
+    errorMsg: errorMsgSelector(state),   
+    name: nameSelector(state),  
+    avatar: avatarSelector(state),
+    createdAt: createdAtSelector(state),
+    updatedAt: updatedAtSelector(state),
+    githubUrl: githubUrlSelector(state),
+    /*reposUrl: reposUrlSelector(state),
+    publicRepos: publicReposSelector(state),
+    publicGists: publicGistsSelector(state),
+    followers: followersSelector(state),
+    following: followingSelector(state),
+    company: companySelector(state),
+    blog: blogSelector(state),
+    location: locationSelector(state),
+    bio: bioSelector(state)*/
+})
+
+
+
+class GithubOrg extends Component {
+    static get propTypes() { 
+        return { 
+            isLoading: PropTypes.bool.isRequired,
+            errorMsg: PropTypes.string.isRequired,
+            getGithubOrg: PropTypes.func.isRequired,
+            name: PropTypes.string,
+            avatar: PropTypes.string
+        }
+    }
+
+    _searchOrg (value) {
         console.log('value: ', value)
+        this.props.getGithubOrg(value)
     }
 
     _keySearch (e) {
         if(e.keyCode === 13) {
             const value = e.target.value
-            this._searchUser(value)
+            this._searchOrg(value)
         }
     }
 
     _iconSearch () {
         const value = this._search.value
-        this._searchUser(value)
+        this._searchOrg(value)
     }
 
     render() {
@@ -54,3 +108,8 @@ export default class GithubUser extends Component {
         )
     }
 }
+
+export default connect(
+    mapStateToProps,
+    githubOrgInfoActions
+)(GithubOrg)
