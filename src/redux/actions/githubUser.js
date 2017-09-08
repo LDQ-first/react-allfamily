@@ -48,7 +48,6 @@ export const getGithubUserInfoFail = () => {
 
 export const getGithubUser = (user) => async (dispatch) => {
     console.log(user)
-    console.log(githubApi)
    try {
        dispatch(getGithubUserInfoRequest())
        let res = await axios.get(`${githubApi.githubUser}/${user}`)
