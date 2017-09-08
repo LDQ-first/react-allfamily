@@ -16,7 +16,6 @@ const GithubItemDiv = styled.div`
             flex: 1;
         }
         .search-icon {
-            padding: 1rem;
             display: flex;
             align-items: center;
             cursor: pointer;

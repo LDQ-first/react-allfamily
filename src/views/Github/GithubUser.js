@@ -38,7 +38,9 @@ export default class GithubUser extends Component {
                         inputRef ={ search => this._search = search }
                     />
                     <span className="search-icon">  
-                        <Search onClick = {() => {this._iconSearch()}}/>
+                       <IconButton color="primary" aria-label="To Search User">
+                            <Search onClick = {() => {this._iconSearch()}}/>
+                       </IconButton>
                     </span>   
                 </section>
             </GithubUserDiv>

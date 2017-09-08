@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { GithubOrgDiv } from '../../styled/Github'
 import TextField from 'material-ui/TextField'
+import IconButton from 'material-ui/IconButton'
+import Search from 'material-ui-icons/search'
 
 export default class GithubUser extends Component {
 
@@ -15,19 +17,31 @@ export default class GithubUser extends Component {
         }
     }
 
+    _iconSearch () {
+        const value = this._search.value
+        this._searchUser(value)
+    }
+
     render() {
         return (
             <GithubOrgDiv>
                 <h1 className="title">Find Github Org</h1>
-                <TextField
-                    id="placeholder"
-                    label="Org"
-                    InputProps={{ placeholder: '请输入组织名（Please input orgname）' }}
-                    helperText="To Search Org!"
-                    fullWidth
-                    margin="normal"
-                    onKeyDown = {(e) => {this._keySearch(e)}}
-                />
+                 <section className="searchArea">
+                    <TextField
+                        id="placeholder"
+                        label="Org"
+                        InputProps={{ placeholder: '请输入组织名（Please input orgname）' }}
+                        helperText="To Search Org!"
+                        fullWidth
+                        margin="normal"
+                        onKeyDown = {(e) => {this._keySearch(e)}}
+                    />
+                    <span className="search-icon">  
+                        <IconButton color="primary" aria-label="To Search User">
+                            <Search onClick = {() => {this._iconSearch()}}/>
+                        </IconButton>
+                    </span>
+                </section>
             </GithubOrgDiv>
         )
     }
