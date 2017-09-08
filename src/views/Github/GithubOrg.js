@@ -62,7 +62,11 @@ class GithubOrg extends Component {
 
     _searchOrg (value) {
         console.log('value: ', value)
-        this.props.getGithubOrg(value)
+        if(value === '') {
+            console.log(value)
+            return
+        }
+        this.props.getGithubOrg(value.trim())
     }
 
     _keySearch (e) {

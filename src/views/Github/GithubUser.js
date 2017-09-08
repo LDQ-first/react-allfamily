@@ -62,7 +62,12 @@ class GithubUser extends Component {
     
     _searchUser (value) {
         console.log('value: ', value)
-        this.props.getGithubUser(value)
+        if(value === '') {
+            console.log(value)
+            return
+        }
+
+        this.props.getGithubUser(value.trim())
     }
 
     _keySearch (e) {
