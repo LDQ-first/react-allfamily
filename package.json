@@ -22,7 +22,7 @@
     "rhl": " cnpm i --save-dev react-hot-loader@^3.0.0-beta.7",
     "imp": "cnpm i --save immutable redux-immutable reselect",
     "eslint": "cnpm i -D eslint eslint-loader eslint-plugin-react eslint-config-standard  eslint-plugin-standard eslint-plugin-promise",
-    "ui": "cnpm install -S material-ui@next"
+    "ui": "cnpm install -S material-ui@next material-ui-icons"
   },
   "repository": {
     "type": "git",
@@ -85,6 +85,7 @@
     "history": "^4.7.2",
     "immutable": "^3.8.1",
     "material-ui": "^1.0.0-beta.8",
+    "material-ui-icons": "^1.0.0-beta.5",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
