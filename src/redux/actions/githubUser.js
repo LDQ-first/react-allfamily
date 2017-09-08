@@ -28,18 +28,18 @@ export const getGithubUserInfoFail = () => {
 }
 
 /* GithubUser dispatch */
-/*export const getUserInfo = () => {
+/*export const getGithubUser = (user) => {
     return (dispatch) => {
-        dispatch(getUserInfoRequest())
+        dispatch(getGithubUserInfoRequest())
 
-        return axios.get(userApi)
+        return axios.get(`${githubApi.githubUser}/${user}`)
                     .then(res => res.data)
                     .then(data => {
                        setTimeout(() => {
-                           dispatch(getUserInfoSuccess(data))
+                           dispatch(getGithubUserInfoSuccess(data))
                        }, 1000)
                     }).catch( err => {
-                        dispatch(getUserInfoFail())
+                        dispatch(getGithubUserInfoFail())
                     })
 
     }
