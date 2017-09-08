@@ -41,6 +41,7 @@ const mapStateToProps = (state) => ({
     publicGists: publicGistsSelector(state),
     followers: followersSelector(state),
     following: followingSelector(state),
+    email: emailSelector(state),
     company: companySelector(state),
     blog: blogSelector(state),
     location: locationSelector(state),

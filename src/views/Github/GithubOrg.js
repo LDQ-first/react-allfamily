@@ -15,16 +15,12 @@ import {
     createdAtSelector,
     updatedAtSelector,
     githubUrlSelector,
-   /* reposUrlSelector,
+    reposUrlSelector,
     publicReposSelector,
-    publicGistsSelector,
-    followersSelector,
-    followingSelector,
     emailSelector,
     companySelector,
     blogSelector,
-    locationSelector,
-    bioSelector*/
+    locationSelector
 } from '../../selector/githubUser'
 
 
@@ -36,15 +32,12 @@ const mapStateToProps = (state) => ({
     createdAt: createdAtSelector(state),
     updatedAt: updatedAtSelector(state),
     githubUrl: githubUrlSelector(state),
-    /*reposUrl: reposUrlSelector(state),
+    reposUrl: reposUrlSelector(state),
     publicRepos: publicReposSelector(state),
-    publicGists: publicGistsSelector(state),
-    followers: followersSelector(state),
-    following: followingSelector(state),
     company: companySelector(state),
     blog: blogSelector(state),
     location: locationSelector(state),
-    bio: bioSelector(state)*/
+    email: emailSelector(state)
 })
 
 
