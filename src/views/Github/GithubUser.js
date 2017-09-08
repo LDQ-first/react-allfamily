@@ -4,19 +4,32 @@ import TextField from 'material-ui/TextField'
 import IconButton from 'material-ui/IconButton'
 import Search from 'material-ui-icons/search'
 import SearchCom from '../../components/Search/Search'
+import * as githubUserInfoActions  from '../../redux/actions/githubUser'
+import {connect} from 'react-redux'
 
 import {
     isLoadingSelector,
-    errorMsgSelector
-} from '../../selector/userinfo'
+    errorMsgSelector,
+    nameSelector,
+    avatarSelector,
+} from '../../selector/githubUser'
 
 
+class GithubUser extends Component {
+    static get propTypes() { 
+        return { 
+            isLoading: PropTypes.bool.isRequired,
+            errorMsg: PropTypes.string.isRequired,
+            getGithubUser: PropTypes.func.isRequired,
+            name: PropTypes.string,
+            avatar: PropTypes.string
+        }
+    }
 
-
-export default class GithubUser extends Component {
     
     _searchUser (value) {
         console.log('value: ', value)
+        this.props.getGithubUser(value)
     }
 
     _keySearch (e) {
@@ -63,3 +76,18 @@ export default class GithubUser extends Component {
         )
     }
 }
+
+
+const mapStateToProps = (state) => ({
+    isLoading: isLoadingSelector(state),
+    errorMsg: errorMsgSelector(state),   
+    name: nameSelector(state),  
+    avatar: avatarSelector(state)
+})
+
+
+
+export default connect(
+    mapStateToProps,
+    githubUserInfoActions
+)(GithubUser)

@@ -2,34 +2,34 @@ import { createSelector } from 'reselect'
 import {selectGolbal} from './index'
 
 
-export const githubUserInfoSelector = createSelector(
+export const githubUserSelector = createSelector(
     selectGolbal,
-    appState => appState.get('githubUserInfo')
+    appState => appState.get('githubUser')
 )
 
 export const githubUserInfosSelector = createSelector(
-    githubUserInfoSelector,
-    githubUserInfoState => githubUserInfoState.get('githubUserInfos')
+    githubUserSelector,
+    githubUserState => githubUserState.get('githubUserInfos')
 )
 
 export const isLoadingSelector = createSelector(
-    githubUserInfoSelector,
-    githubUserInfoState => githubUserInfoState.get('isLoading')
+    githubUserSelector,
+    githubUserState => githubUserState.get('isLoading')
 )
 
 export const errorMsgSelector = createSelector(
-    githubUserInfoSelector,
-    githubUserInfoState => githubUserInfoState.get('errorMsg')
+    githubUserSelector,
+    githubUserState => githubUserState.get('errorMsg')
 )
 
 export const nameSelector = createSelector(
-    userInfosSelector,
-    userInfosState => userInfosState.get('name')
+    githubUserInfosSelector,
+    githubUserInfosState => githubUserInfosState.get('name')
 )
 
 export const avatarSelector = createSelector(
-    userInfosSelector,
-    userInfosState => userInfosState.get('avatar')
+    githubUserInfosSelector,
+    githubUserInfosState => githubUserInfosState.get('avatar')
 )
 
 
