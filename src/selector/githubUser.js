@@ -22,6 +22,14 @@ export const errorMsgSelector = createSelector(
     githubUserInfoState => githubUserInfoState.get('errorMsg')
 )
 
+export const nameSelector = createSelector(
+    userInfosSelector,
+    userInfosState => userInfosState.get('name')
+)
 
+export const avatarSelector = createSelector(
+    userInfosSelector,
+    userInfosState => userInfosState.get('avatar')
+)
 
 
