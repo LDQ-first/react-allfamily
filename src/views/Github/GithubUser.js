@@ -10,7 +10,7 @@ import Progress from '../../components/Loading/progress'
 import {formatTime} from '../../utils/'
 import List, { ListItem, ListItemText } from 'material-ui/List'
 import Avatar from 'material-ui/Avatar'
-
+import EmailIcon from 'material-ui-icons/Email'
 
 import {
     isLoadingSelector,
@@ -84,9 +84,9 @@ class GithubUser extends Component {
               followers ,following} = this.props
 
         this.userLists = [
-            { item: githubUrl, title: 'GitHub地址' ,icon: null },
+            { item: <a href={githubUrl}></a>, title: 'GitHub地址' ,icon: null },
             { item: reposUrl, title: '仓库链接' ,icon: null },
-            { item: email, title: '邮件' ,icon: null },
+            { item: email, title: '邮件' ,icon: <EmailIcon className="list-icon"/> },
             { item: company, title: '公司' ,icon: null },
             { item: blog, title: '博客' ,icon: null },
             { item: location, title: '地址' ,icon: null },
@@ -130,7 +130,7 @@ class GithubUser extends Component {
          const userList = this.userLists.map((list, index) => {
              return (
                  <ListItem  key={index} button className="list-item">
-                    <Avatar>
+                    <Avatar className="item-icon">
                         {list.icon}
                     </Avatar>
                     <h3 className="item-title">

@@ -28,6 +28,7 @@ const GithubItemDiv = styled.div`
         align-items: center;
         .name {
             width: 100%;
+            height: 2em;
         }
         .intro {
             display: flex;
@@ -37,10 +38,21 @@ const GithubItemDiv = styled.div`
             .avatar {
                 width: 30%;
                 outline: 1px solid red;
+                margin-right: 1em;
             }
             .user-list {
                 .list-item {
                     padding: 0;
+                    .item-icon {
+                        transform: scale(0.8);
+                        background: transparent;
+                        svg {
+                            fill: #007bba;
+                        }
+                    }
+                    .item-title {
+                        
+                    }
                 }
             }
         }
