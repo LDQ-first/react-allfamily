@@ -115,8 +115,12 @@ const GithubItemDiv = styled.div`
         li {
             padding: 0;
         }
+        .list-item + .list-item {
+            margin-top: 2em;
+        }
         .list-item {
             flex-direction: column;
+            padding: 1em;
             .repo-header {
                 width: 100%;
                 .repo-name {
@@ -136,6 +140,7 @@ const GithubItemDiv = styled.div`
                     .content-list-item {
                         width: 100%;
                         outline: 1px solid red;
+                        margin: 1em 0;
                         .content-list-icon {
                             margin-right: 1em;
                             fill: #007bba;
@@ -173,18 +178,20 @@ const GithubItemDiv = styled.div`
             }
             .repo-footer {
                  width: 100%;
-                 text-align: center;
+                 margin-top: 1em;
                 .repo-footer-item {
+                    margin: 0 auto;
                     display: flex;
-                    justify-content: center;
+                    justify-content: space-between;
                     align-items: center;
+                    width: 50%;
+                    min-width: 250px;
                     .footer-icon {
                         margin-right: 1em;
                         fill: #007bba;
                     }
                     .footer-title {
                         word-break: break-all;
-                        flex: 1;
                     }
                 }
                 
