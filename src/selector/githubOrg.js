@@ -86,9 +86,4 @@ export const companySelector = createSelector(
     githubOrgInfosState => githubOrgInfosState.get('company')
 )
 
-export const emailSelector = createSelector(
-    githubOrgInfosSelector,
-    githubOrgInfosState => githubOrgInfosState.get('email')
-)
-
 

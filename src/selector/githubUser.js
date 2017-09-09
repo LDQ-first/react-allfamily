@@ -92,11 +92,6 @@ export const locationSelector = createSelector(
 )
 
 
-export const emailSelector = createSelector(
-    githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('email')
-)
-
 export const bioSelector = createSelector(
     githubUserInfosSelector,
     githubUserInfosState => githubUserInfosState.get('bio')

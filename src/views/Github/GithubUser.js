@@ -10,7 +10,6 @@ import Progress from '../../components/Loading/progress'
 import {formatTime} from '../../utils/'
 import List, { ListItem, ListItemText } from 'material-ui/List'
 import Avatar from 'material-ui/Avatar'
-import EmailIcon from 'material-ui-icons/Email'
 import BusinessIcon from 'material-ui-icons/Business'
 import ModeEditIcon from 'material-ui-icons/ModeEdit'
 import LocationOnIcon from 'material-ui-icons/LocationOn'
@@ -35,7 +34,6 @@ import {
     publicGistsSelector,
     followersSelector,
     followingSelector,
-    emailSelector,
     companySelector,
     blogSelector,
     locationSelector,
@@ -56,7 +54,6 @@ const mapStateToProps = (state) => ({
     publicRepos: publicReposSelector(state),
     followers: followersSelector(state),
     following: followingSelector(state),
-    email: emailSelector(state),
     company: companySelector(state),
     blog: blogSelector(state),
     location: locationSelector(state),
@@ -77,7 +74,6 @@ class GithubUser extends Component {
             updatedAt: PropTypes.string,
             githubUrl: PropTypes.string,
             reposUrl: PropTypes.string,
-            email: PropTypes.string,
             company: PropTypes.string,
             blog: PropTypes.string,
             location: PropTypes.string,
@@ -91,20 +87,18 @@ class GithubUser extends Component {
     constructor (props) {
         super(props)
 
-        const {reposUrl, 
-             email, company, blog ,location, bio, publicRepos,
+        const {reposUrl,  company, blog ,location, bio, publicRepos,
               followers ,following} = this.props
         this.state = {
             userLists : [
                 { item: <a className="link" href={reposUrl} target="_blank">仓库API</a>, title: '仓库链接' ,icon: null },
-                { item: email, title: '邮件' ,icon: <EmailIcon className="list-icon"/> },
                 { item: company, title: '公司' ,icon: <BusinessIcon className="list-icon"/> },
                 { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: <ModeEditIcon className="list-icon" /> },
                 { item: location, title: '地址' ,icon: <LocationOnIcon className="list-icon"/> },
                 { item: publicRepos, title: '公开仓库数' ,icon: <ReorderIcon className="list-icon"/> },
                 { item: followers, title: '粉丝数' ,icon: <PersonAddIcon className="list-icon"/> },
                 { item: following, title: '关注数' ,icon: <StarIcon className="list-icon"/> }
-            ]
+            ] 
         }
         
     }
@@ -112,20 +106,18 @@ class GithubUser extends Component {
     
     
     componentWillReceiveProps (nextProps) {
-         const {reposUrl, 
-             email, company, blog ,location, bio, publicRepos,
+         const {reposUrl, company, blog ,location, bio, publicRepos,
               followers ,following} = nextProps
 
         const userLists = [
-            { item: <a className="link" href={reposUrl} target="_blank">仓库API</a>, title: '仓库链接' ,icon: null },
-            { item: email, title: '邮件' ,icon: <EmailIcon className="list-icon"/> },
-            { item: company, title: '公司' ,icon: <BusinessIcon className="list-icon"/> },
-            { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: <ModeEditIcon className="list-icon" /> },
-            { item: location, title: '地址' ,icon: <LocationOnIcon className="list-icon"/> },
-            { item: publicRepos, title: '公开仓库数' ,icon: <ReorderIcon className="list-icon"/> },
-            { item: followers, title: '粉丝数' ,icon: <PersonAddIcon className="list-icon"/> },
-            { item: following, title: '关注数' ,icon: <StarIcon className="list-icon"/>}
-        ]
+                { item: <a className="link" href={reposUrl} target="_blank">仓库API</a>, title: '仓库链接' ,icon: null },
+                { item: company, title: '公司' ,icon: <BusinessIcon className="list-icon"/> },
+                { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: <ModeEditIcon className="list-icon" /> },
+                { item: location, title: '地址' ,icon: <LocationOnIcon className="list-icon"/> },
+                { item: publicRepos, title: '公开仓库数' ,icon: <ReorderIcon className="list-icon"/> },
+                { item: followers, title: '粉丝数' ,icon: <PersonAddIcon className="list-icon"/> },
+                { item: following, title: '关注数' ,icon: <StarIcon className="list-icon"/> }
+            ]
 
         this.setState({
             userLists: userLists
@@ -162,6 +154,8 @@ class GithubUser extends Component {
          let { createdAt, updatedAt } = this.props
          createdAt = formatTime(createdAt)
          updatedAt = formatTime(updatedAt)
+
+         console.log(this.state)
 
          const userList = this.state.userLists.map((list, index) => {
              return (
