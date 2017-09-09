@@ -67,7 +67,7 @@ class NavMenu extends Component {
         const { open,toggleMenu } = this.props
         
 
-        let navList = this.navLists.map((list, index) => {
+        const navList = this.navLists.map((list, index) => {
             return (
                  <ListItem  key={index} button className="menu-item">
                     <Avatar>

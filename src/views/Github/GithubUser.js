@@ -8,6 +8,9 @@ import * as githubUserInfoActions  from '../../redux/actions/githubUser'
 import {connect} from 'react-redux'
 import Progress from '../../components/Loading/progress'
 import {formatTime} from '../../utils/'
+import List, { ListItem, ListItemText } from 'material-ui/List'
+import Avatar from 'material-ui/Avatar'
+
 
 import {
     isLoadingSelector,
@@ -73,6 +76,27 @@ class GithubUser extends Component {
         }
     }
 
+    constructor (props) {
+        super(props)
+
+        const {githubUrl, reposUrl, 
+             email, company, blog ,location, bio, publicRepos,
+              followers ,following} = this.props
+
+        this.userLists = [
+            { item: githubUrl, title: 'GitHub地址' ,icon: null },
+            { item: reposUrl, title: '仓库链接' ,icon: null },
+            { item: email, title: '邮件' ,icon: null },
+            { item: company, title: '公司' ,icon: null },
+            { item: blog, title: '博客' ,icon: null },
+            { item: location, title: '地址' ,icon: null },
+            { item: bio, title: '简介' ,icon: null },
+            { item: publicRepos, title: '公开仓库数' ,icon: null },
+            { item: followers, title: '粉丝数' ,icon: null },
+            { item: following, title: '关注数' ,icon: null },
+        ]
+    }
+
     
     _searchUser (value) {
         console.log('value: ', value)
@@ -98,14 +122,26 @@ class GithubUser extends Component {
 
     render() {
 
-         const {isLoading, errorMsg , name, avatar, githubUrl, reposUrl, 
-             email, company, blog ,location, bio, publicRepos,
-              followers ,following} = this.props
+         const {isLoading, errorMsg, name, avatar } = this.props
          let { createdAt, updatedAt } = this.props
          createdAt = formatTime(createdAt)
          updatedAt = formatTime(updatedAt)
 
-
+         const userList = this.userLists.map((list, index) => {
+             return (
+                 <ListItem  key={index} button className="list-item">
+                    <Avatar>
+                        {list.icon}
+                    </Avatar>
+                    <h3 className="item-title">
+                        {list.title}: 
+                    </h3>
+                    <span className="item">
+                        {list.item}
+                    </span>
+                </ListItem>
+             )
+         })
 
         return (
             <GithubUserDiv className="githubUser">
@@ -137,10 +173,15 @@ class GithubUser extends Component {
                     isLoading ? <Progress/> : (
                         errorMsg ? errorMsg : 
                         <header className="user-header">
-                            <div className="avatar">
-                                <img className="avatar" src={avatar} alt={name} title={name} />
+                            <h2 className="name">{name}</h2>
+                            <div className="intro">
+                                <div className="avatar">
+                                    <img className="avatar" src={avatar} alt={name} title={name} />
+                                </div>
+                                <List className="user-list" >
+                                    {userList}
+                                </List>
                             </div>
-                            
                         </header>
                     )
                 }

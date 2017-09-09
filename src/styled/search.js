@@ -5,6 +5,7 @@ const SearchSection = styled.section`
     align-items: center;
     .search-input {
         flex: 1;
+        margin-left: 1rem;
     }
     .search-icon {
         display: flex;
