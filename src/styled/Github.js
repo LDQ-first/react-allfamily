@@ -53,6 +53,7 @@ const GithubItemDiv = styled.div`
                 }
                 .avatar {
                     width: 100%;
+                    height: auto;
                 }
             }
             .user-list {

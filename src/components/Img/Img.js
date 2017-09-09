@@ -10,7 +10,8 @@ export default class Imgs extends Component {
         return { 
             src: PropTypes.string, 
             alt: PropTypes.string,
-            title: PropTypes.string
+            title: PropTypes.string,
+            className: PropTypes.string
         }
     }
 
@@ -68,14 +69,14 @@ export default class Imgs extends Component {
     }
 
     render() {
-        const {src, alt, title} = this.props
+        const {src, alt, title, className} = this.props
         const {imageStatus, imgUrl, show} = this.state
         const img = show ? (src ? src: imgUrl) : imgUrl
         return (
             <div ref={div => this.imgs = div}>
-                <Img src={img} alt={alt} title={title} 
+                <Img className={className} src={img} alt={alt} title={title} 
                     show={imageStatus !== 200 ? true: false}/>
-                <Img src={img} alt={alt} title={title} 
+                <Img className={className} src={img} alt={alt} title={title} 
                 onLoad={this._handleImageLoaded.bind(this)}
                 onError={this._handleImageErrored.bind(this)} 
                 show={imageStatus === 200 ? true: false}/> 

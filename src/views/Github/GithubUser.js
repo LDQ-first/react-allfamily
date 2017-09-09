@@ -12,6 +12,8 @@ import List, { ListItem, ListItemText } from 'material-ui/List'
 import Avatar from 'material-ui/Avatar'
 import EmailIcon from 'material-ui-icons/Email'
 import Button from 'material-ui/Button'
+import Img from '../../components/Img/Img'
+
 
 import {
     isLoadingSelector,
@@ -86,17 +88,6 @@ class GithubUser extends Component {
         const {reposUrl, 
              email, company, blog ,location, bio, publicRepos,
               followers ,following} = this.props
-
-        /*this.userLists = [
-            { item: reposUrl, title: '仓库链接' ,icon: null },
-            { item: email, title: '邮件' ,icon: <EmailIcon className="list-icon"/> },
-            { item: company, title: '公司' ,icon: null },
-            { item: blog, title: '博客' ,icon: null },
-            { item: location, title: '地址' ,icon: null },
-            { item: publicRepos, title: '公开仓库数' ,icon: null },
-            { item: followers, title: '粉丝数' ,icon: null },
-            { item: following, title: '关注数' ,icon: null },
-        ]*/
         this.state = {
             userLists : [
                 { item: reposUrl, title: '仓库链接' ,icon: null },
@@ -215,7 +206,7 @@ class GithubUser extends Component {
                             <h2 className="name">{name}</h2>
                             <div className="intro">
                                 <div className="user-bio">
-                                    <img className="avatar" src={avatar} alt={name} title={name} />
+                                    <Img className="avatar" src={avatar} alt={name} title={name} />
                                     <h3 className="login">{login}</h3>
                                     <span className="bio">{bio}</span>
                                 </div>
