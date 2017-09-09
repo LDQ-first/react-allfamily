@@ -32,15 +32,17 @@ export default class Imgs extends Component {
     _check () {
         const {winTop, winHeight} = this.state
         if(!this.imgs) {
-            console.log(this)
-            console.log(this.imgs)
-            this.setState({
-                show: true
-            })
+            if( winTop + winHeight > this.state.imgs.offsetTop  && 
+                winTop < this.state.imgs.offsetTop + this.state.imgs.offsetHeight) {
+                this.setState({
+                    show: true
+                })
+            }
         }
-        if( winTop + winHeight > this.imgs.offsetTop  && 
+        else if( winTop + winHeight > this.imgs.offsetTop  && 
             winTop < this.imgs.offsetTop + this.imgs.offsetHeight) {
             this.setState({
+                imgs: this.imgs,
                 show: true
             })
         }
