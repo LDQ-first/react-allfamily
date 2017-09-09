@@ -38,4 +38,17 @@ const LoadingDiv = styled.div`
     }
 `
 
+const ProgressDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+`
+
+
+
 export default LoadingDiv
+
+export {
+    ProgressDiv
+}

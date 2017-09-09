@@ -54,6 +54,7 @@ export default injectGlobal`
         list-style: none;
     }
     a {
+        display: inline-block;
         text-decoration: none;
         color: #0060E9;
         &:hover, &:hover * {

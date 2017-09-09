@@ -35,12 +35,12 @@ const GithubItemDiv = styled.div`
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            .avatar {
+            .user-bio {
                 width: 30%;
                 max-width: 230px;
                 outline: 1px solid red;
                 margin-right: 1em;
-                .avatar-img {
+                .avatar {
                     width: 100%;
                 }
             }
@@ -55,7 +55,10 @@ const GithubItemDiv = styled.div`
                         }
                     }
                     .item-title {
-                        
+                        margin-right: 1em;
+                    }
+                    .item {
+
                     }
                 }
             }
@@ -65,8 +68,9 @@ const GithubItemDiv = styled.div`
             justify-content: center;
             align-items: center;
             width: 100%;
-            cursor: pointer;
             margin-top: 1em;
+            cursor: pointer;
+            text-transform: lowercase;
             .item-icon {
                 width: 2em;
                 height: 2em;

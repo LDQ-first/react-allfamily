@@ -87,18 +87,54 @@ class GithubUser extends Component {
              email, company, blog ,location, bio, publicRepos,
               followers ,following} = this.props
 
-        this.userLists = [
+        /*this.userLists = [
             { item: reposUrl, title: '仓库链接' ,icon: null },
             { item: email, title: '邮件' ,icon: <EmailIcon className="list-icon"/> },
             { item: company, title: '公司' ,icon: null },
             { item: blog, title: '博客' ,icon: null },
             { item: location, title: '地址' ,icon: null },
-            { item: bio, title: '简介' ,icon: null },
+            { item: publicRepos, title: '公开仓库数' ,icon: null },
+            { item: followers, title: '粉丝数' ,icon: null },
+            { item: following, title: '关注数' ,icon: null },
+        ]*/
+        this.state = {
+            userLists : [
+                { item: reposUrl, title: '仓库链接' ,icon: null },
+                { item: email, title: '邮件' ,icon: <EmailIcon className="list-icon"/> },
+                { item: company, title: '公司' ,icon: null },
+                { item: blog, title: '博客' ,icon: null },
+                { item: location, title: '地址' ,icon: null },
+                { item: publicRepos, title: '公开仓库数' ,icon: null },
+                { item: followers, title: '粉丝数' ,icon: null },
+                { item: following, title: '关注数' ,icon: null },
+            ]
+        }
+        
+    }
+       
+    
+    
+    componentWillReceiveProps (nextProps) {
+         const {reposUrl, 
+             email, company, blog ,location, bio, publicRepos,
+              followers ,following} = nextProps
+
+        const userLists = [
+            { item: <a className="link" href={reposUrl} target="_blank">仓库链接</a>, title: '仓库链接' ,icon: null },
+            { item: email, title: '邮件' ,icon: <EmailIcon className="list-icon"/> },
+            { item: company, title: '公司' ,icon: null },
+            { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: null },
+            { item: location, title: '地址' ,icon: null },
             { item: publicRepos, title: '公开仓库数' ,icon: null },
             { item: followers, title: '粉丝数' ,icon: null },
             { item: following, title: '关注数' ,icon: null },
         ]
+
+        this.setState({
+            userLists: userLists
+        })
     }
+    
 
     
     _searchUser (value) {
@@ -124,13 +160,13 @@ class GithubUser extends Component {
     }
 
     render() {
-
-         const {isLoading, errorMsg, name, login, avatar, githubUrl } = this.props
+        console.log('this.state.userLists: ', this.state.userLists)
+         const {isLoading, errorMsg, name, login, avatar, bio, githubUrl } = this.props
          let { createdAt, updatedAt } = this.props
          createdAt = formatTime(createdAt)
          updatedAt = formatTime(updatedAt)
 
-         const userList = this.userLists.map((list, index) => {
+         const userList = this.state.userLists.map((list, index) => {
              return (
                  <ListItem  key={index} button className="list-item">
                     <Avatar className="item-icon">
@@ -178,9 +214,10 @@ class GithubUser extends Component {
                         <header className="user-header">
                             <h2 className="name">{name}</h2>
                             <div className="intro">
-                                <div className="avatar">
-                                    <img className="avatar-img" src={avatar} alt={name} title={name} />
-                                    <h3>{login}</h3>
+                                <div className="user-bio">
+                                    <img className="avatar" src={avatar} alt={name} title={name} />
+                                    <h3 className="login">{login}</h3>
+                                    <span className="bio">{bio}</span>
                                 </div>
                                 <List className="user-list" >
                                     {userList}
@@ -190,7 +227,7 @@ class GithubUser extends Component {
                                 <svg className="icon item-icon" aria-hidden="true">
                                     <use xlinkHref="#icon-github"></use>
                                 </svg>
-                                <h4>查看Github</h4>
+                                <h4>查看{login}的Github</h4>
                             </Button>
                         </header>
                     )
