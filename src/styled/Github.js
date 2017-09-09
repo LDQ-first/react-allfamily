@@ -116,11 +116,23 @@ const GithubItemDiv = styled.div`
         }
     }
     .repos {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 1em;
         .list-item {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             .header {
-
+                width: 100%;
             }
             .content {
+                 width: 100%;
                 .githubUrl {
 
                 }
@@ -133,12 +145,13 @@ const GithubItemDiv = styled.div`
 
                         }
                         .content-list-btn {
-                            
+
                         }
                     }
                 }
             }
             .footer {
+                 width: 100%;
                 .footer-icon {
                     margin-right: 1em;
                     fill: #007bba;
