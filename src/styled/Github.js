@@ -139,7 +139,6 @@ const GithubItemDiv = styled.div`
                     align-items: center;
                     .content-list-item {
                         width: 100%;
-                        outline: 1px solid red;
                         margin: 1em 0;
                         .content-list-icon {
                             margin-right: 1em;
@@ -165,6 +164,7 @@ const GithubItemDiv = styled.div`
                     }
                 }
                 .content-list-data {
+                    background: transparent;
                     span {
                         color: #007bba;
                     }
