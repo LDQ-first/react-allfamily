@@ -56,6 +56,19 @@ const GithubItemDiv = styled.div`
                 }
             }
         }
+        .githubUrl {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            cursor: pointer;
+            .item-icon {
+                width: 2em;
+                height: 2em;
+                color: #007bba;
+                margin-right: 2em;
+            }
+        }
     }
     
 `

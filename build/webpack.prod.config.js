@@ -63,10 +63,10 @@ module.exports = (baseConfig, {
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf|svg)((-|\?)?.*)?$/,
-                include: /static\/css\/font/,
+                exclude: /static\/img/,
                 loader: 'url-loader',
                 options: {
-                    name: 'css/font/[name].[hash:8].[ext]',
+                    name: 'css/fonts/[name].[hash:8].[ext]',
                     minimize: true //压缩
                 }
             }

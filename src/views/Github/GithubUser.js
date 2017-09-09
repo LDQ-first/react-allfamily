@@ -11,6 +11,7 @@ import {formatTime} from '../../utils/'
 import List, { ListItem, ListItemText } from 'material-ui/List'
 import Avatar from 'material-ui/Avatar'
 import EmailIcon from 'material-ui-icons/Email'
+import Button from 'material-ui/Button'
 
 import {
     isLoadingSelector,
@@ -79,12 +80,11 @@ class GithubUser extends Component {
     constructor (props) {
         super(props)
 
-        const {githubUrl, reposUrl, 
+        const {reposUrl, 
              email, company, blog ,location, bio, publicRepos,
               followers ,following} = this.props
 
         this.userLists = [
-            { item: <a href={githubUrl}></a>, title: 'GitHub地址' ,icon: null },
             { item: reposUrl, title: '仓库链接' ,icon: null },
             { item: email, title: '邮件' ,icon: <EmailIcon className="list-icon"/> },
             { item: company, title: '公司' ,icon: null },
@@ -122,7 +122,7 @@ class GithubUser extends Component {
 
     render() {
 
-         const {isLoading, errorMsg, name, avatar } = this.props
+         const {isLoading, errorMsg, name, avatar, githubUrl } = this.props
          let { createdAt, updatedAt } = this.props
          createdAt = formatTime(createdAt)
          updatedAt = formatTime(updatedAt)
@@ -182,6 +182,12 @@ class GithubUser extends Component {
                                     {userList}
                                 </List>
                             </div>
+                            <Button href={githubUrl} className="githubUrl">
+                                <svg className="icon item-icon" aria-hidden="true">
+                                    <use xlinkHref="#icon-github"></use>
+                                </svg>
+                                <h4>查看Github</h4>
+                            </Button>
                         </header>
                     )
                 }

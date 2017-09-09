@@ -4,6 +4,7 @@ import { lightBlue, deepPurple } from 'material-ui/colors'
 const bgBlue = lightBlue[400]
 const bgPurple = deepPurple[200]
 
+
 export default injectGlobal`
     * {
         margin: 0;
@@ -68,6 +69,12 @@ export default injectGlobal`
         border: none;
         outline: none;
         -webkit-appearance: none;
+    }
+    .icon {
+        width: 1em; height: 1em;
+        vertical-align: -0.15em;
+        fill: currentColor;
+        overflow: hidden;
     }
 
 `
