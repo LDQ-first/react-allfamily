@@ -73,10 +73,10 @@ const GithubItemDiv = styled.div`
                     }
                     .item-title {
                         margin-right: 1em;
-                        flex-wrap: nowrap;
                     }
                     .item {
                        word-break: break-all;
+                       flex: 1;
                     }
                 }
             }

@@ -102,8 +102,8 @@ class GithubUser extends Component {
                 { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: <ModeEditIcon className="list-icon" /> },
                 { item: location, title: '地址' ,icon: <LocationOnIcon className="list-icon"/> },
                 { item: publicRepos, title: '公开仓库数' ,icon: <ReorderIcon className="list-icon"/> },
-                { item: followers, title: '粉丝数' ,icon: <StarIcon className="list-icon"/> },
-                { item: following, title: '关注数' ,icon: <PersonAddIcon className="list-icon"/> }
+                { item: followers, title: '粉丝数' ,icon: <PersonAddIcon className="list-icon"/> },
+                { item: following, title: '关注数' ,icon: <StarIcon className="list-icon"/> }
             ]
         }
         
@@ -123,8 +123,8 @@ class GithubUser extends Component {
             { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: <ModeEditIcon className="list-icon" /> },
             { item: location, title: '地址' ,icon: <LocationOnIcon className="list-icon"/> },
             { item: publicRepos, title: '公开仓库数' ,icon: <ReorderIcon className="list-icon"/> },
-            { item: followers, title: '粉丝数' ,icon: <StarIcon className="list-icon"/> },
-            { item: following, title: '关注数' ,icon: <PersonAddIcon className="list-icon"/> }
+            { item: followers, title: '粉丝数' ,icon: <PersonAddIcon className="list-icon"/> },
+            { item: following, title: '关注数' ,icon: <StarIcon className="list-icon"/>}
         ]
 
         this.setState({
