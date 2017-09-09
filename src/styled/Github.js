@@ -35,16 +35,32 @@ const GithubItemDiv = styled.div`
             justify-content: space-between;
             align-items: center;
             width: 100%;
+            @media (max-width: 600px) {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
             .user-bio {
                 width: 30%;
                 max-width: 230px;
                 outline: 1px solid red;
                 margin-right: 1em;
+                @media (max-width: 600px) {
+                    width: 40%;
+                    max-width: 230px;
+                    margin-right: 0;
+                }
                 .avatar {
                     width: 100%;
                 }
             }
             .user-list {
+                flex: 1;
+                @media (max-width: 600px) {
+                    width: 100%;
+                    margin-top: 1em;
+                }
                 .list-item {
                     padding: 0;
                     .item-icon {
@@ -58,7 +74,7 @@ const GithubItemDiv = styled.div`
                         margin-right: 1em;
                     }
                     .item {
-
+                       word-break: break-all;
                     }
                 }
             }

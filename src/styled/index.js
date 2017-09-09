@@ -58,7 +58,7 @@ export default injectGlobal`
         text-decoration: none;
         color: #0060E9;
         &:hover, &:hover * {
-            color: #007bba;
+            color: #6c15a1;
         }
     }
     p {
