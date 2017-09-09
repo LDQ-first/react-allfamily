@@ -20,7 +20,6 @@ export default class SearchCom extends Component {
     render() {
         const {label, placeholder, helperText, ariaLabel, _this} = this.props
 
-        console.log(_this)
         return (
             <SearchSection>
                 <TextField 
