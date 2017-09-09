@@ -81,9 +81,5 @@ export const locationSelector = createSelector(
     githubOrgInfosState => githubOrgInfosState.get('location')
 )
 
-export const companySelector = createSelector(
-    githubOrgInfosSelector,
-    githubOrgInfosState => githubOrgInfosState.get('company')
-)
 
 

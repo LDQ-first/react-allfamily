@@ -10,7 +10,6 @@ import Progress from '../../components/Loading/progress'
 import {formatTime} from '../../utils/'
 import List, { ListItem, ListItemText } from 'material-ui/List'
 import Avatar from 'material-ui/Avatar'
-import BusinessIcon from 'material-ui-icons/Business'
 import ModeEditIcon from 'material-ui-icons/ModeEdit'
 import LocationOnIcon from 'material-ui-icons/LocationOn'
 import ReorderIcon from 'material-ui-icons/Reorder'
@@ -34,7 +33,6 @@ import {
     githubUrlSelector,
     reposUrlSelector,
     publicReposSelector,
-    companySelector,
     blogSelector,
     locationSelector
 } from '../../selector/githubOrg'
@@ -51,7 +49,6 @@ const mapStateToProps = (state) => ({
     githubUrl: githubUrlSelector(state),
     reposUrl: reposUrlSelector(state),
     publicRepos: publicReposSelector(state),
-    company: companySelector(state),
     blog: blogSelector(state),
     location: locationSelector(state)
 })
@@ -71,7 +68,6 @@ class GithubOrg extends Component {
             updatedAt: PropTypes.string,
             githubUrl: PropTypes.string,
             reposUrl: PropTypes.string,
-            company: PropTypes.string,
             blog: PropTypes.string,
             location: PropTypes.string,
             publicRepos: PropTypes.number
@@ -81,7 +77,7 @@ class GithubOrg extends Component {
     constructor (props) {
         super(props)
 
-        const {reposUrl, company, blog ,location, publicRepos} = this.props
+        const {reposUrl, blog ,location, publicRepos} = this.props
         let { createdAt, updatedAt } = this.props
          createdAt = formatTime(createdAt)
          updatedAt = formatTime(updatedAt)
@@ -89,7 +85,6 @@ class GithubOrg extends Component {
         this.state = {
             orgLists :  [
                 { item: <a className="link" href={reposUrl} target="_blank">仓库API</a>, title: '仓库链接' ,icon: null },
-                { item: company, title: '公司' ,icon: <BusinessIcon className="list-icon"/> },
                 { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: <ModeEditIcon className="list-icon" /> },
                 { item: location, title: '地址' ,icon: <LocationOnIcon className="list-icon"/> },
                 { item: publicRepos, title: '公开仓库数' ,icon: <ReorderIcon className="list-icon"/> },
@@ -104,14 +99,13 @@ class GithubOrg extends Component {
     
     
     componentWillReceiveProps (nextProps) {
-         const {reposUrl, company, blog ,location, publicRepos } = nextProps
+         const {reposUrl, blog ,location, publicRepos } = nextProps
           let { createdAt, updatedAt } = nextProps
          createdAt = formatTime(createdAt)
          updatedAt = formatTime(updatedAt)
 
         const orgLists =  [
                 { item: <a className="link" href={reposUrl} target="_blank">仓库API</a>, title: '仓库链接' ,icon: null },
-                { item: company, title: '公司' ,icon: <BusinessIcon className="list-icon"/> },
                 { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: <ModeEditIcon className="list-icon" /> },
                 { item: location, title: '地址' ,icon: <LocationOnIcon className="list-icon"/> },
                 { item: publicRepos, title: '公开仓库数' ,icon: <ReorderIcon className="list-icon"/> },
