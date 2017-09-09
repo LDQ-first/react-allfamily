@@ -208,15 +208,15 @@ class GithubUser extends Component {
                 {
                     isLoading ? <Progress/> : (
                         errorMsg ? errorMsg : 
-                        <header className="user-header">
+                        <header className="header">
                             <h2 className="name">{name}</h2>
                             <div className="intro">
-                                <div className="user-bio">
+                                <div className="bio">
                                     <Img className="avatar" src={avatar} alt={name} title={name} />
                                     <h3 className="login">{login}</h3>
                                     <span className="bio">{bio}</span>
                                 </div>
-                                <List className="user-list" >
+                                <List className="list" >
                                     {userList}
                                 </List>
                             </div>

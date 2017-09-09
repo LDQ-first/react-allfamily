@@ -21,7 +21,7 @@ const GithubItemDiv = styled.div`
             cursor: pointer;
         }
     }
-    .user-header {
+    .header {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -41,7 +41,7 @@ const GithubItemDiv = styled.div`
                 justify-content: center;
                 align-items: center;
             }
-            .user-bio {
+            .bio {
                 width: 30%;
                 max-width: 230px;
                 outline: 1px solid red;
@@ -56,7 +56,7 @@ const GithubItemDiv = styled.div`
                     height: auto;
                 }
             }
-            .user-list {
+            .list {
                 flex: 1;
                 @media (max-width: 600px) {
                     width: 100%;

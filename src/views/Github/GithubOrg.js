@@ -146,6 +146,22 @@ class GithubOrg extends Component {
          createdAt = formatTime(createdAt)
          updatedAt = formatTime(updatedAt)
 
+          const orgList = this.state.orgLists.map((list, index) => {
+             return (
+                 <ListItem  key={index} button className="list-item">
+                    <Avatar className="item-icon">
+                        {list.icon}
+                    </Avatar>
+                    <h3 className="item-title">
+                        {list.title}: 
+                    </h3>
+                    <span className="item">
+                        {list.item}
+                    </span>
+                </ListItem>
+             )
+         })
+
 
         return (
             <GithubOrgDiv>
@@ -173,7 +189,29 @@ class GithubOrg extends Component {
                      ariaLabel = "To Search Org"
                      _this = {this}
                 />
-
+                 {
+                    isLoading ? <Progress/> : (
+                        errorMsg ? errorMsg : 
+                        <header className="header">
+                            <h2 className="name">{name}</h2>
+                            <div className="intro">
+                                <div className="bio">
+                                    <Img className="avatar" src={avatar} alt={name} title={name} />
+                                    <h3 className="login">{login}</h3>
+                                </div>
+                                <List className="list" >
+                                    {orgList}
+                                </List>
+                            </div>
+                            <Button href={githubUrl} target="_blank" className="githubUrl">
+                                <svg className="icon item-icon" aria-hidden="true">
+                                    <use xlinkHref="#icon-github"></use>
+                                </svg>
+                                <h4>查看{login}的Github</h4>
+                            </Button>
+                        </header>
+                    )
+                }
             </GithubOrgDiv>
         )
     }
