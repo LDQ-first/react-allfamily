@@ -110,6 +110,7 @@ const GithubItemDiv = styled.div`
             width: 100%;
             .main-header-icon {
                 margin-right: 1em;
+                fill: #007bba;
             }
         }
     }

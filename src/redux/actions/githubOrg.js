@@ -50,6 +50,11 @@ export const getGithubOrg = (Org) => async (dispatch) => {
        dispatch(getGithubOrgInfoRequest())
        let res = await axios.get(`${githubApi.githubOrg}/${Org}`)
        console.log('data: ', res.data)
+       console.log('data: ', res.data.repos_url)
+       if(res.data.repos_url) {
+           let repos = await axios.get(res.data.repos_url)
+           console.log('repos.data: ', repos.data)
+       }
        await dispatch(getGithubOrgInfoSuccess(res.data))
    } catch (err) {
        console.log('err:', err)
