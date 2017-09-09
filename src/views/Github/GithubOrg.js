@@ -37,7 +37,7 @@ import {
     companySelector,
     blogSelector,
     locationSelector
-} from '../../selector/githubUser'
+} from '../../selector/githubOrg'
 
 
 const mapStateToProps = (state) => ({
@@ -101,6 +101,7 @@ class GithubOrg extends Component {
     
     componentWillReceiveProps (nextProps) {
          const {reposUrl,  email, company, blog ,location, publicRepos } = nextProps
+         console.log(reposUrl)
 
         const orgLists = [
             { item: <a className="link" href={reposUrl} target="_blank">仓库API</a>, title: '仓库链接' ,icon: null },
@@ -142,6 +143,8 @@ class GithubOrg extends Component {
 
         console.log('this.state.orgLists: ', this.state.orgLists)
          const {isLoading, errorMsg, name, login, avatar, githubUrl } = this.props
+         console.log(isLoading)
+         console.log(name)
          let { createdAt, updatedAt } = this.props
          createdAt = formatTime(createdAt)
          updatedAt = formatTime(updatedAt)
