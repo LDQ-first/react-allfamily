@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { GithubOrgDiv } from '../../styled/Github'
 import TextField from 'material-ui/TextField'
 import IconButton from 'material-ui/IconButton'
@@ -20,8 +21,7 @@ import AlarmOnIcon from 'material-ui-icons/AlarmOn'
 import ListIcon from 'material-ui-icons/List'
 import Button from 'material-ui/Button'
 import Img from '../../components/Img/Img'
-
-
+import Immutable from 'immutable'
 
 import {
     isLoadingSelector,
@@ -35,7 +35,8 @@ import {
     reposUrlSelector,
     publicReposSelector,
     blogSelector,
-    locationSelector
+    locationSelector,
+    ReposSelector
 } from '../../selector/githubOrg'
 
 
@@ -51,7 +52,8 @@ const mapStateToProps = (state) => ({
     reposUrl: reposUrlSelector(state),
     publicRepos: publicReposSelector(state),
     blog: blogSelector(state),
-    location: locationSelector(state)
+    location: locationSelector(state),
+    Repos: ReposSelector(state)
 })
 
 
@@ -71,7 +73,8 @@ class GithubOrg extends Component {
             reposUrl: PropTypes.string,
             blog: PropTypes.string,
             location: PropTypes.string,
-            publicRepos: PropTypes.number
+            publicRepos: PropTypes.number,
+            Repos: PropTypes.array,
         }
     }
 
@@ -100,7 +103,7 @@ class GithubOrg extends Component {
     
     
     componentWillReceiveProps (nextProps) {
-         const {reposUrl, blog ,location, publicRepos } = nextProps
+         const {reposUrl, blog ,location, publicRepos, Repos } = nextProps
           let { createdAt, updatedAt } = nextProps
          createdAt = formatTime(createdAt)
          updatedAt = formatTime(updatedAt)
@@ -113,9 +116,23 @@ class GithubOrg extends Component {
                 { item: createdAt, title: '创建时间' ,icon: <AlarmAddIcon className="list-icon"/> },
                 { item: updatedAt, title: '最近更新时间' ,icon: <AlarmOnIcon className="list-icon"/> }
             ]
+        
+
+         console.log(Immutable.List.isList(Repos))
+         console.log(Immutable.List(Repos).toJS())
+         const jsRepos = Immutable.List(Repos).toJS()
+         /*const reposLists = []
+        for(let repo of jsRepos) {
+            //console.log(repo)
+            let repoItem = {
+                ...repo,
+
+            }
+        }*/
 
         this.setState({
-            orgLists: orgLists
+            orgLists: orgLists,
+            Repos: jsRepos
         })
     }
     
@@ -159,6 +176,40 @@ class GithubOrg extends Component {
                     <span className="item">
                         {list.item}
                     </span>
+                </ListItem>
+             )
+         })
+
+         const ReposList = this.state.Repos.map((list, index) => {
+             return (
+                 <ListItem  key={index} button className="list-item">
+                    <header className="header">
+                        <h2 className="name">{list.name}</h2>
+                        <h3 className="description">{list.description}</h3>
+                    </header>
+                    <article className="content">
+                        <List className="content-list">
+                            <ListItem button className="content-list-item">
+
+                            </ListItem>    
+                        </List>
+                        <Button href={list.githubUrl} target="_blank" className="githubUrl">
+                            <svg className="icon item-icon" aria-hidden="true">
+                                <use xlinkHref="#icon-github"></use>
+                            </svg>
+                            <h4>查看{list.name}的Github</h4>
+                        </Button>
+                    </article>
+                    <footer className="footer">
+                        <span className="createdAt">
+                            <AlarmAddIcon className="footer-icon"/>
+                            <h4 className="footer-title">{list.createdAt}</h4>
+                        </span>
+                        <span className="updatedAt">
+                           <AlarmOnIcon className="footer-icon"/>
+                           <h4 className="footer-title">{list.updatedAt}</h4> 
+                        </span>
+                    </footer>
                 </ListItem>
              )
          })
@@ -218,7 +269,7 @@ class GithubOrg extends Component {
                                     <h2 className="main-header-title">仓库列表</h2>
                                 </header>
                                 <List className="repos">
-                                    
+                                    {ReposList}
                                 </List>
                             </article>
                      </div>   

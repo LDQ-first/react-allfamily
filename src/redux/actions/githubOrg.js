@@ -68,7 +68,6 @@ const filterRepos = (repos) => {
    const newRepos  = []
 
     for(let repo of repos) {
-      //  console.log(repo)
         let newRepo = {
             name: repo.name,
             description: repo.description,
@@ -85,9 +84,7 @@ const filterRepos = (repos) => {
         }
         newRepos.push(newRepo)
     }
-
-   console.log(newRepos)
-    
+   
     return newRepos
 }
 
@@ -101,7 +98,6 @@ export const getGithubOrg = (Org) => async (dispatch) => {
        console.log('data: ', res.data)
        if(res.data.repos_url) {
            let repos = await axios.get(res.data.repos_url)
-           console.log('repos.data: ',  repos.data)
            res.data.Repos = filterRepos(repos.data)
        }
        

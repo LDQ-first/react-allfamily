@@ -81,5 +81,10 @@ export const locationSelector = createSelector(
     githubOrgInfosState => githubOrgInfosState.get('location')
 )
 
+export const ReposSelector = createSelector(
+    githubOrgInfosSelector,
+    githubOrgInfosState => githubOrgInfosState.get('Repos')
+)
+
 
 

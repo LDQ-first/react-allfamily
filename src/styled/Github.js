@@ -21,6 +21,21 @@ const GithubItemDiv = styled.div`
             cursor: pointer;
         }
     }
+    .githubUrl {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-top: 1em;
+        cursor: pointer;
+        text-transform: lowercase;
+        .item-icon {
+            width: 2em;
+            height: 2em;
+            color: #007bba;
+            margin-right: 2em;
+        }
+    }
     .header {
         display: flex;
         flex-direction: column;
@@ -81,21 +96,7 @@ const GithubItemDiv = styled.div`
                 }
             }
         }
-        .githubUrl {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            margin-top: 1em;
-            cursor: pointer;
-            text-transform: lowercase;
-            .item-icon {
-                width: 2em;
-                height: 2em;
-                color: #007bba;
-                margin-right: 2em;
-            }
-        }
+        
     }
     .main {
         display: flex;
@@ -111,6 +112,27 @@ const GithubItemDiv = styled.div`
             .main-header-icon {
                 margin-right: 1em;
                 fill: #007bba;
+            }
+        }
+    }
+    .repos {
+        .list-item {
+            .header {
+
+            }
+            .content {
+                .githubUrl {
+
+                }
+            }
+            .footer {
+                .footer-icon {
+                    margin-right: 1em;
+                    fill: #007bba;
+                }
+                .footer-title {
+
+                }
             }
         }
     }

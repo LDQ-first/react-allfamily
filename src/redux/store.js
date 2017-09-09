@@ -7,7 +7,7 @@ import { fromJS } from 'immutable'
 
 
 export default (inititalState = {}) => {
-    const middleware = [thunkMiddleware, createLogger]
+    const middleware = [thunkMiddleware, routerMiddleware()]
 
     const composeEnhancers = 
         process.env.NODE_ENV !== 'production' &&

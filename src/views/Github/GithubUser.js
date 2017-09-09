@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { GithubUserDiv } from '../../styled/Github'
 import TextField from 'material-ui/TextField'
 import IconButton from 'material-ui/IconButton'
