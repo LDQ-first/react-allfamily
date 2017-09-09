@@ -37,7 +37,7 @@ export const loginSelector = createSelector(
 
 export const avatarSelector = createSelector(
     githubOrgInfosSelector,
-    githubOrgInfosState => githubOrgInfosState.get('avatar_url')
+    githubOrgInfosState => githubOrgInfosState.get('avatarUrl')
 )
 
 export const descriptionSelector = createSelector(
@@ -47,28 +47,28 @@ export const descriptionSelector = createSelector(
 
 export const createdAtSelector = createSelector(
     githubOrgInfosSelector,
-    githubOrgInfosState => githubOrgInfosState.get('created_at')
+    githubOrgInfosState => githubOrgInfosState.get('createdAt')
 )
 
 export const updatedAtSelector = createSelector(
     githubOrgInfosSelector,
-    githubOrgInfosState => githubOrgInfosState.get('updated_at')
+    githubOrgInfosState => githubOrgInfosState.get('updatedAt')
 )
 
 export const githubUrlSelector = createSelector(
     githubOrgInfosSelector,
-    githubOrgInfosState => githubOrgInfosState.get('html_url')
+    githubOrgInfosState => githubOrgInfosState.get('githubUrl')
 )
 
 
 export const reposUrlSelector = createSelector(
     githubOrgInfosSelector,
-    githubOrgInfosState => githubOrgInfosState.get('repos_url')
+    githubOrgInfosState => githubOrgInfosState.get('reposUrl')
 )
 
 export const publicReposSelector = createSelector(
     githubOrgInfosSelector,
-    githubOrgInfosState => githubOrgInfosState.get('public_repos')
+    githubOrgInfosState => githubOrgInfosState.get('publicRepos')
 )
 
 export const blogSelector = createSelector(

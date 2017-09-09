@@ -44,18 +44,67 @@ export const getGithubOrgInfoFail = () => {
 }*/
 
 
+const filterData = (data) => {
+    const newData = {
+        name: data.name,
+        login: data.login,
+        avatarUrl: data.avatar_url,
+        createdAt: data.created_at,
+        updatedAt: data.updated_at,
+        githubUrl: data.html_url,
+        reposUrl: data.repos_url,
+        blog: data.blog,
+        location: data.location,
+        publicRepos: data.public_repos
+    }
+
+    return newData
+}
+
+
+const filterRepos = (repos) => {
+   
+   const newRepos  = []
+
+    for(let repo of repos) {
+      //  console.log(repo)
+        let newRepo = {
+            name: repo.name,
+            description: repo.description,
+            createdAt: repo.created_at,
+            updatedAt: repo.updated_at,
+            githubUrl: repo.html_url,
+            gitUrl: repo.git_url,
+            sshUrl: repo.ssh_url,
+            cloneUrl: repo.clone_url,
+            svnUrl: repo.svn_url,
+            stargazersCount: repo.stargazers_count,
+            forksCount: repo.forks_count,
+            openIssuesCount: repo.open_issues_count
+        }
+        newRepos.push(newRepo)
+    }
+
+   console.log(newRepos)
+    
+    return newRepos
+}
+
+
+
 export const getGithubOrg = (Org) => async (dispatch) => {
     console.log(Org)
    try {
        dispatch(getGithubOrgInfoRequest())
        let res = await axios.get(`${githubApi.githubOrg}/${Org}`)
        console.log('data: ', res.data)
-       console.log('data: ', res.data.repos_url)
        if(res.data.repos_url) {
            let repos = await axios.get(res.data.repos_url)
            console.log('repos.data: ', repos.data)
+           res.data.newRepos = filterRepos(repos.data)
        }
-       await dispatch(getGithubOrgInfoSuccess(res.data))
+
+       await dispatch(getGithubOrgInfoSuccess(filterData(res.data)))
    } catch (err) {
        console.log('err:', err)
        dispatch(getGithubOrgInfoFail())
