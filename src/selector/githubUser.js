@@ -58,11 +58,6 @@ export const publicReposSelector = createSelector(
     githubUserInfosState => githubUserInfosState.get('public_repos')
 )
 
-export const publicGistsSelector = createSelector(
-    githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('public_gists')
-)
-
 export const followersSelector = createSelector(
     githubUserInfosSelector,
     githubUserInfosState => githubUserInfosState.get('followers')

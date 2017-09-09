@@ -26,9 +26,61 @@ class NavMenu extends Component {
             toggleMenu: PropTypes.func.isRequired
         }
     }
+    constructor (props) {
+        super(props)
+        this.state = {
+           
+        }
+        this.navLists = [{
+                to: '/',
+                primary: '首页',
+                secondary: '',
+                icon: <FolderIcon className="list-icon"/>
+            },{
+                to: '/page1',
+                primary: 'Page1',
+                secondary: '',
+                icon: <FolderIcon className="list-icon"/>
+            },{
+                to: '/counter',
+                primary: 'Counter',
+                secondary: '',
+                icon: <FolderIcon className="list-icon"/>
+            },{
+                to: '/userInfo',
+                primary: 'UserInfo',
+                secondary: '',
+                icon: <FolderIcon className="list-icon"/>
+            },{
+                to: '/github',
+                primary: 'Github',
+                secondary: '',
+                icon: <FolderIcon className="list-icon"/>
+            }]
+    }
+
+    
+
+
 
     render() {
         const { open,toggleMenu } = this.props
+        
+
+        let navList = this.navLists.map((list, index) => {
+            return (
+                 <ListItem  key={index} button className="menu-item">
+                    <Avatar>
+                        {list.icon}
+                    </Avatar>
+                    <Link to={list.to}>
+                        <ListItemText primary={list.primary} secondary="" />
+                    </Link>
+                </ListItem>
+            )
+        })
+
+
         return (
             <Nav open={open}>
                 <div className="control">
@@ -43,46 +95,7 @@ class NavMenu extends Component {
                     </IconButton>
                 </div>
                 <List className="menu-list" onClick={() => {toggleMenu()}}>  
-                    <ListItem button className="menu-item">
-                        <Avatar>
-                            <FolderIcon className="list-icon"/>
-                        </Avatar>
-                        <Link to="/">
-                            <ListItemText primary="首页" secondary="" />
-                        </Link>
-                    </ListItem>
-                    <ListItem button className="menu-item">
-                        <Avatar>
-                            <FolderIcon className="list-icon"/>
-                        </Avatar>
-                        <Link to="/page1">
-                            <ListItemText primary="Page1" secondary="" />
-                        </Link>
-                    </ListItem>
-                    <ListItem button className="menu-item">
-                        <Avatar>
-                            <FolderIcon className="list-icon"/>
-                        </Avatar>
-                        <Link to="/counter">
-                            <ListItemText primary="Counter" secondary="" />
-                        </Link>
-                    </ListItem>
-                    <ListItem button className="menu-item">
-                        <Avatar>
-                            <FolderIcon className="list-icon"/>
-                        </Avatar>
-                        <Link to="/userinfo">
-                            <ListItemText primary="UserInfo" secondary="" />
-                        </Link>
-                    </ListItem>
-                    <ListItem button className="menu-item">
-                        <Avatar>
-                            <FolderIcon className="list-icon"/>
-                        </Avatar>
-                        <Link to="/github">
-                            <ListItemText primary="Github" secondary="" />
-                        </Link>
-                    </ListItem>
+                    {navList}
                 </List>
             </Nav>
         )

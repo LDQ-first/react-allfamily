@@ -49,7 +49,16 @@ class GithubOrg extends Component {
             errorMsg: PropTypes.string.isRequired,
             getGithubOrg: PropTypes.func.isRequired,
             name: PropTypes.string,
-            avatar: PropTypes.string
+            avatar: PropTypes.string,
+            createdAt: PropTypes.string,
+            updatedAt: PropTypes.string,
+            githubUrl: PropTypes.string,
+            reposUrl: PropTypes.string,
+            email: PropTypes.string,
+            company: PropTypes.string,
+            blog: PropTypes.string,
+            location: PropTypes.string,
+            publicRepos: PropTypes.number
         }
     }
 

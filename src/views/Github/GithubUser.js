@@ -6,6 +6,8 @@ import Search from 'material-ui-icons/search'
 import SearchCom from '../../components/Search/Search'
 import * as githubUserInfoActions  from '../../redux/actions/githubUser'
 import {connect} from 'react-redux'
+import Progress from '../../components/Loading/progress'
+import {formatTime} from '../../utils/'
 
 import {
     isLoadingSelector,
@@ -38,7 +40,6 @@ const mapStateToProps = (state) => ({
     githubUrl: githubUrlSelector(state),
     reposUrl: reposUrlSelector(state),
     publicRepos: publicReposSelector(state),
-    publicGists: publicGistsSelector(state),
     followers: followersSelector(state),
     following: followingSelector(state),
     email: emailSelector(state),
@@ -56,7 +57,19 @@ class GithubUser extends Component {
             errorMsg: PropTypes.string.isRequired,
             getGithubUser: PropTypes.func.isRequired,
             name: PropTypes.string,
-            avatar: PropTypes.string
+            avatar: PropTypes.string,
+            createdAt: PropTypes.string,
+            updatedAt: PropTypes.string,
+            githubUrl: PropTypes.string,
+            reposUrl: PropTypes.string,
+            email: PropTypes.string,
+            company: PropTypes.string,
+            blog: PropTypes.string,
+            location: PropTypes.string,
+            bio: PropTypes.string,
+            publicRepos: PropTypes.number,
+            followers: PropTypes.number,
+            following: PropTypes.number
         }
     }
 
@@ -83,12 +96,21 @@ class GithubUser extends Component {
         this._searchUser(value)
     }
 
-
     render() {
+
+         const {isLoading, errorMsg , name, avatar, githubUrl, reposUrl, 
+             email, company, blog ,location, bio, publicRepos,
+              followers ,following} = this.props
+         let { createdAt, updatedAt } = this.props
+         createdAt = formatTime(createdAt)
+         updatedAt = formatTime(updatedAt)
+
+
+
         return (
             <GithubUserDiv className="githubUser">
                 <h1 className="title">Find Github User</h1>
-                <section className="searchArea">
+                {/*<section className="searchArea">
                     <TextField 
                         className = "search-input"  
                         label = "User"
@@ -103,7 +125,7 @@ class GithubUser extends Component {
                             <Search onClick = {() => {this._iconSearch()}}/>
                        </IconButton>
                     </span>   
-                </section>
+                </section>*/}
                 <SearchCom
                      label = "User"
                      placeholder= '请输入用户名（Please input username）'
@@ -111,6 +133,17 @@ class GithubUser extends Component {
                      ariaLabel = "To Search User"
                      _this = {this}
                 />
+                {
+                    isLoading ? <Progress/> : (
+                        errorMsg ? errorMsg : 
+                        <header className="user-header">
+                            <div className="avatar">
+                                <img className="avatar" src={avatar} alt={name} title={name} />
+                            </div>
+                            
+                        </header>
+                    )
+                }
             </GithubUserDiv>
         )
     }
