@@ -47,7 +47,7 @@ const GithubItemDiv = styled.div`
                 outline: 1px solid red;
                 margin-right: 1em;
                 @media (max-width: 600px) {
-                    width: 40%;
+                    width: 80%;
                     max-width: 230px;
                     margin-right: 0;
                 }
