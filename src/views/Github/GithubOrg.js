@@ -188,13 +188,13 @@ class GithubOrg extends Component {
          const ReposList = this.state.Repos.map((list, index) => {
              return (
                  <ListItem  key={index} button className="list-item">
-                    <header className="header">
-                        <h2 className="name">{list.name}</h2>
-                        <h3 className="description">{list.description}</h3>
+                    <header className="repo-header">
+                        <h2 className="repo-name">{list.name}</h2>
+                        <h3 className="repo-description">{list.description}</h3>
                     </header>
-                    <article className="content">
+                    <article className="repo-content">
                          <List className="content-list">
-                            <ListItem key={index} button className="content-list-item">
+                            <ListItem  button className="content-list-item">
                                 <LinkIcon className="content-list-icon"/>
                                 <div className="content-list-main">
                                     <h3 className="content-list-title">gitUrl</h3>
@@ -202,7 +202,7 @@ class GithubOrg extends Component {
                                 </div>                 
                                 <IconButton className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
                             </ListItem>
-                            <ListItem key={index} button className="content-list-item">
+                            <ListItem  button className="content-list-item">
                                 <LinkIcon className="content-list-icon"/>
                                 <div className="content-list-main">
                                     <h3 className="content-list-title">sshUrl</h3>
@@ -210,7 +210,7 @@ class GithubOrg extends Component {
                                 </div>                 
                                 <IconButton className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
                             </ListItem>
-                            <ListItem key={index} button className="content-list-item">
+                            <ListItem  button className="content-list-item">
                                 <LinkIcon className="content-list-icon"/>
                                 <div className="content-list-main">
                                     <h3 className="content-list-title">cloneUrl</h3>
@@ -218,16 +218,16 @@ class GithubOrg extends Component {
                                 </div>                 
                                 <IconButton className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
                             </ListItem>
-                            <ListItem key={index} button className="content-list-item">
+                            <ListItem  button className="content-list-item">
                                 <LinkIcon className="content-list-icon"/>
                                 <div className="content-list-main">
                                     <h3 className="content-list-title">svnUrl</h3>
                                     <span className="content-list-url">{list.svnUrl}</span>    
                                 </div>                 
-                                <IconButton className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
+                                <IconButton className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon /></IconButton>  
                             </ListItem>
                          </List>
-                         <BottomNavigation  showLabels>
+                         <BottomNavigation className="content-list-data" showLabels>
                             <BottomNavigationButton label={list.stargazersCount} icon={< StarIcon/>} />
                             <BottomNavigationButton label={list.forksCount} icon={< CallSplitIcon/>} />
                             <BottomNavigationButton label={list.openIssuesCount} icon={< ErrorIcon/>} />
@@ -239,12 +239,12 @@ class GithubOrg extends Component {
                             <h4>查看{list.name}的Github</h4>
                         </Button>
                     </article>
-                    <footer className="footer">
-                        <span className="createdAt">
+                    <footer className="repo-footer">
+                        <span className="createdAt repo-footer-item">
                             <AlarmAddIcon className="footer-icon"/>
                             <h4 className="footer-title">{list.createdAt}</h4>
                         </span>
-                        <span className="updatedAt">
+                        <span className="updatedAt repo-footer-item">
                            <AlarmOnIcon className="footer-icon"/>
                            <h4 className="footer-title">{list.updatedAt}</h4> 
                         </span>

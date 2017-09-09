@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 const GithubItemDiv = styled.div`
-    outline: 1px solid red;
     padding: 1rem 3rem;
     @media (max-width: 450px) {
          padding: 1rem;
@@ -99,16 +98,12 @@ const GithubItemDiv = styled.div`
         
     }
     .main {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
         margin-top: 1em;
+        width: 100%;
         .main-header {
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            width: 100%;
             .main-header-icon {
                 margin-right: 1em;
                 fill: #007bba;
@@ -116,49 +111,83 @@ const GithubItemDiv = styled.div`
         }
     }
     .repos {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
         width: 100%;
-        padding: 1em;
+        li {
+            padding: 0;
+        }
         .list-item {
-            width: 100%;
-            display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            .header {
+            .repo-header {
                 width: 100%;
-            }
-            .content {
-                 width: 100%;
-                .githubUrl {
+                .repo-name {
 
                 }
+                .repo-description {
+                    color: #48698a;
+                }
+            }
+            .repo-content {
+                 width: 100%;
                 .content-list {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
                     .content-list-item {
+                        width: 100%;
+                        outline: 1px solid red;
                         .content-list-icon {
-
+                            margin-right: 1em;
+                            fill: #007bba;
+                            width: 24px;
                         }
                         .content-list-main {
+                            flex: 1;
+                            word-break: break-all;
+                            .content-list-title {
 
+                            }
+                            .content-list-url {
+
+                            }
                         }
                         .content-list-btn {
-
+                            margin-left: 0.5em;
+                            svg {
+                                fill: #007bba;
+                            }
                         }
                     }
                 }
-            }
-            .footer {
-                 width: 100%;
-                .footer-icon {
-                    margin-right: 1em;
-                    fill: #007bba;
+                .content-list-data {
+                    span {
+                        color: #007bba;
+                    }
+                    svg {
+                        fill: #007bba;
+                    }
                 }
-                .footer-title {
+                .githubUrl {
 
                 }
+            }
+            .repo-footer {
+                 width: 100%;
+                 text-align: center;
+                .repo-footer-item {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .footer-icon {
+                        margin-right: 1em;
+                        fill: #007bba;
+                    }
+                    .footer-title {
+                        word-break: break-all;
+                        flex: 1;
+                    }
+                }
+                
             }
         }
     }
