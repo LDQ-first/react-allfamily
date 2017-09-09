@@ -124,6 +124,19 @@ const GithubItemDiv = styled.div`
                 .githubUrl {
 
                 }
+                .content-list {
+                    .content-list-item {
+                        .content-list-icon {
+
+                        }
+                        .content-list-main {
+
+                        }
+                        .content-list-btn {
+                            
+                        }
+                    }
+                }
             }
             .footer {
                 .footer-icon {

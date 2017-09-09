@@ -19,9 +19,14 @@ import PersonAddIcon from 'material-ui-icons/PersonAdd'
 import AlarmAddIcon from 'material-ui-icons/AlarmAdd'
 import AlarmOnIcon from 'material-ui-icons/AlarmOn'
 import ListIcon from 'material-ui-icons/List'
+import LinkIcon from 'material-ui-icons/Link'
+import ContentCopyIcon from 'material-ui-icons/ContentCopy'
+import ErrorIcon from 'material-ui-icons/Error'
+import CallSplitIcon from 'material-ui-icons/CallSplit'
 import Button from 'material-ui/Button'
 import Img from '../../components/Img/Img'
 import Immutable from 'immutable'
+import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation'
 
 import {
     isLoadingSelector,
@@ -81,10 +86,11 @@ class GithubOrg extends Component {
     constructor (props) {
         super(props)
 
-        const {reposUrl, blog ,location, publicRepos} = this.props
+        const {reposUrl, blog ,location, publicRepos, Repos} = this.props
         let { createdAt, updatedAt } = this.props
          createdAt = formatTime(createdAt)
          updatedAt = formatTime(updatedAt)
+         const jsRepos = Immutable.List(Repos).toJS()
 
         this.state = {
             orgLists :  [
@@ -94,7 +100,8 @@ class GithubOrg extends Component {
                 { item: publicRepos, title: '公开仓库数' ,icon: <ReorderIcon className="list-icon"/> },
                 { item: createdAt, title: '创建时间' ,icon: <AlarmAddIcon className="list-icon"/> },
                 { item: updatedAt, title: '最近更新时间' ,icon: <AlarmOnIcon className="list-icon"/> }
-            ]
+            ],
+            Repos: jsRepos
         }
 
         
@@ -121,14 +128,7 @@ class GithubOrg extends Component {
          console.log(Immutable.List.isList(Repos))
          console.log(Immutable.List(Repos).toJS())
          const jsRepos = Immutable.List(Repos).toJS()
-         /*const reposLists = []
-        for(let repo of jsRepos) {
-            //console.log(repo)
-            let repoItem = {
-                ...repo,
-
-            }
-        }*/
+       
 
         this.setState({
             orgLists: orgLists,
@@ -180,6 +180,11 @@ class GithubOrg extends Component {
              )
          })
 
+
+
+      
+
+
          const ReposList = this.state.Repos.map((list, index) => {
              return (
                  <ListItem  key={index} button className="list-item">
@@ -188,11 +193,45 @@ class GithubOrg extends Component {
                         <h3 className="description">{list.description}</h3>
                     </header>
                     <article className="content">
-                        <List className="content-list">
-                            <ListItem button className="content-list-item">
-
-                            </ListItem>    
-                        </List>
+                         <List className="content-list">
+                            <ListItem key={index} button className="content-list-item">
+                                <LinkIcon className="content-list-icon"/>
+                                <div className="content-list-main">
+                                    <h3 className="content-list-title">gitUrl</h3>
+                                    <span className="content-list-url">{list.gitUrl}</span>    
+                                </div>                 
+                                <IconButton className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
+                            </ListItem>
+                            <ListItem key={index} button className="content-list-item">
+                                <LinkIcon className="content-list-icon"/>
+                                <div className="content-list-main">
+                                    <h3 className="content-list-title">sshUrl</h3>
+                                    <span className="content-list-url">{list.sshUrl}</span>    
+                                </div>                 
+                                <IconButton className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
+                            </ListItem>
+                            <ListItem key={index} button className="content-list-item">
+                                <LinkIcon className="content-list-icon"/>
+                                <div className="content-list-main">
+                                    <h3 className="content-list-title">cloneUrl</h3>
+                                    <span className="content-list-url">{list.cloneUrl}</span>    
+                                </div>                 
+                                <IconButton className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
+                            </ListItem>
+                            <ListItem key={index} button className="content-list-item">
+                                <LinkIcon className="content-list-icon"/>
+                                <div className="content-list-main">
+                                    <h3 className="content-list-title">svnUrl</h3>
+                                    <span className="content-list-url">{list.svnUrl}</span>    
+                                </div>                 
+                                <IconButton className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
+                            </ListItem>
+                         </List>
+                         <BottomNavigation  showLabels>
+                            <BottomNavigationButton label={list.stargazersCount} icon={< StarIcon/>} />
+                            <BottomNavigationButton label={list.forksCount} icon={< CallSplitIcon/>} />
+                            <BottomNavigationButton label={list.openIssuesCount} icon={< ErrorIcon/>} />
+                        </BottomNavigation>
                         <Button href={list.githubUrl} target="_blank" className="githubUrl">
                             <svg className="icon item-icon" aria-hidden="true">
                                 <use xlinkHref="#icon-github"></use>
