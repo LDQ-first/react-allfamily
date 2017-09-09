@@ -96,14 +96,14 @@ class GithubUser extends Component {
               followers ,following} = this.props
         this.state = {
             userLists : [
-                { item: reposUrl, title: '仓库链接' ,icon: null },
+                { item: <a className="link" href={reposUrl} target="_blank">仓库API</a>, title: '仓库链接' ,icon: null },
                 { item: email, title: '邮件' ,icon: <EmailIcon className="list-icon"/> },
                 { item: company, title: '公司' ,icon: <BusinessIcon className="list-icon"/> },
-                { item: blog, title: '博客' ,icon: <ModeEditIcon className="list-icon" /> },
+                { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: <ModeEditIcon className="list-icon" /> },
                 { item: location, title: '地址' ,icon: <LocationOnIcon className="list-icon"/> },
                 { item: publicRepos, title: '公开仓库数' ,icon: <ReorderIcon className="list-icon"/> },
                 { item: followers, title: '粉丝数' ,icon: <StarIcon className="list-icon"/> },
-                { item: following, title: '关注数' ,icon: <PersonAddIcon className="list-icon"/> },
+                { item: following, title: '关注数' ,icon: <PersonAddIcon className="list-icon"/> }
             ]
         }
         
@@ -117,14 +117,14 @@ class GithubUser extends Component {
               followers ,following} = nextProps
 
         const userLists = [
-            { item: <a className="link" href={reposUrl} target="_blank">仓库API</a>, title: '仓库API' ,icon: null },
+            { item: <a className="link" href={reposUrl} target="_blank">仓库API</a>, title: '仓库链接' ,icon: null },
             { item: email, title: '邮件' ,icon: <EmailIcon className="list-icon"/> },
-            { item: company, title: '公司' ,icon: null },
-            { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: null },
-            { item: location, title: '地址' ,icon: null },
-            { item: publicRepos, title: '公开仓库数' ,icon: null },
-            { item: followers, title: '粉丝数' ,icon: null },
-            { item: following, title: '关注数' ,icon: null },
+            { item: company, title: '公司' ,icon: <BusinessIcon className="list-icon"/> },
+            { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: <ModeEditIcon className="list-icon" /> },
+            { item: location, title: '地址' ,icon: <LocationOnIcon className="list-icon"/> },
+            { item: publicRepos, title: '公开仓库数' ,icon: <ReorderIcon className="list-icon"/> },
+            { item: followers, title: '粉丝数' ,icon: <StarIcon className="list-icon"/> },
+            { item: following, title: '关注数' ,icon: <PersonAddIcon className="list-icon"/> }
         ]
 
         this.setState({
