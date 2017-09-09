@@ -29,46 +29,34 @@ export default class Imgs extends Component {
 
     
      
-    _check () {
+    _check (imgs) {
         const {winTop, winHeight} = this.state
-        console.log(this)
-        console.log(this.imgs)
-        if(!this.imgs) {
-            console.log(this.state.imgs)
-            if( winTop + winHeight > this.state.imgs.offsetTop  && 
-                winTop < this.state.imgs.offsetTop + this.state.imgs.offsetHeight) {
-                this.setState({
-                    show: true
-                })
-            }
-        }
-        else if( winTop + winHeight > this.imgs.offsetTop  && 
-            winTop < this.imgs.offsetTop + this.imgs.offsetHeight) {
+        if( winTop + winHeight > imgs.offsetTop  && 
+            winTop < imgs.offsetTop + imgs.offsetHeight) {
             this.setState({
-                imgs: this.imgs,
                 show: true
             })
         }
     }
 
     _showImg () {
-         
+         console.log(this) 
+         console.log(this.imgs) 
+         if(!this.imgs) return
         this.setState({
                 winTop: window.scrollY
             })
-        this._check()
+        this._check(this.imgs)
     }
     
     componentDidMount() {
-        this._check ()
-        window.addEventListener('scroll',this._showImg.bind(this))
+        
+        this._check (this.imgs)
+       
+        window.addEventListener('scroll', () => {
+            this._showImg()
+        })
     }
-
-    
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this._showImg)
-    }
-
     
     _handleImageLoaded() {
         this.setState({ 
