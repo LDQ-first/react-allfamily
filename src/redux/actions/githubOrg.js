@@ -55,7 +55,8 @@ const filterData = (data) => {
         reposUrl: data.repos_url,
         blog: data.blog,
         location: data.location,
-        publicRepos: data.public_repos
+        publicRepos: data.public_repos,
+        Repos: data.Repos
     }
 
     return newData
@@ -100,10 +101,10 @@ export const getGithubOrg = (Org) => async (dispatch) => {
        console.log('data: ', res.data)
        if(res.data.repos_url) {
            let repos = await axios.get(res.data.repos_url)
-           console.log('repos.data: ', repos.data)
-           res.data.newRepos = filterRepos(repos.data)
+           console.log('repos.data: ',  repos.data)
+           res.data.Repos = filterRepos(repos.data)
        }
-
+       
        await dispatch(getGithubOrgInfoSuccess(filterData(res.data)))
    } catch (err) {
        console.log('err:', err)
