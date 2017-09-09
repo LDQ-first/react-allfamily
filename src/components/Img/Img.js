@@ -40,8 +40,8 @@ export default class Imgs extends Component {
     }
 
     _showImg () {
-         console.log(this) 
-         console.log(this.imgs) 
+        /* console.log(this) 
+         console.log(this.imgs) */
          if(!this.imgs) return
         this.setState({
                 winTop: window.scrollY

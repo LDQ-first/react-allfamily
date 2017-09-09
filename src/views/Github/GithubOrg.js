@@ -6,11 +6,27 @@ import Search from 'material-ui-icons/search'
 import SearchCom from '../../components/Search/Search'
 import * as githubOrgInfoActions  from '../../redux/actions/githubOrg'
 import {connect} from 'react-redux'
+import Progress from '../../components/Loading/progress'
+import {formatTime} from '../../utils/'
+import List, { ListItem, ListItemText } from 'material-ui/List'
+import Avatar from 'material-ui/Avatar'
+import EmailIcon from 'material-ui-icons/Email'
+import BusinessIcon from 'material-ui-icons/Business'
+import ModeEditIcon from 'material-ui-icons/ModeEdit'
+import LocationOnIcon from 'material-ui-icons/LocationOn'
+import ReorderIcon from 'material-ui-icons/Reorder'
+import StarIcon from 'material-ui-icons/Star'
+import PersonAddIcon from 'material-ui-icons/PersonAdd'
+import Button from 'material-ui/Button'
+import Img from '../../components/Img/Img'
+
+
 
 import {
     isLoadingSelector,
     errorMsgSelector,
     nameSelector,
+    loginSelector,
     avatarSelector,
     createdAtSelector,
     updatedAtSelector,
@@ -28,6 +44,7 @@ const mapStateToProps = (state) => ({
     isLoading: isLoadingSelector(state),
     errorMsg: errorMsgSelector(state),   
     name: nameSelector(state),  
+    login: loginSelector(state),
     avatar: avatarSelector(state),
     createdAt: createdAtSelector(state),
     updatedAt: updatedAtSelector(state),
@@ -49,6 +66,7 @@ class GithubOrg extends Component {
             errorMsg: PropTypes.string.isRequired,
             getGithubOrg: PropTypes.func.isRequired,
             name: PropTypes.string,
+            login: PropTypes.string,
             avatar: PropTypes.string,
             createdAt: PropTypes.string,
             updatedAt: PropTypes.string,
@@ -61,6 +79,43 @@ class GithubOrg extends Component {
             publicRepos: PropTypes.number
         }
     }
+
+    constructor (props) {
+        super(props)
+
+        const {reposUrl, email, company, blog ,location, publicRepos} = this.props
+        this.state = {
+            orgLists : [
+                { item: <a className="link" href={reposUrl} target="_blank">仓库API</a>, title: '仓库链接' ,icon: null },
+                { item: email, title: '邮件' ,icon: <EmailIcon className="list-icon"/> },
+                { item: company, title: '公司' ,icon: <BusinessIcon className="list-icon"/> },
+                { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: <ModeEditIcon className="list-icon" /> },
+                { item: location, title: '地址' ,icon: <LocationOnIcon className="list-icon"/> },
+                { item: publicRepos, title: '公开仓库数' ,icon: <ReorderIcon className="list-icon"/> }
+            ]
+        }
+        
+    }
+       
+    
+    
+    componentWillReceiveProps (nextProps) {
+         const {reposUrl,  email, company, blog ,location, publicRepos } = nextProps
+
+        const orgLists = [
+            { item: <a className="link" href={reposUrl} target="_blank">仓库API</a>, title: '仓库链接' ,icon: null },
+            { item: email, title: '邮件' ,icon: <EmailIcon className="list-icon"/> },
+            { item: company, title: '公司' ,icon: <BusinessIcon className="list-icon"/> },
+            { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: <ModeEditIcon className="list-icon" /> },
+            { item: location, title: '地址' ,icon: <LocationOnIcon className="list-icon"/> },
+            { item: publicRepos, title: '公开仓库数' ,icon: <ReorderIcon className="list-icon"/> }
+        ]
+
+        this.setState({
+            orgLists: orgLists
+        })
+    }
+    
 
     _searchOrg (value) {
         console.log('value: ', value)
@@ -84,10 +139,18 @@ class GithubOrg extends Component {
     }
 
     render() {
+
+        console.log('this.state.orgLists: ', this.state.orgLists)
+         const {isLoading, errorMsg, name, login, avatar, githubUrl } = this.props
+         let { createdAt, updatedAt } = this.props
+         createdAt = formatTime(createdAt)
+         updatedAt = formatTime(updatedAt)
+
+
         return (
             <GithubOrgDiv>
                 <h1 className="title">Find Github Org</h1>
-                 <section className="searchArea">
+                 {/*<section className="searchArea">
                     <TextField
                         id="placeholder"
                         label="Org"
@@ -102,7 +165,7 @@ class GithubOrg extends Component {
                             <Search onClick = {() => {this._iconSearch()}}/>
                         </IconButton>
                     </span>
-                </section>
+                </section>*/}
                 <SearchCom
                      label = "Org"
                      placeholder= '请输入组织名（Please input orgname）'
@@ -110,6 +173,7 @@ class GithubOrg extends Component {
                      ariaLabel = "To Search Org"
                      _this = {this}
                 />
+
             </GithubOrgDiv>
         )
     }
