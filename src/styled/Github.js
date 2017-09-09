@@ -37,8 +37,12 @@ const GithubItemDiv = styled.div`
             width: 100%;
             .avatar {
                 width: 30%;
+                max-width: 230px;
                 outline: 1px solid red;
                 margin-right: 1em;
+                .avatar-img {
+                    width: 100%;
+                }
             }
             .user-list {
                 .list-item {
@@ -62,6 +66,7 @@ const GithubItemDiv = styled.div`
             align-items: center;
             width: 100%;
             cursor: pointer;
+            margin-top: 1em;
             .item-icon {
                 width: 2em;
                 height: 2em;

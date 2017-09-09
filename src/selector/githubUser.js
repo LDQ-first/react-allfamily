@@ -28,6 +28,11 @@ export const nameSelector = createSelector(
     githubUserInfosState => githubUserInfosState.get('name')
 )
 
+export const loginSelector = createSelector(
+    githubUserInfosSelector,
+    githubUserInfosState => githubUserInfosState.get('login')
+)
+
 export const avatarSelector = createSelector(
     githubUserInfosSelector,
     githubUserInfosState => githubUserInfosState.get('avatar_url')

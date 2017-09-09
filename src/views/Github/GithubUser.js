@@ -17,6 +17,7 @@ import {
     isLoadingSelector,
     errorMsgSelector,
     nameSelector,
+    loginSelector,
     avatarSelector,
     createdAtSelector,
     updatedAtSelector,
@@ -38,6 +39,7 @@ const mapStateToProps = (state) => ({
     isLoading: isLoadingSelector(state),
     errorMsg: errorMsgSelector(state),   
     name: nameSelector(state),  
+    login: loginSelector(state),
     avatar: avatarSelector(state),
     createdAt: createdAtSelector(state),
     updatedAt: updatedAtSelector(state),
@@ -61,6 +63,7 @@ class GithubUser extends Component {
             errorMsg: PropTypes.string.isRequired,
             getGithubUser: PropTypes.func.isRequired,
             name: PropTypes.string,
+            login: PropTypes.string,
             avatar: PropTypes.string,
             createdAt: PropTypes.string,
             updatedAt: PropTypes.string,
@@ -122,7 +125,7 @@ class GithubUser extends Component {
 
     render() {
 
-         const {isLoading, errorMsg, name, avatar, githubUrl } = this.props
+         const {isLoading, errorMsg, name, login, avatar, githubUrl } = this.props
          let { createdAt, updatedAt } = this.props
          createdAt = formatTime(createdAt)
          updatedAt = formatTime(updatedAt)
@@ -176,13 +179,14 @@ class GithubUser extends Component {
                             <h2 className="name">{name}</h2>
                             <div className="intro">
                                 <div className="avatar">
-                                    <img className="avatar" src={avatar} alt={name} title={name} />
+                                    <img className="avatar-img" src={avatar} alt={name} title={name} />
+                                    <h3>{login}</h3>
                                 </div>
                                 <List className="user-list" >
                                     {userList}
                                 </List>
                             </div>
-                            <Button href={githubUrl} className="githubUrl">
+                            <Button href={githubUrl} target="_blank" className="githubUrl">
                                 <svg className="icon item-icon" aria-hidden="true">
                                     <use xlinkHref="#icon-github"></use>
                                 </svg>
