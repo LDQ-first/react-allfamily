@@ -17,6 +17,7 @@ import StarIcon from 'material-ui-icons/Star'
 import PersonAddIcon from 'material-ui-icons/PersonAdd'
 import AlarmAddIcon from 'material-ui-icons/AlarmAdd'
 import AlarmOnIcon from 'material-ui-icons/AlarmOn'
+import ListIcon from 'material-ui-icons/List'
 import Button from 'material-ui/Button'
 import Img from '../../components/Img/Img'
 
@@ -192,24 +193,35 @@ class GithubOrg extends Component {
                  {
                     isLoading ? <Progress/> : (
                         errorMsg ? errorMsg : 
-                        <header className="header">
-                            <h2 className="name">{name}</h2>
-                            <div className="intro">
-                                <div className="bio">
-                                    <Img className="avatar" src={avatar} alt={name} title={name} />
-                                    <h3 className="login">{login}</h3>
+                        <div>
+                            <header className="header">
+                                <h2 className="name">{name}</h2>
+                                <div className="intro">
+                                    <div className="bio">
+                                        <Img className="avatar" src={avatar} alt={name} title={name} />
+                                        <h3 className="login">{login}</h3>
+                                    </div>
+                                    <List className="list" >
+                                        {orgList}
+                                    </List>
                                 </div>
-                                <List className="list" >
-                                    {orgList}
+                                <Button href={githubUrl} target="_blank" className="githubUrl">
+                                    <svg className="icon item-icon" aria-hidden="true">
+                                        <use xlinkHref="#icon-github"></use>
+                                    </svg>
+                                    <h4>查看{login}的Github</h4>
+                                </Button>
+                            </header>
+                            <article className="main">
+                                <header className="main-header">
+                                    <ListIcon className="main-header-icon"/>
+                                    <h2 className="main-header-title">仓库列表</h2>
+                                </header>
+                                <List className="repos">
+                                    
                                 </List>
-                            </div>
-                            <Button href={githubUrl} target="_blank" className="githubUrl">
-                                <svg className="icon item-icon" aria-hidden="true">
-                                    <use xlinkHref="#icon-github"></use>
-                                </svg>
-                                <h4>查看{login}的Github</h4>
-                            </Button>
-                        </header>
+                            </article>
+                     </div>   
                     )
                 }
             </GithubOrgDiv>

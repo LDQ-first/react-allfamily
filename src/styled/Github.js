@@ -97,6 +97,22 @@ const GithubItemDiv = styled.div`
             }
         }
     }
+    .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1em;
+        .main-header {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            .main-header-icon {
+                margin-right: 1em;
+            }
+        }
+    }
     
 `
 

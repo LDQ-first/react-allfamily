@@ -210,25 +210,30 @@ class GithubUser extends Component {
                 {
                     isLoading ? <Progress/> : (
                         errorMsg ? errorMsg : 
-                        <header className="header">
-                            <h2 className="name">{name}</h2>
-                            <div className="intro">
-                                <div className="bio">
-                                    <Img className="avatar" src={avatar} alt={name} title={name} />
-                                    <h3 className="login">{login}</h3>
-                                    <span className="bio">{bio}</span>
+                        <div>
+                            <header className="header">
+                                <h2 className="name">{name}</h2>
+                                <div className="intro">
+                                    <div className="bio">
+                                        <Img className="avatar" src={avatar} alt={name} title={name} />
+                                        <h3 className="login">{login}</h3>
+                                        <span className="bio">{bio}</span>
+                                    </div>
+                                    <List className="list" >
+                                        {userList}
+                                    </List>
                                 </div>
-                                <List className="list" >
-                                    {userList}
-                                </List>
-                            </div>
-                            <Button href={githubUrl} target="_blank" className="githubUrl">
-                                <svg className="icon item-icon" aria-hidden="true">
-                                    <use xlinkHref="#icon-github"></use>
-                                </svg>
-                                <h4>查看{login}的Github</h4>
-                            </Button>
-                        </header>
+                                <Button href={githubUrl} target="_blank" className="githubUrl">
+                                    <svg className="icon item-icon" aria-hidden="true">
+                                        <use xlinkHref="#icon-github"></use>
+                                    </svg>
+                                    <h4>查看{login}的Github</h4>
+                                </Button>
+                            </header>
+                            <article className="main">
+                                
+                            </article>
+                     </div>
                     )
                 }
             </GithubUserDiv>
