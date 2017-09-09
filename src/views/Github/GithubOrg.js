@@ -16,6 +16,8 @@ import LocationOnIcon from 'material-ui-icons/LocationOn'
 import ReorderIcon from 'material-ui-icons/Reorder'
 import StarIcon from 'material-ui-icons/Star'
 import PersonAddIcon from 'material-ui-icons/PersonAdd'
+import AlarmAddIcon from 'material-ui-icons/AlarmAdd'
+import AlarmOnIcon from 'material-ui-icons/AlarmOn'
 import Button from 'material-ui/Button'
 import Img from '../../components/Img/Img'
 
@@ -80,13 +82,19 @@ class GithubOrg extends Component {
         super(props)
 
         const {reposUrl, company, blog ,location, publicRepos} = this.props
+        let { createdAt, updatedAt } = this.props
+         createdAt = formatTime(createdAt)
+         updatedAt = formatTime(updatedAt)
+
         this.state = {
             orgLists :  [
                 { item: <a className="link" href={reposUrl} target="_blank">仓库API</a>, title: '仓库链接' ,icon: null },
                 { item: company, title: '公司' ,icon: <BusinessIcon className="list-icon"/> },
                 { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: <ModeEditIcon className="list-icon" /> },
                 { item: location, title: '地址' ,icon: <LocationOnIcon className="list-icon"/> },
-                { item: publicRepos, title: '公开仓库数' ,icon: <ReorderIcon className="list-icon"/> }
+                { item: publicRepos, title: '公开仓库数' ,icon: <ReorderIcon className="list-icon"/> },
+                { item: createdAt, title: '创建时间' ,icon: <AlarmAddIcon className="list-icon"/> },
+                { item: updatedAt, title: '最近更新时间' ,icon: <AlarmOnIcon className="list-icon"/> }
             ]
         }
 
@@ -97,14 +105,18 @@ class GithubOrg extends Component {
     
     componentWillReceiveProps (nextProps) {
          const {reposUrl, company, blog ,location, publicRepos } = nextProps
-         console.log(reposUrl)
+          let { createdAt, updatedAt } = nextProps
+         createdAt = formatTime(createdAt)
+         updatedAt = formatTime(updatedAt)
 
         const orgLists =  [
                 { item: <a className="link" href={reposUrl} target="_blank">仓库API</a>, title: '仓库链接' ,icon: null },
                 { item: company, title: '公司' ,icon: <BusinessIcon className="list-icon"/> },
                 { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: <ModeEditIcon className="list-icon" /> },
                 { item: location, title: '地址' ,icon: <LocationOnIcon className="list-icon"/> },
-                { item: publicRepos, title: '公开仓库数' ,icon: <ReorderIcon className="list-icon"/> }
+                { item: publicRepos, title: '公开仓库数' ,icon: <ReorderIcon className="list-icon"/> },
+                { item: createdAt, title: '创建时间' ,icon: <AlarmAddIcon className="list-icon"/> },
+                { item: updatedAt, title: '最近更新时间' ,icon: <AlarmOnIcon className="list-icon"/> }
             ]
 
         this.setState({
@@ -138,11 +150,7 @@ class GithubOrg extends Component {
 
         console.log('this.state.orgLists: ', this.state.orgLists)
          const {isLoading, errorMsg, name, login, avatar, githubUrl } = this.props
-         console.log(isLoading)
-         console.log(name)
-         let { createdAt, updatedAt } = this.props
-         createdAt = formatTime(createdAt)
-         updatedAt = formatTime(updatedAt)
+
 
           const orgList = this.state.orgLists.map((list, index) => {
              return (
