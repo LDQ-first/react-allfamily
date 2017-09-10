@@ -79,7 +79,7 @@ const GithubItemDiv = styled.div`
                 }
                 .avatarWrapper {
                    margin-bottom: 1em;
-                   -webkit-mask-box-image: url(${maskUrl});
+                   
                 }
                 .avatar {
                     width: 230px;
@@ -88,7 +88,7 @@ const GithubItemDiv = styled.div`
                     left: 2px;
                     top: 1px;
                     z-index: 2;
-                    
+                    -webkit-mask-box-image: url(${maskUrl});
                 }
                 .overlay {
                     width: 234px;

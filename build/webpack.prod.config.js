@@ -1,7 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
 const baseConfig = require('./webpack.base.config')
-const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
