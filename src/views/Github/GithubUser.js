@@ -39,7 +39,6 @@ import {
     createdAtSelector,
     updatedAtSelector,
     githubUrlSelector,
-    reposUrlSelector,
     publicReposSelector,
     publicGistsSelector,
     followersSelector,
@@ -61,7 +60,6 @@ const mapStateToProps = (state) => ({
     createdAt: createdAtSelector(state),
     updatedAt: updatedAtSelector(state),
     githubUrl: githubUrlSelector(state),
-    reposUrl: reposUrlSelector(state),
     publicRepos: publicReposSelector(state),
     followers: followersSelector(state),
     following: followingSelector(state),
@@ -100,7 +98,7 @@ class GithubUser extends Component {
     constructor (props) {
         super(props)
 
-        const {reposUrl,  company, blog ,location, bio, publicRepos,
+        const {company, blog ,location, bio, publicRepos,
               followers ,following, Repos} = this.props
         let { createdAt, updatedAt } = this.props
          createdAt = formatTime(createdAt)
@@ -109,7 +107,6 @@ class GithubUser extends Component {
 
         this.state = {
             userLists : [
-                { item: <a className="link" href={reposUrl} target="_blank">仓库API</a>, title: '仓库链接' ,icon: null },
                 { item: company, title: '公司' ,icon: <BusinessIcon className="list-icon"/> },
                 { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: <ModeEditIcon className="list-icon" /> },
                 { item: location, title: '地址' ,icon: <LocationOnIcon className="list-icon"/> },
@@ -127,14 +124,13 @@ class GithubUser extends Component {
     
     
     componentWillReceiveProps (nextProps) {
-         const {reposUrl, company, blog ,location, bio, publicRepos,
+         const {company, blog ,location, bio, publicRepos,
               followers ,following, Repos} = nextProps
          let { createdAt, updatedAt } = nextProps
          createdAt = formatTime(createdAt)
          updatedAt = formatTime(updatedAt)
 
         const userLists = [
-                { item: <a className="link" href={reposUrl} target="_blank">仓库API</a>, title: '仓库链接' ,icon: null },
                 { item: company, title: '公司' ,icon: <BusinessIcon className="list-icon"/> },
                 { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: <ModeEditIcon className="list-icon" /> },
                 { item: location, title: '地址' ,icon: <LocationOnIcon className="list-icon"/> },

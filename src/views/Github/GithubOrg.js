@@ -38,7 +38,6 @@ import {
     createdAtSelector,
     updatedAtSelector,
     githubUrlSelector,
-    reposUrlSelector,
     publicReposSelector,
     blogSelector,
     locationSelector,
@@ -55,7 +54,6 @@ const mapStateToProps = (state) => ({
     createdAt: createdAtSelector(state),
     updatedAt: updatedAtSelector(state),
     githubUrl: githubUrlSelector(state),
-    reposUrl: reposUrlSelector(state),
     publicRepos: publicReposSelector(state),
     blog: blogSelector(state),
     location: locationSelector(state),
@@ -76,7 +74,6 @@ class GithubOrg extends Component {
             createdAt: PropTypes.string,
             updatedAt: PropTypes.string,
             githubUrl: PropTypes.string,
-            reposUrl: PropTypes.string,
             blog: PropTypes.string,
             location: PropTypes.string,
             publicRepos: PropTypes.number,
@@ -87,7 +84,7 @@ class GithubOrg extends Component {
     constructor (props) {
         super(props)
 
-        const {reposUrl, blog ,location, publicRepos, Repos} = this.props
+        const {blog ,location, publicRepos, Repos} = this.props
         let { createdAt, updatedAt } = this.props
          createdAt = formatTime(createdAt)
          updatedAt = formatTime(updatedAt)
@@ -95,7 +92,6 @@ class GithubOrg extends Component {
 
         this.state = {
             orgLists :  [
-                { item: <a className="link" href={reposUrl} target="_blank">仓库API</a>, title: '仓库链接' ,icon: null },
                 { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: <ModeEditIcon className="list-icon" /> },
                 { item: location, title: '地址' ,icon: <LocationOnIcon className="list-icon"/> },
                 { item: publicRepos, title: '公开仓库数' ,icon: <ReorderIcon className="list-icon"/> },
@@ -111,13 +107,12 @@ class GithubOrg extends Component {
     
     
     componentWillReceiveProps (nextProps) {
-         const {reposUrl, blog ,location, publicRepos, Repos } = nextProps
+         const {blog ,location, publicRepos, Repos } = nextProps
           let { createdAt, updatedAt } = nextProps
          createdAt = formatTime(createdAt)
          updatedAt = formatTime(updatedAt)
 
         const orgLists =  [
-                { item: <a className="link" href={reposUrl} target="_blank">仓库API</a>, title: '仓库链接' ,icon: null },
                 { item: <a className="link" href={blog} target="_blank">博客</a>, title: '博客' ,icon: <ModeEditIcon className="list-icon" /> },
                 { item: location, title: '地址' ,icon: <LocationOnIcon className="list-icon"/> },
                 { item: publicRepos, title: '公开仓库数' ,icon: <ReorderIcon className="list-icon"/> },

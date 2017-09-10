@@ -53,10 +53,6 @@ export const githubUrlSelector = createSelector(
     githubUserInfosState => githubUserInfosState.get('githubUrl')
 )
 
-export const reposUrlSelector = createSelector(
-    githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('reposUrl')
-)
 
 export const publicReposSelector = createSelector(
     githubUserInfosSelector,

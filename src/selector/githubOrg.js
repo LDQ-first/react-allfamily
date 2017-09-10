@@ -61,11 +61,6 @@ export const githubUrlSelector = createSelector(
 )
 
 
-export const reposUrlSelector = createSelector(
-    githubOrgInfosSelector,
-    githubOrgInfosState => githubOrgInfosState.get('reposUrl')
-)
-
 export const publicReposSelector = createSelector(
     githubOrgInfosSelector,
     githubOrgInfosState => githubOrgInfosState.get('publicRepos')

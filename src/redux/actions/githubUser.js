@@ -54,7 +54,6 @@ const filterData = (data) => {
         createdAt: data.created_at,
         updatedAt: data.updated_at,
         githubUrl: data.html_url,
-        reposUrl: data.repos_url,
         bio: data.bio,
         blog: data.blog,
         location: data.location,
