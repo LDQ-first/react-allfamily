@@ -11,7 +11,7 @@ import AlarmOnIcon from 'material-ui-icons/AlarmOn'
 import Button from 'material-ui/Button'
 import ErrorIcon from 'material-ui-icons/Error'
 import {formatTime} from '../../utils/'
-
+import clipboard from 'clipboard-js'
 
 
 
@@ -21,6 +21,11 @@ export default class ReposLists extends Component {
             list: PropTypes.object.isRequired
         }
     }
+
+    copy(url) {
+        clipboard.copy(url.innerText)
+    }
+
     render() {
        const {list} = this.props
 
@@ -37,33 +42,41 @@ export default class ReposLists extends Component {
                                 <LinkIcon className="content-list-icon"/>
                                 <div className="content-list-main">
                                     <h3 className="content-list-title">gitUrl</h3>
-                                    <span className="content-list-url">{list.gitUrl}</span>    
+                                    <span className="content-list-url" ref={url => this.gitUrl = url}>{list.gitUrl}</span>    
                                 </div>                 
-                                <IconButton className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
+                                <IconButton onClick={() => {
+                                    this.copy(this.gitUrl)
+                                }} className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
                             </ListItem>
                             <ListItem  className="content-list-item">
                                 <LinkIcon className="content-list-icon"/>
                                 <div className="content-list-main">
                                     <h3 className="content-list-title">sshUrl</h3>
-                                    <span className="content-list-url">{list.sshUrl}</span>    
+                                    <span className="content-list-url" ref={url => this.sshUrl = url}>{list.sshUrl}</span>    
                                 </div>                 
-                                <IconButton className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
+                                <IconButton  onClick={() => {
+                                    this.copy(this.sshUrl)
+                                }} className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
                             </ListItem>
                             <ListItem   className="content-list-item">
                                 <LinkIcon className="content-list-icon"/>
                                 <div className="content-list-main">
                                     <h3 className="content-list-title">cloneUrl</h3>
-                                    <span className="content-list-url">{list.cloneUrl}</span>    
+                                    <span className="content-list-url" ref={url => this.cloneUrl = url}>{list.cloneUrl}</span>    
                                 </div>                 
-                                <IconButton className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
+                                <IconButton onClick={() => {
+                                    this.copy(this.cloneUrl)
+                                }} className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
                             </ListItem>
                             <ListItem   className="content-list-item">
                                 <LinkIcon className="content-list-icon"/>
                                 <div className="content-list-main">
                                     <h3 className="content-list-title">svnUrl</h3>
-                                    <span className="content-list-url">{list.svnUrl}</span>    
+                                    <span className="content-list-url" ref={url => this.svnUrl = url}>{list.svnUrl}</span>    
                                 </div>                 
-                                <IconButton className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon /></IconButton>  
+                                <IconButton onClick={() => {
+                                    this.copy(this.svnUrl)
+                                }} className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon /></IconButton>  
                             </ListItem>
                          </List>
                          <BottomNavigation className="content-list-data" showLabels>

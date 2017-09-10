@@ -215,42 +215,7 @@ class GithubOrg extends Component {
         )
     }
 }
-
-
-
-{/* <div>
-    <header className="header">
-        <h2 className="name">{name}({type})</h2>
-        <div className="intro">
-            <div className="bio">
-                <div className="avatarWrapper">
-                        <img className="overlay" src={Mask} />
-                        <Img className="avatar" src={avatar} alt={name} title={name} />
-                </div>
-                <h3 className="login">{login}</h3>
-                <span className="des">{description}</span>
-            </div>
-            <List className="list" >
-                {orgList}
-            </List>
-        </div>
-        <Button href={githubUrl} target="_blank" className="githubUrl">
-            <svg className="icon item-icon" aria-hidden="true">
-                <use xlinkHref="#icon-github"></use>
-            </svg>
-            <h4>查看{login}的Github</h4>
-        </Button>
-    </header>
-    <article className="main">
-        <header className="main-header">
-            <ListIcon className="main-header-icon"/>
-            <h2 className="main-header-title">仓库列表</h2>
-        </header>
-        <List className="repos">
-            {ReposList}
-        </List>
-    </article>
-</div> */}  
+ 
 
 export default connect(
     mapStateToProps,
