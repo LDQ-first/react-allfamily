@@ -29,7 +29,7 @@ export default (state = initState, action) => {
             return (state = fromJS({
                 ...state,
                 status: 404,
-                errotMsg: '请求错误'
+                errorMsg: '请求错误'
             }))
         default: 
              return state
