@@ -5,7 +5,6 @@ import Nav from '../styled/nav'
 import menu from '../../static/img/menu.svg'
 import logo from '../../static/img/favicon.ico'
 
-/*import {toggleMenu} from '../redux/actions/nav'*/
 import * as navActions from '../redux/actions/nav'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
@@ -18,6 +17,9 @@ import BottomNavLink from '../styled/BottomNavLink'
 import List, { ListItem, ListItemText } from 'material-ui/List'
 import Avatar from 'material-ui/Avatar'
 import FolderIcon from 'material-ui-icons/Folder'
+
+import {home, page1, counter, userinfo, github} from './link.js'
+
 
 class NavMenu extends Component {
     static get propTypes() { 
@@ -32,27 +34,27 @@ class NavMenu extends Component {
            
         }
         this.navLists = [{
-                to: '/',
+                to: home,
                 primary: '首页',
                 secondary: '',
                 icon: <FolderIcon className="list-icon"/>
             },{
-                to: '/page1',
+                to: page1,
                 primary: 'Page1',
                 secondary: '',
                 icon: <FolderIcon className="list-icon"/>
             },{
-                to: '/counter',
+                to: counter,
                 primary: 'Counter',
                 secondary: '',
                 icon: <FolderIcon className="list-icon"/>
             },{
-                to: '/userInfo',
+                to: userinfo,
                 primary: 'UserInfo',
                 secondary: '',
                 icon: <FolderIcon className="list-icon"/>
             },{
-                to: '/github',
+                to: github,
                 primary: 'Github',
                 secondary: '',
                 icon: <FolderIcon className="list-icon"/>

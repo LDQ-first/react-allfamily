@@ -19,6 +19,8 @@ import NavMenu from './nav'
 
 import createHistory from 'history/createBrowserHistory'
 
+import {home, page1, counter, userinfo, github} from './link.js'
+
 const createComponent = (component) => () => (
     <Bundle load={component}>
         {
@@ -29,7 +31,7 @@ const createComponent = (component) => () => (
 
 let open = false
 
-let home, page1, counter, userinfo, github
+/*let home, page1, counter, userinfo, github
 
 
 process.env.NODE_ENV === 'production' 
@@ -38,7 +40,7 @@ process.env.NODE_ENV === 'production'
          counter = '/react-allfamily/dist/counter',
          userinfo = '/react-allfamily/dist/userinfo',
          github = '/react-allfamily/dist/github')
-     : (home =  '/', page1 = '/page1', counter = '/counter', userinfo = '/userinfo', github = '/github' )
+     : (home =  '/', page1 = '/page1', counter = '/counter', userinfo = '/userinfo', github = '/github' )*/
 
 
 
