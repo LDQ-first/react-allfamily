@@ -28,8 +28,6 @@ export const statusSelector = createSelector(
     githubUserState => githubUserState.get('status')
 )
 
-console.log('githubUserInfosSelector: ', githubUserInfosSelector)
-
 export const nameSelector = createSelector(
     githubUserInfosSelector,
     githubUserInfosState => {

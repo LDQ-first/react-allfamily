@@ -127,12 +127,6 @@ class GithubUser extends Component {
     }
        
     
-    componentWillUpdate(nextProps, nextState) {
-        
-    }
-    
-    
-    
     componentWillReceiveProps (nextProps) {
          const {company, blog ,location, bio, publicRepos,
               followers ,following, Repos} = nextProps
@@ -186,8 +180,9 @@ class GithubUser extends Component {
 
     render() {
          const {isLoading, errorMsg, name, login, avatar, bio, githubUrl } = this.props
+         console.log(errorMsg)
+         console.log(Boolean(errorMsg))
          
-
          const userList = this.state.userLists.map((list, index) => {
              return (
                  <ListItem  key={index} button className="list-item">
