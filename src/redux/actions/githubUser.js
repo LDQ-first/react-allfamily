@@ -98,6 +98,7 @@ export const getGithubUser = (user) => async (dispatch) => {
    try {
        dispatch(getGithubUserInfoRequest())
        let res = await axios.get(`${githubApi.githubUser}/${user}`)
+       console.log('status: ', res.status)
        console.log('data: ', res.data)
        if(res.data.repos_url) {
            let repos = await axios.get(res.data.repos_url)

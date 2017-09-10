@@ -33,6 +33,7 @@ import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavi
 import {
     isLoadingSelector,
     errorMsgSelector,
+    statusSelector,
     nameSelector,
     loginSelector,
     avatarSelector,
@@ -54,6 +55,7 @@ import {
 const mapStateToProps = (state) => ({
     isLoading: isLoadingSelector(state),
     errorMsg: errorMsgSelector(state),   
+    status: statusSelector(state),
     name: nameSelector(state),  
     login: loginSelector(state),
     avatar: avatarSelector(state),
@@ -77,6 +79,7 @@ class GithubUser extends Component {
             isLoading: PropTypes.bool.isRequired,
             errorMsg: PropTypes.string.isRequired,
             getGithubUser: PropTypes.func.isRequired,
+            status: PropTypes.number.isRequired,
             name: PropTypes.string,
             login: PropTypes.string,
             avatar: PropTypes.string,
@@ -94,6 +97,8 @@ class GithubUser extends Component {
             Repos: PropTypes.array
         }
     }
+
+    
 
     constructor (props) {
         super(props)
@@ -122,6 +127,11 @@ class GithubUser extends Component {
     }
        
     
+    componentWillUpdate(nextProps, nextState) {
+        
+    }
+    
+    
     
     componentWillReceiveProps (nextProps) {
          const {company, blog ,location, bio, publicRepos,
@@ -147,6 +157,7 @@ class GithubUser extends Component {
             userLists: userLists,
             Repos: jsRepos
         })
+
     }
     
 

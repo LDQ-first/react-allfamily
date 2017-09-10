@@ -23,79 +23,128 @@ export const errorMsgSelector = createSelector(
     githubUserState => githubUserState.get('errorMsg')
 )
 
+export const statusSelector = createSelector(
+    githubUserSelector,
+    githubUserState => githubUserState.get('status')
+)
+
+console.log('githubUserInfosSelector: ', githubUserInfosSelector)
+
 export const nameSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('name')
+    githubUserInfosState => {
+        if(!githubUserInfosState) return
+        return githubUserInfosState.get('name')
+    }
 )
 
 export const loginSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('login')
+    githubUserInfosState => {
+        if(!githubUserInfosState) return
+        return githubUserInfosState.get('login')
+    }
 )
 
 export const avatarSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('avatarUrl')
+    githubUserInfosState => {
+        if(!githubUserInfosState) return
+        return githubUserInfosState.get('avatarUrl')
+    }
 )
 
 export const createdAtSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('createdAt')
+    githubUserInfosState => {
+        if(!githubUserInfosState) return
+        return githubUserInfosState.get('createdAt')
+    }
 )
 
 export const updatedAtSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('updatedAt')
+    githubUserInfosState => {
+        if(!githubUserInfosState) return
+        return githubUserInfosState.get('updatedAt')
+    }
 )
 
 export const githubUrlSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('githubUrl')
+    githubUserInfosState => {
+        if(!githubUserInfosState) return
+        return githubUserInfosState.get('githubUrl')
+    }
 )
 
 
 export const publicReposSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('publicRepos')
+    githubUserInfosState => {
+        if(!githubUserInfosState) return
+        return githubUserInfosState.get('publicRepos')
+    }
 )
 
 export const followersSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('followers')
+    githubUserInfosState => {
+        if(!githubUserInfosState) return
+        return githubUserInfosState.get('followers')
+    }
 )
 
 export const followingSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('following')
+    githubUserInfosState => {
+        if(!githubUserInfosState) return
+        return githubUserInfosState.get('following')
+    }
 )
 
 
 export const companySelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('company')
+    githubUserInfosState => {
+        if(!githubUserInfosState) return
+        return githubUserInfosState.get('company')
+    }
 )
 
 
 export const blogSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('blog')
+    githubUserInfosState => {
+        if(!githubUserInfosState) return
+        return githubUserInfosState.get('blog')
+    }
 )
 
 
 export const locationSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('location')
+    githubUserInfosState => {
+        if(!githubUserInfosState) return
+        return githubUserInfosState.get('location')
+    }
 )
 
 
 export const bioSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('bio')
+    githubUserInfosState => {
+        if(!githubUserInfosState) return
+        return githubUserInfosState.get('bio')
+    }
 )
 
 export const ReposSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('Repos')
+    githubUserInfosState => {
+        if(!githubUserInfosState) return
+        return githubUserInfosState.get('Repos')
+    }
 )
 
 
