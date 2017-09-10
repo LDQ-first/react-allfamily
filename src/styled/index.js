@@ -1,9 +1,10 @@
 import {injectGlobal} from 'styled-components'
 import styled from 'styled-components'
 import { lightBlue, deepPurple, blue } from 'material-ui/colors'
-const bgBlue = lightBlue[500]
+const bgBlue = lightBlue[400]
 const bgPurple = deepPurple[200]
 const mainBlue = blue[500]
+const svgBlue = blue[600]
 
 
 export default injectGlobal`
@@ -77,6 +78,9 @@ export default injectGlobal`
         vertical-align: -0.15em;
         fill: currentColor;
         overflow: hidden;
+    }
+    svg {
+        fill: ${svgBlue} !important;
     }
 
 `

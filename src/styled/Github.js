@@ -81,9 +81,6 @@ const GithubItemDiv = styled.div`
                     .item-icon {
                         transform: scale(0.8);
                         background: transparent;
-                        svg {
-                            fill: #007bba;
-                        }
                     }
                     .item-title {
                         margin-right: 1em;
@@ -106,7 +103,6 @@ const GithubItemDiv = styled.div`
             align-items: center;
             .main-header-icon {
                 margin-right: 1em;
-                fill: #007bba;
             }
         }
     }
@@ -142,7 +138,6 @@ const GithubItemDiv = styled.div`
                         margin: 1em 0;
                         .content-list-icon {
                             margin-right: 1em;
-                            fill: #007bba;
                             width: 24px;
                         }
                         .content-list-main {
@@ -157,9 +152,6 @@ const GithubItemDiv = styled.div`
                         }
                         .content-list-btn {
                             margin-left: 0.5em;
-                            svg {
-                                fill: #007bba;
-                            }
                         }
                     }
                 }
@@ -167,9 +159,6 @@ const GithubItemDiv = styled.div`
                     background: transparent;
                     span {
                         color: #007bba;
-                    }
-                    svg {
-                        fill: #007bba;
                     }
                 }
                 .githubUrl {
@@ -188,7 +177,6 @@ const GithubItemDiv = styled.div`
                     min-width: 250px;
                     .footer-icon {
                         margin-right: 1em;
-                        fill: #007bba;
                     }
                     .footer-title {
                         word-break: break-all;

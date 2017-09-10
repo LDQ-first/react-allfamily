@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
-
-
+import { red, deepOrange } from 'material-ui/colors'
+const navRed = red[400]
+const navOrange = deepOrange[200]
 
 export default styled.nav`
     padding: 1em;
-    background: linear-gradient(20deg, rgb(219,112,147), #daa357);
+   /* background: linear-gradient(20deg, rgb(219,112,147), #daa357);*/
+    background: linear-gradient(20deg, ${navRed}, ${navOrange});
     position: fixed;
     z-index: 100;
     left: 0;
@@ -54,9 +56,6 @@ export default styled.nav`
     }
     .menu-list {
         width: 100%;
-        .list-icon {
-             fill: #007bba;
-        }
         .menu-item {
             padding-left: 4px;
             padding-right: 4px;
