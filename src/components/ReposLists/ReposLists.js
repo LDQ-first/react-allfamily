@@ -15,16 +15,15 @@ import {formatTime} from '../../utils/'
 export default class ReposLists extends Component {
      static get propTypes() { 
         return { 
-            list: PropTypes.object.isRequired ,
-            key: PropTypes.object.isRequired ,
+            list: PropTypes.object.isRequired
         }
     }
     render() {
-       const {list,key  } = this.props
+       const {list} = this.props
 
 
         return (
-              <ListItem key={key}  className="list-item">
+              <ListItem className="list-item">
                     <header className="repo-header">
                         <h2 className="repo-name">{list.name}</h2>
                         <h3 className="repo-description">{list.description}</h3>
