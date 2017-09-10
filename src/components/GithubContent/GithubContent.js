@@ -8,7 +8,7 @@ import Img from '../Img/Img.js'
 
 
 
-export default class Github extends Component {
+export default class GithubContent extends Component {
     static get propTypes() { 
         return { 
             name: PropTypes.string,
@@ -17,8 +17,8 @@ export default class Github extends Component {
             type: PropTypes.string,
             githubUrl: PropTypes.string,
             des: PropTypes.string,
-            List: PropTypes.object,
-            ReposList: PropTypes.object
+            list: PropTypes.array,
+            ReposList: PropTypes.array
         }
     }
 
@@ -26,7 +26,7 @@ export default class Github extends Component {
 
     render() {
 
-        const {name, login, avatar, type, githubUrl, des, List, ReposList} = this.props
+        const {name, login, avatar, type, githubUrl, des, list, ReposList} = this.props
 
 
         return (
@@ -43,7 +43,7 @@ export default class Github extends Component {
                             <span className="des">{des}</span>
                         </div>
                         <List className="list" >
-                            {List}
+                            {list}
                         </List>
                     </div>
                     <Button href={githubUrl} target="_blank" className="githubUrl">

@@ -27,7 +27,8 @@ import Immutable from 'immutable'
 import Error from '../../components/Error/Error.js'
 import ReposLists from '../../components/ReposLists/ReposLists.js'
 import Mask from '../../../static/img/Mask.png'
-import Github from '../../components/Github/Github.js'
+import GithubContent from '../../components/GithubContent/GithubContent.js'
+
 
 
 import {
@@ -219,8 +220,8 @@ class GithubUser extends Component {
                 {
                     isLoading ? <Progress/> : (
                         errorMsg ?  <Error errorMsg={errorMsg} /> : 
-                        <Github name={name} type={type}  avatar={avatar} login={login} 
-                        des={bio} List={userList} ReposList={ReposList} githubUrl={githubUrl}/>
+                        <GithubContent name={name} type={type}  avatar={avatar} login={login} 
+                        des={bio} list={userList} ReposList={ReposList} githubUrl={githubUrl}/>
                         
                     )
                 }
