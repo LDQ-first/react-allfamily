@@ -61,6 +61,7 @@ const filterData = (data) => {
         publicRepos: data.public_repos,
         following: data.following,
         followers: data.followers,
+        type: data.type,
         Repos: data.Repos,
     }
 

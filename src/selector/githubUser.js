@@ -137,6 +137,16 @@ export const bioSelector = createSelector(
     }
 )
 
+export const typeSelector = createSelector(
+    githubUserInfosSelector,
+    githubUserInfosState => {
+        if(!githubUserInfosState) return
+        return githubUserInfosState.get('type')
+    }
+)
+
+
+
 export const ReposSelector = createSelector(
     githubUserInfosSelector,
     githubUserInfosState => {

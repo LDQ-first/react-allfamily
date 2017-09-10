@@ -106,6 +106,14 @@ export const locationSelector = createSelector(
     }
 )
 
+export const typeSelector = createSelector(
+    githubOrgInfosSelector,
+    githubOrgInfosState => {
+        if(!githubOrgInfosState) return
+        return githubOrgInfosState.get('type')
+    }
+)
+
 export const ReposSelector = createSelector(
     githubOrgInfosSelector,
     githubOrgInfosState => {

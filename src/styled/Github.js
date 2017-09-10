@@ -56,35 +56,31 @@ const GithubItemDiv = styled.div`
                 align-items: center;
             }
             .bio {
-                width: 30%;
-                max-width: 230px;
-                outline: 1px solid red;
+                width: 234px;
                 margin-right: 1em;
-                word-break: break-all;
-                height: auto;
+                word-break: break-all;    
                 position: relative;
                 @media (max-width: 600px) {
-                    width: 80%;
-                    max-width: 230px;
                     margin-right: 0;
                 }
                 .lazyImgWrapper {
                     overflow: hidden;
                 }
                 .avatarWrapper {
-                    border: 1px solid red;
+                   margin-bottom: 1em;
                 }
                 .avatar {
-                    width: 100%;
-                    height: auto;
+                    width: 230px;
+                    height: 250px;
                     position: relative;
-                    left: 0;
+                    left: 2px;
+                    top: 1px;
                     z-index: 2;
                     -webkit-mask-box-image: url('../../static/img/mask.svg');
                 }
                 .overlay {
-                    width: 100%;
-                    height: auto;
+                    width: 234px;
+                    height: 254px;
                     position: absolute;
                     left: 0;
                     z-index: 3;
@@ -94,7 +90,7 @@ const GithubItemDiv = styled.div`
                 flex: 1;
                 @media (max-width: 600px) {
                     width: 100%;
-                    margin-top: 1em;
+                    margin-top: 2em;
                 }
                 .list-item {
                     padding: 0;
@@ -136,7 +132,13 @@ const GithubItemDiv = styled.div`
         }
         .list-item {
             flex-direction: column;
-            padding: 1em;
+            padding: 2em;
+            background: rgba(255, 163, 102, 0.5);
+            border-radius: 1em;
+            @media (max-width: 600px) {
+                padding: 1.2em;
+                border-radius: 0.6em;
+            }
             .repo-header {
                 width: 100%;
                 .repo-name {
@@ -194,7 +196,7 @@ const GithubItemDiv = styled.div`
                     justify-content: space-between;
                     align-items: center;
                     width: 50%;
-                    min-width: 250px;
+                    min-width: 240px;
                     .footer-icon {
                         margin-right: 1em;
                     }

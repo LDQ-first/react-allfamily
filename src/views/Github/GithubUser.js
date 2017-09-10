@@ -48,6 +48,7 @@ import {
     blogSelector,
     locationSelector,
     bioSelector,
+    typeSelector,
     ReposSelector
 } from '../../selector/githubUser'
 
@@ -69,6 +70,7 @@ const mapStateToProps = (state) => ({
     blog: blogSelector(state),
     location: locationSelector(state),
     bio: bioSelector(state),
+    type: typeSelector(state),
     Repos: ReposSelector(state)
 })
 
@@ -94,6 +96,7 @@ class GithubUser extends Component {
             publicRepos: PropTypes.number,
             followers: PropTypes.number,
             following: PropTypes.number,
+            type: PropTypes.string,
             Repos: PropTypes.array
         }
     }
@@ -179,7 +182,7 @@ class GithubUser extends Component {
     }
 
     render() {
-         const {isLoading, errorMsg, name, login, avatar, bio, githubUrl } = this.props
+         const {isLoading, errorMsg, name, login, avatar, bio, githubUrl, type } = this.props
 
          const userList = this.state.userLists.map((list, index) => {
              return (
@@ -218,7 +221,7 @@ class GithubUser extends Component {
                         errorMsg ?  <Error errorMsg={errorMsg} /> : 
                         <div>
                             <header className="header">
-                                <h2 className="name">{name}</h2>
+                                <h2 className="name">{name}({type})</h2>
                                 <div className="intro">
                                     <div className="bio">
                                         <div className="avatarWrapper">

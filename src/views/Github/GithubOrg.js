@@ -40,6 +40,7 @@ import {
     publicReposSelector,
     blogSelector,
     locationSelector,
+    typeSelector,
     ReposSelector
 } from '../../selector/githubOrg'
 
@@ -56,6 +57,7 @@ const mapStateToProps = (state) => ({
     publicRepos: publicReposSelector(state),
     blog: blogSelector(state),
     location: locationSelector(state),
+    type: typeSelector(state),
     Repos: ReposSelector(state)
 })
 
@@ -76,6 +78,7 @@ class GithubOrg extends Component {
             blog: PropTypes.string,
             location: PropTypes.string,
             publicRepos: PropTypes.number,
+            type: PropTypes.string,
             Repos: PropTypes.array
         }
     }
@@ -156,7 +159,7 @@ class GithubOrg extends Component {
     render() {
 
         console.log('this.state.orgLists: ', this.state.orgLists)
-         const {isLoading, errorMsg, name, login, avatar, githubUrl } = this.props
+         const {isLoading, errorMsg, name, login, avatar, githubUrl, type } = this.props
 
 
           const orgList = this.state.orgLists.map((list, index) => {
@@ -203,10 +206,13 @@ class GithubOrg extends Component {
                         errorMsg ? <Error errorMsg={errorMsg} /> : 
                         <div>
                             <header className="header">
-                                <h2 className="name">{name}</h2>
+                                <h2 className="name">{name}({type})</h2>
                                 <div className="intro">
                                     <div className="bio">
-                                        <Img className="avatar" src={avatar} alt={name} title={name} />
+                                        <div className="avatarWrapper">
+                                             <img className="overlay" src={Mask} />
+                                             <Img className="avatar" src={avatar} alt={name} title={name} />
+                                        </div>
                                         <h3 className="login">{login}</h3>
                                     </div>
                                     <List className="list" >
@@ -229,7 +235,7 @@ class GithubOrg extends Component {
                                     {ReposList}
                                 </List>
                             </article>
-                     </div>   
+                        </div>   
                     )
                 }
             </GithubOrgDiv>
