@@ -29,6 +29,8 @@ import Img from '../../components/Img/Img'
 import Immutable from 'immutable'
 import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation'
 import Error from '../../components/Error/Error.js'
+import ReposLists from '../../components/ReposLists/ReposLists.js'
+
 
 import {
     isLoadingSelector,
@@ -199,7 +201,11 @@ class GithubUser extends Component {
 
          const ReposList = this.state.Repos.map((list, index) => {
              return (
-                 <ListItem  key={index}  className="list-item">
+                 <ReposLists  key={index} list={list} />
+             )
+         })
+
+         {/* <ListItem  key={index}  className="list-item">
                     <header className="repo-header">
                         <h2 className="repo-name">{list.name}</h2>
                         <h3 className="repo-description">{list.description}</h3>
@@ -265,9 +271,7 @@ class GithubUser extends Component {
                            <h4 className="footer-title">{formatTime(list.updatedAt)}</h4> 
                         </span>
                     </footer>
-                </ListItem>
-             )
-         })
+                </ListItem>*/}
 
         return (
             <GithubUserDiv className="githubUser">

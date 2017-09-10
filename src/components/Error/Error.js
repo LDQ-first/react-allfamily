@@ -5,7 +5,7 @@ import  ErrorDiv  from '../../styled/Error.js'
 export default class Error extends Component {
     static get propTypes() {
         return {
-            errorMsg: PropTypes.string
+            errorMsg: PropTypes.string.isRequired
         }
     }
 
