@@ -120,7 +120,12 @@ module.exports =  {
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin(),
         new HtmlWebpackPlugin({
-            template:  path.join(__dirname, '../index.html')
+            template:  path.join(__dirname, '../index.html'),
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true
+            }
         }),
         new CopyWebpackPlugin([
             {
