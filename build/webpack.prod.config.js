@@ -2,21 +2,47 @@ const path = require('path')
 const webpack = require('webpack')
 const baseConfig = require('./webpack.base.config')
 const merge = require('webpack-merge')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const extractCSS = new ExtractTextPlugin({
-    filename: 'css/main.[name].[contenthash:8].css'
+    filename: '/static/css/main.[name].[contenthash:8].css'
 })
 const extractSASS = new ExtractTextPlugin({
-    filename: 'css/sass.[name].[contenthash:8].css'
+    filename: '/static/css/sass.[name].[contenthash:8].css'
 })
 
-module.exports = (baseConfig, {
+module.exports =  {
     devtool: 'source-map',
+    entry: {
+        app: [
+            path.join(__dirname, '../src/index.js')
+        ],
+    },
+    output: {
+        path: path.join(__dirname, '../dist'),
+        filename: 'static/js/[name].[chunkhash:8].js',
+        chunkFilename: 'static/js/[name].[chunkhash:8].js',
+        publicPath: '/'
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.json'],
+        alias: {
+        // ================================
+        // 自定义路径别名
+        // ================================
+        '@': path.join(__dirname, '../src')
+        }
+    },
     module: {
-        rules: [
+        rules: [ {
+            test: /\.(js|jsx)$/,
+            use: ['babel-loader?cacheDirectory=true', 'eslint-loader'],
+            include: path.join(__dirname, '../src'),
+            exclude: /node_modules/
+        }, 
             {
                 test: /\.css$/,
                 exclude: /node_modules/,
@@ -55,7 +81,7 @@ module.exports = (baseConfig, {
                         loader: 'url-loader',
                         options: {
                             limit: 10000,
-                            name: 'img/[name].[sha512:hash:base64:7].[ext]',
+                            name: '/static/img/[name].[sha512:hash:base64:7].[ext]',
                             minimize: true //压缩
                         }
                     }
@@ -66,18 +92,45 @@ module.exports = (baseConfig, {
                 exclude: /static\/img/,
                 loader: 'url-loader',
                 options: {
-                    name: 'css/fonts/[name].[hash:8].[ext]',
+                    name: '/static/css/fonts/[name].[hash:8].[ext]',
                     minimize: true //压缩
                 }
+            },{
+                test: /\.json$/,
+                exclude: '/node_modules/',
+                loader: 'json-loader'
             }
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(['dist']),
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin(),
+        new CleanWebpackPlugin(
+            ['dist'],　 //匹配删除的文件
+            {
+                root: process.cwd(),       　　　　　　　　　　//根目录
+                verbose:  true,        　　　　　　　　　　//开启在控制台输出信息
+                dry:      false        　　　　　　　　　　//启用删除文件
+            }),
         extractCSS,
         extractSASS,
+        new webpack.BannerPlugin("author by ldq-first"),
+        new webpack.LoaderOptionsPlugin({
+            options: {
+                postcss: require('autoprefixer')
+            }
+        }),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.optimize.UglifyJsPlugin(),
+        new HtmlWebpackPlugin({
+            template:  path.join(__dirname, '../index.html')
+        }),
+        new CopyWebpackPlugin([
+            {
+                from: path.join(__dirname, '../static'),
+                to: path.join(__dirname, '../dist/static/'),
+              //  ignore: ['.*']
+            }
+        ]),
+        
         new webpack.HashedModuleIdsPlugin(),
         new webpack.DefinePlugin({
           'process.env': {
@@ -85,7 +138,7 @@ module.exports = (baseConfig, {
            }
        })
     ]
-})
+}
 
 
 

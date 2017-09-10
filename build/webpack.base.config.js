@@ -5,10 +5,10 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const extractCSS = new ExtractTextPlugin({
-    filename: 'css/main.[name].[contenthash:8].css'
+    filename: 'static/css/main.[name].[contenthash:8].css'
 })
 const extractSASS = new ExtractTextPlugin({
-    filename: 'css/sass.[name].[contenthash:8].css'
+    filename: 'static/css/sass.[name].[contenthash:8].css'
 })
 
 
@@ -20,8 +20,8 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, '../dist'),
-        filename: 'js/[name].[chunkhash:8].js',
-        chunkFilename: 'js/[name].[chunkhash:8].js',
+        filename: 'static/js/[name].[chunkhash:8].js',
+        chunkFilename: 'static/js/[name].[chunkhash:8].js',
         publicPath: '/'
     },
     resolve: {
@@ -108,7 +108,7 @@ module.exports = {
         new CopyWebpackPlugin([
             {
                 from: path.join(__dirname, '../static'),
-                to: path.join(__dirname, '../dist/'),
+                to: path.join(__dirname, '../dist/static/'),
               //  ignore: ['.*']
             }
         ]),

@@ -5,6 +5,9 @@ const snackbarIndigo = indigo[500]
 
 const GithubItemDiv = styled.div`
     padding: 1rem 3rem;
+    @media (max-width: 1000px) {
+         padding: 1rem 2.2rem;
+    }
     @media (max-width: 450px) {
          padding: 1rem;
     }
@@ -138,6 +141,7 @@ const GithubItemDiv = styled.div`
             flex-direction: column;
             padding: 2em;
             background: rgba(255, 163, 102, 0.5);
+            box-shadow: 0 3px 5px 2px rgba(255, 105, 135, 0.4);
             border-radius: 1em;
             @media (max-width: 600px) {
                 padding: 1.2em;

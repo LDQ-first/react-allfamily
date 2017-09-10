@@ -7,7 +7,7 @@
     "ce": "cnpm install --save-dev cross-env",
     "bgit": "npm run build && npm run git",
     "git": "git add . && git commit -m 'modify' && git push origin master",
-    "build": "cross-env NODE_ENV=production webapck --config build/webpack.prod.config.js --color --progress",
+    "build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.config.js --color --progress",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js --color --progress",
     "loader": "cnpm install --save-dev css-loader style-loader url-loader file-loader postcss-loader json-loader",
     "react1": "cnpm install --save react react-router redux react-dom react-router-dom react-redux  react-router-redux redux-promise redux-thunk redux-saga history prop-types immutable",
