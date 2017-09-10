@@ -44,13 +44,67 @@ export const getGithubUserInfoFail = () => {
 }*/
 
 
+
+
+const filterData = (data) => {
+    const newData = {
+        name: data.name,
+        login: data.login,
+        avatarUrl: data.avatar_url,
+        createdAt: data.created_at,
+        updatedAt: data.updated_at,
+        githubUrl: data.html_url,
+        reposUrl: data.repos_url,
+        bio: data.bio,
+        blog: data.blog,
+        location: data.location,
+        company: data.company,
+        publicRepos: data.public_repos,
+        following: data.following,
+        followers: data.followers,
+        Repos: data.Repos,
+    }
+
+    return newData
+}
+
+
+const filterRepos = (repos) => {
+   
+   const newRepos  = []
+
+    for(let repo of repos) {
+        let newRepo = {
+            name: repo.name,
+            description: repo.description,
+            createdAt: repo.created_at,
+            updatedAt: repo.updated_at,
+            githubUrl: repo.html_url,
+            gitUrl: repo.git_url,
+            sshUrl: repo.ssh_url,
+            cloneUrl: repo.clone_url,
+            svnUrl: repo.svn_url,
+            stargazersCount: repo.stargazers_count,
+            forksCount: repo.forks_count,
+            openIssuesCount: repo.open_issues_count
+        }
+        newRepos.push(newRepo)
+    }
+   
+    return newRepos
+}
+
 export const getGithubUser = (user) => async (dispatch) => {
     console.log(user)
    try {
        dispatch(getGithubUserInfoRequest())
        let res = await axios.get(`${githubApi.githubUser}/${user}`)
        console.log('data: ', res.data)
-       await dispatch(getGithubUserInfoSuccess(res.data))
+       if(res.data.repos_url) {
+           let repos = await axios.get(res.data.repos_url)
+           res.data.Repos = filterRepos(repos.data)
+       }
+       await dispatch(getGithubUserInfoSuccess(filterData(res.data)))
    } catch (err) {
        console.log('err:', err)
        dispatch(getGithubUserInfoFail())

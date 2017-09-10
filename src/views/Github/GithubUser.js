@@ -19,9 +19,15 @@ import StarIcon from 'material-ui-icons/Star'
 import PersonAddIcon from 'material-ui-icons/PersonAdd'
 import AlarmAddIcon from 'material-ui-icons/AlarmAdd'
 import AlarmOnIcon from 'material-ui-icons/AlarmOn'
+import ListIcon from 'material-ui-icons/List'
+import LinkIcon from 'material-ui-icons/Link'
+import ContentCopyIcon from 'material-ui-icons/ContentCopy'
+import ErrorIcon from 'material-ui-icons/Error'
+import CallSplitIcon from 'material-ui-icons/CallSplit'
 import Button from 'material-ui/Button'
 import Img from '../../components/Img/Img'
-
+import Immutable from 'immutable'
+import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation'
 
 import {
     isLoadingSelector,
@@ -40,7 +46,8 @@ import {
     companySelector,
     blogSelector,
     locationSelector,
-    bioSelector
+    bioSelector,
+    ReposSelector
 } from '../../selector/githubUser'
 
 
@@ -60,7 +67,8 @@ const mapStateToProps = (state) => ({
     company: companySelector(state),
     blog: blogSelector(state),
     location: locationSelector(state),
-    bio: bioSelector(state)
+    bio: bioSelector(state),
+    Repos: ReposSelector(state)
 })
 
 
@@ -83,7 +91,8 @@ class GithubUser extends Component {
             bio: PropTypes.string,
             publicRepos: PropTypes.number,
             followers: PropTypes.number,
-            following: PropTypes.number
+            following: PropTypes.number,
+            Repos: PropTypes.array
         }
     }
 
@@ -91,10 +100,11 @@ class GithubUser extends Component {
         super(props)
 
         const {reposUrl,  company, blog ,location, bio, publicRepos,
-              followers ,following} = this.props
+              followers ,following, Repos} = this.props
         let { createdAt, updatedAt } = this.props
          createdAt = formatTime(createdAt)
          updatedAt = formatTime(updatedAt)
+          const jsRepos = Immutable.List(Repos).toJS()
 
         this.state = {
             userLists : [
@@ -107,7 +117,8 @@ class GithubUser extends Component {
                 { item: following, title: '关注数' ,icon: <StarIcon className="list-icon"/> },
                 { item: createdAt, title: '创建时间' ,icon: <AlarmAddIcon className="list-icon"/> },
                 { item: updatedAt, title: '最近更新时间' ,icon: <AlarmOnIcon className="list-icon"/> }
-            ] 
+            ],
+            Repos: jsRepos
         }
         
     }
@@ -116,7 +127,7 @@ class GithubUser extends Component {
     
     componentWillReceiveProps (nextProps) {
          const {reposUrl, company, blog ,location, bio, publicRepos,
-              followers ,following} = nextProps
+              followers ,following, Repos} = nextProps
          let { createdAt, updatedAt } = nextProps
          createdAt = formatTime(createdAt)
          updatedAt = formatTime(updatedAt)
@@ -132,9 +143,12 @@ class GithubUser extends Component {
                 { item: createdAt, title: '创建时间' ,icon: <AlarmAddIcon className="list-icon"/> },
                 { item: updatedAt, title: '最近更新时间' ,icon: <AlarmOnIcon className="list-icon"/> }
             ]
+        
+         const jsRepos = Immutable.List(Repos).toJS()
 
         this.setState({
-            userLists: userLists
+            userLists: userLists,
+            Repos: jsRepos
         })
     }
     
@@ -178,6 +192,74 @@ class GithubUser extends Component {
                     <span className="item">
                         {list.item}
                     </span>
+                </ListItem>
+             )
+         })
+
+         const ReposList = this.state.Repos.map((list, index) => {
+             return (
+                 <ListItem  key={index}  className="list-item">
+                    <header className="repo-header">
+                        <h2 className="repo-name">{list.name}</h2>
+                        <h3 className="repo-description">{list.description}</h3>
+                    </header>
+                    <article className="repo-content">
+                         <List className="content-list">
+                            <ListItem  className="content-list-item">
+                                <LinkIcon className="content-list-icon"/>
+                                <div className="content-list-main">
+                                    <h3 className="content-list-title">gitUrl</h3>
+                                    <span className="content-list-url">{list.gitUrl}</span>    
+                                </div>                 
+                                <IconButton className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
+                            </ListItem>
+                            <ListItem  className="content-list-item">
+                                <LinkIcon className="content-list-icon"/>
+                                <div className="content-list-main">
+                                    <h3 className="content-list-title">sshUrl</h3>
+                                    <span className="content-list-url">{list.sshUrl}</span>    
+                                </div>                 
+                                <IconButton className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
+                            </ListItem>
+                            <ListItem   className="content-list-item">
+                                <LinkIcon className="content-list-icon"/>
+                                <div className="content-list-main">
+                                    <h3 className="content-list-title">cloneUrl</h3>
+                                    <span className="content-list-url">{list.cloneUrl}</span>    
+                                </div>                 
+                                <IconButton className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
+                            </ListItem>
+                            <ListItem   className="content-list-item">
+                                <LinkIcon className="content-list-icon"/>
+                                <div className="content-list-main">
+                                    <h3 className="content-list-title">svnUrl</h3>
+                                    <span className="content-list-url">{list.svnUrl}</span>    
+                                </div>                 
+                                <IconButton className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon /></IconButton>  
+                            </ListItem>
+                         </List>
+                         <BottomNavigation className="content-list-data" showLabels>
+                            <BottomNavigationButton label={list.stargazersCount} icon={< StarIcon/>} />
+                            <BottomNavigationButton label={list.forksCount} icon={< CallSplitIcon/>} />
+                            <BottomNavigationButton label={list.openIssuesCount} icon={< ErrorIcon/>} />
+                        </BottomNavigation>
+                        <Button href={list.githubUrl} target="_blank" className="githubUrl">
+                            <svg className="icon item-icon" aria-hidden="true">
+                                <use xlinkHref="#icon-github"></use>
+                            </svg>
+                            <h4>查看{list.name}的Github</h4>
+                        </Button>
+                    </article>
+                    <footer className="repo-footer">
+                        <span className="createdAt repo-footer-item">
+                            <AlarmAddIcon className="footer-icon"/>
+                            <h4 className="footer-title">{formatTime(list.createdAt)}</h4>
+                        </span>
+                        <span className="updatedAt repo-footer-item">
+                           <AlarmOnIcon className="footer-icon"/>
+                           <h4 className="footer-title">{formatTime(list.updatedAt)}</h4> 
+                        </span>
+                    </footer>
                 </ListItem>
              )
          })
@@ -232,7 +314,13 @@ class GithubUser extends Component {
                                 </Button>
                             </header>
                             <article className="main">
-                                
+                                <header className="main-header">
+                                    <ListIcon className="main-header-icon"/>
+                                    <h2 className="main-header-title">仓库列表</h2>
+                                </header>
+                                <List className="repos">
+                                    {ReposList}
+                                </List>
                             </article>
                      </div>
                     )

@@ -79,7 +79,7 @@ class GithubOrg extends Component {
             blog: PropTypes.string,
             location: PropTypes.string,
             publicRepos: PropTypes.number,
-            Repos: PropTypes.array,
+            Repos: PropTypes.array
         }
     }
 

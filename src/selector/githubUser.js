@@ -35,32 +35,32 @@ export const loginSelector = createSelector(
 
 export const avatarSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('avatar_url')
+    githubUserInfosState => githubUserInfosState.get('avatarUrl')
 )
 
 export const createdAtSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('created_at')
+    githubUserInfosState => githubUserInfosState.get('createdAt')
 )
 
 export const updatedAtSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('updated_at')
+    githubUserInfosState => githubUserInfosState.get('updatedAt')
 )
 
 export const githubUrlSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('html_url')
+    githubUserInfosState => githubUserInfosState.get('githubUrl')
 )
 
 export const reposUrlSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('repos_url')
+    githubUserInfosState => githubUserInfosState.get('reposUrl')
 )
 
 export const publicReposSelector = createSelector(
     githubUserInfosSelector,
-    githubUserInfosState => githubUserInfosState.get('public_repos')
+    githubUserInfosState => githubUserInfosState.get('publicRepos')
 )
 
 export const followersSelector = createSelector(
@@ -95,6 +95,11 @@ export const locationSelector = createSelector(
 export const bioSelector = createSelector(
     githubUserInfosSelector,
     githubUserInfosState => githubUserInfosState.get('bio')
+)
+
+export const ReposSelector = createSelector(
+    githubUserInfosSelector,
+    githubUserInfosState => githubUserInfosState.get('Repos')
 )
 
 
