@@ -28,6 +28,7 @@ import Img from '../../components/Img/Img'
 import Immutable from 'immutable'
 import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation'
 
+
 import {
     isLoadingSelector,
     errorMsgSelector,
@@ -229,7 +230,11 @@ class GithubOrg extends Component {
                          </List>
                          <BottomNavigation className="content-list-data" showLabels>
                             <BottomNavigationButton label={list.stargazersCount} icon={< StarIcon/>} />
-                            <BottomNavigationButton label={list.forksCount} icon={< CallSplitIcon/>} />
+                            <BottomNavigationButton label={list.forksCount} icon={
+                                 <svg className="icon" aria-hidden="true" style={{ width:'24px', height: '24px'}}>
+                                    <use xlinkHref="#icon-repo-forked1"></use>
+                                </svg>
+                            } />
                             <BottomNavigationButton label={list.openIssuesCount} icon={< ErrorIcon/>} />
                         </BottomNavigation>
                         <Button href={list.githubUrl} target="_blank" className="githubUrl">
