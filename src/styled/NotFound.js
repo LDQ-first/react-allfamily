@@ -1,14 +1,23 @@
 import styled from 'styled-components'
+const bg1Url = process.env.NODE_ENV === 'production' 
+    ? '/react-allfamily/dist/static/img/bg1.jpg'
+    : '../../static/img/bg1.jpg'
+
+const bg2Url =  process.env.NODE_ENV === 'production' 
+    ? '/react-allfamily/dist/static/img/bg2.jpg'
+    : '../../static/img/bg2.jpg'
+
+
 
 const NotFoundDiv = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     height: calc(100vh);
-    background: url('../../static/img/bg1.jpg') no-repeat center / cover;
+    background: url(${bg1Url}) no-repeat center / cover;
     background-attachment: fixed;
     @media (max-width: 50em) {
-        background: url('../../static/img/bg2.jpg') no-repeat center / cover;
+        background: url(${bg2Url}) no-repeat center / cover;
     }
     .title {
        height: 1.6em;

@@ -92,11 +92,15 @@ const Container = styled.div`
         padding: 0;
         padding-left: 10rem;
     } 
+    &.noPadding {
+        padding: 0;
+        padding-left: 10rem;
+    }
     @media (max-width: 50em) {
         padding: 1em;
-        padding-top: 70px;
+        padding-top: 70px; 
         &.noPadding {
-            padding: 0;
+            padding: 0;  
         }
         &.topPadding {
             padding: 0;

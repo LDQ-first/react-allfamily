@@ -2,6 +2,10 @@ import styled from 'styled-components'
 import {indigo} from 'material-ui/colors'
 const snackbarIndigo = indigo[500]
 
+const maskUrl = process.env.NODE_ENV === 'production' 
+    ? '/react-allfamily/dist/static/img/mask.svg'
+    : '../../static/img/mask.svg'
+
 
 const GithubItemDiv = styled.div`
     padding: 1rem 3rem;
@@ -75,6 +79,7 @@ const GithubItemDiv = styled.div`
                 }
                 .avatarWrapper {
                    margin-bottom: 1em;
+                   -webkit-mask-box-image: url(${maskUrl});
                 }
                 .avatar {
                     width: 230px;
@@ -83,7 +88,7 @@ const GithubItemDiv = styled.div`
                     left: 2px;
                     top: 1px;
                     z-index: 2;
-                    -webkit-mask-box-image: url('../../static/img/mask.svg');
+                    
                 }
                 .overlay {
                     width: 234px;
