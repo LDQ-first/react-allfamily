@@ -17,7 +17,8 @@ import Github from 'bundle-loader?lazy&name=github!../views/Github/Github'
 import NavMenu from './nav'
 
 
-import createHistory from 'history/createBrowserHistory'
+import createHistory from 'history/createHashHistory'
+
 
 import {home, page1, counter, userinfo, github} from './link.js'
 
