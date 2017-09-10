@@ -42,7 +42,12 @@ export default class Imgs extends Component {
     _showImg () {
         /* console.log(this) 
          console.log(this.imgs) */
-         if(!this.imgs) return
+         if(!this.imgs) {
+             this.setState({
+                show: true
+            })
+             return
+         }
         this.setState({
                 winTop: window.scrollY
             })
@@ -72,8 +77,12 @@ export default class Imgs extends Component {
         const {src, alt, title, className} = this.props
         const {imageStatus, imgUrl, show} = this.state
         const img = show ? (src ? src: imgUrl) : imgUrl
+        console.log(show)
+        console.log(img)
+        console.log(imgUrl)
+        console.log(src)
         return (
-            <div ref={div => this.imgs = div}>
+            <div ref={div => this.imgs = div} className="lazyImgWrapper">
                 <Img className={className} src={img} alt={alt} title={title} 
                     show={imageStatus !== 200 ? true: false}/>
                 <Img className={className} src={img} alt={alt} title={title} 

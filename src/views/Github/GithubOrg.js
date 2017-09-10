@@ -195,22 +195,6 @@ class GithubOrg extends Component {
         return (
             <GithubOrgDiv>
                 <h1 className="title">Find Github Org</h1>
-                 {/*<section className="searchArea">
-                    <TextField
-                        id="placeholder"
-                        label="Org"
-                        InputProps={{ placeholder: '请输入组织名（Please input orgname）' }}
-                        helperText="To Search Org!"
-                        fullWidth
-                        margin="normal"
-                        onKeyDown = {(e) => {this._keySearch(e)}}
-                    />
-                    <span className="search-icon">  
-                        <IconButton color="primary" aria-label="To Search Org">
-                            <Search onClick = {() => {this._iconSearch()}}/>
-                        </IconButton>
-                    </span>
-                </section>*/}
                 <SearchCom
                      label = "Org"
                      placeholder= '请输入组织名（Please input orgname）'

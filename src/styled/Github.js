@@ -61,14 +61,34 @@ const GithubItemDiv = styled.div`
                 outline: 1px solid red;
                 margin-right: 1em;
                 word-break: break-all;
+                height: auto;
+                position: relative;
                 @media (max-width: 600px) {
                     width: 80%;
                     max-width: 230px;
                     margin-right: 0;
                 }
+                .lazyImgWrapper {
+                    overflow: hidden;
+                    
+                }
+                .avatarWrapper {
+                    border: 1px solid red;
+                }
                 .avatar {
                     width: 100%;
                     height: auto;
+                    position: relative;
+                    left: 0;
+                    z-index: 2;
+                    -webkit-mask-box-image: url('../../static/img/mask.svg');
+                }
+                .overlay {
+                    width: 100%;
+                    height: auto;
+                    position: absolute;
+                    left: 0;
+                    z-index: 3;
                 }
             }
             .list {

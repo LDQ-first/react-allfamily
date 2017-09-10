@@ -30,6 +30,8 @@ import Immutable from 'immutable'
 import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation'
 import Error from '../../components/Error/Error.js'
 import ReposLists from '../../components/ReposLists/ReposLists.js'
+import Mask from '../../../static/img/Mask.png'
+
 
 
 import {
@@ -208,22 +210,6 @@ class GithubUser extends Component {
         return (
             <GithubUserDiv className="githubUser">
                 <h1 className="title">Find Github User</h1>
-                {/*<section className="searchArea">
-                    <TextField 
-                        className = "search-input"  
-                        label = "User"
-                        InputProps = {{ placeholder: '请输入用户名（Please input username）' }}
-                        helperText = "To Search User!"
-                        margin = "normal"
-                        onKeyDown = {(e) => {this._keySearch(e)}}
-                        inputRef ={ search => this._search = search }
-                    />
-                    <span className="search-icon">  
-                       <IconButton color="primary" aria-label="To Search User">
-                            <Search onClick = {() => {this._iconSearch()}}/>
-                       </IconButton>
-                    </span>   
-                </section>*/}
                 <SearchCom
                      label = "User"
                      placeholder= '请输入用户名（Please input username）'
@@ -239,7 +225,10 @@ class GithubUser extends Component {
                                 <h2 className="name">{name}</h2>
                                 <div className="intro">
                                     <div className="bio">
-                                        <Img className="avatar" src={avatar} alt={name} title={name} />
+                                        <div className="avatarWrapper">
+                                             <img className="overlay" src={Mask} />
+                                             <Img className="avatar" src={avatar} alt={name} title={name} />
+                                        </div>
                                         <h3 className="login">{login}</h3>
                                         <span className="bio">{bio}</span>
                                     </div>
