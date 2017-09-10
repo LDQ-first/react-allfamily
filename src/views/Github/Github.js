@@ -26,7 +26,7 @@ export default class Github extends Component {
 
         return (
             <Container className="topPadding">
-               <AppBar position="static">
+               <AppBar position="static" className="githubAppBar">
                     <Tabs value={value} onChange={this._handleChange.bind(this)}>
                         <Tab label="GithubUser" />
                         <Tab label="GithubOrg" />

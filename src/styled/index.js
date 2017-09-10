@@ -1,8 +1,9 @@
 import {injectGlobal} from 'styled-components'
 import styled from 'styled-components'
-import { lightBlue, deepPurple } from 'material-ui/colors'
-const bgBlue = lightBlue[400]
+import { lightBlue, deepPurple, blue } from 'material-ui/colors'
+const bgBlue = lightBlue[500]
 const bgPurple = deepPurple[200]
+const mainBlue = blue[500]
 
 
 export default injectGlobal`
@@ -58,7 +59,7 @@ export default injectGlobal`
         text-decoration: none;
         color: #0060E9;
         &:hover, &:hover * {
-            color: #6c15a1;
+            color: #3f51b5;
         }
     }
     p {
@@ -97,6 +98,9 @@ const Container = styled.div`
             padding: 0;
             padding-top: 53px;
         }
+    }
+    .githubAppBar {
+        background: ${mainBlue};
     }
     
 `
