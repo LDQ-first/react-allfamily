@@ -70,7 +70,6 @@ const GithubItemDiv = styled.div`
                 }
                 .lazyImgWrapper {
                     overflow: hidden;
-                    
                 }
                 .avatarWrapper {
                     border: 1px solid red;
