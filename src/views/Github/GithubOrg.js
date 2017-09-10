@@ -25,6 +25,7 @@ import Img from '../../components/Img/Img'
 import Immutable from 'immutable'
 import Error from '../../components/Error/Error.js'
 import ReposLists from '../../components/ReposLists/ReposLists.js'
+import Mask from '../../../static/img/Mask.png'
 
 
 
@@ -41,6 +42,7 @@ import {
     blogSelector,
     locationSelector,
     typeSelector,
+    descriptionSelector,
     ReposSelector
 } from '../../selector/githubOrg'
 
@@ -58,6 +60,7 @@ const mapStateToProps = (state) => ({
     blog: blogSelector(state),
     location: locationSelector(state),
     type: typeSelector(state),
+    description: descriptionSelector(state),
     Repos: ReposSelector(state)
 })
 
@@ -79,6 +82,7 @@ class GithubOrg extends Component {
             location: PropTypes.string,
             publicRepos: PropTypes.number,
             type: PropTypes.string,
+            description: PropTypes.string,
             Repos: PropTypes.array
         }
     }
@@ -159,7 +163,7 @@ class GithubOrg extends Component {
     render() {
 
         console.log('this.state.orgLists: ', this.state.orgLists)
-         const {isLoading, errorMsg, name, login, avatar, githubUrl, type } = this.props
+         const {isLoading, errorMsg, name, login, avatar, githubUrl, type, description } = this.props
 
 
           const orgList = this.state.orgLists.map((list, index) => {
@@ -186,7 +190,6 @@ class GithubOrg extends Component {
          const ReposList = this.state.Repos.map((list, index) => {
              return (
                  <ReposLists  key={index} list={list} />
-                 
              )
          })
 
@@ -214,6 +217,7 @@ class GithubOrg extends Component {
                                              <Img className="avatar" src={avatar} alt={name} title={name} />
                                         </div>
                                         <h3 className="login">{login}</h3>
+                                        <span className="des">{description}</span>
                                     </div>
                                     <List className="list" >
                                         {orgList}

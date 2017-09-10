@@ -42,18 +42,19 @@ const GithubItemDiv = styled.div`
         align-items: center;
         .name {
             width: 100%;
-            height: 2em;
+            height: auto;
         }
         .intro {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
+            margin-top: 1em;
             @media (max-width: 600px) {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                align-items: center;
+                align-items: center;                
             }
             .bio {
                 width: 234px;

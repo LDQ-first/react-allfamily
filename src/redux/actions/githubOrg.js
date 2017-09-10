@@ -56,6 +56,7 @@ const filterData = (data) => {
         location: data.location,
         publicRepos: data.public_repos,
         type: data.type,
+        description: data.description,
         Repos: data.Repos
     }
 
