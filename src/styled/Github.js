@@ -1,4 +1,7 @@
 import styled from 'styled-components'
+import {indigo} from 'material-ui/colors'
+const snackbarIndigo = indigo[500]
+
 
 const GithubItemDiv = styled.div`
     padding: 1rem 3rem;
@@ -206,6 +209,14 @@ const GithubItemDiv = styled.div`
                     }
                 }
                 
+            }
+            .snackbar {
+                >[aria-describedby='message-id'] {
+                    background: ${snackbarIndigo}
+                }
+                .content + .content {
+                    margin-top: 10px;
+                }
             }
         }
     }

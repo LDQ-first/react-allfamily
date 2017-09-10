@@ -12,7 +12,7 @@ import Button from 'material-ui/Button'
 import ErrorIcon from 'material-ui-icons/Error'
 import {formatTime} from '../../utils/'
 import clipboard from 'clipboard-js'
-
+import Snackbar from 'material-ui/Snackbar'
 
 
 export default class ReposLists extends Component {
@@ -22,13 +22,41 @@ export default class ReposLists extends Component {
         }
     }
 
-    copy(url) {
+    constructor (props) {
+        super(props)
+        this.state = {
+            msg: '',
+            result: '',
+            vertical: 'top',
+            horizontal: 'right',
+            open: false
+        }
+    }
+
+    copy (url) {
         clipboard.copy(url.innerText)
+        .then( () => {
+            this.setState({
+                msg: `复制成功ヾ(^Д^*)/`,
+                result: `Url: ${url.innerText}`,
+                open: true
+            })
+        }).catch((err) => {
+            this.setState({
+                msg: `复制失败/(ㄒoㄒ)/~~`,
+                result: `Err: err`,
+                open: true
+            })
+        })
+    }
+
+    handleRequestClose = () => {
+        this.setState({ open: false })
     }
 
     render() {
        const {list} = this.props
-
+       const {msg, result, vertical, horizontal, open} = this.state
 
         return (
               <ListItem className="list-item">
@@ -105,6 +133,21 @@ export default class ReposLists extends Component {
                            <h4 className="footer-title">{formatTime(list.updatedAt)}</h4> 
                         </span>
                     </footer>
+                     <Snackbar className="snackbar"
+                        anchorOrigin={{ vertical, horizontal }}
+                        open={open}
+                        onRequestClose={this.handleRequestClose}
+                        SnackbarContentProps={{
+                            'aria-describedby': 'message-id',
+                        }}
+                        autoHideDuration={3000}
+                        message={
+                            <span id="message-id">
+                                <div className="content">{msg}</div>
+                                <div className="content">{result}</div>
+                            </span>
+                        }
+                    />
                 </ListItem>
         )
     }
