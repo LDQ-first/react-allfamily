@@ -27,7 +27,7 @@ import Button from 'material-ui/Button'
 import Img from '../../components/Img/Img'
 import Immutable from 'immutable'
 import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation'
-
+import Error from '../../components/Error/Error.js'
 
 import {
     isLoadingSelector,
@@ -282,7 +282,7 @@ class GithubOrg extends Component {
                 />
                  {
                     isLoading ? <Progress/> : (
-                        errorMsg ? errorMsg : 
+                        errorMsg ? <Error errorMsg={errorMsg} /> : 
                         <div>
                             <header className="header">
                                 <h2 className="name">{name}</h2>
