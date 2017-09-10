@@ -74,7 +74,7 @@ export default class ReposLists extends Component {
                                 </div>                 
                                 <IconButton onClick={() => {
                                     this.copy(this.gitUrl)
-                                }} className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
+                                }} className="content-list-btn" color="blue" aria-label="copy"  title="点击复制链接" ><ContentCopyIcon/></IconButton>  
                             </ListItem>
                             <ListItem  className="content-list-item">
                                 <LinkIcon className="content-list-icon"/>
@@ -84,7 +84,7 @@ export default class ReposLists extends Component {
                                 </div>                 
                                 <IconButton  onClick={() => {
                                     this.copy(this.sshUrl)
-                                }} className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
+                                }} className="content-list-btn" color="blue" aria-label="copy"  title="点击复制链接"><ContentCopyIcon/></IconButton>  
                             </ListItem>
                             <ListItem   className="content-list-item">
                                 <LinkIcon className="content-list-icon"/>
@@ -94,7 +94,7 @@ export default class ReposLists extends Component {
                                 </div>                 
                                 <IconButton onClick={() => {
                                     this.copy(this.cloneUrl)
-                                }} className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon/></IconButton>  
+                                }} className="content-list-btn" color="blue" aria-label="copy"  title="点击复制链接"><ContentCopyIcon/></IconButton>  
                             </ListItem>
                             <ListItem   className="content-list-item">
                                 <LinkIcon className="content-list-icon"/>
@@ -104,7 +104,7 @@ export default class ReposLists extends Component {
                                 </div>                 
                                 <IconButton onClick={() => {
                                     this.copy(this.svnUrl)
-                                }} className="content-list-btn" color="blue" aria-label=""><ContentCopyIcon /></IconButton>  
+                                }} className="content-list-btn" color="blue" aria-label="copy"  title="点击复制链接"><ContentCopyIcon /></IconButton>  
                             </ListItem>
                          </List>
                          <BottomNavigation className="content-list-data" showLabels>
