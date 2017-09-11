@@ -3,13 +3,18 @@ import styled from 'styled-components'
 
 
 const MusicDiv = styled.div`
-    outline: 1px solid red;
+    
     .music-player {
+        outline: 1px solid red;
         height: 100px;
     }
-    .song-lists {
-        
+    .song-lists-wrapper {
+        outline: 1px solid lightgreen;
+        .song-lists {
+          
+        }
     }
+    
 
 
 `
