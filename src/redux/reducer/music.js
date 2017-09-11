@@ -16,10 +16,10 @@ import { fromJS, Map } from 'immutable'
 
 
 const initState = fromJS({
-    status: 0,
-    isLoading: false,
+    songListsStatus: 0,
+    songListsIsLoading: false,
     songLists: {},
-    errorMsg: ''
+    songListsErrorMsg: ''
 })
 
 export const musicSongLists = (state = initState, action) => {
@@ -30,15 +30,15 @@ export const musicSongLists = (state = initState, action) => {
             console.log(action)
             return (state = fromJS({
                 ...state,
-                status: 200,
-                isLoading: false,
+                songListsStatus: 200,
+                songListsIsLoading: false,
                 songLists: action.songLists
             }))
         case GET_SONGLISTS_FAIL:
             return (state = fromJS({
                 ...state,
-                status: 404,
-                errorMsg: '请求的歌不存在'
+                songListsStatus: 404,
+                songListsErrorMsg: '请求的歌不存在'
             }))
         default: 
              return state

@@ -6,8 +6,8 @@ import PropTypes from 'prop-types'
 import {MusicDiv} from '../../styled/music.js'
 import {musicApi} from '../../api/api.js' 
 import {
-   isLoadingSelector,
-   errorMsgSelector,
+   songListsIsLoadingSelector,
+   songListsErrorMsgSelector,
    songListSelector
 } from '../../selector/music.js'
 import * as musicAction  from '../../redux/actions/music.js'
@@ -20,8 +20,8 @@ import Immutable from 'immutable'
 class Music extends Component {
     static get propTypes() { 
         return { 
-            isLoading: PropTypes.bool.isRequired,
-            errorMsg: PropTypes.string.isRequired,
+            songListsIsLoading: PropTypes.bool.isRequired,
+            songListsErrorMsg: PropTypes.string.isRequired,
             songList: PropTypes.array,
             getSongLists: PropTypes.func
         }
@@ -74,8 +74,8 @@ class Music extends Component {
 
 
 const mapStateToProps = (state) => ({
-    isLoading: isLoadingSelector(state),
-    errorMsg: errorMsgSelector(state),  
+    songListsIsLoading: songListsIsLoadingSelector(state),
+    songListsErrorMsg: songListsErrorMsgSelector(state),  
     songList: songListSelector(state)
 })
 
