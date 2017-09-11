@@ -17,7 +17,7 @@ import RestoreIcon from 'material-ui-icons/Restore'
 import FavoriteIcon from 'material-ui-icons/Favorite'
 import LocationOnIcon from 'material-ui-icons/LocationOn'
 import FolderIcon from 'material-ui-icons/Folder'
-
+import Collapse from 'material-ui/transitions/Collapse'
 
 
 class Music extends Component {
@@ -65,16 +65,22 @@ class Music extends Component {
         console.log(jsSongList)
 
         jsSongList.forEach((list, index) => {
-            
+
         })
 
 
         return (
             <Container>
                 <MusicDiv>
-                     <audio controls className="audio" >你的浏览器不支持喔！</audio>
-
-                      <BottomNavigation
+                     <div className="music-player">
+                          <audio controls className="audio" >你的浏览器不支持喔！</audio>
+                     </div>
+                     <div className="song-lists">
+                            {value === 0 && <div>{'Item One'}</div>}
+                            {value === 1 && <div>{'Item Two'}</div>}
+                            {value === 2 && <div>{'Item Three'}</div>}
+                            {value === 3 && <div>{'Item Four'}</div>}
+                        <BottomNavigation
                             value={value}
                             onChange={this.handleChange}
                             showLabels
@@ -84,6 +90,10 @@ class Music extends Component {
                             <BottomNavigationButton label="Nearby" icon={<LocationOnIcon />} />
                             <BottomNavigationButton label="Nearby" icon={<FolderIcon />} />
                         </BottomNavigation>
+
+                     </div>
+
+                      
 
                 </MusicDiv>
             </Container>
