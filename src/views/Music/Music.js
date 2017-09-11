@@ -100,10 +100,10 @@ class Music extends Component {
                             onChange={this.handleChange}
                             showLabels
                         >
-                            <BottomNavigationButton label="Recents" icon={<RestoreIcon />} />
-                            <BottomNavigationButton label="Favorites" icon={<FavoriteIcon />} />
-                            <BottomNavigationButton label="Nearby" icon={<LocationOnIcon />} />
-                            <BottomNavigationButton label="Nearby" icon={<FolderIcon />} />
+                            <BottomNavigationButton label="经典" icon={<RestoreIcon />} />
+                            <BottomNavigationButton label="日语" icon={<FavoriteIcon />} />
+                            <BottomNavigationButton label="民谣" icon={<LocationOnIcon />} />
+                            <BottomNavigationButton label="ACG" icon={<FolderIcon />} />
                         </BottomNavigation>
 
                      </div>

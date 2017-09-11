@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import {blue} from 'material-ui/colors'
-const titleBlue = blue[100]
+const titleBlue = blue[50]
 
 const MusicDiv = styled.div`
     
