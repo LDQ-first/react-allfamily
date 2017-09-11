@@ -7,10 +7,6 @@ import {
     GET_DISLISTS_SUCCESS,
     GET_DISLISTS_FAIL,
 
-    /*GET_SONG_REQUEST,
-    GET_SONG_SUCCESS,
-    GET_SONG_FAIL,*/
-
     GET_LYRIC_REQUEST,
     GET_LYRIC_SUCCESS,
     GET_LYRIC_FAIL
@@ -45,11 +41,12 @@ export const getsongListsFail = () => {
 
 
 const filterSongListsData = (data) => {
-    const newSongList = data.songList.splice(3,1).splice(4,1)
-    console.log(newSongList)
+    data.songList.splice(3,1)
+    data.songList.splice(4,1)
+    console.log(data.songList)
 
     const newData = {
-        songList: newSongList
+        songList: data.songList
     }
     return newData
 }
@@ -61,8 +58,8 @@ export const getSongLists = () => async (dispatch) => {
    try {
        dispatch(getsongListsRequest())
        let res = await axios.get(musicApi.songLists)
-       console.log('data: ', res.data)
-       await dispatch(getsongListsSuccess(filterSongListsData(res.data)))
+       console.log('data: ', res.data.data)
+       await dispatch(getsongListsSuccess(filterSongListsData(res.data.data)))
    } catch (err) {
        console.log('err:', err)
        dispatch(getsongListsFail())
