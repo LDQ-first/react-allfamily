@@ -1,22 +1,29 @@
 import { createSelector } from 'reselect'
 import {selectGolbal} from './index'
 
-export const musicSelector = createSelector(
+
+export const musicSongListsSelector = createSelector(
     selectGolbal,
-    appState => appState.get('songList')
+    appState => appState.get('musicSongLists')
+)
+
+
+export const songListsSelector = createSelector(
+    musicSongListsSelector,
+    musicSongListsState => musicSongListsState.get('songLists')
 )
 
 export const isLoadingSelector = createSelector(
-    musicSelector,
-    testState => testState.get('isLoading')
+    songListsSelector,
+    songListsState => songListsState.get('isLoading')
 )
 
 export const errorMsgSelector = createSelector(
-    musicSelector,
-    testState => testState.get('errorMsg')
+    songListsSelector,
+    songListsState => songListsState.get('errorMsg')
 )
 
 export const songListSelector = createSelector(
-    musicSelector,
-    appState => appState.get('songList')
+    songListsSelector,
+    songListsState => songListsState.get('songList')
 )

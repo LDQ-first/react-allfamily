@@ -18,11 +18,11 @@ import { fromJS, Map } from 'immutable'
 const initState = fromJS({
     status: 0,
     isLoading: false,
-    songList: [],
+    songLists: {},
     errorMsg: ''
 })
 
-export const songList = (state = initState, action) => {
+export const musicSongLists = (state = initState, action) => {
     switch(action.type) {
         case GET_SONGLISTS_REQUEST:
             return state.set('isLoading', true)
@@ -32,7 +32,7 @@ export const songList = (state = initState, action) => {
                 ...state,
                 status: 200,
                 isLoading: false,
-                songList: action.songLists
+                songLists: action.songLists
             }))
         case GET_SONGLISTS_FAIL:
             return (state = fromJS({
