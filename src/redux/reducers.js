@@ -4,6 +4,7 @@ import userInfo from './reducer/userInfo'
 import nav from './reducer/nav'
 import githubUser from './reducer/githubUser'
 import githubOrg from './reducer/githubOrg'
+import test from './reducer/test'
 import { LOCATION_CHANGE } from 'react-router-redux'
 import { fromJS } from 'immutable'
 
@@ -32,7 +33,8 @@ export default combineReducers({
       userInfo,
       nav,
       githubUser,
-      githubOrg
+      githubOrg,
+      test
     })
 })
 

@@ -40,10 +40,10 @@ export const GET_DISLISTS_SUCCESS = "GET_DISLISTS_SUCCESS"
 export const GET_DISLISTS_FAIL = "GET_DISLISTS_FAIL"
 
 
-//song
+/*//song
 export const GET_SONG_REQUEST = "GET_SONG_REQUEST"
 export const GET_SONG_SUCCESS = "GET_SONG_SUCCESS"
-export const GET_SONG_FAIL = "GET_SONG_FAIL"
+export const GET_SONG_FAIL = "GET_SONG_FAIL"*/
 
 
 //lyric

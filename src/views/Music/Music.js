@@ -4,7 +4,7 @@ import Loading from '../../components/Loading/Loading'
 import {Container} from '../../styled'
 import PropTypes from 'prop-types'
 import {MusicDiv} from '../../styled/music.js'
-
+import {musicApi} from '../../api/api.js' 
 
 
 export default class Music extends Component {

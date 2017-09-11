@@ -1,8 +1,7 @@
 import {
     GET_GITHUBUSER_INFO_REQUEST,
     GET_GITHUBUSER_INFO_SUCCESS,
-    GET_GITHUBUSER_INFO_FAIL,
-    GET_GITHUBUSER_AVATER_SUCCESS
+    GET_GITHUBUSER_INFO_FAIL
 } from '../const/const'
 import { fromJS, Map } from 'immutable'
 

@@ -1,7 +1,7 @@
 import {
-    GET_GITHUBORG_INFO_REQUEST,
-    GET_GITHUBORG_INFO_SUCCESS,
-    GET_GITHUBORG_INFO_FAIL
+    GET_SONG_REQUEST,
+    GET_SONG_SUCCESS,
+    GET_SONG_FAIL
 } from '../const/const'
 import { fromJS, Map } from 'immutable'
 
@@ -9,26 +9,26 @@ import { fromJS, Map } from 'immutable'
 const initState = fromJS({
     status: 0,
     isLoading: false,
-    githubOrgInfos: {},
+    song: {},
     errorMsg: ''
 })
 
 export default (state = initState, action) => {
     switch(action.type) {
-        case GET_GITHUBORG_INFO_REQUEST:
+        case GET_SONG_REQUEST:
             return state.set('isLoading', true)
-        case GET_GITHUBORG_INFO_SUCCESS:
+        case GET_SONG_SUCCESS:
             return (state = fromJS({
                 ...state,
                 status: 200,
                 isLoading: false,
-                githubOrgInfos: action.githubOrgInfo
+                song: action.song
             }))
-        case GET_GITHUBORG_INFO_FAIL:
+        case GET_SONG_FAIL:
             return (state = fromJS({
                 ...state,
                 status: 404,
-                errorMsg: '请求的组织不存在'
+                errorMsg: '请求的歌不存在'
             }))
         default: 
              return state
