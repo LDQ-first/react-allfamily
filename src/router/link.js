@@ -1,4 +1,4 @@
-let home, page1, counter, userinfo, github
+let home, page1, counter, userinfo, github, music
 
 
 /*process.env.NODE_ENV === 'production' 
@@ -10,8 +10,18 @@ let home, page1, counter, userinfo, github
      : (home =  '/', page1 = '/page1', counter = '/counter', userinfo = '/userinfo', github = '/github' )*/
 
 
-home =  '/', page1 = '/page1', counter = '/counter', userinfo = '/userinfo', github = '/github'
+home =  '/'
+page1 = '/page1'
+counter = '/counter'
+userinfo = '/userinfo'
+github = '/github'
+music = '/music'
 
 export {
-    home, page1, counter, userinfo, github
+    home,
+    page1,
+    counter,
+    userinfo,
+    github,
+    music
 }

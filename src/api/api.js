@@ -3,8 +3,10 @@ const userApi = process.env.NODE_ENV === 'production'
     : '/static/json/user.json'
     
 import * as githubApi from './github'
+import * as musicApi from './music'
 
 export {
     userApi,
-    githubApi
+    githubApi,
+    musicApi
 }

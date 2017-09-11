@@ -82,7 +82,25 @@ export default injectGlobal`
     svg {
         fill: ${svgBlue} !important;
     }
+    .fade-enter {
+        opacity: 0.01;
+        transform: translateY(-100%);
+    }
 
+    .fade-enter.fade-enter-active {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 500ms ease-in;
+    }
+
+    .fade-exit {
+        opacity: 1;
+    }
+
+    .fade-exit.fade-exit-active {
+        opacity: 0.01;
+        transition: opacity 300ms ease-in;
+    }
 `
 
 const Container = styled.div`
@@ -127,6 +145,7 @@ const Container = styled.div`
             }
         }
     }
+    
     
 `
 

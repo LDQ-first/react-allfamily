@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-/*import {getUserInfo} from '../../redux/actions/userInfo'*/
 import * as userInfoActions  from '../../redux/actions/userInfo'
 import Img from '../../components/Img/Img'
 import Loading from '../../components/Loading/Loading'
@@ -21,7 +20,6 @@ import {
 } from '../../selector/userinfo'
 import Button  from 'material-ui/Button'
 
-
 class UserInfo extends Component {
     static get propTypes() { 
         return { 
@@ -40,7 +38,9 @@ class UserInfo extends Component {
         const {getUserInfo, isLoading, errorMsg , name, intro, avatar, githubUrl , login} = this.props
         
         return (
+            
             <Container className="userInfo">
+
                 {
                     isLoading ? <Loading/>:
                     (
@@ -70,6 +70,7 @@ class UserInfo extends Component {
                     <Img src={bea}/>
                 </LazyImg>
             </Container>
+            
         )
     }
 }

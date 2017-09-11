@@ -12,6 +12,7 @@ import Counter from 'bundle-loader?lazy&name=counter!../views/Counter/Counter'
 import UserInfo from 'bundle-loader?lazy&name=userInfo!../views/UserInfo/UserInfo'
 import NotFound from 'bundle-loader?lazy&name=notFound!../views/NotFound/NotFound'
 import Github from 'bundle-loader?lazy&name=github!../views/Github/Github'
+import Music from 'bundle-loader?lazy&name=music!../views/Music/Music'
 
 
 import NavMenu from './nav'
@@ -20,7 +21,7 @@ import NavMenu from './nav'
 import createHistory from 'history/createHashHistory'
 
 
-import {home, page1, counter, userinfo, github} from './link.js'
+import {home, page1, counter, userinfo, github, music} from './link.js'
 
 const createComponent = (component) => () => (
     <Bundle load={component}>
@@ -43,6 +44,7 @@ const getRouter = () => (
                 <Route path={counter} component={createComponent(Counter)}/>
                 <Route path={userinfo} component={createComponent(UserInfo)}/>
                 <Route path={github} component={createComponent(Github)}/>
+                <Route path={music} component={createComponent(Music)}/>
                 <Route component={createComponent(NotFound)}/>
             </Switch>
         </div>

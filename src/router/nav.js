@@ -18,7 +18,7 @@ import List, { ListItem, ListItemText } from 'material-ui/List'
 import Avatar from 'material-ui/Avatar'
 import FolderIcon from 'material-ui-icons/Folder'
 
-import {home, page1, counter, userinfo, github} from './link.js'
+import {home, page1, counter, userinfo, github, music} from './link.js'
 
 
 class NavMenu extends Component {
@@ -56,6 +56,11 @@ class NavMenu extends Component {
             },{
                 to: github,
                 primary: 'Github',
+                secondary: '',
+                icon: <FolderIcon className="list-icon"/>
+            },{
+                to: music,
+                primary: 'Music',
                 secondary: '',
                 icon: <FolderIcon className="list-icon"/>
             }]
