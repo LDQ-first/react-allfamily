@@ -78,7 +78,8 @@ class Music extends Component {
 
         const SongLists = jsSongList.map((list, index) => {
             return (
-                value === index && <SongList img={list.picUrl} open={open}/>
+                value === index && 
+                <SongList img={list.picUrl} open={open} songListDesc={list.songListDesc}/>
             )
         })
 
