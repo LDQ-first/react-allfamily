@@ -8,7 +8,10 @@ import {musicApi} from '../../api/api.js'
 import {
    songListsIsLoadingSelector,
    songListsErrorMsgSelector,
-   songListSelector
+   songListSelector,
+   disListsIsLoadingSelector,
+   disListsErrorMsgSelector,
+   disListSelector
 } from '../../selector/music.js'
 import * as musicAction  from '../../redux/actions/music.js'
 import Immutable from 'immutable'
@@ -23,6 +26,14 @@ import ExpandLess from 'material-ui-icons/ExpandLess'
 import ExpandMore from 'material-ui-icons/ExpandMore'
 
 
+const mapStateToProps = (state) => ({
+    songListsIsLoading: songListsIsLoadingSelector(state),
+    songListsErrorMsg: songListsErrorMsgSelector(state),  
+    songList: songListSelector(state),
+    disListsIsLoading: disListsIsLoadingSelector(state),
+    disListsErrorMsg: disListsErrorMsgSelector(state),  
+    disList: disListSelector(state),
+})
 
 
 
@@ -30,10 +41,14 @@ import ExpandMore from 'material-ui-icons/ExpandMore'
 class Music extends Component {
     static get propTypes() { 
         return { 
-            songListsIsLoading: PropTypes.bool.isRequired,
-            songListsErrorMsg: PropTypes.string.isRequired,
+            songListsIsLoading: PropTypes.bool,
+            songListsErrorMsg: PropTypes.string,
             songList: PropTypes.array,
-            getSongLists: PropTypes.func
+            getSongLists: PropTypes.func,
+            disListsIsLoading: PropTypes.bool,
+            disListsErrorMsg: PropTypes.string,
+            disList: PropTypes.array,
+            getDisLists: PropTypes.func,
         }
     }
 
@@ -46,15 +61,29 @@ class Music extends Component {
         
 
     }
+
+    
+    
+    componentWillMount() {
+        console.log('this.props: ', this.props)
+        const {getSongLists, songList, getDisLists} = this.props
+        getSongLists()   
+       
+    }
+    
     
 
     
     componentDidMount() {
         console.log('this.props: ', this.props)
-        const {getSongLists} = this.props
-        getSongLists()   
+    
     }
     
+    componentDidUpdate() {
+        const {value, open} = this.state
+        const {songList, getDisLists} = this.props
+        
+    }
 
 
 
@@ -72,16 +101,22 @@ class Music extends Component {
     render() {
         const {value, open} = this.state
         console.log('this.props: ', this.props)
-        const {songList} = this.props
+        const {songList, getDisLists, disList} = this.props
         const jsSongList = Immutable.List(songList).toJS()
-        console.log(jsSongList)
+        const jsDisList = Immutable.List(disList).toJS()
+        console.log(jsDisList)
 
         const SongLists = jsSongList.map((list, index) => {
             return (
                 value === index && 
-                <SongList img={list.picUrl} open={open} songListDesc={list.songListDesc}/>
+                <SongList img={list.picUrl} open={open} songListDesc={list.songListDesc} 
+                id={list.id} getDisLists={getDisLists}/>
             )
         })
+
+
+
+       
 
 
         return (
@@ -120,11 +155,6 @@ class Music extends Component {
 
 
 
-const mapStateToProps = (state) => ({
-    songListsIsLoading: songListsIsLoadingSelector(state),
-    songListsErrorMsg: songListsErrorMsgSelector(state),  
-    songList: songListSelector(state)
-})
 
 
 

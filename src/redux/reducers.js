@@ -5,7 +5,7 @@ import nav from './reducer/nav'
 import githubUser from './reducer/githubUser'
 import githubOrg from './reducer/githubOrg'
 import test from './reducer/test'
-import {musicSongLists} from './reducer/music.js'
+import {musicSongLists, musicDisLists} from './reducer/music.js'
 import { LOCATION_CHANGE } from 'react-router-redux'
 import { fromJS } from 'immutable'
 
@@ -36,7 +36,8 @@ export default combineReducers({
       githubUser,
       githubOrg,
       test,
-      musicSongLists
+      musicSongLists,
+      musicDisLists
     })
 })
 

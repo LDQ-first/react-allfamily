@@ -58,7 +58,6 @@ export const getSongLists = () => async (dispatch) => {
    try {
        dispatch(getsongListsRequest())
        let res = await axios.get(musicApi.songLists)
-       console.log('data: ', res.data.data)
        await dispatch(getsongListsSuccess(filterSongListsData(res.data.data)))
    } catch (err) {
        console.log('err:', err)
@@ -95,7 +94,7 @@ export const getdisListsFail = () => {
 
 
 const filterDisListsData = (data) => {
-    const newSongList = data.songList.map((item, index) => {
+    const newSongList = data.songlist.map((item, index) => {
         return {
             albummid: item.albummid,
             albumname: item.albumname,
@@ -104,9 +103,10 @@ const filterDisListsData = (data) => {
             songid: item.songid
         }
     })
+    console.log('newSongList: ', newSongList)
 
     const newData = {
-        songnum: newSongList
+        disList: newSongList
     }
     return newData
 }
@@ -114,15 +114,15 @@ const filterDisListsData = (data) => {
 
 
 export const getDisLists = (disstid) => async (dispatch) => {
-
    try {
        dispatch(getdisListsRequest())
        let res = await fetchJsonp(musicApi.disLists(disstid), {
             jsonpCallbackFunction: 'taogeDataCallback'
+        }).then((res) => {
+            return res.json()
         })
-        let data = res.json()
-       console.log('data: ', data)
-       await dispatch(getdisListsSuccess(filterDisListsData(data)))
+       console.log('res.cdlist[0]: ', res.cdlist[0])
+       await dispatch(getdisListsSuccess(filterDisListsData(res.cdlist[0])))
    } catch (err) {
        console.log('err:', err)
        dispatch(getdisListsFail())

@@ -10,9 +10,19 @@ export default class SongList extends Component {
         return { 
             img: PropTypes.string.isRequired,
             songListDesc: PropTypes.string.isRequired,
-            open: PropTypes.boolean.isRequired
+            open: PropTypes.boolean.isRequired,
+            getDisLists: PropTypes.func,
+            id: PropTypes.string,
         }
     }
+
+
+    
+    componentWillMount() {
+        const {getDisLists, id} = this.props
+        getDisLists(id)
+    }
+    
 
 
     render() {

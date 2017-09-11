@@ -15,14 +15,14 @@ import {
 import { fromJS, Map } from 'immutable'
 
 
-const initState = fromJS({
+const songListsInitState = fromJS({
     songListsStatus: 0,
     songListsIsLoading: false,
     songLists: {},
     songListsErrorMsg: ''
 })
 
-export const musicSongLists = (state = initState, action) => {
+export const musicSongLists = (state = songListsInitState, action) => {
     switch(action.type) {
         case GET_SONGLISTS_REQUEST:
             return state.set('isLoading', true)
@@ -45,4 +45,34 @@ export const musicSongLists = (state = initState, action) => {
     }
 }
 
+
+const disListsInitState = fromJS({
+    disListsStatus: 0,
+    disListsIsLoading: false,
+    disLists: {},
+    disListsErrorMsg: ''
+})
+
+export const musicDisLists = (state = disListsInitState, action) => {
+    switch(action.type) {
+        case GET_DISLISTS_REQUEST:
+            return state.set('isLoading', true)
+        case GET_DISLISTS_SUCCESS:
+            console.log(action)
+            return (state = fromJS({
+                ...state,
+                disListsStatus: 200,
+                disListsIsLoading: false,
+                disLists: action.disLists
+            }))
+        case GET_DISLISTS_FAIL:
+            return (state = fromJS({
+                ...state,
+                disListsStatus: 404,
+                disListsErrorMsg: '请求的歌不存在'
+            }))
+        default: 
+             return state
+    }
+}
 

@@ -3,7 +3,8 @@ import {blue} from 'material-ui/colors'
 const titleBlue = blue[50]
 
 const MusicDiv = styled.div`
-    
+    max-width: 600px;
+    margin: 0 auto;
     .music-player {
         outline: 1px solid red;
         height: 100px;
