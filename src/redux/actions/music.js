@@ -43,7 +43,7 @@ export const getsongListsFail = () => {
 const filterSongListsData = (data) => {
     data.songList.splice(3,1)
     data.songList.splice(4,1)
-    console.log(data.songList)
+    /*console.log(data.songList)*/
 
     const newData = {
         songList: data.songList

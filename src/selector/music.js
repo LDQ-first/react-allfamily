@@ -14,13 +14,13 @@ export const songListsSelector = createSelector(
 )
 
 export const songListsIsLoadingSelector = createSelector(
-    songListsSelector,
-    songListsState => songListsState.get('songListsIsLoading')
+    musicSongListsSelector,
+    musicSongListsState => musicSongListsState.get('songListsIsLoading')
 )
 
 export const songListsErrorMsgSelector = createSelector(
-    songListsSelector,
-    songListsState => songListsState.get('songListsErrorMsg')
+    musicSongListsSelector,
+    musicSongListsState => musicSongListsState.get('songListsErrorMsg')
 )
 
 export const songListSelector = createSelector(

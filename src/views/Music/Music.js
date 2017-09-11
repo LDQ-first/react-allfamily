@@ -12,8 +12,11 @@ import {
 } from '../../selector/music.js'
 import * as musicAction  from '../../redux/actions/music.js'
 import Immutable from 'immutable'
-
-
+import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation'
+import RestoreIcon from 'material-ui-icons/Restore'
+import FavoriteIcon from 'material-ui-icons/Favorite'
+import LocationOnIcon from 'material-ui-icons/LocationOn'
+import FolderIcon from 'material-ui-icons/Folder'
 
 
 
@@ -30,38 +33,57 @@ class Music extends Component {
     constructor(porps) {
         super(porps)
         this.state = {
-
+            value: 0
         }
         
 
     }
+    
 
     
     componentDidMount() {
         console.log('this.props: ', this.props)
         const {getSongLists} = this.props
-        getSongLists()
+        getSongLists()   
     }
     
 
-    componentWillReceiveProps (nextProps) {
-        console.log('this.props: ', this.props)
-        console.log('this.nextProps: ', this.nextProps)
 
 
-
-    }
+    handleChange = (e, value) => {
+        this.setState({
+            value
+        })
+    } 
 
 
     render() {
+        const {value} = this.state
+        console.log('this.props: ', this.props)
         const {songList} = this.props
-        console.log(Immutable.List(songList).toJS())
+        const jsSongList = Immutable.List(songList).toJS()
+        console.log(jsSongList)
+
+        jsSongList.forEach((list, index) => {
+            
+        })
+
 
         return (
             <Container>
                 <MusicDiv>
                      <audio controls className="audio" >你的浏览器不支持喔！</audio>
 
+                      <BottomNavigation
+                            value={value}
+                            onChange={this.handleChange}
+                            showLabels
+                        >
+                            <BottomNavigationButton label="Recents" icon={<RestoreIcon />} />
+                            <BottomNavigationButton label="Favorites" icon={<FavoriteIcon />} />
+                            <BottomNavigationButton label="Nearby" icon={<LocationOnIcon />} />
+                            <BottomNavigationButton label="Nearby" icon={<FolderIcon />} />
+                        </BottomNavigation>
 
                 </MusicDiv>
             </Container>
