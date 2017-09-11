@@ -65,7 +65,6 @@ class Music extends Component {
     
     
     componentWillMount() {
-        console.log('this.props: ', this.props)
         const {getSongLists, songList, getDisLists} = this.props
         getSongLists()   
        
@@ -75,7 +74,7 @@ class Music extends Component {
 
     
     componentDidMount() {
-        console.log('this.props: ', this.props)
+
     
     }
     
