@@ -8,15 +8,19 @@ import {Container} from '../../styled'
 import AvatarImg from '../../styled/AvatarImg'
 import LazyImg from '../../styled/LazyImg'
 import bea from '../../../static/img/002.jpg'
-import Button from '../../styled/button'
+import Buttons from '../../styled/button'
 import PropTypes from 'prop-types'
 import {
     nameSelector,
     introSelector,
     avatarSelector,
     isLoadingSelector,
-    errorMsgSelector
+    errorMsgSelector,
+    githubUrlSelector,
+    loginSelector
 } from '../../selector/userinfo'
+import Button  from 'material-ui/Button'
+
 
 class UserInfo extends Component {
     static get propTypes() { 
@@ -26,15 +30,17 @@ class UserInfo extends Component {
             getUserInfo: PropTypes.func.isRequired,
             name: PropTypes.string,
             intro: PropTypes.string,
-            avatar: PropTypes.string
+            avatar: PropTypes.string,
+            githubUrl: PropTypes.string,
+            login: PropTypes.string,
         }
     }
 
     render() {
-        const {getUserInfo, isLoading, errorMsg , name, intro, avatar } = this.props
+        const {getUserInfo, isLoading, errorMsg , name, intro, avatar, githubUrl , login} = this.props
         
         return (
-            <Container>
+            <Container className="userInfo">
                 {
                     isLoading ? <Loading/>:
                     (
@@ -51,9 +57,15 @@ class UserInfo extends Component {
                         <Img src={avatar} title={name} alt={name}/>
                     </AvatarImg>
                 </div>
-                <Button className="btn" onClick={() => getUserInfo()} >
-                    获取用户信息
+                <Button href={githubUrl} target="_blank" className="githubUrl">
+                    <svg className="icon item-icon" aria-hidden="true">
+                        <use xlinkHref="#icon-github"></use>
+                    </svg>
+                    <h4>查看{login}的Github</h4>
                 </Button>
+                <Buttons className="btn" onClick={() => getUserInfo()} >
+                    获取用户信息
+                </Buttons>
                 <LazyImg>
                     <Img src={bea}/>
                 </LazyImg>
@@ -67,7 +79,9 @@ const mapStateToProps = (state) => ({
     errorMsg: errorMsgSelector(state),   
     name: nameSelector(state),  
     intro: introSelector(state),
-    avatar: avatarSelector(state)
+    avatar: avatarSelector(state),
+    githubUrl: githubUrlSelector(state),
+    login: loginSelector(state)
 })
 
 /*const mapDispatchToProps = {

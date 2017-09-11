@@ -1,5 +1,7 @@
 {
   "name": "LDQ-first",
   "intro": "please give me a star",
-  "avatar": "/react-allfamily/dist/static/img/001.jpg"
+  "avatar": "/react-allfamily/dist/static/img/001.jpg",
+  "githubUrl": "https://github.com/LDQ-first/react-allfamily",
+  "login": "LDQ-first"
 }

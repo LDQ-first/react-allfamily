@@ -2,8 +2,12 @@ import styled from 'styled-components'
 
 const LoadingDiv = styled.div`
     display: inline-block;
-    height: 40px;
+    height: 50px;
     margin: 20px auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
     span {
         display: inline-block;
         width: 8px;

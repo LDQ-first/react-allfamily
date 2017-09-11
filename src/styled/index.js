@@ -110,6 +110,23 @@ const Container = styled.div`
     .githubAppBar {
         background: ${mainBlue};
     }
+    &.userInfo {
+        .githubUrl {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 1em;
+            cursor: pointer;
+            text-transform: lowercase;
+            .item-icon {
+                width: 2em;
+                height: 2em;
+                color: #007bba;
+                margin-right: 2em;
+            }
+        }
+    }
     
 `
 

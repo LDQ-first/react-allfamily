@@ -36,3 +36,13 @@ export const avatarSelector = createSelector(
     userInfosState => userInfosState.get('avatar')
 )
 
+export const githubUrlSelector = createSelector(
+    userInfosSelector,
+    userInfosState => userInfosState.get('githubUrl')
+)
+
+export const loginSelector = createSelector(
+    userInfosSelector,
+    userInfosState => userInfosState.get('login')
+)
+
