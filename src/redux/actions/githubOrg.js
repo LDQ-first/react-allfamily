@@ -2,7 +2,6 @@ import {
     GET_GITHUBORG_INFO_REQUEST,
     GET_GITHUBORG_INFO_SUCCESS,
     GET_GITHUBORG_INFO_FAIL,
-    GET_GITHUBORG_AVATER_SUCCESS
 } from '../const/const'
 import axios from 'axios'
 import {githubApi} from '../../api/api'

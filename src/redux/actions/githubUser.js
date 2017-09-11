@@ -2,7 +2,6 @@ import {
     GET_GITHUBUSER_INFO_REQUEST,
     GET_GITHUBUSER_INFO_SUCCESS,
     GET_GITHUBUSER_INFO_FAIL,
-    GET_GITHUBUSER_AVATER_SUCCESS
 } from '../const/const'
 import axios from 'axios'
 import {githubApi} from '../../api/api'
