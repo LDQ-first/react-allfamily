@@ -24,6 +24,7 @@ export default class Player extends Component {
             currentTime: PropTypes.string,
             duration: PropTypes.string,
             played: PropTypes.number,
+            loaded: PropTypes.number,
             isAutoPlay: PropTypes.bool,
             isPlaying: PropTypes.bool,
         }
@@ -42,12 +43,13 @@ export default class Player extends Component {
 
     
     componentWillReceiveProps(nextProps) {
-       const { currentTime, duration, played, isPlaying, _this, isAutoPlay} = this.props
+       const { currentTime, duration, played,loaded, isPlaying, _this, isAutoPlay} = this.props
        const {isPlay} = this.state
        this.setState({
-           played 
+           played ,
+           loaded
        })
-       console.log(isPlay)
+      /* console.log(isPlay)*/
        if(!isAutoPlay && isPlay && !isPlaying) {
            this.setState({
                 isPlay: false
@@ -85,7 +87,7 @@ export default class Player extends Component {
     render() {
 
         const {_this, albumImgUrl, songname, singer, currentTime, duration, isAutoPlay} = this.props
-        const {isPlay, mode, isMute, loaded, played } = this.state
+        const {isPlay, mode, isMute, loaded, played} = this.state
 
 
 

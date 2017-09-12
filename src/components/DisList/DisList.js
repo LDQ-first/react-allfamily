@@ -25,18 +25,18 @@ export default class DisList extends Component {
     }
 
     
+
+    
     
 
     
     componentWillReceiveProps(nextProps) {
+
         const { clickI, values } = this.state
-        /*console.log('clickI: ', clickI)*/
         const {value} = this.props
         this.setState({
             values: value
         })
-        /*console.log('values: ', values)
-        console.log('props: ', this.props.value)*/
         if( values === this.props.value) return
         this.setState({
             clickI : 0
@@ -49,6 +49,7 @@ export default class DisList extends Component {
                 this._disListsWrapper.scrollTop -= this._disListsWrapper.scrollTop * 0.2
             }
         }, 100)
+        
     }
     
 
@@ -70,6 +71,9 @@ export default class DisList extends Component {
         const className = (index) => {
             return classNames("disList", {'active': index === clickI})
         } 
+
+
+       
 
         const disLists = jsDisList.map((list, index) => {
             return (

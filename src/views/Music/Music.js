@@ -63,6 +63,7 @@ class Music extends Component {
             duration: '00:00',
             currentTime: '00:00',
             played: 0,
+            loaded: 0,
             isAutoPlay: false,
             isPlaying: false 
         }
@@ -184,11 +185,25 @@ class Music extends Component {
         this._musicPlayer.autoplay = isAutoPlay
     }
 
+    getProgress() {
+        console.log(this._musicPlayer.buffered)
+        let spu = 0, loaded
+        const audio = this._musicPlayer
+        for (var i = 0; i < audio.buffered.length; i++) {
+            spu += audio.buffered.end(i) - audio.buffered.start(i)
+            loaded = spu / audio.duration
+            console.log(spu / audio.duration)
+        }
+        this.setState({
+            loaded
+        })
+        
+    }
 
 
     render() {
         const {value, open, songUrl, albumImgUrl, songname, singer,
-            duration, currentTime, played, isAutoPlay, isPlaying} = this.state
+            duration, currentTime, played, isAutoPlay, isPlaying, loaded} = this.state
        /* console.log('this.props: ', this.props)*/
         const {songList, getDisLists, disList} = this.props
         const jsSongList = Immutable.List(songList).toJS()
@@ -212,10 +227,11 @@ class Music extends Component {
                           className="audio" src={songUrl}
                           onCanPlay = {() => {this.getTime()}}
                           onTimeUpdate = {() => { this.upsateTime()}}
+                          onProgress = {() => { this.getProgress()}}
                           >你的浏览器不支持喔！</audio>
                           <Player _this={this} albumImgUrl={albumImgUrl}  songname={songname} singer={singer}
-                          duration={duration} currentTime={currentTime} played={played} isAutoPlay={isAutoPlay}
-                          isPlaying={isPlaying}/>
+                          duration={duration} currentTime={currentTime} played={played} loaded={loaded} 
+                          isAutoPlay={isAutoPlay}  isPlaying={isPlaying}/>
                           <IconButton color="primary" onClick={this.handleClick} className="song-lists-expand">
                             {open ? <ExpandMore /> : <ExpandLess />}
                           </IconButton >
