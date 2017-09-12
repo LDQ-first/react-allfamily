@@ -36,7 +36,7 @@ export default class DisList extends Component {
             else {
                 this._disListsWrapper.scrollTop -= this._disListsWrapper.scrollTop * 0.2
             }
-        }, 200)
+        }, 150)
     }
     
 
