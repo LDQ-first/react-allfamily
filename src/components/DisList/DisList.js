@@ -12,20 +12,32 @@ export default class DisList extends Component {
         return { 
             jsDisList: PropTypes.array,
             _this: PropTypes.object,
+            value: PropTypes.number,
         }
     }
 
     constructor (props) {
         super(props)
         this.state = {
-            clickI: 0
+            clickI: 0,
+            values: null
         }
     }
 
     
+    
+
+    
     componentWillReceiveProps(nextProps) {
-        const { clickI } = this.state
+        const { clickI, values } = this.state
         console.log('clickI: ', clickI)
+        const {value} = this.props
+        this.setState({
+            values: value
+        })
+        /*console.log('values: ', values)
+        console.log('props: ', this.props.value)*/
+        if( values === this.props.value) return
         this.setState({
             clickI : 0
         })

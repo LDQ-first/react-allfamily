@@ -160,7 +160,7 @@ class Music extends Component {
                      </div>
                      <Collapse in={open} className="song-lists-wrapper">
                            {SongLists}
-                           <DisList jsDisList={jsDisList} _this={this}/>
+                           <DisList jsDisList={jsDisList} _this={this} value={value}/>
                         <BottomNavigation
                             className="song-lists-control"
                             value={value}
