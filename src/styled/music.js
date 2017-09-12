@@ -96,15 +96,38 @@ const MusicDiv = styled.div`
                     height: 50px;
                     position: relative;
                     &::before {
-
+                        position: absolute;
+                        
                     }
                     &::after {
+                        position: absolute;
 
                     }
                 }
                 .player-info-control {
                     outline: 1px solid purple;
                     flex: 1;
+                    display: flex;
+                    align-items: center;
+                    width: 95%;
+                    .player-bar-wrapper {
+                        flex: 1;
+                        .player-bar {
+                            height: 5px;
+                            position: relative;
+                            overflow: hidden;
+                            background: #bbdefb;
+                        }
+                    }
+                    .player-time {
+
+                    }
+                    .player-volume-wrapper {
+
+                    }
+                    .player-mode {
+                        
+                    }
                 }
             }
         }

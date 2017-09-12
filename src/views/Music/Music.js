@@ -60,8 +60,8 @@ class Music extends Component {
         this.state = {
             value: 0,
             open: true,
-            albumImgUrl: '',
-            songUrl: ''
+            /*albumImgUrl: '',
+            songUrl: ''*/
         }
         
 
@@ -102,14 +102,16 @@ class Music extends Component {
     }
 
     getSong = (list) => {
-        const { songid, albummid } = list
+        const { songid, albummid, songname, singer } = list
         console.log(songid, albummid)
         const albumImgUrl = musicApi.albumImg(albummid)
         const songUrl = musicApi.song(songid)
         console.log(albumImgUrl, '\n' , songUrl)
         this.setState({
             albumImgUrl,
-            songUrl
+            songUrl,
+            songname,
+            singer
         })
     }
 
@@ -125,7 +127,7 @@ class Music extends Component {
 
 
     render() {
-        const {value, open, songUrl, albumImgUrl} = this.state
+        const {value, open, songUrl, albumImgUrl, songname, singer} = this.state
        /* console.log('this.props: ', this.props)*/
         const {songList, getDisLists, disList} = this.props
         const jsSongList = Immutable.List(songList).toJS()
@@ -151,7 +153,8 @@ class Music extends Component {
                      <div className="music-player">
                           <audio controls ref={audio => this._musicPlayer = audio}
                           className="audio" src={songUrl}>你的浏览器不支持喔！</audio>
-                          <Player _this={this} albumImgUrl={albumImgUrl} />
+                          <Player _this={this} albumImgUrl={albumImgUrl} 
+                          songname={songname} singer={singer}/>
 
 
                           <IconButton color="primary" onClick={this.handleClick} className="song-lists-expand">
