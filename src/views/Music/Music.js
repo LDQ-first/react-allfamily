@@ -60,6 +60,9 @@ class Music extends Component {
         this.state = {
             value: 0,
             open: true,
+            duration: '00:00',
+            currentTime: '00:00',
+            played: 0
         }
         
 
@@ -70,22 +73,26 @@ class Music extends Component {
     componentWillMount() {
         const {getSongLists, songList, getDisLists} = this.props
         getSongLists()   
+
        
     }
     
-    
+    componentWillReceiveProps(nextProps) {
+        /* const {duration, currentTime} = this.state
+         console.log(duration)
+        console.log(currentTime)
+         this.setState({
+            duration: '00:00',
+            currentTime: '00:00',
+            played: 0
+        })
+        console.log(duration)
+        console.log(currentTime)*/
 
-    
-    componentDidMount() {
-
-    
     }
     
-    componentDidUpdate() {
-        const {value, open} = this.state
-        const {songList, getDisLists} = this.props
-        
-    }
+    
+
 
 
 
@@ -126,21 +133,28 @@ class Music extends Component {
     }
 
 
-    getTime() {
+    getTime () {
         const duration = this.formatSongTime(this._musicPlayer.duration)
         const currentTime = this.formatSongTime(this._musicPlayer.currentTime)
+        const played = this._musicPlayer.currentTime / this._musicPlayer.duration
+       /* console.log(this._musicPlayer.duration)
         console.log(duration)
-        console.log(currentTime)
+        console.log(currentTime)*/
         this.setState({
             duration,
-            currentTime
+            currentTime,
+            played
         })
+    }
+
+    upsateTime () {
+        if(!this._musicPlayer.duration) return
+        this.getTime ()
     }
 
 
     playSong = () => {
         console.log('play')
-        console.log(this._musicPlayer )
         const {songUrl} = this.state
         if(!songUrl) return
         this._musicPlayer.play()
@@ -150,7 +164,6 @@ class Music extends Component {
 
     pauseSong = () => {
         console.log('pause')
-        console.log(this._musicPlayer )
         const {songUrl} = this.state
         if(!songUrl) return
         this._musicPlayer.pause()
@@ -161,12 +174,13 @@ class Music extends Component {
 
 
     render() {
-        const {value, open, songUrl, albumImgUrl, songname, singer} = this.state
+        const {value, open, songUrl, albumImgUrl, songname, singer,
+            duration, currentTime, played} = this.state
        /* console.log('this.props: ', this.props)*/
         const {songList, getDisLists, disList} = this.props
         const jsSongList = Immutable.List(songList).toJS()
         const jsDisList = Immutable.List(disList).toJS()
-        console.log(jsDisList)
+        /*console.log(jsDisList)*/
 
         const SongLists = jsSongList.map((list, index) => {
             return (
@@ -187,12 +201,11 @@ class Music extends Component {
                      <div className="music-player">
                           <audio controls ref={audio => this._musicPlayer = audio}
                           className="audio" src={songUrl}
-                          onTimeUpdate = {() => { this.getTime()}}
+                          onCanPlay = {() => {this.getTime()}}
+                          onTimeUpdate = {() => { this.upsateTime()}}
                           >你的浏览器不支持喔！</audio>
-                          <Player _this={this} albumImgUrl={albumImgUrl} 
-                          songname={songname} singer={singer}/>
-
-
+                          <Player _this={this} albumImgUrl={albumImgUrl}  songname={songname} singer={singer}
+                          duration={duration} currentTime={currentTime} played={played}/>
                           <IconButton color="primary" onClick={this.handleClick} className="song-lists-expand">
                             {open ? <ExpandMore /> : <ExpandLess />}
                           </IconButton >

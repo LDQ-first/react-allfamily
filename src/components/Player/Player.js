@@ -20,6 +20,9 @@ export default class Player extends Component {
             albumImgUrl: PropTypes.string,
             songname: PropTypes.string,
             singer: PropTypes.string,
+            currentTime: PropTypes.string,
+            duration: PropTypes.string,
+            played: PropTypes.number
         }
     }
 
@@ -36,7 +39,14 @@ export default class Player extends Component {
 
     
     componentWillReceiveProps(nextProps) {
-       
+       const { currentTime, duration, played} = this.props
+       /*console.log(currentTime)
+       console.log(duration)*/
+       /*console.log('played: ', played)*/
+       this.setState({
+           played
+       })
+
     }
     
 
@@ -59,8 +69,11 @@ export default class Player extends Component {
 
     render() {
 
-        const {_this, albumImgUrl, songname, singer} = this.props
+        const {_this, albumImgUrl, songname, singer, currentTime, duration} = this.props
         const {isPlay, mode, isMute, loaded, played} = this.state
+
+
+
 
         return (
             <div className="player" >
@@ -96,8 +109,8 @@ export default class Player extends Component {
                             </div>
                         </div>
                         <div className="player-time">
-                            <span className="player-ptime"></span> / 
-                            <span className="player-dtime"></span>
+                            <span className="player-ctime">{currentTime}</span> / 
+                            <span className="player-dtime">{duration}</span>
                         </div>
                         <div className="player-volume-wrapper">
                             <div className="player-volume">

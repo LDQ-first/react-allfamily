@@ -30,7 +30,7 @@ export default class DisList extends Component {
     
     componentWillReceiveProps(nextProps) {
         const { clickI, values } = this.state
-        console.log('clickI: ', clickI)
+        /*console.log('clickI: ', clickI)*/
         const {value} = this.props
         this.setState({
             values: value
