@@ -177,9 +177,6 @@ class Music extends Component {
                         </BottomNavigation>
 
                      </Collapse>
-
-                      
-
                 </MusicDiv>
             </Container>
         )

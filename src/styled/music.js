@@ -7,8 +7,20 @@ const dHeaderBlue = blue[500]
 const MusicDiv = styled.div`
     max-width: 600px;
     margin: 0 auto;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+                0 3px 1px -2px rgba(0, 0, 0, 0.2),
+                0 1px 5px 0 rgba(0, 0, 0, 0.12);
     .music-player {
         outline: 1px solid red;
+        position: relative;
+        border-bottom: 2px solid #CCC;
+        .song-lists-expand {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            height: 40px;
+            width: 30px;
+        }
         .audio {
             display: block;
             margin-bottom: 10px;
