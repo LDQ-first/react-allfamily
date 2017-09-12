@@ -115,15 +115,37 @@ class Music extends Component {
         })
     }
 
+
+    formatNum(num) {
+        return num < 10 ? `0${num}` : num + '' 
+    }
+
+
+    formatSongTime (time) {
+        const min = this.formatNum(parseInt(time / 60))
+        const sec = this.formatNum(parseInt(time - min * 60))
+        return `${min}:${sec}`
+    }
+
+
     playSong = () => {
         console.log('play')
         console.log(this._musicPlayer )
+        const {songUrl} = this.state
+        if(!songUrl) return
         this._musicPlayer.play()
+        console.log(this.formatSongTime(this._musicPlayer.duration))
+
+
+        console.log(this.formatSongTime(this._musicPlayer.currentTime))
+        
     }
 
     pauseSong = () => {
         console.log('pause')
         console.log(this._musicPlayer )
+        const {songUrl} = this.state
+        if(!songUrl) return
         this._musicPlayer.pause()
     }
 
