@@ -118,11 +118,13 @@ class Music extends Component {
     playSong = () => {
         console.log('play')
         console.log(this._musicPlayer )
+        this._musicPlayer.play()
     }
 
     pauseSong = () => {
         console.log('pause')
         console.log(this._musicPlayer )
+        this._musicPlayer.pause()
     }
 
 
