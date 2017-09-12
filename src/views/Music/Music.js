@@ -82,6 +82,9 @@ class Music extends Component {
     componentWillReceiveProps(nextProps) {
          const {isAutoPlay} = this.state
          this._musicPlayer.autoplay = isAutoPlay
+         this.setState({
+             volume: this._musicPlayer.volume
+         })
     }
     
     
@@ -122,6 +125,7 @@ class Music extends Component {
                 isPlaying: true
             })
         }
+       
     }
 
 
@@ -197,12 +201,17 @@ class Music extends Component {
         
     }
 
+    changeVolume () {
+        this.setState({
+             volume: this._musicPlayer.volume
+         })
+    }
 
 
 
     render() {
         const {value, open, songUrl, albumImgUrl, songname, singer,
-            duration, currentTime, played, isAutoPlay, isPlaying, loaded} = this.state
+            duration, currentTime, played, isAutoPlay, isPlaying, loaded, volume} = this.state
        /* console.log('this.props: ', this.props)*/
         const {songList, getDisLists, disList} = this.props
         const jsSongList = Immutable.List(songList).toJS()
@@ -227,12 +236,12 @@ class Music extends Component {
                           onCanPlay = {() => {this.getTime()}}
                           onTimeUpdate = {() => { this.upsateTime()}}
                           onProgress = {() => { this.getProgress()}}
-                          
+                          onVolumeChange = {() => {this.changeVolume()}}
 
                           >你的浏览器不支持喔！</audio>
                           <Player _this={this} albumImgUrl={albumImgUrl}  songname={songname} singer={singer}
                           duration={duration} currentTime={currentTime} played={played} loaded={loaded} 
-                          isAutoPlay={isAutoPlay}  isPlaying={isPlaying}/>
+                          isAutoPlay={isAutoPlay}  isPlaying={isPlaying} volume={volume}/>
                           <IconButton color="primary" onClick={this.handleClick} className="song-lists-expand">
                             {open ? <ExpandMore /> : <ExpandLess />}
                           </IconButton >

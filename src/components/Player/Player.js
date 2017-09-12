@@ -27,6 +27,7 @@ export default class Player extends Component {
             loaded: PropTypes.number,
             isAutoPlay: PropTypes.bool,
             isPlaying: PropTypes.bool,
+            volume: PropTypes.volume
         }
     }
 
@@ -48,7 +49,7 @@ export default class Player extends Component {
 
     
     componentWillReceiveProps(nextProps) {
-       const { currentTime, duration, played,loaded, isPlaying, _this, isAutoPlay} = this.props
+       const { currentTime, duration, played,loaded, isPlaying, _this, isAutoPlay, volume} = this.props
        const {isPlay} = this.state
        this.setState({
            played ,
@@ -65,6 +66,17 @@ export default class Player extends Component {
                 isPlay: true
             })
        } 
+       console.log(volume)
+       if(volume === 0) {
+           this.setState({
+               isMute: true
+           })
+       } else {
+           this.setState({
+               isMute: false
+           })
+       }
+
     }
 
     
@@ -91,7 +103,7 @@ export default class Player extends Component {
 
     render() {
 
-        const {_this, albumImgUrl, songname, singer, currentTime, duration, isAutoPlay} = this.props
+        const {_this, albumImgUrl, songname, singer, currentTime, duration, isAutoPlay, volume} = this.props
         const {isPlay, mode, isMute, loaded, played} = this.state
 
 
@@ -141,11 +153,6 @@ export default class Player extends Component {
                         <div className="player-bar-wrapper">
                             <div className="player-bar"
                             ref={bar => this.bar = bar}>
-                               {/* <div className="player-loaded" 
-                                style={{transform: `scaleX(${loaded})`}}></div>
-                                <div className="player-played"
-                                style={{transform: `scaleX(${played})`}}>
-                                </div>*/}
                                 <div className="player-loaded" 
                                 style={{width: `${ loaded * 100 }%`}}></div>
                                 <div className="player-played"
@@ -170,6 +177,12 @@ export default class Player extends Component {
                                         <VolumeDownIcon/>
                                     </IconButton> 
                                }
+                               <div className="player-volume-bar-wrap">
+                                   <div className="player-volume-bar">
+                                       <div className="aplayer-volume" 
+                                       style={{height: `${volume * 100}%`}}></div>
+                                   </div>
+                               </div>
                             </div>
                         </div>
                         <div className="player-mode" onClick={() => {}}>

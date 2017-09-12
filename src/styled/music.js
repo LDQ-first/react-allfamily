@@ -211,8 +211,34 @@ const MusicDiv = styled.div`
                     .player-volume-wrapper {   
                         display: inline-flex; 
                         margin: 0 4px;
+                        position: relative;
                         .player-volume {
                             display: inline-flex;
+                        }
+                        .player-volume-bar-wrap {
+                            position: absolute;
+                            bottom: 25px;
+                            right: 1px;
+                            width: 25px;
+                            height: 60px;
+                            z-index: 99;
+                            .player-volume-bar {
+                                position: absolute;
+                                bottom: 0;
+                                right: 10px;
+                                width: 5px;
+                                height: 55px;
+                                background: #aaa;
+                                .aplayer-volume {
+                                    position: absolute;
+                                    bottom: 0;
+                                    right: 0;
+                                    width: 5px;
+                                    transition: all 0.1s ease;
+                                    background: ${dHeaderBlue}
+                                }
+                            }
+
                         }
                     }
                     .player-mode {
