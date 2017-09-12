@@ -24,6 +24,8 @@ import SongList from '../../components/SongList/SongList.js'
 import IconButton from 'material-ui/IconButton'
 import ExpandLess from 'material-ui-icons/ExpandLess'
 import ExpandMore from 'material-ui-icons/ExpandMore'
+import Collapse from 'material-ui/transitions/Collapse'
+import DisList from '../../components/DisList/DisList.js'
 
 
 const mapStateToProps = (state) => ({
@@ -108,7 +110,7 @@ class Music extends Component {
         const SongLists = jsSongList.map((list, index) => {
             return (
                 value === index && 
-                <SongList img={list.picUrl} open={open} songListDesc={list.songListDesc} 
+                <SongList img={list.picUrl}  songListDesc={list.songListDesc} 
                 id={list.id} getDisLists={getDisLists}/>
             )
         })
@@ -127,8 +129,9 @@ class Music extends Component {
                             {open ? <ExpandMore /> : <ExpandLess />}
                           </IconButton >
                      </div>
-                     <div className="song-lists-wrapper">
+                     <Collapse in={open} className="song-lists-wrapper">
                            {SongLists}
+                           <DisList jsDisList={jsDisList}/>
                         <BottomNavigation
                             value={value}
                             onChange={this.handleChange}
@@ -140,7 +143,7 @@ class Music extends Component {
                             <BottomNavigationButton label="ACG" icon={<FolderIcon />} />
                         </BottomNavigation>
 
-                     </div>
+                     </Collapse>
 
                       
 

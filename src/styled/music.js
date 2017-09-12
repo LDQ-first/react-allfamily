@@ -15,6 +15,7 @@ const MusicDiv = styled.div`
           .song-lists-header {
              position: relative;
              height: 100px;
+             overflow: hidden;
               .song-lists-content {
                  position: relative;
                  z-index: 10;

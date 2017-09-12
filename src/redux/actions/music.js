@@ -103,7 +103,6 @@ const filterDisListsData = (data) => {
             songid: item.songid
         }
     })
-    console.log('newSongList: ', newSongList)
 
     const newData = {
         disList: newSongList
