@@ -40,9 +40,6 @@ export default class Player extends Component {
     
     componentWillReceiveProps(nextProps) {
        const { currentTime, duration, played} = this.props
-       /*console.log(currentTime)
-       console.log(duration)*/
-       /*console.log('played: ', played)*/
        this.setState({
            played
        })

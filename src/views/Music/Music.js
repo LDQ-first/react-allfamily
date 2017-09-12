@@ -137,9 +137,6 @@ class Music extends Component {
         const duration = this.formatSongTime(this._musicPlayer.duration)
         const currentTime = this.formatSongTime(this._musicPlayer.currentTime)
         const played = this._musicPlayer.currentTime / this._musicPlayer.duration
-       /* console.log(this._musicPlayer.duration)
-        console.log(duration)
-        console.log(currentTime)*/
         this.setState({
             duration,
             currentTime,
