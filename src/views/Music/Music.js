@@ -60,8 +60,6 @@ class Music extends Component {
         this.state = {
             value: 0,
             open: true,
-            /*albumImgUrl: '',
-            songUrl: ''*/
         }
         
 
@@ -111,7 +109,7 @@ class Music extends Component {
             albumImgUrl,
             songUrl,
             songname,
-            singer
+            singer,
         })
     }
 
@@ -128,16 +126,25 @@ class Music extends Component {
     }
 
 
+    getTime() {
+        const duration = this.formatSongTime(this._musicPlayer.duration)
+        const currentTime = this.formatSongTime(this._musicPlayer.currentTime)
+        console.log(duration)
+        console.log(currentTime)
+        this.setState({
+            duration,
+            currentTime
+        })
+    }
+
+
     playSong = () => {
         console.log('play')
         console.log(this._musicPlayer )
         const {songUrl} = this.state
         if(!songUrl) return
         this._musicPlayer.play()
-        console.log(this.formatSongTime(this._musicPlayer.duration))
-
-
-        console.log(this.formatSongTime(this._musicPlayer.currentTime))
+        
         
     }
 
@@ -148,6 +155,9 @@ class Music extends Component {
         if(!songUrl) return
         this._musicPlayer.pause()
     }
+
+
+
 
 
     render() {
@@ -176,7 +186,9 @@ class Music extends Component {
                 <MusicDiv>
                      <div className="music-player">
                           <audio controls ref={audio => this._musicPlayer = audio}
-                          className="audio" src={songUrl}>你的浏览器不支持喔！</audio>
+                          className="audio" src={songUrl}
+                          onTimeUpdate = {() => { this.getTime()}}
+                          >你的浏览器不支持喔！</audio>
                           <Player _this={this} albumImgUrl={albumImgUrl} 
                           songname={songname} singer={singer}/>
 
