@@ -63,7 +63,8 @@ class Music extends Component {
             duration: '00:00',
             currentTime: '00:00',
             played: 0,
-            isAutoPlay: false
+            isAutoPlay: false,
+            isPlaying: false 
         }
         
 
@@ -80,7 +81,6 @@ class Music extends Component {
     
     componentWillReceiveProps(nextProps) {
          const {duration, currentTime} = this.state
-        
 
     }
     
@@ -100,6 +100,7 @@ class Music extends Component {
     }
 
     getSong = (list) => {
+        const {isAutoPlay, isPlaying} = this.state
         const { songid, albummid, songname, singer } = list
         console.log(songid, albummid)
         const albumImgUrl = musicApi.albumImg(albummid)
@@ -111,6 +112,13 @@ class Music extends Component {
             songname,
             singer,
         })
+
+        if(!isAutoPlay && isPlaying) {
+            this.setState({
+                isPlaying: false
+            })
+        }
+       /* console.log(this.state.isPlaying)*/
     }
 
 
@@ -148,7 +156,9 @@ class Music extends Component {
         const {songUrl} = this.state
         if(!songUrl) return
         this._musicPlayer.play()
-        
+        this.setState({
+            isPlaying: true
+        })
         
     }
 
@@ -157,6 +167,9 @@ class Music extends Component {
         const {songUrl} = this.state
         if(!songUrl) return
         this._musicPlayer.pause()
+        this.setState({
+            isPlaying: false
+        })
     }
 
     toggleAutoPlay (isAutoPlay) {
@@ -170,7 +183,7 @@ class Music extends Component {
 
     render() {
         const {value, open, songUrl, albumImgUrl, songname, singer,
-            duration, currentTime, played, isAutoPlay} = this.state
+            duration, currentTime, played, isAutoPlay, isPlaying} = this.state
        /* console.log('this.props: ', this.props)*/
         const {songList, getDisLists, disList} = this.props
         const jsSongList = Immutable.List(songList).toJS()
@@ -185,10 +198,6 @@ class Music extends Component {
             )
         })
 
-        
-
-       
-
 
         return (
             <Container>
@@ -200,7 +209,8 @@ class Music extends Component {
                           onTimeUpdate = {() => { this.upsateTime()}}
                           >你的浏览器不支持喔！</audio>
                           <Player _this={this} albumImgUrl={albumImgUrl}  songname={songname} singer={singer}
-                          duration={duration} currentTime={currentTime} played={played} isAutoPlay={isAutoPlay}/>
+                          duration={duration} currentTime={currentTime} played={played} isAutoPlay={isAutoPlay}
+                          isPlaying={isPlaying}/>
                           <IconButton color="primary" onClick={this.handleClick} className="song-lists-expand">
                             {open ? <ExpandMore /> : <ExpandLess />}
                           </IconButton >

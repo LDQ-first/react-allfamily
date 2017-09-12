@@ -25,6 +25,7 @@ export default class Player extends Component {
             duration: PropTypes.string,
             played: PropTypes.number,
             isAutoPlay: PropTypes.bool,
+            isPlaying: PropTypes.bool,
         }
     }
 
@@ -41,12 +42,22 @@ export default class Player extends Component {
 
     
     componentWillReceiveProps(nextProps) {
-       const { currentTime, duration, played} = this.props
+       const { currentTime, duration, played, isPlaying, _this, isAutoPlay} = this.props
+       const {isPlay} = this.state
        this.setState({
            played 
        })
-
+       console.log(isPlay)
+       if(isPlay && !isAutoPlay && !isPlaying) {
+           this.setState({
+                isPlay: false
+            })
+       } 
     }
+
+    
+
+
     
 
     play (_this) {
