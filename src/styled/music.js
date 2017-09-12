@@ -3,6 +3,8 @@ import {blue, green} from 'material-ui/colors'
 const titleBlue = blue[50]
 const disListsGreen = green['A100']
 const dHeaderBlue = blue[500]
+const thumbBlue = blue[500]
+const thumbborderBlue = blue[300]
 
 const MusicDiv = styled.div`
     max-width: 600px;
@@ -159,11 +161,11 @@ const MusicDiv = styled.div`
                     .player-bar-wrapper {
                         flex: 1;
                         margin: 0 0.5em;
-                        overflow: hidden;
+                        /*overflow: hidden;*/
                         .player-bar {
-                            height: 5px;
+                            height: 4px;
                             position: relative;
-                            overflow: hidden;
+                            /*overflow: hidden;*/
                             background: #CCC;
                             .player-played {
                                 top: 0;
@@ -185,6 +187,19 @@ const MusicDiv = styled.div`
                                 transition: transform 0.2s linear;
                                 transform-origin: left;
                                 background: #bbdefb;
+                             }
+                             .player-played-thumb {
+                                 position: absolute;
+                                 top: 0;
+                                 right: 2px;
+                                 margin-top: -6px;
+                                 margin-right: -10px;
+                                 height: 16px;
+                                 width: 16px;
+                                 border-radius: 50%;
+                                 background: ${thumbBlue};
+                                 cursor: pointer;
+                                 border: 2px solid ${thumbborderBlue};
                              }
                         }
                     }

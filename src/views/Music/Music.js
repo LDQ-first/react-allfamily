@@ -227,6 +227,8 @@ class Music extends Component {
                           onCanPlay = {() => {this.getTime()}}
                           onTimeUpdate = {() => { this.upsateTime()}}
                           onProgress = {() => { this.getProgress()}}
+                          
+
                           >你的浏览器不支持喔！</audio>
                           <Player _this={this} albumImgUrl={albumImgUrl}  songname={songname} singer={singer}
                           duration={duration} currentTime={currentTime} played={played} loaded={loaded} 

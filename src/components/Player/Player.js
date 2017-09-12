@@ -139,11 +139,20 @@ export default class Player extends Component {
                     <Lyric />
                     <footer className="player-info-control">
                         <div className="player-bar-wrapper">
-                            <div className="player-bar">
-                                <div className="player-loaded" 
+                            <div className="player-bar"
+                            ref={bar => this.bar = bar}>
+                               {/* <div className="player-loaded" 
                                 style={{transform: `scaleX(${loaded})`}}></div>
                                 <div className="player-played"
-                                style={{transform: `scaleX(${played})`}}></div>
+                                style={{transform: `scaleX(${played})`}}>
+                                </div>*/}
+                                <div className="player-loaded" 
+                                style={{width: `${ loaded * 100 }%`}}></div>
+                                <div className="player-played"
+                                style={{width: `${ played * 100 }%`}}>
+                                    <span className="player-played-thumb"></span>
+                                </div>
+                                
                             </div>
                         </div>
                         <div className="player-time">
