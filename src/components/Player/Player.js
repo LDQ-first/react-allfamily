@@ -93,23 +93,24 @@ export default class Player extends Component {
                             </div>
                         </div>
                         <div className="player-time">
-                            
+                            <span className="player-ptime"></span> / 
+                            <span className="player-dtime"></span>
                         </div>
                         <div className="player-volume-wrapper">
                             <div className="player-volume">
                                 { 
                                     isMute ? 
-                                    <IconButton onClick={() => {}}>
+                                    <IconButton className="iconBtn" onClick={() => {}}>
                                         <VolumeOffIcon/>
                                     </IconButton> : 
-                                    <IconButton onClick={() => {}}>
+                                    <IconButton className="iconBtn" onClick={() => {}}>
                                         <VolumeDownIcon/>
                                     </IconButton> 
                                }
                             </div>
                         </div>
                         <div className="player-mode" onClick={() => {}}>
-                            <IconButton onClick={() => {}}>
+                            <IconButton className="iconBtn" onClick={() => {}}>
                                 {mode === 'loop' && <LoopIcon/>} 
                             </IconButton>
                         </div>

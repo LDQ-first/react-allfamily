@@ -110,8 +110,13 @@ const MusicDiv = styled.div`
                     display: flex;
                     align-items: center;
                     width: 95%;
+                    .iconBtn {
+                        width: 24px;
+                        height: 24px;
+                    }
                     .player-bar-wrapper {
                         flex: 1;
+                        margin: 0 0.5em;
                         .player-bar {
                             height: 5px;
                             position: relative;
@@ -120,13 +125,20 @@ const MusicDiv = styled.div`
                         }
                     }
                     .player-time {
-
+                        font-size: 12px;
+                        width: 70px;
+                        margin: 0 4px;
                     }
-                    .player-volume-wrapper {
-
+                    .player-volume-wrapper {   
+                        display: inline-flex; 
+                        margin: 0 4px;
+                        .player-volume {
+                            display: inline-flex;
+                        }
                     }
                     .player-mode {
-                        
+                        margin: 0 4px;
+                        display: inline-flex;
                     }
                 }
             }
