@@ -122,8 +122,8 @@ const MusicDiv = styled.div`
                     align-items: center;
                     width: 95%;
                     .iconBtn {
-                        width: 24px;
-                        height: 24px;
+                        width: 30px;
+                        height: 30px;
                     }
                     .player-bar-wrapper {
                         flex: 1;
