@@ -11,7 +11,8 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import IconButton from 'material-ui/IconButton'
 import Lyric from '../Lyric/Lyric.js'
-
+import { FormControlLabel } from 'material-ui/Form'
+import Switch from 'material-ui/Switch'
 
 export default class Player extends Component {
     static get propTypes() { 
@@ -22,7 +23,8 @@ export default class Player extends Component {
             singer: PropTypes.string,
             currentTime: PropTypes.string,
             duration: PropTypes.string,
-            played: PropTypes.number
+            played: PropTypes.number,
+            isAutoPlay: PropTypes.bool,
         }
     }
 
@@ -41,7 +43,7 @@ export default class Player extends Component {
     componentWillReceiveProps(nextProps) {
        const { currentTime, duration, played} = this.props
        this.setState({
-           played
+           played 
        })
 
     }
@@ -66,8 +68,8 @@ export default class Player extends Component {
 
     render() {
 
-        const {_this, albumImgUrl, songname, singer, currentTime, duration} = this.props
-        const {isPlay, mode, isMute, loaded, played} = this.state
+        const {_this, albumImgUrl, songname, singer, currentTime, duration, isAutoPlay} = this.props
+        const {isPlay, mode, isMute, loaded, played } = this.state
 
 
 
@@ -92,8 +94,26 @@ export default class Player extends Component {
                 </div>
                 <div className="player-info">
                     <header className="player-info-header">
-                        <h3 className="player-info-song">{songname}</h3>
-                        <h4 className="player-info-singer"> - {singer}</h4>
+                        <div className="player-info-title">
+                            <h3 className="player-info-song">{songname}</h3>
+                            <h4 className="player-info-singer"> - {singer}</h4>
+                        </div>
+                        <div className="player-info-header-control">
+                             <FormControlLabel
+                               className="player-info-formControlLabel"
+                               color="primary"
+                                control={
+                                    <Switch 
+                                    
+                                    className="player-info-switch"
+                                    checked={isAutoPlay}
+                                    onChange={(event, isAutoPlay) => _this.toggleAutoPlay(isAutoPlay)}
+                                    />
+                                }
+                                label="自动播放"
+                              />
+                        </div>
+                       
                     </header>
                     <Lyric />
                     <footer className="player-info-control">

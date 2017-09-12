@@ -62,7 +62,8 @@ class Music extends Component {
             open: true,
             duration: '00:00',
             currentTime: '00:00',
-            played: 0
+            played: 0,
+            isAutoPlay: false
         }
         
 
@@ -78,16 +79,8 @@ class Music extends Component {
     }
     
     componentWillReceiveProps(nextProps) {
-        /* const {duration, currentTime} = this.state
-         console.log(duration)
-        console.log(currentTime)
-         this.setState({
-            duration: '00:00',
-            currentTime: '00:00',
-            played: 0
-        })
-        console.log(duration)
-        console.log(currentTime)*/
+         const {duration, currentTime} = this.state
+        
 
     }
     
@@ -166,13 +159,17 @@ class Music extends Component {
         this._musicPlayer.pause()
     }
 
-
+    toggleAutoPlay (isAutoPlay) {
+        this.setState({ 
+            isAutoPlay
+        })
+    }
 
 
 
     render() {
         const {value, open, songUrl, albumImgUrl, songname, singer,
-            duration, currentTime, played} = this.state
+            duration, currentTime, played, isAutoPlay} = this.state
        /* console.log('this.props: ', this.props)*/
         const {songList, getDisLists, disList} = this.props
         const jsSongList = Immutable.List(songList).toJS()
@@ -202,7 +199,7 @@ class Music extends Component {
                           onTimeUpdate = {() => { this.upsateTime()}}
                           >你的浏览器不支持喔！</audio>
                           <Player _this={this} albumImgUrl={albumImgUrl}  songname={songname} singer={singer}
-                          duration={duration} currentTime={currentTime} played={played}/>
+                          duration={duration} currentTime={currentTime} played={played} isAutoPlay={isAutoPlay}/>
                           <IconButton color="primary" onClick={this.handleClick} className="song-lists-expand">
                             {open ? <ExpandMore /> : <ExpandLess />}
                           </IconButton >

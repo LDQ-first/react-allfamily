@@ -90,9 +90,23 @@ const MusicDiv = styled.div`
                 flex-direction: column;
                 .player-info-header {
                     display: flex;
-                    justify-content: flex-start;
+                    justify-content: space-between;
                     align-items: baseline;
                     height: 25px;
+                    .player-info-header-control {
+                        .player-info-formControlLabel {
+                            height: 25px;
+                        }
+                        .player-info-switch {
+                            height: 25px;
+                            &>span {
+                                height: 25px;
+                                &.MuiSwitch-checked-84 {
+                                    color: ${dHeaderBlue};
+                                }
+                            }
+                        }
+                    }
                     .player-info-song {
                         font-size: 1em;
                         margin-left: 1em;
