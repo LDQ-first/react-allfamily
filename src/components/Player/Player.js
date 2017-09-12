@@ -66,7 +66,7 @@ export default class Player extends Component {
                 <div className="player-info">
                     <header className="player-info-header">
                         <h3 className="player-info-song">歌名</h3>
-                        <h4 className="player-info-singer">歌手</h4>
+                        <h4 className="player-info-singer"> - 歌手</h4>
                     </header>
                     <Lyric />
                     <footer className="player-info-control">

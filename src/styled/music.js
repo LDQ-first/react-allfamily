@@ -19,6 +19,7 @@ const MusicDiv = styled.div`
             justify-content: space-between;
             align-items: center;
             height: 100px;
+            background: #F4F4F4;
             .player-pic {
                 width: 100px;
                 height: 100px;
@@ -28,18 +29,23 @@ const MusicDiv = styled.div`
                 padding: 10px 7px 0 7px;
                 height: 100px;
                 .player-info-header {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: baseline;
                     .player-info-song {
-
+                        font-size: 1em;
+                        margin-left: 1em;
                     }
                     .player-info-singer {
-
+                        font-size: 0.8em;
+                        color: #41484e;
                     }
                 }
                 .player-info-lyric {
-
+                    outline: 1px solid pink;
                 }
                 .player-info-control {
-
+                    outline: 1px solid purple;
                 }
             }
         }
