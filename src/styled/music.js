@@ -63,7 +63,7 @@ const MusicDiv = styled.div`
             }
             .disLists-wrapper {
                 overflow: auto;
-                height: calc(48px * 3);
+                height: calc(70px * 3);
             }
             .disList {
                 position: relative;
@@ -75,11 +75,19 @@ const MusicDiv = styled.div`
                 .disList-cur {
                     background: #f0749e;
                     width: 4px;
-                    height: 24px;
+                    height: calc(100% - 24px);
                     position: absolute;
                     left: 0;
                     top: 12px;
                     display: none;
+                }
+                .disList-content {
+                    .disList-title {
+                        font-size: 1em;
+                    }
+                    .disList-subtitle {
+                        font-size: 0.8em;
+                    }
                 }
             }
         }

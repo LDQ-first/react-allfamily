@@ -101,6 +101,10 @@ class Music extends Component {
     playSong = (list) => {
         const { songid, albummid } = list
         console.log(songid, albummid)
+        const albumImgUrl = musicApi.albumImg(albummid)
+        const songUrl = musicApi.song(songid)
+        console.log(albumImgUrl, '\n' , songUrl)
+
     }
 
 
@@ -110,7 +114,7 @@ class Music extends Component {
         const {songList, getDisLists, disList} = this.props
         const jsSongList = Immutable.List(songList).toJS()
         const jsDisList = Immutable.List(disList).toJS()
-       /* console.log(jsDisList)*/
+        console.log(jsDisList)
 
         const SongLists = jsSongList.map((list, index) => {
             return (
@@ -130,6 +134,9 @@ class Music extends Component {
                 <MusicDiv>
                      <div className="music-player">
                           <audio controls className="audio" >你的浏览器不支持喔！</audio>
+
+
+
                           <IconButton color="primary" onClick={this.handleClick}>
                             {open ? <ExpandMore /> : <ExpandLess />}
                           </IconButton >

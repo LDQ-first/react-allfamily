@@ -70,7 +70,12 @@ export default class DisList extends Component {
                     <ListItemIcon>
                         <AudiotrackIcon />
                     </ListItemIcon>
-                    <ListItemText inset primary="Sent mail" />
+                    <ListItemText inset disableTypography primary={
+                        <div className="disList-content">
+                            <h3 className="disList-title">{list.songname}</h3>
+                            <h4 className="disList-subtitle">{list.singer} - {list.albumname}</h4>
+                        </div>
+                    } />
                 </ListItem>
             )
         })
