@@ -30,57 +30,15 @@ export default class DisList extends Component {
         this.setState({
             isFirst: true
         })
-        console.log('componentWillMount')
     }
 
-     componentDidMount() {
-        /*this.setState({
-            isFirst: false
-        })*/
-       /* const {isFirst} = this.state
-        const {jsDisList, _this} = this.props
-        console.log('isFirst: ', isFirst)
-        console.log('jsDisList: ', jsDisList)
-        console.log('_this: ', _this)*/
-
-    }
-    
-    componentWillUpdate(nextProps, nextState) {
-       /* const {isFirst} = this.state
-        const {jsDisList, _this} = nextProps
-        console.log('isFirst: ', isFirst)
-        console.log('jsDisList: ', jsDisList)
-        console.log('_this: ', _this)*/
-        
-
-    }
-    
-
-    componentDidUpdate(prevProps, prevState) {
-     /*  const {isFirst} = this.state
-        const {jsDisList, _this} = this.props
-        console.log('isFirst: ', isFirst)
-        console.log('jsDisList: ', jsDisList)
-        console.log('_this: ', _this)*/
-
-
-
-    }
-    
-
-    
-    
-
+     
     
     componentWillReceiveProps(nextProps) {
         const {isFirst} = this.state
         const {jsDisList, _this} = nextProps
-        console.log('isFirst: ', isFirst)
-        console.log('jsDisList: ', jsDisList)
-        console.log('_this: ', _this)
 
         if(isFirst && jsDisList.length && jsDisList[0]) {
-            console.log(1)
             _this.getSong(jsDisList[0])
             this.setState({
                 isFirst: false

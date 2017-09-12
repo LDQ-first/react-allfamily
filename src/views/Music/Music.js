@@ -64,11 +64,10 @@ class Music extends Component {
             currentTime: '00:00',
             played: 0,
             loaded: 0,
-            isAutoPlay: false,
+            isAutoPlay: localStorage.isAutoPlay === 'true' || false,
             isPlaying: false 
         }
-        
-
+        console.log(this.state.isAutoPlay)
     }
 
     
@@ -81,8 +80,8 @@ class Music extends Component {
     }
     
     componentWillReceiveProps(nextProps) {
-         const {duration, currentTime} = this.state
-
+         const {isAutoPlay} = this.state
+         this._musicPlayer.autoplay = isAutoPlay
     }
     
     
@@ -113,7 +112,6 @@ class Music extends Component {
             songname,
             singer,
         })
-
         if(!isAutoPlay && isPlaying) {
             this.setState({
                 isPlaying: false
@@ -124,7 +122,6 @@ class Music extends Component {
                 isPlaying: true
             })
         }
-       /* console.log(this.state.isPlaying)*/
     }
 
 
@@ -183,6 +180,7 @@ class Music extends Component {
             isAutoPlay
         })
         this._musicPlayer.autoplay = isAutoPlay
+        localStorage.isAutoPlay = isAutoPlay
     }
 
     getProgress() {
@@ -191,13 +189,15 @@ class Music extends Component {
         for (var i = 0; i < audio.buffered.length; i++) {
             spu += audio.buffered.end(i) - audio.buffered.start(i)
             loaded = spu / audio.duration
-            console.log(spu / audio.duration)
+          //  console.log(spu / audio.duration)
         }
         this.setState({
             loaded
         })
         
     }
+
+
 
 
     render() {
