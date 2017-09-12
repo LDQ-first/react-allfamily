@@ -133,6 +133,7 @@ class Music extends Component {
                            {SongLists}
                            <DisList jsDisList={jsDisList}/>
                         <BottomNavigation
+                            className="song-lists-control"
                             value={value}
                             onChange={this.handleChange}
                             showLabels

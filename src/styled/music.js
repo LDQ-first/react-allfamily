@@ -1,6 +1,8 @@
 import styled from 'styled-components'
-import {blue} from 'material-ui/colors'
+import {blue, green} from 'material-ui/colors'
 const titleBlue = blue[50]
+const disListsGreen = green['A100']
+const dHeaderBlue = blue[500]
 
 const MusicDiv = styled.div`
     max-width: 600px;
@@ -28,6 +30,8 @@ const MusicDiv = styled.div`
               .song-lists-img {
                     width: 100px;
                     margin-right: 1em;
+                    border: 4px solid #FFF;
+                    box-shadow: 0 0 10px #ff9090;
                 }
               .song-lists-title {
                   font-size: 1.2em;
@@ -45,6 +49,25 @@ const MusicDiv = styled.div`
               }
           }
           
+        }
+        .disLists {
+            height: calc(48px * 4);
+            background: ${disListsGreen};
+            .disLists-header {
+                background: ${dHeaderBlue};
+                color: #FFF;
+                box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+                            0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+                            0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+            }
+            .disList {
+
+            }
+        }
+        .song-lists-control {
+            box-shadow: 0px -2px 2px -1px rgba(0, 0, 0, 0.1),
+                        0px -4px 3px 0px rgba(0, 0, 0, 0.07),
+                        0px -1px 6px 0px rgba(0, 0, 0, 0.06);
         }
     }
     
