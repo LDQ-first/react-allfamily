@@ -23,10 +23,34 @@ const MusicDiv = styled.div`
             .player-pic {
                 width: 100px;
                 height: 100px;
+                position: relative;
+                .player-btn {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    margin-left: -24px;
+                    margin-top: -24px;
+                }
+                .player-btn-paly {
+                    
+                }
+                .player-btn-pause {
+                   animation: move 0.6s linear forwards; 
+
+                }
+                @keyframes move {
+                    0% {
+                        transform: translate(0,0) scale(1);
+                    }
+                    100% {
+                         transform: translate(30px,30px) scale(0.8);
+                    }
+                }
+
             }
             .player-info {
                 flex: 1;
-                padding: 10px 7px 0 7px;
+                padding: 6px 7px 0 7px;
                 height: 100px;
                 .player-info-header {
                     display: flex;
@@ -43,6 +67,14 @@ const MusicDiv = styled.div`
                 }
                 .player-info-lyric {
                     outline: 1px solid pink;
+                    height: 40px;
+                    position: relative;
+                    &::before {
+
+                    }
+                    &::after {
+
+                    }
                 }
                 .player-info-control {
                     outline: 1px solid purple;
