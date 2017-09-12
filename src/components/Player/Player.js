@@ -48,9 +48,14 @@ export default class Player extends Component {
            played 
        })
        console.log(isPlay)
-       if(isPlay && !isAutoPlay && !isPlaying) {
+       if(!isAutoPlay && isPlay && !isPlaying) {
            this.setState({
                 isPlay: false
+            })
+       } 
+       if(isAutoPlay && !isPlay && isPlaying) {
+           this.setState({
+                isPlay: true
             })
        } 
     }

@@ -118,6 +118,11 @@ class Music extends Component {
                 isPlaying: false
             })
         }
+        if(isAutoPlay && !isPlaying) {
+            this.setState({
+                isPlaying: true
+            })
+        }
        /* console.log(this.state.isPlaying)*/
     }
 
