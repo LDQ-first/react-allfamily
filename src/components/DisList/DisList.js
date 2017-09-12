@@ -15,11 +15,38 @@ export default class DisList extends Component {
         }
     }
 
+    constructor (props) {
+        super(props)
+        this.state = {
+            clickI: 0
+        }
+    }
 
     
-    componentWillMount() {
-        const {jsDisList} = this.props
-        
+    componentWillReceiveProps(nextProps) {
+        const { clickI } = this.state
+        console.log('clickI: ', clickI)
+        this.setState({
+            clickI : 0
+        })
+        const scrollTimer = setInterval(() => {
+            if(this._disListsWrapper.scrollTop === 0 ) {
+                clearInterval(scrollTimer)
+            }
+            else {
+                this._disListsWrapper.scrollTop -= this._disListsWrapper.scrollTop * 0.2
+            }
+        }, 200)
+    }
+    
+
+    chooseSong (index, list) {
+        const { _this} = this.props
+        const { clickI } = this.state
+        this.setState({
+            clickI : index
+        })
+        _this.playSong(list)
     }
     
 
@@ -27,9 +54,8 @@ export default class DisList extends Component {
     render() {
 
         const {jsDisList, _this} = this.props
-        let clickI = 0
+        const { clickI } = this.state 
         const className = (index) => {
-            console.log(index)
             return classNames("disList", {'active': index === clickI})
         } 
 
@@ -38,11 +64,7 @@ export default class DisList extends Component {
                 <ListItem key={index} className={className(index)} button 
                 ref={list => this._dislist = list}
                 onClick={() => { 
-                    clickI = index
-                    console.log(clickI)
-                    className(index)
-               //     this._dislist.classList.add('active') 
-                    _this.playSong(list)
+                    this.chooseSong(index, list)
                 }}>
                     <span className="disList-cur"></span>
                     <ListItemIcon>
@@ -57,7 +79,8 @@ export default class DisList extends Component {
         return (
             <List className="disLists" 
             subheader={<ListSubheader className="disLists-header">歌曲列表 ( 共 {jsDisList.length} 首 )</ListSubheader>}>
-                <div className="disLists-wrapper">
+                <div className="disLists-wrapper" 
+                ref={wrapper => this._disListsWrapper = wrapper}>
                     {disLists}
                 </div>
             </List>

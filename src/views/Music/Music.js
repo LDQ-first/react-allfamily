@@ -106,11 +106,11 @@ class Music extends Component {
 
     render() {
         const {value, open} = this.state
-        console.log('this.props: ', this.props)
+       /* console.log('this.props: ', this.props)*/
         const {songList, getDisLists, disList} = this.props
         const jsSongList = Immutable.List(songList).toJS()
         const jsDisList = Immutable.List(disList).toJS()
-        console.log(jsDisList)
+       /* console.log(jsDisList)*/
 
         const SongLists = jsSongList.map((list, index) => {
             return (
