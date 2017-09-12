@@ -28,7 +28,9 @@ export default class Player extends Component {
         this.state = {
            isPlay: false,
            isMute: false,
-           mode: 'loop'
+           mode: 'loop',
+           loaded: 0,
+           played: 0
         }
     }
 
@@ -58,7 +60,7 @@ export default class Player extends Component {
     render() {
 
         const {_this, albumImgUrl, songname, singer} = this.props
-        const {isPlay, mode, isMute} = this.state
+        const {isPlay, mode, isMute, loaded, played} = this.state
 
         return (
             <div className="player" >
@@ -87,9 +89,10 @@ export default class Player extends Component {
                     <footer className="player-info-control">
                         <div className="player-bar-wrapper">
                             <div className="player-bar">
-                                <div className="">
-                                    
-                                </div>
+                                <div className="player-loaded" 
+                                style={{transform: `scaleX(${loaded})`}}></div>
+                                <div className="player-played"
+                                style={{transform: `scaleX(${played})`}}></div>
                             </div>
                         </div>
                         <div className="player-time">

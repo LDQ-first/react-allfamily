@@ -30,7 +30,6 @@ const MusicDiv = styled.div`
             display: flex;
             justify-content: space-between;
             align-items: center;
-            /*height: 120px;*/
             background: #F4F4F4;
             .player-pic {
                 width: 120px;
@@ -129,11 +128,33 @@ const MusicDiv = styled.div`
                     .player-bar-wrapper {
                         flex: 1;
                         margin: 0 0.5em;
+                        overflow: hidden;
                         .player-bar {
                             height: 5px;
                             position: relative;
                             overflow: hidden;
-                            background: #bbdefb;
+                            background: #CCC;
+                            .player-played {
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                bottom: 0;
+                                position: absolute;
+                                transition: transform 0.2s linear;
+                                transform-origin: left;
+                                background: #2196f3;
+                                z-index: 1;
+                             }
+                             .player-loaded {
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                bottom: 0;
+                                position: absolute;
+                                transition: transform 0.2s linear;
+                                transform-origin: left;
+                                background: #bbdefb;
+                             }
                         }
                     }
                     .player-time {
