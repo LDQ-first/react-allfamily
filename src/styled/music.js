@@ -91,30 +91,47 @@ const MusicDiv = styled.div`
                 .player-info-header {
                     display: flex;
                     justify-content: space-between;
-                    align-items: baseline;
+                    align-items: center;
                     height: 25px;
+                    .player-info-title {
+                        width: 50%;
+                        display: flex;
+                        .player-info-song {
+                            font-size: 1em;
+                            margin-left: 4px;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            max-width: 160px;
+                        }
+                        .player-info-singer {
+                            font-size: 0.8em;
+                            color: #41484e;
+                            margin-left: 8px;
+                            line-height: 25px;
+                        }
+                      
+                    }
                     .player-info-header-control {
                         .player-info-formControlLabel {
                             height: 25px;
+                            & p {
+                                font-size: 12px;
+                            }
                         }
                         .player-info-switch {
                             height: 25px;
+                            width: 38px;
                             &>span {
-                                height: 25px;
+                                height: 24px;
+                                width: 24px;
                                 &.MuiSwitch-checked-84 {
                                     color: ${dHeaderBlue};
                                 }
                             }
                         }
                     }
-                    .player-info-song {
-                        font-size: 1em;
-                        margin-left: 1em;
-                    }
-                    .player-info-singer {
-                        font-size: 0.8em;
-                        color: #41484e;
-                    }
+                    
                 }
                 .player-info-lyric {
                     outline: 1px solid pink;

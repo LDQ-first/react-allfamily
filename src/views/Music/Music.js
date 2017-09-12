@@ -163,6 +163,7 @@ class Music extends Component {
         this.setState({ 
             isAutoPlay
         })
+        this._musicPlayer.autoplay = isAutoPlay
     }
 
 
