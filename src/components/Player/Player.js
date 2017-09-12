@@ -54,7 +54,7 @@ export default class Player extends Component {
         const {isPlay} = this.state
 
         return (
-            <div className="player">
+            <div className="player" >
                 <div className="player-pic" style={{background: `url(${albumImgUrl}) no-repeat center/cover`}}>
                    { isPlay ?  <IconButton color="primary" aria-label="play" 
                    className={classNames("player-btn","player-btn-pause")}  
@@ -67,6 +67,7 @@ export default class Player extends Component {
                         <PlayCircleOutlineIcon  />
                     </IconButton>
                     }
+                    <div className="player-pic-shade" ></div>
                 </div>
                 <div className="player-info">
                     <header className="player-info-header">

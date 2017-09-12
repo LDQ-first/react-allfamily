@@ -24,21 +24,35 @@ const MusicDiv = styled.div`
                 width: 100px;
                 height: 100px;
                 position: relative;
+                border: 4px solid #FFF;
+                box-shadow: 0 0 10px #ff9090;
+                .player-pic-shade {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(195, 235, 253, 0.25);
+                }
                 .player-btn {
                     position: absolute;
                     top: 50%;
                     left: 50%;
                     margin-left: -24px;
                     margin-top: -24px;
+                    z-index: 10;
+                    svg {
+                         width: 30px;
+                         height: 30px;
+                    }
                 }
                 .player-btn-paly {
-                    
+                    animation: playmove 0.6s linear forwards;
                 }
                 .player-btn-pause {
-                   animation: move 0.6s linear forwards; 
-
+                   animation: pausemove 0.6s linear forwards; 
                 }
-                @keyframes move {
+                @keyframes pausemove {
                     0% {
                         transform: translate(0,0) scale(1);
                     }
@@ -46,6 +60,15 @@ const MusicDiv = styled.div`
                          transform: translate(30px,30px) scale(0.8);
                     }
                 }
+                @keyframes playmove {
+                    0% {
+                         transform: translate(30px,30px) scale(0.8);
+                    }
+                    100% {
+                        transform: translate(0,0) scale(1);
+                    }
+                }
+                
 
             }
             .player-info {
