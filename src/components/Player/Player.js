@@ -50,7 +50,7 @@ export default class Player extends Component {
 
     
     componentWillReceiveProps(nextProps) {
-       const {  played,loaded, isPlaying, _this, isAutoPlay, volume, isMuted} = this.props
+       const {  played,loaded, isPlaying, _this, isAutoPlay, volume, isMuted} = nextProps
        const {isPlay} = this.state
        this.setState({
            played ,

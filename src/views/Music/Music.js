@@ -82,8 +82,7 @@ class Music extends Component {
          const {isAutoPlay} = this.state
          this._musicPlayer.autoplay = isAutoPlay
          this.setState({
-             volume: this._musicPlayer.volume,
-             isMuted: this._musicPlayer.muted
+             volume: this._musicPlayer.volume
          })
     }
     
