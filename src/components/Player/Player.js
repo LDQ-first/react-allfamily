@@ -67,7 +67,6 @@ export default class Player extends Component {
                 isPlay: true
             })
        } 
-       console.log(isMuted)
        if(isMuted || volume === 0) {
            this.setState({
                isMute: true

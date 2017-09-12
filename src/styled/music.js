@@ -212,20 +212,30 @@ const MusicDiv = styled.div`
                         display: inline-flex; 
                         margin: 0 4px;
                         position: relative;
+                        cursor: pointer;
+                        &:hover {
+                            .player-volume-bar-wrap {
+                                display: block;
+                            }
+                        }
                         .player-volume {
                             display: inline-flex;
                         }
                         .player-volume-bar-wrap {
                             position: absolute;
                             bottom: 25px;
-                            right: 1px;
-                            width: 25px;
+                            right: -7px;
+                            width: 40px;
                             height: 60px;
                             z-index: 99;
+                            display: none;
+                            &:hover {
+                                display: block;
+                            }
                             .player-volume-bar {
                                 position: absolute;
-                                bottom: 0;
-                                right: 10px;
+                                bottom: 2px;
+                                right: 18px;
                                 width: 5px;
                                 height: 55px;
                                 background: #aaa;
