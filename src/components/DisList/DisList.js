@@ -20,10 +20,52 @@ export default class DisList extends Component {
         super(props)
         this.state = {
             clickI: 0,
-            values: null
+            values: null,
+            isFirst: false
         }
     }
 
+    
+    componentWillMount() {
+        this.setState({
+            isFirst: true
+        })
+        console.log('componentWillMount')
+    }
+
+     componentDidMount() {
+        /*this.setState({
+            isFirst: false
+        })*/
+       /* const {isFirst} = this.state
+        const {jsDisList, _this} = this.props
+        console.log('isFirst: ', isFirst)
+        console.log('jsDisList: ', jsDisList)
+        console.log('_this: ', _this)*/
+
+    }
+    
+    componentWillUpdate(nextProps, nextState) {
+       /* const {isFirst} = this.state
+        const {jsDisList, _this} = nextProps
+        console.log('isFirst: ', isFirst)
+        console.log('jsDisList: ', jsDisList)
+        console.log('_this: ', _this)*/
+        
+
+    }
+    
+
+    componentDidUpdate(prevProps, prevState) {
+     /*  const {isFirst} = this.state
+        const {jsDisList, _this} = this.props
+        console.log('isFirst: ', isFirst)
+        console.log('jsDisList: ', jsDisList)
+        console.log('_this: ', _this)*/
+
+
+
+    }
     
 
     
@@ -31,6 +73,23 @@ export default class DisList extends Component {
 
     
     componentWillReceiveProps(nextProps) {
+        const {isFirst} = this.state
+        const {jsDisList, _this} = nextProps
+        console.log('isFirst: ', isFirst)
+        console.log('jsDisList: ', jsDisList)
+        console.log('_this: ', _this)
+
+        if(isFirst && jsDisList.length && jsDisList[0]) {
+            console.log(1)
+            _this.getSong(jsDisList[0])
+            this.setState({
+                isFirst: false
+            })
+        }
+
+        
+
+
 
         const { clickI, values } = this.state
         const {value} = this.props

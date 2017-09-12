@@ -186,7 +186,6 @@ class Music extends Component {
     }
 
     getProgress() {
-        console.log(this._musicPlayer.buffered)
         let spu = 0, loaded
         const audio = this._musicPlayer
         for (var i = 0; i < audio.buffered.length; i++) {

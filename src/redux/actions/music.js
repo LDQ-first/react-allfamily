@@ -120,7 +120,7 @@ export const getDisLists = (disstid) => async (dispatch) => {
         }).then((res) => {
             return res.json()
         })
-       console.log('res.cdlist[0]: ', res.cdlist[0])
+       /*console.log('res.cdlist[0]: ', res.cdlist[0])*/
        await dispatch(getdisListsSuccess(filterDisListsData(res.cdlist[0])))
    } catch (err) {
        console.log('err:', err)

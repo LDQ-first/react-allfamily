@@ -27,7 +27,7 @@ export const musicSongLists = (state = songListsInitState, action) => {
         case GET_SONGLISTS_REQUEST:
             return state.set('isLoading', true)
         case GET_SONGLISTS_SUCCESS:
-            console.log(action)
+            /*console.log(action)*/
             return (state = fromJS({
                 ...state,
                 songListsStatus: 200,
@@ -58,7 +58,6 @@ export const musicDisLists = (state = disListsInitState, action) => {
         case GET_DISLISTS_REQUEST:
             return state.set('isLoading', true)
         case GET_DISLISTS_SUCCESS:
-            console.log(action)
             return (state = fromJS({
                 ...state,
                 disListsStatus: 200,
