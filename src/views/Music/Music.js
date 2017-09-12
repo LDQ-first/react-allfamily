@@ -67,7 +67,6 @@ class Music extends Component {
             isAutoPlay: localStorage.isAutoPlay === 'true' || false,
             isPlaying: false 
         }
-        console.log(this.state.isAutoPlay)
     }
 
     
@@ -83,7 +82,8 @@ class Music extends Component {
          const {isAutoPlay} = this.state
          this._musicPlayer.autoplay = isAutoPlay
          this.setState({
-             volume: this._musicPlayer.volume
+             volume: this._musicPlayer.volume,
+             isMuted: this._musicPlayer.muted
          })
     }
     
@@ -202,8 +202,10 @@ class Music extends Component {
     }
 
     changeVolume () {
-        this.setState({
-             volume: this._musicPlayer.volume
+        console.log(this._musicPlayer.muted)
+         this.setState({
+             volume: this._musicPlayer.volume,
+             isMuted: this._musicPlayer.muted
          })
     }
 
@@ -211,7 +213,7 @@ class Music extends Component {
 
     render() {
         const {value, open, songUrl, albumImgUrl, songname, singer,
-            duration, currentTime, played, isAutoPlay, isPlaying, loaded, volume} = this.state
+            duration, currentTime, played, isAutoPlay, isPlaying, loaded, volume, isMuted} = this.state
        /* console.log('this.props: ', this.props)*/
         const {songList, getDisLists, disList} = this.props
         const jsSongList = Immutable.List(songList).toJS()
@@ -241,7 +243,7 @@ class Music extends Component {
                           >你的浏览器不支持喔！</audio>
                           <Player _this={this} albumImgUrl={albumImgUrl}  songname={songname} singer={singer}
                           duration={duration} currentTime={currentTime} played={played} loaded={loaded} 
-                          isAutoPlay={isAutoPlay}  isPlaying={isPlaying} volume={volume}/>
+                          isAutoPlay={isAutoPlay}  isPlaying={isPlaying} volume={volume} isMuted={isMuted}/>
                           <IconButton color="primary" onClick={this.handleClick} className="song-lists-expand">
                             {open ? <ExpandMore /> : <ExpandLess />}
                           </IconButton >

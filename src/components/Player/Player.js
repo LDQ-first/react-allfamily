@@ -27,7 +27,8 @@ export default class Player extends Component {
             loaded: PropTypes.number,
             isAutoPlay: PropTypes.bool,
             isPlaying: PropTypes.bool,
-            volume: PropTypes.volume
+            volume: PropTypes.volume,
+            isMuted: PropTypes.bool
         }
     }
 
@@ -49,7 +50,7 @@ export default class Player extends Component {
 
     
     componentWillReceiveProps(nextProps) {
-       const { currentTime, duration, played,loaded, isPlaying, _this, isAutoPlay, volume} = this.props
+       const {  played,loaded, isPlaying, _this, isAutoPlay, volume, isMuted} = this.props
        const {isPlay} = this.state
        this.setState({
            played ,
@@ -66,12 +67,12 @@ export default class Player extends Component {
                 isPlay: true
             })
        } 
-       console.log(volume)
-       if(volume === 0) {
+       console.log(isMuted)
+       if(isMuted || volume === 0) {
            this.setState({
                isMute: true
            })
-       } else {
+       } else if(!isMuted || volume > 0){
            this.setState({
                isMute: false
            })
