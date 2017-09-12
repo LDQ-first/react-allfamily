@@ -9,7 +9,22 @@ const MusicDiv = styled.div`
     margin: 0 auto;
     .music-player {
         outline: 1px solid red;
-        height: 100px;
+        /*height: 130px;*/
+        .audio {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .player {
+            outline: 1px solid lightblue;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+            .player-pic {
+                width: 100px;
+                height: 100px;
+            }
+        }
     }
     .song-lists-wrapper {
         outline: 1px solid lightgreen;

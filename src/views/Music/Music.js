@@ -26,6 +26,7 @@ import ExpandLess from 'material-ui-icons/ExpandLess'
 import ExpandMore from 'material-ui-icons/ExpandMore'
 import Collapse from 'material-ui/transitions/Collapse'
 import DisList from '../../components/DisList/DisList.js'
+import Player from '../../components/Player/Player.js'
 
 
 const mapStateToProps = (state) => ({
@@ -58,7 +59,9 @@ class Music extends Component {
         super(porps)
         this.state = {
             value: 0,
-            open: true
+            open: true,
+            albumImgUrl: '',
+            songUrl: ''
         }
         
 
@@ -98,18 +101,31 @@ class Music extends Component {
         this.setState({ open: !this.state.open });
     }
 
-    playSong = (list) => {
+    getSong = (list) => {
         const { songid, albummid } = list
         console.log(songid, albummid)
         const albumImgUrl = musicApi.albumImg(albummid)
         const songUrl = musicApi.song(songid)
         console.log(albumImgUrl, '\n' , songUrl)
+        this.setState({
+            albumImgUrl,
+            songUrl
+        })
+    }
 
+    playSong = () => {
+        console.log('play')
+        console.log(this._musicPlayer )
+    }
+
+    pauseSong = () => {
+        console.log('pause')
+        console.log(this._musicPlayer )
     }
 
 
     render() {
-        const {value, open} = this.state
+        const {value, open, songUrl, albumImgUrl} = this.state
        /* console.log('this.props: ', this.props)*/
         const {songList, getDisLists, disList} = this.props
         const jsSongList = Immutable.List(songList).toJS()
@@ -133,11 +149,12 @@ class Music extends Component {
             <Container>
                 <MusicDiv>
                      <div className="music-player">
-                          <audio controls className="audio" >你的浏览器不支持喔！</audio>
+                          <audio controls ref={audio => this._musicPlayer = audio}
+                          className="audio" src={songUrl}>你的浏览器不支持喔！</audio>
+                          <Player _this={this} albumImgUrl={albumImgUrl} />
 
 
-
-                          <IconButton color="primary" onClick={this.handleClick}>
+                          <IconButton color="primary" onClick={this.handleClick} className="song-lists-expand">
                             {open ? <ExpandMore /> : <ExpandLess />}
                           </IconButton >
                      </div>

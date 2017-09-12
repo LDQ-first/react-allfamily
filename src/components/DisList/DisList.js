@@ -46,7 +46,7 @@ export default class DisList extends Component {
         this.setState({
             clickI : index
         })
-        _this.playSong(list)
+        _this.getSong(list)
     }
     
 
