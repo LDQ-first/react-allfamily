@@ -18,11 +18,11 @@ const MusicDiv = styled.div`
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 100px;
+            /*height: 120px;*/
             background: #F4F4F4;
             .player-pic {
-                width: 100px;
-                height: 100px;
+                width: 120px;
+                height: 120px;
                 position: relative;
                 border: 4px solid #FFF;
                 box-shadow: 0 0 10px #ff9090;
@@ -57,12 +57,12 @@ const MusicDiv = styled.div`
                         transform: translate(0,0) scale(1);
                     }
                     100% {
-                         transform: translate(30px,30px) scale(0.8);
+                         transform: translate(40px,40px) scale(0.8);
                     }
                 }
                 @keyframes playmove {
                     0% {
-                         transform: translate(30px,30px) scale(0.8);
+                         transform: translate(40px,40px) scale(0.8);
                     }
                     100% {
                         transform: translate(0,0) scale(1);
@@ -74,11 +74,14 @@ const MusicDiv = styled.div`
             .player-info {
                 flex: 1;
                 padding: 6px 7px 0 7px;
-                height: 100px;
+                height: 120px;
+                display: flex;
+                flex-direction: column;
                 .player-info-header {
                     display: flex;
                     justify-content: flex-start;
                     align-items: baseline;
+                    height: 25px;
                     .player-info-song {
                         font-size: 1em;
                         margin-left: 1em;
@@ -90,7 +93,7 @@ const MusicDiv = styled.div`
                 }
                 .player-info-lyric {
                     outline: 1px solid pink;
-                    height: 40px;
+                    height: 50px;
                     position: relative;
                     &::before {
 
@@ -101,6 +104,7 @@ const MusicDiv = styled.div`
                 }
                 .player-info-control {
                     outline: 1px solid purple;
+                    flex: 1;
                 }
             }
         }
