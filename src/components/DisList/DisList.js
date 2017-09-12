@@ -30,7 +30,8 @@ export default class DisList extends Component {
 
         const disLists = jsDisList.map((list, index) => {
             return (
-                <ListItem key={index} className="disList" button>
+                <ListItem key={index} className="disList" button >
+                    <span className="disList-cur"></span>
                     <ListItemIcon>
                         <AudiotrackIcon />
                     </ListItemIcon>
@@ -43,7 +44,9 @@ export default class DisList extends Component {
         return (
             <List className="disLists" 
             subheader={<ListSubheader className="disLists-header">歌曲列表 ( 共 {jsDisList.length} 首 )</ListSubheader>}>
-                {disLists}
+                <div className="disLists-wrapper">
+                    {disLists}
+                </div>
             </List>
         )
     }

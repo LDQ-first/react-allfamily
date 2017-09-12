@@ -51,8 +51,9 @@ const MusicDiv = styled.div`
           
         }
         .disLists {
-            height: calc(48px * 4);
             background: ${disListsGreen};
+            overflow: hidden;
+            padding: 0;
             .disLists-header {
                 background: ${dHeaderBlue};
                 color: #FFF;
@@ -60,8 +61,21 @@ const MusicDiv = styled.div`
                             0px 4px 5px 0px rgba(0, 0, 0, 0.14),
                             0px 1px 10px 0px rgba(0, 0, 0, 0.12);
             }
+            .disLists-wrapper {
+                overflow: auto;
+                height: calc(48px * 3);
+            }
             .disList {
-
+                position: relative;
+                .disList-cur {
+                    background: #f0749e;
+                    width: 4px;
+                    height: 24px;
+                    position: absolute;
+                    left: 0;
+                    top: 12px;
+                    cursor: pointer;
+                }
             }
         }
         .song-lists-control {
