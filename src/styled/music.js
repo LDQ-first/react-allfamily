@@ -9,7 +9,6 @@ const MusicDiv = styled.div`
     margin: 0 auto;
     .music-player {
         outline: 1px solid red;
-        /*height: 130px;*/
         .audio {
             display: block;
             margin-bottom: 10px;
@@ -23,6 +22,25 @@ const MusicDiv = styled.div`
             .player-pic {
                 width: 100px;
                 height: 100px;
+            }
+            .player-info {
+                flex: 1;
+                padding: 10px 7px 0 7px;
+                height: 100px;
+                .player-info-header {
+                    .player-info-song {
+
+                    }
+                    .player-info-singer {
+
+                    }
+                }
+                .player-info-lyric {
+
+                }
+                .player-info-control {
+
+                }
             }
         }
     }
