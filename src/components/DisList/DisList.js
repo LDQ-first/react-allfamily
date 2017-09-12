@@ -3,7 +3,7 @@ import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
 import ListSubheader from 'material-ui/List/ListSubheader'
 import AudiotrackIcon from 'material-ui-icons/Audiotrack'
 import PropTypes from 'prop-types'
-
+import classNames from 'classnames'
 
 
 
@@ -11,6 +11,7 @@ export default class DisList extends Component {
     static get propTypes() { 
         return { 
             jsDisList: PropTypes.array,
+            _this: PropTypes.object,
         }
     }
 
@@ -25,12 +26,24 @@ export default class DisList extends Component {
 
     render() {
 
-        const {jsDisList} = this.props
-
+        const {jsDisList, _this} = this.props
+        let clickI = 0
+        const className = (index) => {
+            console.log(index)
+            return classNames("disList", {'active': index === clickI})
+        } 
 
         const disLists = jsDisList.map((list, index) => {
             return (
-                <ListItem key={index} className="disList" button >
+                <ListItem key={index} className={className(index)} button 
+                ref={list => this._dislist = list}
+                onClick={() => { 
+                    clickI = index
+                    console.log(clickI)
+                    className(index)
+               //     this._dislist.classList.add('active') 
+                    _this.playSong(list)
+                }}>
                     <span className="disList-cur"></span>
                     <ListItemIcon>
                         <AudiotrackIcon />

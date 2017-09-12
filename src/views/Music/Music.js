@@ -98,6 +98,11 @@ class Music extends Component {
         this.setState({ open: !this.state.open });
     }
 
+    playSong = (list) => {
+        const { songid, albummid } = list
+        console.log(songid, albummid)
+    }
+
 
     render() {
         const {value, open} = this.state
@@ -115,7 +120,7 @@ class Music extends Component {
             )
         })
 
-
+        
 
        
 
@@ -131,7 +136,7 @@ class Music extends Component {
                      </div>
                      <Collapse in={open} className="song-lists-wrapper">
                            {SongLists}
-                           <DisList jsDisList={jsDisList}/>
+                           <DisList jsDisList={jsDisList} _this={this}/>
                         <BottomNavigation
                             className="song-lists-control"
                             value={value}

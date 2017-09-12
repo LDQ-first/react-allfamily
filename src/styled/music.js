@@ -67,6 +67,11 @@ const MusicDiv = styled.div`
             }
             .disList {
                 position: relative;
+                &.active {
+                    .disList-cur {
+                        display: block;
+                    }
+                }
                 .disList-cur {
                     background: #f0749e;
                     width: 4px;
@@ -74,7 +79,7 @@ const MusicDiv = styled.div`
                     position: absolute;
                     left: 0;
                     top: 12px;
-                    cursor: pointer;
+                    display: none;
                 }
             }
         }
