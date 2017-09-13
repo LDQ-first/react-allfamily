@@ -20,6 +20,7 @@ import {
     BEFORE_SONG,
     NEXT_SONG,
     CHOOSE_SONG,
+    CHANGE_SONG
 
 } from '../const/const'
 import { fromJS, Map } from 'immutable'
@@ -30,7 +31,8 @@ const songActionInitState = fromJS({
     songIndex: 0,
     isAutoplay: false,
     isMuted: false,
-    value: 0
+    value: 0,
+    isChanged: false
 })
 
 
@@ -52,6 +54,8 @@ export const musicSongAction = (state = songActionInitState, action) => {
             return state.update('songIndex', songIndex => songIndex + 1)
         case CHOOSE_SONG:
             return state.set('songIndex', action.songIndex)
+        case CHANGE_SONG:
+            return state.set('isChanged', action.isChanged ) 
         default: 
              return state
     }

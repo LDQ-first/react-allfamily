@@ -16,11 +16,13 @@ import {
    lyricIsLoadingSelector,
    lyricErrorMsgSelector,
    lyricSelector,
+
    isPlayingSelector,
    songIndexSelector,
    isAutoplaySelector,
    isMutedSelector,
    valueSelector,
+   isChangedSelector,
 } from '../../selector/music.js'
 import * as musicAction  from '../../redux/actions/music.js'
 import Immutable from 'immutable'
@@ -53,7 +55,8 @@ const mapStateToProps = (state) => ({
     songIndex: songIndexSelector(state),
     isAutoplay: isAutoplaySelector(state),
     isMuted: isMutedSelector(state),
-    value: valueSelector(state)
+    value: valueSelector(state),
+    isChanged: isChangedSelector(state) 
 })
 
 
@@ -81,17 +84,18 @@ class Music extends Component {
             isMuted: PropTypes.bool,
             songIndex: PropTypes.number,
             value: PropTypes.number,
+            isChanged: PropTypes.bool,
 
             play: PropTypes.func,
             pause: PropTypes.func,
             autoplay: PropTypes.func,
             mute: PropTypes.func,
-
-
             beforeSong: PropTypes.func,
             nextSong: PropTypes.func,
             chooseSong: PropTypes.func,
             changeValue: PropTypes.func,
+            changeSong: PropTypes.func,
+
         }
     }
 
@@ -121,7 +125,7 @@ class Music extends Component {
     }
     
     componentWillReceiveProps(nextProps) {
-         const {isAutoplay, lyric, isPlaying, pause} = nextProps
+         const {isAutoplay, lyric, isPlaying, pause, changeSong} = nextProps
          if(isAutoplay) {
              this._musicPlayer.autoplay = isAutoplay
          }
@@ -131,9 +135,10 @@ class Music extends Component {
              volume: this._musicPlayer.volume
          })
          this.setState({
-             lyric,
-             isNewLyric: true
+             lyric
          })
+
+         changeSong(true)
     }
     
     
@@ -151,7 +156,7 @@ class Music extends Component {
     }
 
     getSong = (list) => {
-        const {isAutoplay , isPlaying, pause} = this.props
+        const {isAutoplay , isPlaying, pause, changeSong} = this.props
         const { songid, albummid, songname, singer } = list
         console.log(songid, albummid)
         const albumImgUrl = musicApi.albumImg(albummid)
@@ -162,14 +167,14 @@ class Music extends Component {
             songUrl,
             songname,
             singer,
-            songid,
-            isNewLyric: false
+            songid
         })
         if(!isAutoplay && isPlaying) {
              pause()
          }
 
-       this.getLyric(songid)
+        changeSong(false)
+        this.getLyric(songid)
     }
 
 
@@ -298,17 +303,17 @@ class Music extends Component {
     render() {
         const {open, songUrl, albumImgUrl, songname, singer,
             duration, currentTime, played,loaded, volume,
-             songid, isNewLyric, currentSTime} = this.state
+             songid, currentSTime} = this.state
         const {
             songList, getDisLists, disList, lyricStatus,
-             isPlaying, play, pause, isAutoplay, isMuted,
+             isPlaying, play, pause, isAutoplay, isMuted, isChanged,
              beforeSong, nextSong,  chooseSong, songIndex, value
             } = this.props
         const jsSongList = Immutable.List(songList).toJS()
         const jsDisList = Immutable.List(disList).toJS()
 
         let lyric = ''
-        if(isNewLyric) {
+        if(isChanged) {
             lyric = this.state.lyric
         }
 
@@ -344,8 +349,8 @@ class Music extends Component {
                           isPlaying={isPlaying} play={play} pause={pause} isAutoplay = {isAutoplay} isMuted={isMuted}
 
                           played={played} loaded={loaded}   
-                           volume={volume}  lyric={lyric} currentSTime={currentSTime}
-                          isNewLyric={isNewLyric}/>
+                           volume={volume}  lyric={lyric} currentSTime={currentSTime} isChanged={isChanged}
+                          />
                           <IconButton color="primary" onClick={this.handleClick} className="song-lists-expand">
                             {open ? <ExpandMore /> : <ExpandLess />}
                           </IconButton >

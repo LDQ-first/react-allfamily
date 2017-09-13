@@ -22,8 +22,6 @@ export default class DisList extends Component {
     constructor (props) {
         super(props)
         this.state = {
-            clickI: 0,
-           /* values: null,*/
             isFirst: false
         }
     }
@@ -38,7 +36,7 @@ export default class DisList extends Component {
      
     
     componentWillReceiveProps(nextProps) {
-        const {isFirst, clickI} = this.state
+        const {isFirst} = this.state
         const {jsDisList, _this, songIndex, value, chooseSong} = nextProps
 
 
@@ -48,8 +46,6 @@ export default class DisList extends Component {
                 isFirst: false
             })
         }
-        console.log(value)
-        console.log(this.props.value)
 
         
 
@@ -82,7 +78,6 @@ export default class DisList extends Component {
         const className = (index) => {
             return classNames("disList", {'active': index === songIndex})
         } 
-        console.log(songIndex)
 
        
 

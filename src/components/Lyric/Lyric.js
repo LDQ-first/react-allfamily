@@ -16,7 +16,7 @@ export default class Lyric extends Component {
             _this: PropTypes.object,
             lyric: PropTypes.string,
             currentSTime: PropTypes.number,
-            isNewLyric: PropTypes.bool,
+            isChanged: PropTypes.bool,
         }
     }
 
@@ -44,10 +44,10 @@ export default class Lyric extends Component {
     
     
     componentWillReceiveProps(nextProps) {
-       const {_this, lyric, isNewLyric} = nextProps
+       const {_this, lyric, isChanged} = nextProps
        const { index, translateY }  = this.state
-       if(!isNewLyric) {
-           console.log(isNewLyric)
+       if(!isChanged) {
+           console.log(isChanged)
           /* this.setState({
                index: 0,
                translateY: 0

@@ -37,6 +37,12 @@ export const valueSelector = createSelector(
     musicSongActionState => musicSongActionState.get('value')
 )
 
+export const isChangedSelector = createSelector(
+    musicSongActionSelector,
+    musicSongActionState => musicSongActionState.get('isChanged')
+)
+
+
 
 
 

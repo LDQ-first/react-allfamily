@@ -21,6 +21,7 @@ import {
     NEXT_SONG,
     CHOOSE_SONG,
 
+    CHANGE_SONG,
 
 
 } from '../const/const'
@@ -85,6 +86,13 @@ export const chooseSong = (songIndex) => {
     return {
         type: CHOOSE_SONG,
         songIndex: songIndex
+    }
+}
+
+export const changeSong = (isChanged) => {
+    return {
+        type: CHANGE_SONG,
+        isChanged: isChanged
     }
 }
 
