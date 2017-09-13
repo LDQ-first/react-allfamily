@@ -42,7 +42,7 @@ const MusicDiv = styled.div`
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #47b0ef;
+            background: #F4F4F4;
             .player-pic {
                 width: 120px;
                 height: 120px;
@@ -50,6 +50,7 @@ const MusicDiv = styled.div`
                 border: 4px solid #FFF;
                 box-shadow: 0 0 10px #ff9090;
                 overflow: hidden;
+                background: ${dHeaderBlue};
                 @media (max-width: 380px) {
                     width: 100px;
                     .player-disco-wrapper {
@@ -183,7 +184,7 @@ const MusicDiv = styled.div`
                     flex: 1;
                     position: relative;
                     overflow: hidden;
-                    background: #FFF;
+                    background: #F4F4F4;
                     &::before {
                         content: ' ';
                         position: absolute;
@@ -193,7 +194,7 @@ const MusicDiv = styled.div`
                         overflow: hidden;
                         width: 100%;
                         height: 10%;
-                        background: linear-gradient(to bottom, white 0%, rgba(255, 255, 255, 0) 100%);
+                        background: linear-gradient(to bottom, white 0%, rgba(244, 244, 244, 0) 100%);
                     }
                     &::after {
                         content: ' ';
@@ -204,7 +205,7 @@ const MusicDiv = styled.div`
                         overflow: hidden;
                         width: 100%;
                         height: 33%;
-                        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 100%);
+                        background: linear-gradient(to bottom, rgba(244, 244, 244, 0) 0%, rgba(244, 244, 244, 0.8) 100%);
                     }
                     .player-lyrics-lines {
                         outline: 1px solid red;
