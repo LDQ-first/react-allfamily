@@ -27,7 +27,7 @@ export default class Player extends Component {
             duration: PropTypes.string,
             played: PropTypes.number,
             loaded: PropTypes.number,
-            isAutoPlay: PropTypes.bool,
+
             volume: PropTypes.volume,
             isMuted: PropTypes.bool,
             lyric: PropTypes.string,
@@ -35,9 +35,8 @@ export default class Player extends Component {
             isNewLyric: PropTypes.bool,
 
             isPlaying: PropTypes.bool,
+            isAutoplay: PropTypes.bool,
             songIndex: PropTypes.number,
-            play: PropTypes.func,
-            pause: PropTypes.func,
             beforeSong: PropTypes.func,
             nextSong: PropTypes.func,
             chooseSong: PropTypes.func,
@@ -62,7 +61,7 @@ export default class Player extends Component {
 
     
     componentWillReceiveProps(nextProps) {
-       const {  played,loaded, isPlaying, _this, isAutoPlay, volume, isMuted, lyric} = nextProps
+       const {  played,loaded, isPlaying, _this, isAutoplay, volume, isMuted, lyric} = nextProps
     /*   const {isPlay} = this.state*/
     /*   console.log(lyric)*/
 
@@ -124,7 +123,7 @@ export default class Player extends Component {
 
     render() {
 
-        const {_this, albumImgUrl, songname, singer, currentTime, duration, isAutoPlay, volume, lyric, currentSTime, isNewLyric,
+        const {_this, albumImgUrl, songname, singer, currentTime, duration, isAutoplay, volume, lyric, currentSTime, isNewLyric,
               isPlaying} = this.props
         const {mode, isMute, loaded, played} = this.state
 
@@ -155,8 +154,8 @@ export default class Player extends Component {
                                 control={
                                     <Switch 
                                     className="player-info-switch"
-                                    checked={isAutoPlay}
-                                    onChange={(event, isAutoPlay) => _this.toggleAutoPlay(isAutoPlay)}
+                                    checked={isAutoplay}
+                                    onChange={(event) => _this.toggleAutoPlay()}
                                     />
                                 }
                                 label="自动播放"

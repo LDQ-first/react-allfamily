@@ -13,6 +13,8 @@ import {
 
     PLAY,
     PAUSE,
+    AUTOPLAY,
+    MUTE,
 
     BEFORE_SONG,
     NEXT_SONG,
@@ -41,6 +43,20 @@ export const pause = () => {
         type: PAUSE
     }
 }
+
+export const autoplay = () => {
+    return {
+        type: AUTOPLAY
+    }
+}
+
+export const mute = () => {
+    return {
+        type: MUTE
+    }
+}
+
+
 
 
 export const beforeSong = () => {

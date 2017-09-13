@@ -17,7 +17,9 @@ import {
    lyricErrorMsgSelector,
    lyricSelector,
    isPlayingSelector,
-   songIndexSelector
+   songIndexSelector,
+   isAutoplaySelector,
+   isMutedSelector
 } from '../../selector/music.js'
 import * as musicAction  from '../../redux/actions/music.js'
 import Immutable from 'immutable'
@@ -47,7 +49,9 @@ const mapStateToProps = (state) => ({
     lyricError: lyricErrorMsgSelector(state),
     lyric: lyricSelector(state),
     isPlaying: isPlayingSelector(state),
-    songIndex: songIndexSelector(state)
+    songIndex: songIndexSelector(state),
+    isAutoplay: isAutoplaySelector(state),
+    isMuted: isMutedSelector(state)
 })
 
 
@@ -69,10 +73,18 @@ class Music extends Component {
             lyricErrorMsg: PropTypes.string,
             lyric: PropTypes.array,
             getLyrics: PropTypes.func,
+
             isPlaying: PropTypes.bool,
+            isAutoplay: PropTypes.bool,
+            isMuted: PropTypes.bool,
             songIndex: PropTypes.number,
+
             play: PropTypes.func,
             pause: PropTypes.func,
+            autoplay: PropTypes.func,
+            mute: PropTypes.func,
+
+
             beforeSong: PropTypes.func,
             nextSong: PropTypes.func,
             chooseSong: PropTypes.func,
@@ -88,7 +100,7 @@ class Music extends Component {
             currentTime: '00:00',
             played: 0,
             loaded: 0,
-            isAutoPlay: localStorage.isAutoPlay === 'true' || false,
+           /* isAutoPlay: localStorage.isAutoPlay === 'true' || false,*/
             isPlaying: false 
         }
     }
@@ -96,15 +108,15 @@ class Music extends Component {
     
     
     componentWillMount() {
-        const {getSongLists, songList, getDisLists} = this.props
+        const {getSongLists, songList, getDisLists, autoplay} = this.props
         getSongLists()   
 
        
     }
     
     componentWillReceiveProps(nextProps) {
-         const {isAutoPlay} = this.state
-         this._musicPlayer.autoplay = isAutoPlay
+         const {isAutoplay} = this.props
+         this._musicPlayer.autoplay = isAutoplay
          this.setState({
              volume: this._musicPlayer.volume
          })
@@ -131,7 +143,8 @@ class Music extends Component {
     }
 
     getSong = (list, index) => {
-        const {isAutoPlay, isPlaying} = this.state
+        /*const {isAutoPlay, isPlaying} = this.state*/
+        const {isAutoplay } = this.props
         const { songid, albummid, songname, singer } = list
         console.log(songid, albummid)
         const albumImgUrl = musicApi.albumImg(albummid)
@@ -146,7 +159,8 @@ class Music extends Component {
             songid,
             isNewLyric: false
         })
-        if(!isAutoPlay && isPlaying) {
+
+        /*if(!isAutoPlay && isPlaying) {
             this.setState({
                 isPlaying: false
             })
@@ -155,7 +169,7 @@ class Music extends Component {
             this.setState({
                 isPlaying: true
             })
-        }
+        }*/
        this.getLyric(songid)
     }
 
@@ -215,12 +229,16 @@ class Music extends Component {
         pause()
     }
 
-    toggleAutoPlay (isAutoPlay) {
-        this.setState({ 
+    toggleAutoPlay () {
+        /*this.setState({ 
             isAutoPlay
-        })
-        this._musicPlayer.autoplay = isAutoPlay
-        localStorage.isAutoPlay = isAutoPlay
+        })*/
+        const {autoplay, isAutoplay} = this.props
+        console.log(isAutoplay)
+        autoplay()
+        console.log(isAutoplay)
+        this._musicPlayer.autoplay = !isAutoplay
+        /*localStorage.isAutoPlay = isAutoPlay*/
     }
 
     getProgress() {
@@ -285,11 +303,11 @@ class Music extends Component {
 
     render() {
         const {value, open, songUrl, albumImgUrl, songname, singer,
-            duration, currentTime, played, isAutoPlay, loaded, volume,
+            duration, currentTime, played,loaded, volume,
              isMuted, index, songid, isNewLyric, currentSTime} = this.state
         const {
             songList, getDisLists, disList, lyricStatus,
-             isPlaying, play, pause,
+             isPlaying, play, pause, isAutoplay,
              beforeSong, nextSong,  chooseSong
             } = this.props
         const jsSongList = Immutable.List(songList).toJS()
@@ -330,9 +348,9 @@ class Music extends Component {
                           <Player _this={this} albumImgUrl={albumImgUrl}  songname={songname} singer={singer}
                           duration={duration} currentTime={currentTime}   
 
-                          isPlaying={isPlaying} play={play} pause={pause}
+                          isPlaying={isPlaying} play={play} pause={pause} isAutoplay = {isAutoplay}
 
-                          played={played} loaded={loaded}  isAutoPlay={isAutoPlay}  
+                          played={played} loaded={loaded}   
                            volume={volume} isMuted={isMuted} lyric={lyric} currentSTime={currentSTime}
                           isNewLyric={isNewLyric}/>
                           <IconButton color="primary" onClick={this.handleClick} className="song-lists-expand">

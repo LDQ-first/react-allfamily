@@ -14,6 +14,17 @@ export const isPlayingSelector = createSelector(
     musicSongActionState => musicSongActionState.get('isPlaying')
 )
 
+export const isAutoplaySelector = createSelector(
+    musicSongActionSelector,
+    musicSongActionState => musicSongActionState.get('isAutoplay')
+)
+
+export const isMutedSelector = createSelector(
+    musicSongActionSelector,
+    musicSongActionState => musicSongActionState.get('isMuted')
+)
+
+
 
 export const songIndexSelector = createSelector(
     musicSongActionSelector,
