@@ -98,6 +98,13 @@ export default class Player extends Component {
         _this.pauseSong()
     }
    
+    mutePlayer (_this) {
+        const {isMute} = this.state
+        this.setState({
+            isMute: !isMute
+        })
+        _this.mutePlayer()
+    }
     
 
 
@@ -137,7 +144,6 @@ export default class Player extends Component {
                                color="primary"
                                 control={
                                     <Switch 
-                                    
                                     className="player-info-switch"
                                     checked={isAutoPlay}
                                     onChange={(event, isAutoPlay) => _this.toggleAutoPlay(isAutoPlay)}
@@ -170,10 +176,10 @@ export default class Player extends Component {
                             <div className="player-volume">
                                 { 
                                     isMute ? 
-                                    <IconButton className="iconBtn" onClick={() => {}}>
+                                    <IconButton className="iconBtn" onClick={() => {this.mutePlayer(_this)}}>
                                         <VolumeOffIcon/>
                                     </IconButton> : 
-                                    <IconButton className="iconBtn" onClick={() => {}}>
+                                    <IconButton className="iconBtn" onClick={() => {this.mutePlayer(_this)}}>
                                         <VolumeDownIcon/>
                                     </IconButton> 
                                }

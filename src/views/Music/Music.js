@@ -208,6 +208,13 @@ class Music extends Component {
          })
     }
 
+    mutePlayer () {
+         this.setState({
+             isMuted: !this._musicPlayer.muted
+         })
+         this._musicPlayer.muted = !this._musicPlayer.muted
+    }
+
 
 
     render() {
@@ -226,6 +233,8 @@ class Music extends Component {
                 id={list.id} getDisLists={getDisLists}/>
             )
         })
+
+
 
 
         return (
