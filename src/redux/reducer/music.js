@@ -9,10 +9,50 @@ import {
 
     GET_LYRIC_REQUEST,
     GET_LYRIC_SUCCESS,
-    GET_LYRIC_FAIL
+    GET_LYRIC_FAIL,
+
+    PLAY,
+    PAUSE,
+
+    BEFORE_SONG,
+    NEXT_SONG,
+    CHOOSE_SONG,
 
 } from '../const/const'
 import { fromJS, Map } from 'immutable'
+
+
+const songActionInitState = fromJS({
+    isPlaying: false,
+    songIndex: 0
+})
+
+
+export const musicSongAction = (state = songActionInitState, action) => {
+    switch(action.type) {
+        case PLAY:
+            return state.set('isPlaying', true)
+        case PAUSE:
+            return state.set('isPlaying', false)
+        case BEFORE_SONG:
+            return state.update('songIndex', songIndex => songIndex - 1)
+        case NEXT_SONG:
+            return state.update('songIndex', songIndex => songIndex + 1)
+        case CHOOSE_SONG:
+            /*console.log(action)*/
+            return state.set('songIndex', action.songIndex)
+        default: 
+             return state
+    }
+}
+
+
+
+
+
+
+
+
 
 
 const songListsInitState = fromJS({

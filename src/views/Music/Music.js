@@ -15,7 +15,9 @@ import {
    lyricStatusSelector,
    lyricIsLoadingSelector,
    lyricErrorMsgSelector,
-   lyricSelector
+   lyricSelector,
+   isPlayingSelector,
+   songIndexSelector
 } from '../../selector/music.js'
 import * as musicAction  from '../../redux/actions/music.js'
 import Immutable from 'immutable'
@@ -43,7 +45,9 @@ const mapStateToProps = (state) => ({
     lyricStatus: lyricStatusSelector(state),
     lyricIsLoading: lyricIsLoadingSelector(state),
     lyricError: lyricErrorMsgSelector(state),
-    lyric: lyricSelector(state)
+    lyric: lyricSelector(state),
+    isPlaying: isPlayingSelector(state),
+    songIndex: songIndexSelector(state)
 })
 
 
@@ -64,7 +68,14 @@ class Music extends Component {
             lyricIsLoading: PropTypes.string,
             lyricErrorMsg: PropTypes.string,
             lyric: PropTypes.array,
-            getLyrics: PropTypes.func
+            getLyrics: PropTypes.func,
+            isPlaying: PropTypes.bool,
+            songIndex: PropTypes.number,
+            play: PropTypes.func,
+            pause: PropTypes.func,
+            before_song: PropTypes.func,
+            next_song: PropTypes.func,
+            choose_song: PropTypes.func,
         }
     }
 
@@ -270,9 +281,9 @@ class Music extends Component {
 
     render() {
         const {value, open, songUrl, albumImgUrl, songname, singer,
-            duration, currentTime, played, isAutoPlay, isPlaying, loaded, volume,
+            duration, currentTime, played, isAutoPlay, loaded, volume,
              isMuted, index, songid, isNewLyric, currentSTime} = this.state
-        const {songList, getDisLists, disList, lyricStatus} = this.props
+        const {songList, getDisLists, disList, lyricStatus, isPlaying, play, pause} = this.props
         const jsSongList = Immutable.List(songList).toJS()
         const jsDisList = Immutable.List(disList).toJS()
 

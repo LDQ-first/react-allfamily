@@ -53,4 +53,13 @@ export const GET_LYRIC_FAIL = "GET_LYRIC_FAIL"
 
 
 
+export const PLAY = "PLAY"
+export const PAUSE = "PAUSE"
+
+export const BEFORE_SONG = "BEFORE_SONG"
+export const NEXT_SONG = "NEXT_SONG"
+export const CHOOSE_SONG = "CHOOSE_SONG"
+
+
+
 

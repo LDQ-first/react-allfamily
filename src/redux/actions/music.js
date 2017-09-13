@@ -9,7 +9,16 @@ import {
 
     GET_LYRIC_REQUEST,
     GET_LYRIC_SUCCESS,
-    GET_LYRIC_FAIL
+    GET_LYRIC_FAIL,
+
+    PLAY,
+    PAUSE,
+
+    BEFORE_SONG,
+    NEXT_SONG,
+    CHOOSE_SONG,
+
+
 
 } from '../const/const'
 import axios from 'axios'
@@ -17,7 +26,52 @@ import {musicApi} from '../../api/api.js'
 import fetchJsonp from 'fetch-jsonp'
 
 
+
 /*action creator*/
+
+export const play = () => {
+    return {
+        type: PLAY
+    }
+}
+
+
+export const pause = () => {
+    return {
+        type: PAUSE
+    }
+}
+
+
+export const before_song = () => {
+    return {
+        type: BEFORE_SONG
+    }
+}
+
+
+export const next_song = () => {
+    return {
+        type: NEXT_SONG
+    }
+}
+
+
+export const choose_song = (songIndex) => {
+    return {
+        type: CHOOSE_SONG,
+        songIndex: songIndex
+    }
+}
+
+
+
+
+
+
+
+
+
 //songLists
 export const getsongListsRequest = () => {
     return {

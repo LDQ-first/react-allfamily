@@ -156,7 +156,7 @@ export default class Player extends Component {
                         </div>
                        
                     </header>
-                    <Lyric _this={this} lyric={lyric} currentSTime={currentSTime} isNewLyric={isNewLyric}/>
+                    {/*<Lyric _this={this} lyric={lyric} currentSTime={currentSTime} isNewLyric={isNewLyric}/>*/}
                     <footer className="player-info-control">
                         <div className="player-bar-wrapper">
                             <div className="player-bar"
