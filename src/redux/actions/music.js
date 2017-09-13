@@ -15,6 +15,7 @@ import {
     PAUSE,
     AUTOPLAY,
     MUTE,
+    VALUE,
 
     BEFORE_SONG,
     NEXT_SONG,
@@ -53,6 +54,13 @@ export const autoplay = () => {
 export const mute = () => {
     return {
         type: MUTE
+    }
+}
+
+export const changeValue = (value) => {
+    return {
+        type: VALUE,
+        value: value
     }
 }
 

@@ -15,6 +15,7 @@ import {
     PAUSE,
     AUTOPLAY,
     MUTE,
+    VALUE,
 
     BEFORE_SONG,
     NEXT_SONG,
@@ -28,7 +29,8 @@ const songActionInitState = fromJS({
     isPlaying: false,
     songIndex: 0,
     isAutoplay: false,
-    isMuted: false
+    isMuted: false,
+    value: 0
 })
 
 
@@ -42,12 +44,13 @@ export const musicSongAction = (state = songActionInitState, action) => {
             return state.update('isAutoplay', isAutoplay => !isAutoplay ) 
         case MUTE:
             return state.update('isMuted', isMuted => !isMuted ) 
+        case VALUE:
+            return state.set('value', action.value)
         case BEFORE_SONG:
             return state.update('songIndex', songIndex => songIndex - 1)
         case NEXT_SONG:
             return state.update('songIndex', songIndex => songIndex + 1)
         case CHOOSE_SONG:
-            /*console.log(action)*/
             return state.set('songIndex', action.songIndex)
         default: 
              return state

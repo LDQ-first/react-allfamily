@@ -19,7 +19,8 @@ import {
    isPlayingSelector,
    songIndexSelector,
    isAutoplaySelector,
-   isMutedSelector
+   isMutedSelector,
+   valueSelector,
 } from '../../selector/music.js'
 import * as musicAction  from '../../redux/actions/music.js'
 import Immutable from 'immutable'
@@ -51,7 +52,8 @@ const mapStateToProps = (state) => ({
     isPlaying: isPlayingSelector(state),
     songIndex: songIndexSelector(state),
     isAutoplay: isAutoplaySelector(state),
-    isMuted: isMutedSelector(state)
+    isMuted: isMutedSelector(state),
+    value: valueSelector(state)
 })
 
 
@@ -78,6 +80,7 @@ class Music extends Component {
             isAutoplay: PropTypes.bool,
             isMuted: PropTypes.bool,
             songIndex: PropTypes.number,
+            value: PropTypes.number,
 
             play: PropTypes.func,
             pause: PropTypes.func,
@@ -88,6 +91,7 @@ class Music extends Component {
             beforeSong: PropTypes.func,
             nextSong: PropTypes.func,
             chooseSong: PropTypes.func,
+            changeValue: PropTypes.func,
         }
     }
 
@@ -95,7 +99,6 @@ class Music extends Component {
         super(porps)
         this.state = {
             index: 0,
-            value: 0,
             open: true,
             duration: '00:00',
             currentTime: '00:00',
@@ -107,7 +110,7 @@ class Music extends Component {
     
     
     componentWillMount() {
-        const {getSongLists, songList, getDisLists, autoplay, isAutoplay} = this.props
+        const {getSongLists, autoplay, isAutoplay} = this.props
         getSongLists()   
         if(localStorage.isAutoplay === 'true' ) {
             autoplay()
@@ -139,9 +142,8 @@ class Music extends Component {
 
 
     handleChange = (e, value) => {
-        this.setState({
-            value
-        })
+        const {changeValue} = this.props
+        changeValue(value)
     } 
 
     handleClick = () => {
@@ -279,15 +281,9 @@ class Music extends Component {
         if(status === 'before' && songIndex > 0) {
             this.getSong(jsDisList[songIndex - 1])
             beforeSong()
-            /*this.setState({
-                songIndex: songIndex - 1
-            })*/
         } else if (status === 'next' && songIndex < jsDisList.length - 1) {
             this.getSong(jsDisList[songIndex + 1])
             nextSong()
-           /* this.setState({
-                songIndex: songIndex + 1
-            })*/
         }
     }
 
@@ -300,13 +296,13 @@ class Music extends Component {
 
 
     render() {
-        const {value, open, songUrl, albumImgUrl, songname, singer,
+        const {open, songUrl, albumImgUrl, songname, singer,
             duration, currentTime, played,loaded, volume,
-             index, songid, isNewLyric, currentSTime} = this.state
+             songid, isNewLyric, currentSTime} = this.state
         const {
             songList, getDisLists, disList, lyricStatus,
              isPlaying, play, pause, isAutoplay, isMuted,
-             beforeSong, nextSong,  chooseSong, songIndex
+             beforeSong, nextSong,  chooseSong, songIndex, value
             } = this.props
         const jsSongList = Immutable.List(songList).toJS()
         const jsDisList = Immutable.List(disList).toJS()

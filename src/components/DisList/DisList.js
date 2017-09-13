@@ -23,7 +23,7 @@ export default class DisList extends Component {
         super(props)
         this.state = {
             clickI: 0,
-            values: null,
+           /* values: null,*/
             isFirst: false
         }
     }
@@ -38,8 +38,9 @@ export default class DisList extends Component {
      
     
     componentWillReceiveProps(nextProps) {
-        const {isFirst, clickI, values} = this.state
-        const {jsDisList, _this, songIndex, value} = nextProps
+        const {isFirst, clickI} = this.state
+        const {jsDisList, _this, songIndex, value, chooseSong} = nextProps
+
 
         if(isFirst && jsDisList.length && jsDisList[0]) {
             _this.getSong(jsDisList[0], 0)
@@ -47,16 +48,13 @@ export default class DisList extends Component {
                 isFirst: false
             })
         }
+        console.log(value)
+        console.log(this.props.value)
+
         
-        
-        this.setState({
-            values: value,
-            /*clickI :index*/
-        })
-        if( values === this.props.value) return
-        this.setState({
-            clickI : 0
-        })
+
+        if( value === this.props.value) return
+        chooseSong(0)
         const scrollTimer = setInterval(() => {
             if(this._disListsWrapper.scrollTop === 0 ) {
                 clearInterval(scrollTimer)
@@ -71,10 +69,6 @@ export default class DisList extends Component {
 
     chooseSong (songIndex, list) {
         const { _this} = this.props
-       /* const { clickI } = this.state*/
-       /* this.setState({
-            clickI : index
-        })*/
         const {chooseSong} = this.props
         chooseSong(songIndex)
         _this.getSong(list)
@@ -85,12 +79,10 @@ export default class DisList extends Component {
     render() {
 
         const {jsDisList, _this, songIndex} = this.props
-       /* const { clickI } = this.state */
-       console.log(songIndex)
         const className = (index) => {
             return classNames("disList", {'active': index === songIndex})
         } 
-
+        console.log(songIndex)
 
        
 

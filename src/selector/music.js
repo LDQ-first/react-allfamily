@@ -32,6 +32,11 @@ export const songIndexSelector = createSelector(
 )
 
 
+export const valueSelector = createSelector(
+    musicSongActionSelector,
+    musicSongActionState => musicSongActionState.get('value')
+)
+
 
 
 
