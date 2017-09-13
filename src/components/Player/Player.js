@@ -38,6 +38,7 @@ export default class Player extends Component {
             isAutoplay: PropTypes.bool,
             isMuted: PropTypes.bool,
             songIndex: PropTypes.number,
+            
             beforeSong: PropTypes.func,
             nextSong: PropTypes.func,
             chooseSong: PropTypes.func,

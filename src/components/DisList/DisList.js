@@ -14,6 +14,8 @@ export default class DisList extends Component {
             _this: PropTypes.object,
             value: PropTypes.number,
             index: PropTypes.number,
+            songIndex: PropTypes.number,
+            chooseSong: PropTypes.func,
         }
     }
 
@@ -37,7 +39,7 @@ export default class DisList extends Component {
     
     componentWillReceiveProps(nextProps) {
         const {isFirst, clickI, values} = this.state
-        const {jsDisList, _this, index, value} = nextProps
+        const {jsDisList, _this, songIndex, value} = nextProps
 
         if(isFirst && jsDisList.length && jsDisList[0]) {
             _this.getSong(jsDisList[0], 0)
@@ -45,11 +47,11 @@ export default class DisList extends Component {
                 isFirst: false
             })
         }
-
+        
         
         this.setState({
             values: value,
-            clickI :index
+            /*clickI :index*/
         })
         if( values === this.props.value) return
         this.setState({
@@ -67,23 +69,26 @@ export default class DisList extends Component {
     }
     
 
-    chooseSong (index, list) {
+    chooseSong (songIndex, list) {
         const { _this} = this.props
-        const { clickI } = this.state
-        this.setState({
+       /* const { clickI } = this.state*/
+       /* this.setState({
             clickI : index
-        })
-        _this.getSong(list, index)
+        })*/
+        const {chooseSong} = this.props
+        chooseSong(songIndex)
+        _this.getSong(list)
     }
     
 
 
     render() {
 
-        const {jsDisList, _this} = this.props
-        const { clickI } = this.state 
+        const {jsDisList, _this, songIndex} = this.props
+       /* const { clickI } = this.state */
+       console.log(songIndex)
         const className = (index) => {
-            return classNames("disList", {'active': index === clickI})
+            return classNames("disList", {'active': index === songIndex})
         } 
 
 

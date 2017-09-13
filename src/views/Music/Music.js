@@ -94,6 +94,7 @@ class Music extends Component {
     constructor(porps) {
         super(porps)
         this.state = {
+            index: 0,
             value: 0,
             open: true,
             duration: '00:00',
@@ -147,7 +148,7 @@ class Music extends Component {
         this.setState({ open: !this.state.open });
     }
 
-    getSong = (list, index) => {
+    getSong = (list) => {
         const {isAutoplay , isPlaying, pause} = this.props
         const { songid, albummid, songname, singer } = list
         console.log(songid, albummid)
@@ -159,7 +160,6 @@ class Music extends Component {
             songUrl,
             songname,
             singer,
-            index,
             songid,
             isNewLyric: false
         })
@@ -272,21 +272,22 @@ class Music extends Component {
 
     changeSong (status) {
         console.log(status)
-        const {disList} = this.props
-        const {index} = this.state
+        const {disList, songIndex, beforeSong, nextSong} = this.props
         const jsDisList = Immutable.List(disList).toJS()
-        console.log(index)
+        console.log(songIndex)
         console.log(jsDisList.length)
-        if(status === 'before' && index > 0) {
-            this.getSong(jsDisList[index - 1])
-            this.setState({
-                index: index - 1
-            })
-        } else if (status === 'next' && index < jsDisList.length - 1) {
-            this.getSong(jsDisList[index + 1])
-            this.setState({
-                index: index + 1
-            })
+        if(status === 'before' && songIndex > 0) {
+            this.getSong(jsDisList[songIndex - 1])
+            beforeSong()
+            /*this.setState({
+                songIndex: songIndex - 1
+            })*/
+        } else if (status === 'next' && songIndex < jsDisList.length - 1) {
+            this.getSong(jsDisList[songIndex + 1])
+            nextSong()
+           /* this.setState({
+                songIndex: songIndex + 1
+            })*/
         }
     }
 
@@ -305,7 +306,7 @@ class Music extends Component {
         const {
             songList, getDisLists, disList, lyricStatus,
              isPlaying, play, pause, isAutoplay, isMuted,
-             beforeSong, nextSong,  chooseSong
+             beforeSong, nextSong,  chooseSong, songIndex
             } = this.props
         const jsSongList = Immutable.List(songList).toJS()
         const jsDisList = Immutable.List(disList).toJS()
@@ -355,7 +356,8 @@ class Music extends Component {
                      </div>
                      <Collapse in={open} className="song-lists-wrapper">
                            {SongLists}
-                           <DisList jsDisList={jsDisList} _this={this} value={value} index={index}/>
+                           <DisList jsDisList={jsDisList} _this={this} value={value} songIndex={songIndex} 
+                           chooseSong={chooseSong}/>
                         <BottomNavigation
                             className="song-lists-control"
                             value={value}
