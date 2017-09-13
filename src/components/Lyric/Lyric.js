@@ -24,6 +24,7 @@ export default class Lyric extends Component {
         this.state = {
            isPlay: false,
            index: 0,
+           translateY: 0,
         }
     }
 
@@ -60,27 +61,45 @@ export default class Lyric extends Component {
        
     }
 
+    
+    update (newLyricArray, lines) {
+         const {lyric, currentSTime} = this.props
+         const {index, translateY} = this.state
+         console.log(this.lines)
+         console.log(newLyricArray)
+         console.log(lines)
+         let newCurrentSTime = Math.round(currentSTime)
+         console.log(newCurrentSTime)
+         if(index === newLyricArray.length - 1) return
 
-    componentDidUpdate(prevProps, prevState) {
-        
+         for(let i = index + 1 ; i < newLyricArray.length ; i ++) {
+             let sec = this.getSeconds(newLyricArray[i])
+             console.log(sec)
+             if( newCurrentSTime === sec && 
+             (!newLyricArray[i + 1] || newCurrentSTime < this.getSeconds(newLyricArray[i + 1]))) {
+                 console.log(i)
+             }
+         }
+
+
+
+
     }
-    
-    
 
 
     render() {
 
         const {_this, lyric, currentSTime} = this.props
-        const {isPlay, index} = this.state
-        console.log(currentSTime)
+        const {isPlay, index, translateY} = this.state
+        
 
         let lines = null
         if(lyric) {
            const newLyric = this.formatText(lyric)
            console.log(newLyric)
-           console.log(this.lines)
+           
            const newLyricArray = newLyric.match(/^\[\d{2}:\d{2}.\d{2}\](.+)$/gm) || []
-           console.log(newLyricArray)
+           
 
            if(newLyricArray.length) {
                lines = newLyricArray.map((line, i) => {
@@ -91,10 +110,11 @@ export default class Lyric extends Component {
                 })
                 lines.map((line, i) => {
                     line.props.className = line.props.className.replace(' active', '')
-                    console.log(line.props.className)
+                  //  console.log(line.props.className)
                 })
                 lines[index].props.className += ' active'
-                console.log(lines)
+               // console.log(lines)
+                this.update(newLyricArray, lines)
            }
            
            
@@ -108,7 +128,7 @@ export default class Lyric extends Component {
             <div className="player-info-lyric">
                 <div className="player-lyrics-lines"
                 ref={lines => this.lines = lines}
-                style={{transform: `translateY(0px)`}}>
+                style={{transform: `translateY(${translateY})`}}>
                     {lines}
                 </div>
             </div>
