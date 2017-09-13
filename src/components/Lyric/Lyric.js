@@ -21,7 +21,8 @@ export default class Lyric extends Component {
     constructor (props) {
         super(props)
         this.state = {
-           isPlay: false
+           isPlay: false,
+           index: 0,
         }
     }
 
@@ -32,10 +33,6 @@ export default class Lyric extends Component {
 
     }
 
-
-    /*createLine () {
-
-    }*/
 
     formatText(text) {
         const div = document.createElement('div')
@@ -61,27 +58,42 @@ export default class Lyric extends Component {
         })
        
     }
+
+
+    componentDidUpdate(prevProps, prevState) {
+        
+    }
+    
     
 
 
     render() {
 
         const {_this, lyric} = this.props
-        const {isPlay} = this.state
+        const {isPlay, index} = this.state
         let lines = null
         if(lyric) {
            const newLyric = this.formatText(lyric)
            console.log(newLyric)
            console.log(this.lines)
-         //  this.createLine(newLyric)
-          const newLyricArray = newLyric.match(/^\[\d{2}:\d{2}.\d{2}\](.+)$/gm) || []
-          console.log(newLyricArray)
+           const newLyricArray = newLyric.match(/^\[\d{2}:\d{2}.\d{2}\](.+)$/gm) || []
+           console.log(newLyricArray)
 
-           lines = newLyricArray.map((line, i) => {
-               return (
-                   <div key={i} className="player-lyrics-line">{line.slice(10)}</div>
-               )
-           })
+           if(newLyricArray.length) {
+               lines = newLyricArray.map((line, i) => {
+                    return (
+                        <div key={i} className="player-lyrics-line"
+                        ref={line => this.line = line}>{line.slice(10)}</div>
+                    )
+                })
+                lines.map((line, i) => {
+                    line.props.className = line.props.className.replace('active', '')
+                    console.log(line.props.className)
+                })
+                console.log(lines)
+           }
+           
+           
         }
 
 
