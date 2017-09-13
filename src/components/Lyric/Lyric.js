@@ -31,7 +31,35 @@ export default class Lyric extends Component {
     
     componentWillReceiveProps(nextProps) {
        const {_this, lyric} = nextProps
-       
+       const { index, translateY }  = this.state
+
+       let lines = null
+       if(lyric) {
+           const newLyric = this.formatText(lyric)
+           /*console.log(newLyric)*/
+           
+           const newLyricArray = newLyric.match(/^\[\d{2}:\d{2}.\d{2}\](.+)$/gm) || []
+           
+
+           if(newLyricArray.length) {
+               lines = newLyricArray.map((line, i) => {
+                    return (
+                        <div key={i} className="player-lyrics-line"
+                        ref={line => this.line = line}>{line.slice(10)}</div>
+                    )
+                })
+                lines.map((line, i) => {
+                    line.props.className = line.props.className.replace(' active', '')
+                  //  console.log(line.props.className)
+                })
+                lines[index].props.className += ' active'
+               // console.log(lines)
+               this.setState({
+                   lines
+               })
+                this.update(newLyricArray, lines)
+           } 
+        }
 
     }
 
@@ -65,22 +93,41 @@ export default class Lyric extends Component {
     update (newLyricArray, lines) {
          const {lyric, currentSTime} = this.props
          const {index, translateY} = this.state
-         console.log(this.lines)
+         /*console.log(this.lines)
          console.log(newLyricArray)
-         console.log(lines)
+         console.log(lines)*/
          let newCurrentSTime = Math.round(currentSTime)
-         console.log(newCurrentSTime)
+       //  console.log(newCurrentSTime)
          if(index === newLyricArray.length - 1) return
 
          for(let i = index + 1 ; i < newLyricArray.length ; i ++) {
              let sec = this.getSeconds(newLyricArray[i])
-             console.log(sec)
+             
+             /*if(newCurrentSTime === sec) {
+                 console.log(sec)
+             }*/
              if( newCurrentSTime === sec && 
              (!newLyricArray[i + 1] || newCurrentSTime < this.getSeconds(newLyricArray[i + 1]))) {
                  console.log(i)
+                 lines.map((line, i) => {
+                    line.props.className = line.props.className.replace(' active', '')
+                  //  console.log(line.props.className)
+                })
+                lines[i].props.className += ' active'
+                this.setState({
+                    index: i
+                })
+                break;
              }
          }
 
+         if(index > 2 && this.line) {
+             console.log(index)
+             
+             this.setState({
+                 translateY: -(index - 2) * this.line.offsetHeight
+             }) 
+         }
 
 
 
@@ -90,14 +137,13 @@ export default class Lyric extends Component {
     render() {
 
         const {_this, lyric, currentSTime} = this.props
-        const {isPlay, index, translateY} = this.state
+        const {isPlay, index, translateY, lines} = this.state
         
 
-        let lines = null
+       /* let lines = null
         if(lyric) {
            const newLyric = this.formatText(lyric)
-           console.log(newLyric)
-           
+          
            const newLyricArray = newLyric.match(/^\[\d{2}:\d{2}.\d{2}\](.+)$/gm) || []
            
 
@@ -110,15 +156,13 @@ export default class Lyric extends Component {
                 })
                 lines.map((line, i) => {
                     line.props.className = line.props.className.replace(' active', '')
-                  //  console.log(line.props.className)
                 })
                 lines[index].props.className += ' active'
-               // console.log(lines)
                 this.update(newLyricArray, lines)
            }
            
            
-        }
+        }*/
 
 
 
@@ -128,7 +172,7 @@ export default class Lyric extends Component {
             <div className="player-info-lyric">
                 <div className="player-lyrics-lines"
                 ref={lines => this.lines = lines}
-                style={{transform: `translateY(${translateY})`}}>
+                style={{transform: `translateY(${translateY}px)`}}>
                     {lines}
                 </div>
             </div>
