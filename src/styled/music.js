@@ -181,6 +181,8 @@ const MusicDiv = styled.div`
                     .player-lyrics-lines {
                         outline: 1px solid red;
                         background: #FFF;
+                        position: relative;
+                        z-index: 1000;
                     }
                 }
                 .player-info-control {
