@@ -70,6 +70,8 @@ export default class Player extends Component {
            loaded
        })
 
+       console.log(isAutoplay)
+
        /*if(!isAutoPlay && isPlay && !isPlaying) {
            this.setState({
                 isPlay: false

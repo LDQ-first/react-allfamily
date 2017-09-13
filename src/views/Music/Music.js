@@ -116,7 +116,7 @@ class Music extends Component {
     
     componentWillReceiveProps(nextProps) {
          const {isAutoplay} = this.props
-         this._musicPlayer.autoplay = isAutoplay
+      //   this._musicPlayer.autoplay = isAutoplay
          this.setState({
              volume: this._musicPlayer.volume
          })
@@ -159,7 +159,7 @@ class Music extends Component {
             songid,
             isNewLyric: false
         })
-
+      
         /*if(!isAutoPlay && isPlaying) {
             this.setState({
                 isPlaying: false
@@ -238,6 +238,7 @@ class Music extends Component {
         autoplay()
         console.log(isAutoplay)
         this._musicPlayer.autoplay = !isAutoplay
+        
         /*localStorage.isAutoPlay = isAutoPlay*/
     }
 
