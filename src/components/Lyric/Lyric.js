@@ -32,6 +32,10 @@ export default class Lyric extends Component {
     componentWillReceiveProps(nextProps) {
        const {_this, lyric} = nextProps
        const { index, translateY }  = this.state
+       this.setState({
+            index: 0,
+            translateY: 0
+        })
 
        let lines = null
        if(lyric) {
@@ -93,8 +97,8 @@ export default class Lyric extends Component {
     update (newLyricArray, lines) {
          const {lyric, currentSTime} = this.props
          const {index, translateY} = this.state
-         /*console.log(this.lines)
-         console.log(newLyricArray)
+        /* console.log(this.lines)*/
+         /*console.log(newLyricArray)
          console.log(lines)*/
          let newCurrentSTime = Math.round(currentSTime)
        //  console.log(newCurrentSTime)
