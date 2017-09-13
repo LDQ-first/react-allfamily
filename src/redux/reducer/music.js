@@ -33,6 +33,7 @@ const songActionInitState = fromJS({
 
 
 export const musicSongAction = (state = songActionInitState, action) => {
+    console.log(action.type)
     switch(action.type) {
         case PLAY:
             return state.set('isPlaying', true)

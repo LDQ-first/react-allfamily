@@ -29,13 +29,14 @@ export default class Player extends Component {
             loaded: PropTypes.number,
 
             volume: PropTypes.volume,
-            isMuted: PropTypes.bool,
+            
             lyric: PropTypes.string,
             currentSTime: PropTypes.number,
             isNewLyric: PropTypes.bool,
 
             isPlaying: PropTypes.bool,
             isAutoplay: PropTypes.bool,
+            isMuted: PropTypes.bool,
             songIndex: PropTypes.number,
             beforeSong: PropTypes.func,
             nextSong: PropTypes.func,
@@ -46,8 +47,6 @@ export default class Player extends Component {
     constructor (props) {
         super(props)
         this.state = {
-           /*isPlay: false,*/
-           isMute: false,
            mode: 'loop',
            loaded: 0,
            played: 0
@@ -62,15 +61,14 @@ export default class Player extends Component {
     
     componentWillReceiveProps(nextProps) {
        const {  played,loaded, isPlaying, _this, isAutoplay, volume, isMuted, lyric} = nextProps
-    /*   const {isPlay} = this.state*/
-    /*   console.log(lyric)*/
+
 
        this.setState({
            played ,
            loaded
        })
 
-       if(isMuted || volume === 0) {
+       /*if(isMuted || volume === 0) {
            this.setState({
                isMute: true
            })
@@ -78,26 +76,16 @@ export default class Player extends Component {
            this.setState({
                isMute: false
            })
-       }
+       }*/
 
     }
 
-    
-   
-    mutePlayer (_this) {
-        const {isMute} = this.state
-        this.setState({
-            isMute: !isMute
-        })
-        _this.mutePlayer()
-    }
-    
 
 
     render() {
 
         const {_this, albumImgUrl, songname, singer, currentTime, duration, isAutoplay, volume, lyric, currentSTime, isNewLyric,
-              isPlaying} = this.props
+              isPlaying, isMuted} = this.props
         const {mode, isMute, loaded, played} = this.state
         
 
@@ -184,11 +172,11 @@ export default class Player extends Component {
                         <div className="player-volume-wrapper">
                             <div className="player-volume">
                                 { 
-                                    isMute ? 
-                                    <IconButton className="iconBtn" onClick={() => {this.mutePlayer(_this)}}>
+                                    isMuted ? 
+                                    <IconButton className="iconBtn" onClick={() => {_this.mutePlayer()}}>
                                         <VolumeOffIcon/>
                                     </IconButton> : 
-                                    <IconButton className="iconBtn" onClick={() => {this.mutePlayer(_this)}}>
+                                    <IconButton className="iconBtn" onClick={() => {_this.mutePlayer()}}>
                                         <VolumeDownIcon/>
                                     </IconButton> 
                                }
