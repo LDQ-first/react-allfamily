@@ -168,7 +168,8 @@ class Music extends Component {
         this.setState({
             duration,
             currentTime,
-            played
+            played,
+            currentSTime: this._musicPlayer.currentTime
         })
     }
 
@@ -270,7 +271,7 @@ class Music extends Component {
     render() {
         const {value, open, songUrl, albumImgUrl, songname, singer,
             duration, currentTime, played, isAutoPlay, isPlaying, loaded, volume,
-             isMuted, index, songid, isNewLyric} = this.state
+             isMuted, index, songid, isNewLyric, currentSTime} = this.state
         const {songList, getDisLists, disList, lyricStatus} = this.props
         const jsSongList = Immutable.List(songList).toJS()
         const jsDisList = Immutable.List(disList).toJS()
@@ -307,7 +308,7 @@ class Music extends Component {
                           >你的浏览器不支持喔！</audio>
                           <Player _this={this} albumImgUrl={albumImgUrl}  songname={songname} singer={singer}
                           duration={duration} currentTime={currentTime} played={played} loaded={loaded}  isAutoPlay={isAutoPlay}  
-                          isPlaying={isPlaying} volume={volume} isMuted={isMuted} lyric={lyric} />
+                          isPlaying={isPlaying} volume={volume} isMuted={isMuted} lyric={lyric} currentSTime={currentSTime}/>
                           <IconButton color="primary" onClick={this.handleClick} className="song-lists-expand">
                             {open ? <ExpandMore /> : <ExpandLess />}
                           </IconButton >

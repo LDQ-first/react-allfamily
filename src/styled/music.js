@@ -185,6 +185,11 @@ const MusicDiv = styled.div`
                         font-size: 14px;
                         position: relative;
                         z-index: 1000;
+                        .player-lyrics-line {
+                            &.active {
+                                color: #0eb765;
+                            }
+                        }
                     }
                 }
                 .player-info-control {

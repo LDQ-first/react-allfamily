@@ -15,6 +15,7 @@ export default class Lyric extends Component {
         return { 
             _this: PropTypes.object,
             lyric: PropTypes.string,
+            currentSTime: PropTypes.number
         }
     }
 
@@ -69,8 +70,10 @@ export default class Lyric extends Component {
 
     render() {
 
-        const {_this, lyric} = this.props
+        const {_this, lyric, currentSTime} = this.props
         const {isPlay, index} = this.state
+        console.log(currentSTime)
+
         let lines = null
         if(lyric) {
            const newLyric = this.formatText(lyric)
@@ -87,9 +90,10 @@ export default class Lyric extends Component {
                     )
                 })
                 lines.map((line, i) => {
-                    line.props.className = line.props.className.replace('active', '')
+                    line.props.className = line.props.className.replace(' active', '')
                     console.log(line.props.className)
                 })
+                lines[index].props.className += ' active'
                 console.log(lines)
            }
            
