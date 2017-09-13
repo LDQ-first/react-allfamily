@@ -28,9 +28,9 @@ const MusicDiv = styled.div`
         border-bottom: 2px solid #CCC;
         .song-lists-expand {
             position: absolute;
-            right: 0;
+            right: 7px;
             bottom: 0;
-            height: 30px;
+            height: 26px;
             width: 24px;
         }
         .audio {
@@ -50,6 +50,18 @@ const MusicDiv = styled.div`
                 border: 4px solid #FFF;
                 box-shadow: 0 0 10px #ff9090;
                 overflow: hidden;
+                @media (max-width: 380px) {
+                    width: 100px;
+                    .player-disco-wrapper {
+                        transform: scale(0.8);
+                    }
+                }
+                @media (max-width: 360px) {
+                    width: 80px;
+                    .player-disco-wrapper {
+                        transform: scale(0.7);
+                    }
+                }
                 .player-disco-wrapper {
                     .player-needle {
                         position: absolute;
@@ -168,23 +180,38 @@ const MusicDiv = styled.div`
                 }
                 .player-info-lyric {
                     outline: 1px solid pink;
-                    height: 60px;
+                    flex: 1;
                     position: relative;
+                    overflow: hidden;
+                    background: #FFF;
                     &::before {
+                        content: ' ';
                         position: absolute;
-                        
+                        top: 0;
+                        z-index: 11;
+                        display: block;
+                        overflow: hidden;
+                        width: 100%;
+                        height: 10%;
+                        background: linear-gradient(to bottom, white 0%, rgba(255, 255, 255, 0) 100%);
                     }
                     &::after {
+                        content: ' ';
                         position: absolute;
-
+                        bottom: 0;
+                        z-index: 11;
+                        display: block;
+                        overflow: hidden;
+                        width: 100%;
+                        height: 33%;
+                        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 100%);
                     }
                     .player-lyrics-lines {
                         outline: 1px solid red;
-                        background: #FFF;
                         padding: 4px;
                         font-size: 14px;
                         position: relative;
-                        z-index: 1000;
+                        z-index: 10;
                         .player-lyrics-line {
                             &.active {
                                 color: #0eb765;
@@ -194,14 +221,19 @@ const MusicDiv = styled.div`
                 }
                 .player-info-control {
                     outline: 1px solid purple;
-                    flex: 1;
                     display: flex;
                     align-items: center;
-                    width: 93%;
+                    width: 92%;
                     position: relative;
+                    z-index: 20;
+                    height: 26px;
+                    margin-top: 4px;
+                    @media (max-width: 450px) {
+                        width: 90%;
+                    }
                     .iconBtn {
                         width: 24px;
-                        height: 30px;
+                        height: 26px;
                     }
                     .player-bar-wrapper {
                         flex: 1;
@@ -209,7 +241,8 @@ const MusicDiv = styled.div`
                         position: absolute;
                         top: -4px;
                         left: -8px;
-                        width: calc(100% + 16px);
+                        width: 100%;
+                        
                         .player-bar {
                             height: 4px;
                             position: relative;
@@ -255,7 +288,7 @@ const MusicDiv = styled.div`
                         .player-changeSong {
                             display: flex;
                             justify-content: space-around;
-                            height: 30px;
+                            height: 26px;
                             .player-changeSong-btn {
                                 
                             }
