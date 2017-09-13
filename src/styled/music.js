@@ -57,9 +57,9 @@ const MusicDiv = styled.div`
                     }
                 }
                 @media (max-width: 360px) {
-                    width: 80px;
+                    width: 72px;
                     .player-disco-wrapper {
-                        transform: scale(0.7);
+                        transform: scale(0.64);
                     }
                 }
                 .player-disco-wrapper {
@@ -213,6 +213,7 @@ const MusicDiv = styled.div`
                         position: relative;
                         z-index: 10;
                         .player-lyrics-line {
+                            text-align: center;
                             &.active {
                                 color: #0eb765;
                             }
@@ -230,6 +231,9 @@ const MusicDiv = styled.div`
                     margin-top: 4px;
                     @media (max-width: 450px) {
                         width: 90%;
+                    }
+                    @media (max-width: 360px) {
+                        width: 88%;
                     }
                     .iconBtn {
                         width: 24px;
