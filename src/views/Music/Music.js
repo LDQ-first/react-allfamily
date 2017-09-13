@@ -73,9 +73,9 @@ class Music extends Component {
             songIndex: PropTypes.number,
             play: PropTypes.func,
             pause: PropTypes.func,
-            before_song: PropTypes.func,
-            next_song: PropTypes.func,
-            choose_song: PropTypes.func,
+            beforeSong: PropTypes.func,
+            nextSong: PropTypes.func,
+            chooseSong: PropTypes.func,
         }
     }
 
@@ -193,22 +193,26 @@ class Music extends Component {
     playSong = () => {
         console.log('play')
         const {songUrl} = this.state
+        const {play} = this.props
         if(!songUrl) return
         this._musicPlayer.play()
         this.setState({
             isPlaying: true
         })
+        play()
         
     }
 
     pauseSong = () => {
         console.log('pause')
         const {songUrl} = this.state
+        const {pause} = this.props
         if(!songUrl) return
         this._musicPlayer.pause()
         this.setState({
             isPlaying: false
         })
+        pause()
     }
 
     toggleAutoPlay (isAutoPlay) {
@@ -283,7 +287,11 @@ class Music extends Component {
         const {value, open, songUrl, albumImgUrl, songname, singer,
             duration, currentTime, played, isAutoPlay, loaded, volume,
              isMuted, index, songid, isNewLyric, currentSTime} = this.state
-        const {songList, getDisLists, disList, lyricStatus, isPlaying, play, pause} = this.props
+        const {
+            songList, getDisLists, disList, lyricStatus,
+             isPlaying, play, pause,
+             beforeSong, nextSong,  chooseSong
+            } = this.props
         const jsSongList = Immutable.List(songList).toJS()
         const jsDisList = Immutable.List(disList).toJS()
 
@@ -315,11 +323,17 @@ class Music extends Component {
                           onTimeUpdate = {() => { this.upsateTime()}}
                           onProgress = {() => { this.getProgress()}}
                           onVolumeChange = {() => {this.changeVolume()}}
+                          onPlay = {() => {play()}}
+                          onPause = {() => {pause()}}
 
                           >你的浏览器不支持喔！</audio>
                           <Player _this={this} albumImgUrl={albumImgUrl}  songname={songname} singer={singer}
-                          duration={duration} currentTime={currentTime} played={played} loaded={loaded}  isAutoPlay={isAutoPlay}  
-                          isPlaying={isPlaying} volume={volume} isMuted={isMuted} lyric={lyric} currentSTime={currentSTime}
+                          duration={duration} currentTime={currentTime}   
+
+                          isPlaying={isPlaying} play={play} pause={pause}
+
+                          played={played} loaded={loaded}  isAutoPlay={isAutoPlay}  
+                           volume={volume} isMuted={isMuted} lyric={lyric} currentSTime={currentSTime}
                           isNewLyric={isNewLyric}/>
                           <IconButton color="primary" onClick={this.handleClick} className="song-lists-expand">
                             {open ? <ExpandMore /> : <ExpandLess />}

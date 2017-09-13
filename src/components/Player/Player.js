@@ -28,19 +28,26 @@ export default class Player extends Component {
             played: PropTypes.number,
             loaded: PropTypes.number,
             isAutoPlay: PropTypes.bool,
-            isPlaying: PropTypes.bool,
             volume: PropTypes.volume,
             isMuted: PropTypes.bool,
             lyric: PropTypes.string,
             currentSTime: PropTypes.number,
             isNewLyric: PropTypes.bool,
+
+            isPlaying: PropTypes.bool,
+            songIndex: PropTypes.number,
+            play: PropTypes.func,
+            pause: PropTypes.func,
+            beforeSong: PropTypes.func,
+            nextSong: PropTypes.func,
+            chooseSong: PropTypes.func,
         }
     }
 
     constructor (props) {
         super(props)
         this.state = {
-           isPlay: false,
+           /*isPlay: false,*/
            isMute: false,
            mode: 'loop',
            loaded: 0,
@@ -56,7 +63,7 @@ export default class Player extends Component {
     
     componentWillReceiveProps(nextProps) {
        const {  played,loaded, isPlaying, _this, isAutoPlay, volume, isMuted, lyric} = nextProps
-       const {isPlay} = this.state
+    /*   const {isPlay} = this.state*/
     /*   console.log(lyric)*/
 
        this.setState({
@@ -64,7 +71,7 @@ export default class Player extends Component {
            loaded
        })
 
-       if(!isAutoPlay && isPlay && !isPlaying) {
+       /*if(!isAutoPlay && isPlay && !isPlaying) {
            this.setState({
                 isPlay: false
             })
@@ -73,7 +80,7 @@ export default class Player extends Component {
            this.setState({
                 isPlay: true
             })
-       } 
+       } */
        if(isMuted || volume === 0) {
            this.setState({
                isMute: true
@@ -92,16 +99,16 @@ export default class Player extends Component {
     
 
     play (_this) {
-        this.setState({
+        /*this.setState({
             isPlay: true
-        })
+        })*/
         _this.playSong()
     }
 
     pause (_this) {
-        this.setState({
+        /*this.setState({
             isPlay: false
-        })
+        })*/
         _this.pauseSong()
     }
    
@@ -117,16 +124,17 @@ export default class Player extends Component {
 
     render() {
 
-        const {_this, albumImgUrl, songname, singer, currentTime, duration, isAutoPlay, volume, lyric, currentSTime, isNewLyric} = this.props
-        const {isPlay, mode, isMute, loaded, played} = this.state
+        const {_this, albumImgUrl, songname, singer, currentTime, duration, isAutoPlay, volume, lyric, currentSTime, isNewLyric,
+              isPlaying} = this.props
+        const {mode, isMute, loaded, played} = this.state
 
 
         return (
             <div className="player" >
                 <div className="player-pic">
                     <div className="player-disco-wrapper">
-                        <div className={classNames('player-needle', {active: isPlay})}></div>
-                        <div className={classNames('player-disco', {active: isPlay})}>
+                        <div className={classNames('player-needle', {active: isPlaying})}></div>
+                        <div className={classNames('player-disco', {active: isPlaying})}>
                              <div className="player-disco-cover"></div>
                              <div className="player-disco-img" 
                                 style={{background: `url(${albumImgUrl}) center/ cover no-repeat`}}>
@@ -178,7 +186,7 @@ export default class Player extends Component {
                                         <SkipPreviousIcon  /> 
                                 </IconButton>
                                 { 
-                                isPlay ?  
+                                isPlaying ?  
                                     <IconButton color="primary" aria-label="play" 
                                         className={classNames('iconBtn', "player-btn","player-btn-pause")}  
                                         onClick = {() => {this.pause(_this)}}>

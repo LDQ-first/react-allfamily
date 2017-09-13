@@ -43,21 +43,21 @@ export const pause = () => {
 }
 
 
-export const before_song = () => {
+export const beforeSong = () => {
     return {
         type: BEFORE_SONG
     }
 }
 
 
-export const next_song = () => {
+export const nextSong = () => {
     return {
         type: NEXT_SONG
     }
 }
 
 
-export const choose_song = (songIndex) => {
+export const chooseSong = (songIndex) => {
     return {
         type: CHOOSE_SONG,
         songIndex: songIndex
