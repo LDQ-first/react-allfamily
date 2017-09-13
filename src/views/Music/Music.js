@@ -276,9 +276,7 @@ class Music extends Component {
         const {index} = this.state
         const jsDisList = Immutable.List(disList).toJS()
         console.log(index)
-        console.log(jsDisList)
         console.log(jsDisList.length)
-        console.log(jsDisList[index])
         if(status === 'before' && index > 0) {
             this.getSong(jsDisList[index - 1])
             this.setState({

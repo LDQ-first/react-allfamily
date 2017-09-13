@@ -68,15 +68,6 @@ export default class Player extends Component {
            loaded
        })
 
-       /*if(isMuted || volume === 0) {
-           this.setState({
-               isMute: true
-           })
-       } else if(!isMuted || volume > 0){
-           this.setState({
-               isMute: false
-           })
-       }*/
 
     }
 
