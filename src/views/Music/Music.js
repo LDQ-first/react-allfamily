@@ -308,7 +308,8 @@ class Music extends Component {
                           >你的浏览器不支持喔！</audio>
                           <Player _this={this} albumImgUrl={albumImgUrl}  songname={songname} singer={singer}
                           duration={duration} currentTime={currentTime} played={played} loaded={loaded}  isAutoPlay={isAutoPlay}  
-                          isPlaying={isPlaying} volume={volume} isMuted={isMuted} lyric={lyric} currentSTime={currentSTime}/>
+                          isPlaying={isPlaying} volume={volume} isMuted={isMuted} lyric={lyric} currentSTime={currentSTime}
+                          isNewLyric={isNewLyric}/>
                           <IconButton color="primary" onClick={this.handleClick} className="song-lists-expand">
                             {open ? <ExpandMore /> : <ExpandLess />}
                           </IconButton >

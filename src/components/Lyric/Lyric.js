@@ -15,7 +15,8 @@ export default class Lyric extends Component {
         return { 
             _this: PropTypes.object,
             lyric: PropTypes.string,
-            currentSTime: PropTypes.number
+            currentSTime: PropTypes.number,
+            isNewLyric: PropTypes.bool,
         }
     }
 
@@ -29,13 +30,31 @@ export default class Lyric extends Component {
     }
 
     
-    componentWillReceiveProps(nextProps) {
-       const {_this, lyric} = nextProps
-       const { index, translateY }  = this.state
-       this.setState({
+    componentWillMount() {
+        console.log('mount')
+        this.setState({
             index: 0,
             translateY: 0
         })
+    }
+    
+
+    
+   
+    
+    
+    componentWillReceiveProps(nextProps) {
+       const {_this, lyric, isNewLyric} = nextProps
+       const { index, translateY }  = this.state
+       if(!isNewLyric) {
+           console.log(isNewLyric)
+          /* this.setState({
+               index: 0,
+               translateY: 0
+           })*/
+       }
+     /*  console.log('update')*/
+       /* */
 
        let lines = null
        if(lyric) {
