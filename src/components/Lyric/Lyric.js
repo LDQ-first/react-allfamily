@@ -17,6 +17,7 @@ export default class Lyric extends Component {
             lyric: PropTypes.string,
             currentSTime: PropTypes.number,
             isChanged: PropTypes.bool,
+            changeSong: PropTypes.func,
         }
     }
 
@@ -44,28 +45,29 @@ export default class Lyric extends Component {
     
     
     componentWillReceiveProps(nextProps) {
-       const {_this, lyric, isChanged} = nextProps
+       const {_this, lyric, isChanged, changeSong} = nextProps
        const { index, translateY }  = this.state
-       if(!isChanged) {
-           console.log(isChanged)
-          /* this.setState({
+      
+       if(isChanged) {  
+           this.setState({
                index: 0,
                translateY: 0
-           })*/
+           })
        }
      /*  console.log('update')*/
        /* */
 
        let lines = null
-       if(lyric) {
-           const newLyric = this.formatText(lyric)
-           /*console.log(newLyric)*/
-           
-           const newLyricArray = newLyric.match(/^\[\d{2}:\d{2}.\d{2}\](.+)$/gm) || []
-           
+        if(lyric) {
+            const newLyric = this.formatText(lyric)
+            
+            /*console.log(newLyric)*/
+            
+            const newLyricArray = newLyric.match(/^\[\d{2}:\d{2}.\d{2}\](.+)$/gm) || []
+            
 
-           if(newLyricArray.length) {
-               lines = newLyricArray.map((line, i) => {
+            if(newLyricArray.length) {
+                lines = newLyricArray.map((line, i) => {
                     return (
                         <div key={i} className="player-lyrics-line"
                         ref={line => this.line = line}>{line.slice(10)}</div>
@@ -73,15 +75,15 @@ export default class Lyric extends Component {
                 })
                 lines.map((line, i) => {
                     line.props.className = line.props.className.replace(' active', '')
-                  //  console.log(line.props.className)
+                    //  console.log(line.props.className)
                 })
                 lines[index].props.className += ' active'
-               // console.log(lines)
-               this.setState({
-                   lines
-               })
+                // console.log(lines)
+                this.setState({
+                    lines
+                })
                 this.update(newLyricArray, lines)
-           } 
+            } 
         }
 
     }
@@ -148,7 +150,7 @@ export default class Lyric extends Component {
              console.log(index)
              
              this.setState({
-                 translateY: -(index - 2) * this.line.offsetHeight
+                 translateY: -(index) * this.line.offsetHeight
              }) 
          }
 

@@ -73,6 +73,7 @@ class Music extends Component {
             disListsErrorMsg: PropTypes.string,
             disList: PropTypes.array,
             getDisLists: PropTypes.func,
+
             lyricStatus: PropTypes.number,
             lyricIsLoading: PropTypes.string,
             lyricErrorMsg: PropTypes.string,
@@ -120,12 +121,15 @@ class Music extends Component {
             autoplay()
         }
         
-
-       
     }
+
+    
+    
+    
     
     componentWillReceiveProps(nextProps) {
          const {isAutoplay, lyric, isPlaying, pause, changeSong} = nextProps
+         const {lyricStatus} = this.props
          if(isAutoplay) {
              this._musicPlayer.autoplay = isAutoplay
          }
@@ -134,12 +138,12 @@ class Music extends Component {
          this.setState({
              volume: this._musicPlayer.volume
          })
-         this.setState({
-             lyric
-         })
-
-         changeSong(true)
+         
+               
     }
+    
+    
+    
     
     
 
@@ -173,8 +177,8 @@ class Music extends Component {
              pause()
          }
 
-        changeSong(false)
-        this.getLyric(songid)
+        
+        
     }
 
 
@@ -294,9 +298,20 @@ class Music extends Component {
 
 
     getLyric (songid) {
-        const {getLyrics} = this.props
+        const {getLyrics, changeSong} = this.props
         console.log(songid)
-        getLyrics(songid)
+        changeSong(true)
+        this.setState({
+            lyric: ''
+        })
+        getLyrics(songid).then(() => {
+            const {lyric} = this.props
+            this.setState({
+                lyric
+            })
+        }).then(() => {
+             changeSong(false)
+        })
     }
 
 
@@ -306,7 +321,7 @@ class Music extends Component {
              songid, currentSTime} = this.state
         const {
             songList, getDisLists, disList, lyricStatus,
-             isPlaying, play, pause, isAutoplay, isMuted, isChanged,
+             isPlaying, play, pause, isAutoplay, isMuted, isChanged, changeSong,
              beforeSong, nextSong,  chooseSong, songIndex, value
             } = this.props
         const jsSongList = Immutable.List(songList).toJS()
@@ -314,7 +329,7 @@ class Music extends Component {
 
         let lyric = ''
         if(isChanged) {
-            lyric = this.state.lyric
+           lyric = this.state.lyric  
         }
 
 
@@ -335,7 +350,7 @@ class Music extends Component {
                      <div className="music-player">
                           <audio controls ref={audio => this._musicPlayer = audio}
                           className="audio" src={songUrl}
-                          onCanPlay = {() => {this.getTime();}}
+                          onCanPlay = {() => {this.getTime(); this.getLyric(songid)}}
                           onTimeUpdate = {() => { this.upsateTime()}}
                           onProgress = {() => { this.getProgress()}}
                           onVolumeChange = {() => {this.changeVolume()}}
@@ -346,10 +361,11 @@ class Music extends Component {
                           <Player _this={this} albumImgUrl={albumImgUrl}  songname={songname} singer={singer}
                           duration={duration} currentTime={currentTime}   
 
-                          isPlaying={isPlaying} play={play} pause={pause} isAutoplay = {isAutoplay} isMuted={isMuted}
+                          isPlaying={isPlaying} play={play} pause={pause} isAutoplay = {isAutoplay} isMuted={isMuted} 
+                          changeSong={changeSong}
 
                           played={played} loaded={loaded}   
-                           volume={volume}  lyric={lyric} currentSTime={currentSTime} isChanged={isChanged}
+                           volume={volume}  lyric={lyric ? lyric : this.state.lyric} currentSTime={currentSTime} isChanged={isChanged}
                           />
                           <IconButton color="primary" onClick={this.handleClick} className="song-lists-expand">
                             {open ? <ExpandMore /> : <ExpandLess />}
