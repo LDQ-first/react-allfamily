@@ -177,6 +177,19 @@ export default class Player extends Component {
                                     onClick = {() => {_this.changeSong('before')}}>
                                         <SkipPreviousIcon  /> 
                                 </IconButton>
+                                { 
+                                isPlay ?  
+                                    <IconButton color="primary" aria-label="play" 
+                                        className={classNames('iconBtn', "player-btn","player-btn-pause")}  
+                                        onClick = {() => {this.pause(_this)}}>
+                                            <PauseCircleOutlineIcon  /> 
+                                    </IconButton> : 
+                                    <IconButton color="primary" aria-label="play" 
+                                        className={classNames('iconBtn', "player-btn","player-btn-paly")}
+                                        onClick = {() => {this.play(_this)}}>
+                                            <PlayCircleOutlineIcon  />
+                                    </IconButton>
+                                }
                                 <IconButton color="primary" aria-label="next" 
                                     className={classNames('iconBtn', "player-changeSong-btn","player-changeSong-btn-next")}  
                                     onClick = {() => {_this.changeSong('next')}}>

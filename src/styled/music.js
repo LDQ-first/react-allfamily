@@ -209,10 +209,10 @@ const MusicDiv = styled.div`
                         }
                     }
                     .player-changeSong-wrapper {
-                        flex: 1;
-                        display: flex;
-                        justify-content: space-around;
+                        flex: 1; 
                         .player-changeSong {
+                            display: flex;
+                            justify-content: space-around;
                             height: 30px;
                             .player-changeSong-btn {
                                 
