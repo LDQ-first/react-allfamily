@@ -8,6 +8,7 @@ const thumbborderBlue = blue[300]
 
 const MusicDiv = styled.div`
     max-width: 600px;
+    min-width: 300px;
     margin: 0 auto;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3),
                 0 3px 1px -2px rgba(0, 0, 0, 0.2),
@@ -21,7 +22,7 @@ const MusicDiv = styled.div`
             right: 0;
             bottom: 0;
             height: 30px;
-            width: 30px;
+            width: 24px;
         }
         .audio {
             display: block;
@@ -111,6 +112,7 @@ const MusicDiv = styled.div`
                             color: #41484e;
                             margin-left: 8px;
                             line-height: 25px;
+                            white-space: nowrap;
                         }
                       
                     }
@@ -153,19 +155,22 @@ const MusicDiv = styled.div`
                     flex: 1;
                     display: flex;
                     align-items: center;
-                    width: 95%;
+                    width: 93%;
+                    position: relative;
                     .iconBtn {
-                        width: 30px;
+                        width: 24px;
                         height: 30px;
                     }
                     .player-bar-wrapper {
                         flex: 1;
                         margin: 0 0.5em;
-                        /*overflow: hidden;*/
+                        position: absolute;
+                        top: -4px;
+                        left: -8px;
+                        width: calc(100% + 16px);
                         .player-bar {
                             height: 4px;
                             position: relative;
-                            /*overflow: hidden;*/
                             background: #CCC;
                             .player-played {
                                 top: 0;
@@ -191,7 +196,7 @@ const MusicDiv = styled.div`
                              .player-played-thumb {
                                  position: absolute;
                                  top: 0;
-                                 right: 2px;
+                                 right: -6px;
                                  margin-top: -6px;
                                  margin-right: -10px;
                                  height: 16px;
@@ -203,16 +208,43 @@ const MusicDiv = styled.div`
                              }
                         }
                     }
+                    .player-changeSong-wrapper {
+                        flex: 1;
+                        display: flex;
+                        justify-content: space-around;
+                        .player-changeSong {
+                            height: 30px;
+                            .player-changeSong-btn {
+                                
+                            }
+                        }
+                    }
                     .player-time {
                         font-size: 12px;
                         width: 70px;
-                        margin: 0 4px;
+                        @media (min-width: 500px) {
+                            margin: 0 8px;
+                        }
+                        @media (min-width: 700px) {
+                            margin: 0 1em;
+                        }
+                        @media (min-width: 1000px) {
+                            margin: 0 1.5em;
+                        }
                     }
                     .player-volume-wrapper {   
                         display: inline-flex; 
-                        margin: 0 4px;
                         position: relative;
                         cursor: pointer;
+                        @media (min-width: 500px) {
+                            margin: 0 8px;
+                        }
+                        @media (min-width: 700px) {
+                            margin: 0 1em;
+                        }
+                        @media (min-width: 1000px) {
+                            margin: 0 1.5em;
+                        }
                         &:hover {
                             .player-volume-bar-wrap {
                                 display: block;
@@ -252,8 +284,16 @@ const MusicDiv = styled.div`
                         }
                     }
                     .player-mode {
-                        margin: 0 4px;
                         display: inline-flex;
+                        @media (min-width: 500px) {
+                            margin: 0 8px;
+                        }
+                        @media (min-width: 700px) {
+                            margin: 0 1em;
+                        }
+                        @media (min-width: 1000px) {
+                            margin: 0 1.5em;
+                        }
                     }
                 }
             }

@@ -4,6 +4,8 @@ import ListSubheader from 'material-ui/List/ListSubheader'
 import AudiotrackIcon from 'material-ui-icons/Audiotrack'
 import PlayCircleOutlineIcon from 'material-ui-icons/PlayCircleOutline'
 import PauseCircleOutlineIcon from 'material-ui-icons/PauseCircleOutline'
+import SkipNextIcon from 'material-ui-icons/SkipNext'
+import SkipPreviousIcon from 'material-ui-icons/SkipPrevious'
 import LoopIcon from 'material-ui-icons/Loop'
 import VolumeDownIcon from 'material-ui-icons/VolumeDown'
 import VolumeOffIcon from 'material-ui-icons/VolumeOff'
@@ -166,6 +168,20 @@ export default class Player extends Component {
                                     <span className="player-played-thumb"></span>
                                 </div>
                                 
+                            </div>
+                        </div>
+                        <div className="player-changeSong-wrapper">
+                            <div className="player-changeSong">
+                                <IconButton color="primary" aria-label="before" 
+                                    className={classNames('iconBtn', "player-changeSong-btn","player-changeSong-btn-before")}  
+                                    onClick = {() => {_this.changeSong('before')}}>
+                                        <SkipPreviousIcon  /> 
+                                </IconButton>
+                                <IconButton color="primary" aria-label="next" 
+                                    className={classNames('iconBtn', "player-changeSong-btn","player-changeSong-btn-next")}  
+                                    onClick = {() => {_this.changeSong('next')}}>
+                                        <SkipNextIcon  /> 
+                                </IconButton>
                             </div>
                         </div>
                         <div className="player-time">

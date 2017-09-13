@@ -216,6 +216,15 @@ class Music extends Component {
     }
 
 
+    changeSong (status) {
+        console.log(status)
+        if(status === 'before') {
+
+        } else if (status === 'next') {
+            
+        }
+    }
+
 
     render() {
         const {value, open, songUrl, albumImgUrl, songname, singer,
