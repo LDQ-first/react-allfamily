@@ -100,27 +100,35 @@ class Music extends Component {
             currentTime: '00:00',
             played: 0,
             loaded: 0,
-           /* isAutoPlay: localStorage.isAutoPlay === 'true' || false,*/
-            isPlaying: false 
         }
     }
 
     
     
     componentWillMount() {
-        const {getSongLists, songList, getDisLists, autoplay} = this.props
+        const {getSongLists, songList, getDisLists, autoplay, isAutoplay} = this.props
         getSongLists()   
+        console.log(localStorage.isAutoplay)
+        if(localStorage.isAutoplay === 'true' ) {
+            autoplay()
+        }
+        
 
        
     }
     
     componentWillReceiveProps(nextProps) {
-         const {isAutoplay} = this.props
-      //   this._musicPlayer.autoplay = isAutoplay
+         const {isAutoplay, lyric, isPlaying, pause} = nextProps
+ 
+         console.log(isAutoplay)
+         if(isAutoplay) {
+             this._musicPlayer.autoplay = isAutoplay
+         }
+
+
          this.setState({
              volume: this._musicPlayer.volume
          })
-        const {lyric} = nextProps
          this.setState({
              lyric,
              isNewLyric: true
@@ -143,8 +151,7 @@ class Music extends Component {
     }
 
     getSong = (list, index) => {
-        /*const {isAutoPlay, isPlaying} = this.state*/
-        const {isAutoplay } = this.props
+        const {isAutoplay , isPlaying, pause} = this.props
         const { songid, albummid, songname, singer } = list
         console.log(songid, albummid)
         const albumImgUrl = musicApi.albumImg(albummid)
@@ -159,17 +166,10 @@ class Music extends Component {
             songid,
             isNewLyric: false
         })
-      
-        /*if(!isAutoPlay && isPlaying) {
-            this.setState({
-                isPlaying: false
-            })
-        }
-        if(isAutoPlay && !isPlaying) {
-            this.setState({
-                isPlaying: true
-            })
-        }*/
+        if(!isAutoplay && isPlaying) {
+             pause()
+         }
+
        this.getLyric(songid)
     }
 
@@ -230,16 +230,10 @@ class Music extends Component {
     }
 
     toggleAutoPlay () {
-        /*this.setState({ 
-            isAutoPlay
-        })*/
         const {autoplay, isAutoplay} = this.props
-        console.log(isAutoplay)
         autoplay()
-        console.log(isAutoplay)
         this._musicPlayer.autoplay = !isAutoplay
-        
-        /*localStorage.isAutoPlay = isAutoPlay*/
+        localStorage.isAutoplay = !isAutoplay
     }
 
     getProgress() {

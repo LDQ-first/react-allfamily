@@ -70,18 +70,6 @@ export default class Player extends Component {
            loaded
        })
 
-       console.log(isAutoplay)
-
-       /*if(!isAutoPlay && isPlay && !isPlaying) {
-           this.setState({
-                isPlay: false
-            })
-       } 
-       if(isAutoPlay && !isPlay && isPlaying) {
-           this.setState({
-                isPlay: true
-            })
-       } */
        if(isMuted || volume === 0) {
            this.setState({
                isMute: true
@@ -95,23 +83,6 @@ export default class Player extends Component {
     }
 
     
-
-
-    
-
-    play (_this) {
-        /*this.setState({
-            isPlay: true
-        })*/
-        _this.playSong()
-    }
-
-    pause (_this) {
-        /*this.setState({
-            isPlay: false
-        })*/
-        _this.pauseSong()
-    }
    
     mutePlayer (_this) {
         const {isMute} = this.state
@@ -128,7 +99,7 @@ export default class Player extends Component {
         const {_this, albumImgUrl, songname, singer, currentTime, duration, isAutoplay, volume, lyric, currentSTime, isNewLyric,
               isPlaying} = this.props
         const {mode, isMute, loaded, played} = this.state
-
+        
 
         return (
             <div className="player" >
@@ -190,12 +161,12 @@ export default class Player extends Component {
                                 isPlaying ?  
                                     <IconButton color="primary" aria-label="play" 
                                         className={classNames('iconBtn', "player-btn","player-btn-pause")}  
-                                        onClick = {() => {this.pause(_this)}}>
+                                        onClick = {() => {_this.pauseSong()}}>
                                             <PauseCircleOutlineIcon  /> 
                                     </IconButton> : 
                                     <IconButton color="primary" aria-label="play" 
                                         className={classNames('iconBtn', "player-btn","player-btn-paly")}
-                                        onClick = {() => {this.play(_this)}}>
+                                        onClick = {() => {_this.playSong()}}>
                                             <PlayCircleOutlineIcon  />
                                     </IconButton>
                                 }
