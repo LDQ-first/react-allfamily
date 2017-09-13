@@ -111,42 +111,7 @@ const MusicDiv = styled.div`
                                 border-radius: 50%;
                         }
                     }
-                }
-                /*.player-btn {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    margin-left: -24px;
-                    margin-top: -24px;
-                    z-index: 10;
-                    svg {
-                         width: 30px;
-                         height: 30px;
-                    }
-                }
-                .player-btn-paly {
-                    animation: playmove 0.6s linear forwards;
-                }
-                .player-btn-pause {
-                   animation: pausemove 0.6s linear forwards; 
-                }
-                @keyframes pausemove {
-                    0% {
-                        transform: translate(0,0) scale(1);
-                    }
-                    100% {
-                         transform: translate(40px,40px) scale(0.8);
-                    }
-                }
-                @keyframes playmove {
-                    0% {
-                         transform: translate(40px,40px) scale(0.8);
-                    }
-                    100% {
-                        transform: translate(0,0) scale(1);
-                    }
-                }*/
-                
+                }   
 
             }
             .player-info {
@@ -212,6 +177,10 @@ const MusicDiv = styled.div`
                     &::after {
                         position: absolute;
 
+                    }
+                    .player-lyrics-lines {
+                        outline: 1px solid red;
+                        background: #FFF;
                     }
                 }
                 .player-info-control {

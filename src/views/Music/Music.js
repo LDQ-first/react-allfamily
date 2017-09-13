@@ -12,6 +12,7 @@ import {
    disListsIsLoadingSelector,
    disListsErrorMsgSelector,
    disListSelector,
+   lyricStatusSelector,
    lyricIsLoadingSelector,
    lyricErrorMsgSelector,
    lyricSelector
@@ -39,6 +40,7 @@ const mapStateToProps = (state) => ({
     disListsIsLoading: disListsIsLoadingSelector(state),
     disListsErrorMsg: disListsErrorMsgSelector(state),  
     disList: disListSelector(state),
+    lyricStatus: lyricStatusSelector(state),
     lyricIsLoading: lyricIsLoadingSelector(state),
     lyricError: lyricErrorMsgSelector(state),
     lyric: lyricSelector(state)
@@ -58,6 +60,7 @@ class Music extends Component {
             disListsErrorMsg: PropTypes.string,
             disList: PropTypes.array,
             getDisLists: PropTypes.func,
+            lyricStatus: PropTypes.number,
             lyricIsLoading: PropTypes.string,
             lyricErrorMsg: PropTypes.string,
             lyric: PropTypes.array,
@@ -94,7 +97,11 @@ class Music extends Component {
          this.setState({
              volume: this._musicPlayer.volume
          })
-         this.getLyric()
+        const {lyric} = nextProps
+         this.setState({
+             lyric,
+             isNewLyric: true
+         })
     }
     
     
@@ -124,7 +131,9 @@ class Music extends Component {
             songUrl,
             songname,
             singer,
-            index
+            index,
+            songid,
+            isNewLyric: false
         })
         if(!isAutoPlay && isPlaying) {
             this.setState({
@@ -136,7 +145,7 @@ class Music extends Component {
                 isPlaying: true
             })
         }
-       
+       this.getLyric(songid)
     }
 
 
@@ -251,20 +260,27 @@ class Music extends Component {
     }
 
 
-    getLyric () {
-        getLyrics(4962990)
+    getLyric (songid) {
+        const {getLyrics} = this.props
+        console.log(songid)
+        getLyrics(songid)
     }
 
 
     render() {
         const {value, open, songUrl, albumImgUrl, songname, singer,
             duration, currentTime, played, isAutoPlay, isPlaying, loaded, volume,
-             isMuted, index} = this.state
-       /* console.log('this.props: ', this.props)*/
-        const {songList, getDisLists, disList} = this.props
+             isMuted, index, songid, isNewLyric} = this.state
+        const {songList, getDisLists, disList, lyricStatus} = this.props
         const jsSongList = Immutable.List(songList).toJS()
         const jsDisList = Immutable.List(disList).toJS()
-        /*console.log(jsDisList)*/
+
+        let lyric = ''
+        if(isNewLyric) {
+            lyric = this.state.lyric
+        }
+
+
 
         const SongLists = jsSongList.map((list, index) => {
             return (
@@ -283,15 +299,15 @@ class Music extends Component {
                      <div className="music-player">
                           <audio controls ref={audio => this._musicPlayer = audio}
                           className="audio" src={songUrl}
-                          onCanPlay = {() => {this.getTime()}}
+                          onCanPlay = {() => {this.getTime();}}
                           onTimeUpdate = {() => { this.upsateTime()}}
                           onProgress = {() => { this.getProgress()}}
                           onVolumeChange = {() => {this.changeVolume()}}
 
                           >你的浏览器不支持喔！</audio>
                           <Player _this={this} albumImgUrl={albumImgUrl}  songname={songname} singer={singer}
-                          duration={duration} currentTime={currentTime} played={played} loaded={loaded} 
-                          isAutoPlay={isAutoPlay}  isPlaying={isPlaying} volume={volume} isMuted={isMuted}/>
+                          duration={duration} currentTime={currentTime} played={played} loaded={loaded}  isAutoPlay={isAutoPlay}  
+                          isPlaying={isPlaying} volume={volume} isMuted={isMuted} lyric={lyric} />
                           <IconButton color="primary" onClick={this.handleClick} className="song-lists-expand">
                             {open ? <ExpandMore /> : <ExpandLess />}
                           </IconButton >

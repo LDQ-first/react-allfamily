@@ -69,6 +69,11 @@ export const musicLyricsSelector = createSelector(
     appState => appState.get('musicLyrics')
 )
 
+export const lyricStatusSelector = createSelector(
+    musicLyricsSelector,
+    musicLyricsState => musicLyricsState.get('lyricStatus')
+)
+
 export const lyricIsLoadingSelector = createSelector(
     musicLyricsSelector,
     musicLyricsState => musicLyricsState.get('lyricIsLoading')

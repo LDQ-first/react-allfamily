@@ -30,7 +30,8 @@ export default class Player extends Component {
             isAutoPlay: PropTypes.bool,
             isPlaying: PropTypes.bool,
             volume: PropTypes.volume,
-            isMuted: PropTypes.bool
+            isMuted: PropTypes.bool,
+            lyric: PropTypes.string,
         }
     }
 
@@ -52,8 +53,10 @@ export default class Player extends Component {
 
     
     componentWillReceiveProps(nextProps) {
-       const {  played,loaded, isPlaying, _this, isAutoPlay, volume, isMuted} = nextProps
+       const {  played,loaded, isPlaying, _this, isAutoPlay, volume, isMuted, lyric} = nextProps
        const {isPlay} = this.state
+    /*   console.log(lyric)*/
+
        this.setState({
            played ,
            loaded
@@ -112,7 +115,7 @@ export default class Player extends Component {
 
     render() {
 
-        const {_this, albumImgUrl, songname, singer, currentTime, duration, isAutoPlay, volume} = this.props
+        const {_this, albumImgUrl, songname, singer, currentTime, duration, isAutoPlay, volume, lyric} = this.props
         const {isPlay, mode, isMute, loaded, played} = this.state
 
 
@@ -151,7 +154,7 @@ export default class Player extends Component {
                         </div>
                        
                     </header>
-                    <Lyric />
+                    <Lyric _this={this} lyric={lyric} />
                     <footer className="player-info-control">
                         <div className="player-bar-wrapper">
                             <div className="player-bar"

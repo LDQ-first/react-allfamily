@@ -46,34 +46,7 @@ export const musicSongLists = (state = songListsInitState, action) => {
 }
 
 
-const lyricInitState = fromJS({
-    lyricStatus: 0,
-    lyricIsLoading: false,
-    lyrics: {},
-    lyricErrorMsg: ''
-})
 
-export const musicLyrics = (state = lyricInitState, action) => {
-    switch(action.type) {
-        case GET_LYRIC_REQUEST:
-            return state.set('isLoading', true)
-        case GET_LYRIC_SUCCESS:
-            return (state = fromJS({
-                ...state,
-                lyricStatus: 200,
-                lyricIsLoading: false,
-                lyrics: action.lyrics
-            }))
-        case GET_LYRIC_FAIL:
-            return (state = fromJS({
-                ...state,
-                lyricStatus: 404,
-                lyricErrorMsg: '请求的歌词不存在'
-            }))
-        default: 
-             return state
-    }
-}
 
 const disListsInitState = fromJS({
     disListsStatus: 0,
@@ -98,6 +71,37 @@ export const musicDisLists = (state = disListsInitState, action) => {
                 ...state,
                 disListsStatus: 404,
                 disListsErrorMsg: '请求的歌不存在'
+            }))
+        default: 
+             return state
+    }
+}
+
+
+
+const lyricInitState = fromJS({
+    lyricStatus: 0,
+    lyricIsLoading: false,
+    lyrics: {},
+    lyricErrorMsg: ''
+})
+
+export const musicLyrics = (state = lyricInitState, action) => {
+    switch(action.type) {
+        case GET_LYRIC_REQUEST:
+            return state.set('isLoading', true)
+        case GET_LYRIC_SUCCESS:
+            return (state = fromJS({
+                ...state,
+                lyricStatus: 200,
+                lyricIsLoading: false,
+                lyrics: action.lyrics
+            }))
+        case GET_LYRIC_FAIL:
+            return (state = fromJS({
+                ...state,
+                lyricStatus: 404,
+                lyricErrorMsg: '请求的歌词不存在'
             }))
         default: 
              return state

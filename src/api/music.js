@@ -19,22 +19,19 @@ const song = (songid) => {
     return `http://ws.stream.qqmusic.qq.com/${songid}.m4a?fromtag=46&crazycache=1`
 }
 
-/*const lyric = (songid) => {
+const lyric = (songid) => {
     return `https://qq-music-api.now.sh/lyrics?id=${songid}`
-}*/
+}
 
 /*const lyric = (songid) => {
     return `https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg?g_tk=5381&inCharset=utf-8&outCharset=utf-8&notice=0&format=jsonp&platform=yqq&needNewCode=0&loginUin=0&hostUin=0&songmid=${songid}&callback=taogeDataCallback`
 
 }*/
 
-const lyric = (songid) => {
-    return `https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric.fcg?nobase64=1&musicid=${songid}&songtype=0&callback=taogeDataCallback`
-}
+/*const lyric = (songid) => {
+    return `https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric.fcg?nobase64=1&musicid=${songid}&songtype=0&format=jsonp&callback=taogeDataCallback`
+}*/
 
-/*https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric.fcg?nobase64=1&musicid=${id}&songtype=${type || 0}
-
-https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric.fcg?nobase64=1&musicid=4962990&songtype=0*/
 
 export {
     songLists,

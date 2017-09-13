@@ -143,7 +143,7 @@ export const getlyricRequest = () => {
     }
 }
 
-export const getlyricSuccess = (lyric) => {
+export const getlyricSuccess = (lyrics) => {
     return {
         type: GET_LYRIC_SUCCESS,
         lyrics: lyrics
@@ -160,11 +160,8 @@ export const getlyricFail = () => {
 
 
 const filterLyricData = (data) => {
-    const newSongList = data.songList.splice(3,1).splice(4,1)
-    console.log(newSongList)
-
     const newData = {
-        lyric: newSongList
+        lyric: data.lyric
     }
     return newData
 }
@@ -175,13 +172,13 @@ export const getLyrics = (songid) => async (dispatch) => {
 
    try {
        dispatch(getlyricRequest())
-       let res = await axios.get(musicApi.lyric(songid), {
-            'accept': '*/*',
-            'authority': 'c.y.qq.com',
-            'referer': 'https://c.y.qq.com',
-            'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1'
-       })
-       console.log('data: ', res.data)
+       let res = await axios.get(musicApi.lyric(songid))
+      /* let res = await fetchJsonp(musicApi.lyric(songid), {
+            jsonpCallbackFunction: 'taogeDataCallback'
+        }).then((res) => {
+            return res.json()
+        })*/
+      /* console.log('data.lyric: ', res.data.lyric)*/
        await dispatch(getlyricSuccess(filterLyricData(res.data)))
    } catch (err) {
        console.log('err:', err)
