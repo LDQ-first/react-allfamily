@@ -57,8 +57,14 @@ export const getSongLists = () => async (dispatch) => {
 
    try {
        dispatch(getsongListsRequest())
-       let res = await axios.get(musicApi.songLists)
-       await dispatch(getsongListsSuccess(filterSongListsData(res.data.data)))
+    //   let res = await axios.get(musicApi.songLists)
+        let res = await fetchJsonp(musicApi.songLists, {
+            jsonpCallbackFunction: 'taogeDataCallback'
+        }).then((res) => {
+            return res.json()
+        })
+        /*console.log(res)*/
+       await dispatch(getsongListsSuccess(filterSongListsData(res.data)))
    } catch (err) {
        console.log('err:', err)
        dispatch(getsongListsFail())
@@ -130,34 +136,6 @@ export const getDisLists = (disstid) => async (dispatch) => {
 
 
 
-
-
-
-/*
-
-//song
-export const getsongRequest = () => {
-    return {
-        type: GET_SONG_REQUEST
-    }
-}
-
-export const getsongSuccess = (song) => {
-    return {
-        type: GET_SONG_SUCCESS,
-        song: song
-    }
-}
-
-export const getsongFail = () => {
-    return {
-        type: GET_SONG_FAIL
-    }
-}
-*/
-
-
-
 //lyric
 export const getlyricRequest = () => {
     return {
@@ -168,7 +146,7 @@ export const getlyricRequest = () => {
 export const getlyricSuccess = (lyric) => {
     return {
         type: GET_LYRIC_SUCCESS,
-        lyric: lyric
+        lyrics: lyrics
     }
 }
 
@@ -186,18 +164,23 @@ const filterLyricData = (data) => {
     console.log(newSongList)
 
     const newData = {
-        songList: newSongList
+        lyric: newSongList
     }
     return newData
 }
 
 
 
-export const getLyric = (songid) => async (dispatch) => {
+export const getLyrics = (songid) => async (dispatch) => {
 
    try {
        dispatch(getlyricRequest())
-       let res = await axios.get(musicApi.lyric(songid))
+       let res = await axios.get(musicApi.lyric(songid), {
+            'accept': '*/*',
+            'authority': 'c.y.qq.com',
+            'referer': 'https://c.y.qq.com',
+            'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1'
+       })
        console.log('data: ', res.data)
        await dispatch(getlyricSuccess(filterLyricData(res.data)))
    } catch (err) {

@@ -11,7 +11,10 @@ import {
    songListSelector,
    disListsIsLoadingSelector,
    disListsErrorMsgSelector,
-   disListSelector
+   disListSelector,
+   lyricIsLoadingSelector,
+   lyricErrorMsgSelector,
+   lyricSelector
 } from '../../selector/music.js'
 import * as musicAction  from '../../redux/actions/music.js'
 import Immutable from 'immutable'
@@ -36,6 +39,9 @@ const mapStateToProps = (state) => ({
     disListsIsLoading: disListsIsLoadingSelector(state),
     disListsErrorMsg: disListsErrorMsgSelector(state),  
     disList: disListSelector(state),
+    lyricIsLoading: lyricIsLoadingSelector(state),
+    lyricError: lyricErrorMsgSelector(state),
+    lyric: lyricSelector(state)
 })
 
 
@@ -52,6 +58,10 @@ class Music extends Component {
             disListsErrorMsg: PropTypes.string,
             disList: PropTypes.array,
             getDisLists: PropTypes.func,
+            lyricIsLoading: PropTypes.string,
+            lyricErrorMsg: PropTypes.string,
+            lyric: PropTypes.array,
+            getLyrics: PropTypes.func
         }
     }
 
@@ -84,6 +94,7 @@ class Music extends Component {
          this.setState({
              volume: this._musicPlayer.volume
          })
+         this.getLyric()
     }
     
     
@@ -101,7 +112,7 @@ class Music extends Component {
         this.setState({ open: !this.state.open });
     }
 
-    getSong = (list) => {
+    getSong = (list, index) => {
         const {isAutoPlay, isPlaying} = this.state
         const { songid, albummid, songname, singer } = list
         console.log(songid, albummid)
@@ -113,6 +124,7 @@ class Music extends Component {
             songUrl,
             songname,
             singer,
+            index
         })
         if(!isAutoPlay && isPlaying) {
             this.setState({
@@ -218,17 +230,36 @@ class Music extends Component {
 
     changeSong (status) {
         console.log(status)
-        if(status === 'before') {
-
-        } else if (status === 'next') {
-            
+        const {disList} = this.props
+        const {index} = this.state
+        const jsDisList = Immutable.List(disList).toJS()
+        console.log(index)
+        console.log(jsDisList)
+        console.log(jsDisList.length)
+        console.log(jsDisList[index])
+        if(status === 'before' && index > 0) {
+            this.getSong(jsDisList[index - 1])
+            this.setState({
+                index: index - 1
+            })
+        } else if (status === 'next' && index < jsDisList.length - 1) {
+            this.getSong(jsDisList[index + 1])
+            this.setState({
+                index: index + 1
+            })
         }
+    }
+
+
+    getLyric () {
+        getLyrics(4962990)
     }
 
 
     render() {
         const {value, open, songUrl, albumImgUrl, songname, singer,
-            duration, currentTime, played, isAutoPlay, isPlaying, loaded, volume, isMuted} = this.state
+            duration, currentTime, played, isAutoPlay, isPlaying, loaded, volume,
+             isMuted, index} = this.state
        /* console.log('this.props: ', this.props)*/
         const {songList, getDisLists, disList} = this.props
         const jsSongList = Immutable.List(songList).toJS()
@@ -267,7 +298,7 @@ class Music extends Component {
                      </div>
                      <Collapse in={open} className="song-lists-wrapper">
                            {SongLists}
-                           <DisList jsDisList={jsDisList} _this={this} value={value}/>
+                           <DisList jsDisList={jsDisList} _this={this} value={value} index={index}/>
                         <BottomNavigation
                             className="song-lists-control"
                             value={value}

@@ -118,21 +118,16 @@ export default class Player extends Component {
 
         return (
             <div className="player" >
-                <div className="player-pic" style={{background: `url(${albumImgUrl}) no-repeat center/cover`}}>
-                   { 
-                       isPlay ?  
-                        <IconButton color="primary" aria-label="play" 
-                            className={classNames("player-btn","player-btn-pause")}  
-                            onClick = {() => {this.pause(_this)}}>
-                                <PauseCircleOutlineIcon  /> 
-                        </IconButton> : 
-                        <IconButton color="primary" aria-label="play" 
-                            className={classNames("player-btn","player-btn-paly")}
-                            onClick = {() => {this.play(_this)}}>
-                                <PlayCircleOutlineIcon  />
-                        </IconButton>
-                    }
-                    <div className="player-pic-shade" ></div>
+                <div className="player-pic">
+                    <div className="player-disco-wrapper">
+                        <div className={classNames('player-needle', {active: isPlay})}></div>
+                        <div className={classNames('player-disco', {active: isPlay})}>
+                             <div className="player-disco-cover"></div>
+                             <div className="player-disco-img" 
+                                style={{background: `url(${albumImgUrl}) center/ cover no-repeat`}}>
+                             </div>
+                         </div>
+                    </div>
                 </div>
                 <div className="player-info">
                     <header className="player-info-header">

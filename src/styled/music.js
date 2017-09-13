@@ -6,6 +6,15 @@ const dHeaderBlue = blue[500]
 const thumbBlue = blue[500]
 const thumbborderBlue = blue[300]
 
+const needleUrl = process.env.NODE_ENV === 'production' 
+    ? '/react-allfamily/dist/static/img/needle.png'
+    : '../../static/img/needle.png'
+
+const discoUrl = process.env.NODE_ENV === 'production' 
+    ? '/react-allfamily/dist/static/img/disco.png'
+    : '../../static/img/disco.png'
+
+
 const MusicDiv = styled.div`
     max-width: 600px;
     min-width: 300px;
@@ -33,22 +42,77 @@ const MusicDiv = styled.div`
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #F4F4F4;
+            background: #47b0ef;
             .player-pic {
                 width: 120px;
                 height: 120px;
                 position: relative;
                 border: 4px solid #FFF;
                 box-shadow: 0 0 10px #ff9090;
-                .player-pic-shade {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background: rgba(195, 235, 253, 0.25);
+                overflow: hidden;
+                .player-disco-wrapper {
+                    .player-needle {
+                        position: absolute;
+                        top: -4px;
+                        left: 38%;
+                        height: 78px;
+                        width: 54px;
+                        background: url(${needleUrl}) no-repeat center center;
+                        background-size: cover;
+                        z-index: 2;
+                        transition: all 0.5s ease;
+                        transform-origin: 12px 0;
+                        transform: rotateZ(-35deg);
+                        &.active {
+                            transform: rotateZ(0deg);
+                        }
+                    }
+                    .player-disco {
+                        width: 100px;
+                        height: 100px;
+                        position: absolute;
+                        left: 50%;
+                        margin-left: -50px;
+                        top: 10px;
+                        background: url(${discoUrl}) no-repeat center center;
+                        background-size: cover;
+                        animation: discoRotate 20s linear forwards infinite;
+                        animation-play-state: paused;
+                        &.active {
+                            animation-play-state: running;
+                        }
+                        @keyframes discoRotate{
+                            0% {
+                                transform: rotateZ(0deg);
+                            }
+                            100% {
+                                transform: rotateZ(360deg);
+                            }
+                        }
+                        .player-disco-cover {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                width: 63%;
+                                height: 63%;
+                                margin-top: -31.5%;
+                                margin-left: -31.5%;
+                                border-radius: 50%;
+                                background: #BBDEDF;
+                        }
+                        .player-disco-img {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                width: 63%;
+                                height: 63%;
+                                margin-top: -31.5%;
+                                margin-left: -31.5%;
+                                border-radius: 50%;
+                        }
+                    }
                 }
-                .player-btn {
+                /*.player-btn {
                     position: absolute;
                     top: 50%;
                     left: 50%;
@@ -81,7 +145,7 @@ const MusicDiv = styled.div`
                     100% {
                         transform: translate(0,0) scale(1);
                     }
-                }
+                }*/
                 
 
             }

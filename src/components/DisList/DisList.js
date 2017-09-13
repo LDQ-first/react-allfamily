@@ -13,6 +13,7 @@ export default class DisList extends Component {
             jsDisList: PropTypes.array,
             _this: PropTypes.object,
             value: PropTypes.number,
+            index: PropTypes.number,
         }
     }
 
@@ -35,24 +36,20 @@ export default class DisList extends Component {
      
     
     componentWillReceiveProps(nextProps) {
-        const {isFirst} = this.state
-        const {jsDisList, _this} = nextProps
+        const {isFirst, clickI, values} = this.state
+        const {jsDisList, _this, index, value} = nextProps
 
         if(isFirst && jsDisList.length && jsDisList[0]) {
-            _this.getSong(jsDisList[0])
+            _this.getSong(jsDisList[0], 0)
             this.setState({
                 isFirst: false
             })
         }
 
         
-
-
-
-        const { clickI, values } = this.state
-        const {value} = this.props
         this.setState({
-            values: value
+            values: value,
+            clickI :index
         })
         if( values === this.props.value) return
         this.setState({
@@ -76,7 +73,7 @@ export default class DisList extends Component {
         this.setState({
             clickI : index
         })
-        _this.getSong(list)
+        _this.getSong(list, index)
     }
     
 

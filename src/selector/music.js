@@ -58,3 +58,34 @@ export const disListSelector = createSelector(
     disListsSelector,
     disListsState => disListsState.get('disList')
 )
+
+
+
+
+
+
+export const musicLyricsSelector = createSelector(
+    selectGolbal,
+    appState => appState.get('musicLyrics')
+)
+
+export const lyricIsLoadingSelector = createSelector(
+    musicLyricsSelector,
+    musicLyricsState => musicLyricsState.get('lyricIsLoading')
+)
+
+export const lyricErrorMsgSelector = createSelector(
+    musicLyricsSelector,
+    musicLyricsState => musicLyricsState.get('lyricErrorMsg')
+)
+
+
+export const lyricsSelector = createSelector(
+    musicLyricsSelector,
+    musicLyricsState => musicLyricsState.get('lyrics')
+)
+
+export const lyricSelector = createSelector(
+    lyricsSelector,
+    lyricsState => lyricsState.get('lyric')
+)
