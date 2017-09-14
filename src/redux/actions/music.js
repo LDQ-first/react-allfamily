@@ -203,6 +203,7 @@ export const getSongLists = () => async (dispatch) => {
        dispatch(getsongListsRequest())
     //   let res = await axios.get(musicApi.songLists)
         let res = await fetchJsonp(musicApi.songLists, {
+            jsonpCallback: 'jsonpCallback',
             jsonpCallbackFunction: 'taogeDataCallback'
         }).then((res) => {
             return res.json()

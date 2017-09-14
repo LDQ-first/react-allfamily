@@ -1,7 +1,7 @@
 
-//const songLists = 'https://qq-music-api.now.sh/'
+//const songLists = 'https://qq-music-api.now.sh/&jsonpCallback=taogeDataCallback'
 const songLists = `https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg?g_tk=5381&inCharset=utf-8
-                    &outCharset=utf-8&notice=0&format=jsonp&_=1505281457943&platform=h5&uin=0&needNewCode=1&jsonpCallback=taogeDataCallback`
+                    &outCharset=utf-8&notice=0&format=jsonp&_=1505281457943&platform=h5&uin=0&needNewCode=1`
 
 const disLists = (disstid) => {
     return `https://c.y.qq.com/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg?
