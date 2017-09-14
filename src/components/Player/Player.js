@@ -44,9 +44,6 @@ export default class Player extends Component {
             songIndex: PropTypes.number,
             isChanged: PropTypes.bool,
 
-            beforeSong: PropTypes.func,
-            nextSong: PropTypes.func,
-            chooseSong: PropTypes.func,
             changeSong: PropTypes.func,
         }
     }

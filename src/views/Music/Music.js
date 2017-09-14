@@ -223,6 +223,9 @@ class Music extends Component {
             changeDuration(duration),
             changeCurrentTime(currentTime)
             changeCurrentSTime(this._musicPlayer.currentTime)
+       
+       const {mode, isAutoplay,  songIndex} = this.props
+       console.log(mode, isAutoplay, songIndex)
     }
 
     upsateTime () {
@@ -324,14 +327,16 @@ class Music extends Component {
     }
 
     changeMode () {
-        const modeArr = ['loop', 'repeatOne', 'shuffle', 'order']
+      //  const modeArr = ['loop', 'repeatOne', 'shuffle', 'order']
         const {mode, changeMode} = this.props
+        
         console.log(mode)
         switch(mode) {
             case 'loop':
                 changeMode('repeatOne')
                 break;
             case 'repeatOne':
+                this._musicPlayer.loop = true
                 changeMode('shuffle')
                 break;
            case 'shuffle':
@@ -343,7 +348,36 @@ class Music extends Component {
           default:
                break;
         }
-        
+    }
+
+    handleEnd () {
+        const {mode, changeMode, isAutoplay, 
+            songIndex, disList, chooseSong, nextSong} = this.props
+        const jsDisList = Immutable.List(disList).toJS()
+        console.log(mode, isAutoplay, songIndex)
+
+        switch(mode) {
+            case 'loop':
+                if(songIndex === jsDisList.length - 1) {
+                    this.getSong(jsDisList[0])
+                    chooseSong(0)
+                } else {
+                    this.getSong(jsDisList[songIndex + 1])
+                    nextSong()
+                }
+                break;
+            case 'repeatOne':
+                
+                break;
+           case 'shuffle':
+               
+                break;
+           case 'order':
+               
+                break;
+          default:
+               break;
+        }
 
     }
 
@@ -387,6 +421,7 @@ class Music extends Component {
                           onVolumeChange = {() => {this.changeVolume()}}
                           onPlay = {() => {play()}}
                           onPause = {() => {pause()}}
+                          onEnded ={() => {this.handleEnd()}}
 
                           >你的浏览器不支持喔！</audio>
                           <Player _this={this} albumImgUrl={albumImgUrl}  songname={songname} singer={singer}
