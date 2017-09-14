@@ -28,6 +28,7 @@ import {
    loadedSelector,
    durationSelector,
    currentTimeSelector,
+   currentSTimeSelector,
    isChangedSelector,
 } from '../../selector/music.js'
 import * as musicAction  from '../../redux/actions/music.js'
@@ -67,6 +68,7 @@ const mapStateToProps = (state) => ({
     played: playedSelector(state),
     loaded: loadedSelector(state),
     currentTime: currentTimeSelector(state),
+    currentSTime: currentSTimeSelector(state),
     duration: durationSelector(state),
     isChanged: isChangedSelector(state) 
 })
@@ -102,6 +104,7 @@ class Music extends Component {
             loaded: PropTypes.number,
             mode: PropTypes.string,
             currentTime: PropTypes.string,
+            currentSTime: PropTypes.number,
             duration: PropTypes.string,
             isChanged: PropTypes.bool,
 
@@ -114,6 +117,13 @@ class Music extends Component {
             chooseSong: PropTypes.func,
             changeValue: PropTypes.func,
             changeSong: PropTypes.func,
+            changeMode: PropTypes.func,
+            changeVolume: PropTypes.func,
+            changePlayed: PropTypes.func,
+            changeLoaded: PropTypes.func,
+            changeDuration: PropTypes.func,
+            changeCurrentTime: PropTypes.func,
+            changeCurrentSTime: PropTypes.func,
 
         }
     }
@@ -123,10 +133,10 @@ class Music extends Component {
         this.state = {
             index: 0,
             open: true,
-            duration: '00:00',
+           /* duration: '00:00',
             currentTime: '00:00',
             played: 0,
-            loaded: 0,
+            loaded: 0,*/
         }
     }
 
@@ -146,17 +156,17 @@ class Music extends Component {
     
     
     componentWillReceiveProps(nextProps) {
-         const {isAutoplay, lyric, isPlaying, pause, changeSong} = nextProps
+         const {isAutoplay, lyric, isPlaying, pause, changeSong, changeVolume} = nextProps
          const {lyricStatus} = this.props
          if(isAutoplay) {
              this._musicPlayer.autoplay = isAutoplay
          }
 
-
+/*
          this.setState({
              volume: this._musicPlayer.volume
-         })
-         
+         })*/
+         changeVolume(this._musicPlayer.volume)
                
     }
     
@@ -216,12 +226,17 @@ class Music extends Component {
         const duration = this.formatSongTime(this._musicPlayer.duration)
         const currentTime = this.formatSongTime(this._musicPlayer.currentTime)
         const played = this._musicPlayer.currentTime / this._musicPlayer.duration
-        this.setState({
+        /*this.setState({
             duration,
             currentTime,
             played,
             currentSTime: this._musicPlayer.currentTime
-        })
+        })*/
+        const {changePlayed , changeDuration, changeCurrentTime, changeCurrentSTime} = this.props
+            changePlayed(played),
+            changeDuration(duration),
+            changeCurrentTime(currentTime)
+            changeCurrentSTime(this._musicPlayer.currentTime)
     }
 
     upsateTime () {
@@ -236,9 +251,6 @@ class Music extends Component {
         const {play} = this.props
         if(!songUrl) return
         this._musicPlayer.play()
-        this.setState({
-            isPlaying: true
-        })
         play()
         
     }
@@ -249,9 +261,6 @@ class Music extends Component {
         const {pause} = this.props
         if(!songUrl) return
         this._musicPlayer.pause()
-        this.setState({
-            isPlaying: false
-        })
         pause()
     }
 
@@ -270,14 +279,16 @@ class Music extends Component {
             loaded = spu / audio.duration
           //  console.log(spu / audio.duration)
         }
-        this.setState({
+        /*this.setState({
             loaded
-        })
+        })*/
+        const {changeLoaded} = this.props
+        changeLoaded(loaded)
         
     }
 
     changeVolume () {
-       const {mute, isMuted} = this.props
+       const {mute, isMuted, changeVolume} = this.props
         if(!isMuted && this._musicPlayer.muted) {
             mute()
         }
@@ -286,10 +297,11 @@ class Music extends Component {
         } else if(this._musicPlayer.volume > 0 && isMuted && !this._musicPlayer.muted) {
             mute()
         }
-         this.setState({
+        changeVolume(this._musicPlayer.volume)
+         /*this.setState({
              volume: this._musicPlayer.volume,
              isMuted: this._musicPlayer.muted
-         })
+         })*/
     }
 
     mutePlayer () {
@@ -334,13 +346,12 @@ class Music extends Component {
 
 
     render() {
-        const {open, songUrl, albumImgUrl, songname, singer,
-            duration, currentTime, played,loaded, volume,
-             songid, currentSTime} = this.state
+        const {open, songUrl, albumImgUrl, songname, singer, songid} = this.state
         const {
             songList, getDisLists, disList, lyricStatus,
-             isPlaying, play, pause, isAutoplay, isMuted, isChanged, changeSong, mode,
-             beforeSong, nextSong,  chooseSong, songIndex, value
+             isPlaying, play, pause, isAutoplay, isMuted, isChanged, changeSong, 
+             volume, mode, duration, currentTime, currentSTime, played,loaded,
+             chooseSong, songIndex, value
             } = this.props
         const jsSongList = Immutable.List(songList).toJS()
         const jsDisList = Immutable.List(disList).toJS()

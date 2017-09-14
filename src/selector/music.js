@@ -66,6 +66,12 @@ export const currentTimeSelector = createSelector(
     musicSongActionState => musicSongActionState.get('currentTime')
 )
 
+export const currentSTimeSelector = createSelector(
+    musicSongActionSelector,
+    musicSongActionState => musicSongActionState.get('currentSTime')
+)
+
+
 
 export const isChangedSelector = createSelector(
     musicSongActionSelector,

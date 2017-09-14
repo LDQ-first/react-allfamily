@@ -22,6 +22,7 @@ import {
     LOADED,
     DURATION,
     CURRENTTIME,
+    CURRENTSTIME,
 
     BEFORE_SONG,
     NEXT_SONG,
@@ -111,6 +112,13 @@ export const changeCurrentTime = (currentTime) => {
     return {
         type: CURRENTTIME,
         currentTime: currentTime
+    }
+}
+
+export const changeCurrentSTime = (currentSTime) => {
+    return {
+        type: CURRENTSTIME,
+        currentSTime: currentSTime
     }
 }
 

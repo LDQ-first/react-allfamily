@@ -22,6 +22,7 @@ import {
     LOADED,
     DURATION,
     CURRENTTIME,
+    CURRENTSTIME,
 
     BEFORE_SONG,
     NEXT_SONG,
@@ -44,6 +45,7 @@ const songActionInitState = fromJS({
     loaded: 0,
     duration: '00:00',
     currentTime: '00:00',
+    currentSTime: 0,
     isChanged: false
 })
 
@@ -72,6 +74,8 @@ export const musicSongAction = (state = songActionInitState, action) => {
             return state.set('duration', action.duration)
         case CURRENTTIME:
             return state.set('currentTime', action.currentTime)
+        case CURRENTSTIME:
+            return state.set('currentSTime', action.currentSTime)
         case BEFORE_SONG:
             return state.update('songIndex', songIndex => songIndex - 1)
         case NEXT_SONG:

@@ -64,6 +64,7 @@ export const PLAYED = "PLAYED"
 export const LOADED = "LOADED"
 export const DURATION = "DURATION"
 export const CURRENTTIME = "CURRENTTIME"
+export const CURRENTSTIME = "CURRENTSTIME"
 
 
 
