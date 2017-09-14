@@ -29,14 +29,15 @@ export default class DisList extends Component {
     
     componentWillMount() {
         this.setState({
-            isFirst: true
+            isFirst: true,
+            preSongIndex: 0,
         })
     }
 
      
     
     componentWillReceiveProps(nextProps) {
-        const {isFirst} = this.state
+        const {isFirst, preSongIndex} = this.state
         const {jsDisList, _this, songIndex, value, chooseSong} = nextProps
 
 
@@ -50,6 +51,15 @@ export default class DisList extends Component {
         
 
         if( value === this.props.value) return
+        console.log(preSongIndex, songIndex)
+        if( preSongIndex != 0)  {
+            console.log(preSongIndex)
+            chooseSong(preSongIndex)
+            return;
+        }
+        this.setState({
+            preSongIndex: songIndex
+        })
         chooseSong(0)
         const scrollTimer = setInterval(() => {
             if(this._disListsWrapper.scrollTop === 0 ) {
