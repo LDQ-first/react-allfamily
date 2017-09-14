@@ -422,7 +422,8 @@ class Music extends Component {
         return (
             <Container>
                 <MusicDiv>
-                     <div className="music-player">
+                     <div className="music-player" 
+                     ref={player => this.player = player}>
                           <audio controls ref={audio => this._musicPlayer = audio}
                           className="audio" src={songUrl}
                           onCanPlay = {() => {this.getTime(); this.getLyric(songid)}}

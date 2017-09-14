@@ -247,7 +247,7 @@ const MusicDiv = styled.div`
                         top: -4px;
                         left: -8px;
                         width: 100%;
-                        
+                        cursor: pointer;
                         .player-bar {
                             height: 4px;
                             position: relative;

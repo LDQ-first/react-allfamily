@@ -64,6 +64,19 @@ export default class Player extends Component {
     componentWillReceiveProps(nextProps) {
        const {  _this, played,loaded, isPlaying,isAutoplay, volume, isMuted, lyric} = nextProps
 
+    }
+
+    clickBar (e) {
+        console.log(e.pageX)
+        let obj = e.target
+        let allLeft = 0
+        while(obj = obj.offsetParent) {
+            allLeft += obj.offsetLeft
+        }
+        let clickX = e.pageX - allLeft
+        console.log(clickX)
+        console.log(e.target.offsetWidth)
+        
 
     }
 
@@ -76,7 +89,7 @@ export default class Player extends Component {
         
 
         return (
-            <div className="player" >
+            <div className="player"  >
                 <div className="player-pic">
                     <div className="player-disco-wrapper">
                         <div className={classNames('player-needle', {active: isPlaying})}></div>
@@ -88,7 +101,9 @@ export default class Player extends Component {
                          </div>
                     </div>
                 </div>
-                <div className="player-info">
+                <div className="player-info"
+                ref={info => this.info = info}
+                >
                     <header className="player-info-header">
                         <div className="player-info-title">
                             <h3 className="player-info-song">{songname}</h3>
@@ -114,10 +129,11 @@ export default class Player extends Component {
                     <footer className="player-info-control">
                         <div className="player-bar-wrapper">
                             <div className="player-bar"
+                             onClick = {(e) => {this.clickBar(e)}}
                             ref={bar => this.bar = bar}>
                                 <div className="player-loaded" 
                                 style={{width: `${ loaded * 100 }%`}}></div>
-                                <div className="player-played"
+                                <div className="player-played"                         
                                 style={{width: `${ played * 100 }%`}}>
                                     <span className="player-played-thumb"></span>
                                 </div>
