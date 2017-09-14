@@ -199,6 +199,7 @@ class Music extends Component {
         if(!isAutoplay && isPlaying) {
              pause()
          }
+        this.getLyric(songid)
     }
 
     formatNum(num) {
@@ -436,7 +437,7 @@ class Music extends Component {
     render() {
         const {open, songUrl, albumImgUrl, songname, singer, songid} = this.state
         const {
-            songList, getDisLists, disList, lyricStatus,
+            songList, getDisLists, disList, lyricStatus, 
              isPlaying, play, pause, isAutoplay, isMuted, isChanged, changeSong, 
              volume, mode, duration, currentTime, currentSTime, played,loaded,
              chooseSong, songIndex, value
@@ -448,7 +449,6 @@ class Music extends Component {
         if(isChanged) {
            lyric = this.state.lyric  
         }
-
 
         const SongLists = jsSongList.map((list, index) => {
             return (
@@ -468,7 +468,7 @@ class Music extends Component {
                      ref={player => this.player = player}>
                           <audio controls ref={audio => this._musicPlayer = audio}
                           className="audio" src={songUrl}
-                          onCanPlay = {() => {this.getTime(); this.getLyric(songid)}}
+                          onCanPlay = {() => {this.getTime();}}
                           onTimeUpdate = {() => { this.upsateTime()}}
                           onProgress = {() => { this.getProgress()}}
                           onVolumeChange = {() => {this.changeVolume()}}
