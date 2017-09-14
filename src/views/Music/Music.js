@@ -395,8 +395,10 @@ class Music extends Component {
         let obj = _this.volumeBar
         let allLeft = 0
         const clickX = e.pageX - obj.getBoundingClientRect().left
-        const volumeRate = clickX / _this.volumeBar.offsetWidth
-    
+        let volumeRate = clickX / _this.volumeBar.offsetWidth
+        if(volumeRate > 1) {
+            volumeRate = 1
+        }
         const {changeVolume} = this.props
         this._musicPlayer.volume = volumeRate
         changeVolume(volumeRate)  
@@ -411,7 +413,10 @@ class Music extends Component {
             allLeft += obj.offsetLeft
         }
         const clickX = e.pageX - allLeft
-        const timeRate = clickX / _this.bar.offsetWidth + 0.02
+        let timeRate = clickX / _this.bar.offsetWidth
+        if(timeRate > 1) {
+            timeRate = 1
+        }
         this._musicPlayer.currentTime  = this._musicPlayer.duration * timeRate
         this.getTime()
 

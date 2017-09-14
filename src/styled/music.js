@@ -31,7 +31,7 @@ const MusicDiv = styled.div`
             right: 7px;
             bottom: 0;
             height: 40px;
-            width: 40px;
+            width: 30px;
         }
         .audio {
             display: block;
