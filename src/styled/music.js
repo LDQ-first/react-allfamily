@@ -30,8 +30,8 @@ const MusicDiv = styled.div`
             position: absolute;
             right: 7px;
             bottom: 0;
-            height: 26px;
-            width: 24px;
+            height: 40px;
+            width: 40px;
         }
         .audio {
             display: block;
@@ -41,8 +41,6 @@ const MusicDiv = styled.div`
             outline: 1px solid lightblue;
             display: flex;
             flex-direction: column;
-            /*justify-content: space-between;
-            align-items: center;*/
             background: #F4F4F4;
             .player-top {
                  display: flex;
@@ -236,12 +234,6 @@ const MusicDiv = styled.div`
                     z-index: 20;
                     height: 26px;
                     margin-top: 4px;
-                    @media (max-width: 450px) {
-                        width: 90%;
-                    }
-                    @media (max-width: 360px) {
-                        width: 88%;
-                    }
                     .iconBtn {
                         width: 24px;
                         height: 26px;
@@ -292,7 +284,7 @@ const MusicDiv = styled.div`
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                width: calc(100% - 30px);
+                width: calc(100% - 40px);
                 .player-bar-wrapper {
                     flex: 1;
                     margin: 0 0.5em;
@@ -338,8 +330,6 @@ const MusicDiv = styled.div`
                     }
                 }
                 .player-volume-wrapper {   
-                    /*display: inline-flex; */
-                    /*position: relative;*/
                     cursor: pointer;
                     @media (min-width: 500px) {
                         margin: 0 8px;
@@ -350,34 +340,16 @@ const MusicDiv = styled.div`
                     @media (min-width: 1000px) {
                         margin: 0 1.5em;
                     }
-                    /*&:hover {
-                        .player-volume-bar-wrap {
-                            display: block;
-                        }
-                    }*/
                     .player-volume {
-                        /*display: inline-flex;*/
+                        height: 40px;
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
                     }
                     .player-volume-bar-wrap {
                         width: 100px;
-                        height: 30px;
-                       /* position: absolute;
-                        bottom: 25px;
-                        right: -7px;
-                        width: 40px;
-                        height: 60px;
-                        z-index: 99;
-                        display: none;*/
-                       /* &:hover {
-                            display: block;
-                        }*/
+                        height: 4px;
                         .player-volume-bar {
-                            /*position: absolute;
-                            bottom: 2px;
-                            right: 18px;*/
                             width: 100%;
                             height: 4px;
                             background: #aaa;
