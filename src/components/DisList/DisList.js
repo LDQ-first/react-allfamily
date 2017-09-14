@@ -6,6 +6,7 @@ import FileDownloadIcon from 'material-ui-icons/FileDownload'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import {musicApi} from '../../api/api.js' 
+import IconButton from 'material-ui/IconButton'
 
 
 export default class DisList extends Component {
@@ -99,7 +100,7 @@ export default class DisList extends Component {
                             <h4 className="disList-subtitle">{list.singer} - {list.albumname}</h4>
                         </div>
                     } />
-                    <ListItemIcon className="downloadbtn" button
+                    <IconButton className="downloadbtn" 
                         >
                         <a  
                             rel="noopener noreferrer"
@@ -107,7 +108,7 @@ export default class DisList extends Component {
                             download>
                             <FileDownloadIcon />
                         </a>
-                    </ListItemIcon>
+                    </IconButton>
                 </ListItem>
             )
         })
