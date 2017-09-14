@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Img from '../../styled/img'
 import loadingGif from '../../../static/img/loading.gif'
 import PropTypes from 'prop-types'
-import pureRender from 'pure-render-decorator'
 
 export default class Imgs extends Component {
     
