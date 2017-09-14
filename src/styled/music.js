@@ -416,7 +416,7 @@ const MusicDiv = styled.div`
            
             .downloadbtn {
                 position: relative;
-                z-index: 100;
+                z-index: 10;
                 cursor: pointer;
             }
             .disLists-header {

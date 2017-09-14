@@ -108,8 +108,12 @@ export const songListsSelector = createSelector(
 
 export const songListSelector = createSelector(
     songListsSelector,
-    songListsState => songListsState.get('songList')
+    songListsState => {
+        if(!songListsState) return
+        return songListsState.get('songList')
+    }
 )
+
 
 
 
@@ -138,7 +142,10 @@ export const disListsSelector = createSelector(
 
 export const disListSelector = createSelector(
     disListsSelector,
-    disListsState => disListsState.get('disList')
+    disListsState => {
+        if(!disListsState) return
+        return disListsState.get('disList')
+    }
 )
 
 
