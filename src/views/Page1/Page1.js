@@ -9,7 +9,10 @@ import {
 } from '../../selector/test.js'
 import PropTypes from 'prop-types'
 import Button  from 'material-ui/Button'
-
+import Lazy from '../../styled/Lazy'
+import {lazyimgApi} from '../../api/api.js'
+import Img from '../../components/Img/Img'
+import axios from 'axios'
 
 class Page1 extends Component {
     static get propTypes() { 
@@ -21,15 +24,52 @@ class Page1 extends Component {
         }
     }
 
+    constructor (props) {
+        super(props) 
+        this.state = {
+            imgArr: []
+        }
+    }
+
+    
+    componentWillMount() {
+       // let res = axios.get(`${lazyimgApi}`)
+        this.getUserInfo()
+    }
+    
+    getUserInfo = async () => {
+        try {
+            let res = await axios.get(`${lazyimgApi}`)
+            this.setState({
+                imgArr: res.data.img
+            })
+        } catch (err) {
+            console.log('err:', err)
+        }
+    }
+
 
 
     render() {
+
         const {isLoading, errorMsg, getSong, song} = this.props
+        const {imgArr} = this.state
+
+
+
+        const imgs = imgArr.map((img, i) => {
+            return (
+              <Lazy key={i}>
+                <Img  src={img}/>
+              </Lazy>
+            )
+        })
+
+
 
         return (
-            <Container>
-               这是Page1
-               
+            <Container className="lazyArea">
+                {imgs}
             </Container>
         )
     }

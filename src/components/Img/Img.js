@@ -31,6 +31,7 @@ export default class Imgs extends Component {
      
     _check (imgs) {
         const {winTop, winHeight} = this.state
+        console.log(imgs.offsetTop)
         if( winTop + winHeight > imgs.offsetTop  && 
             winTop < imgs.offsetTop + imgs.offsetHeight) {
             this.setState({
@@ -41,9 +42,9 @@ export default class Imgs extends Component {
 
     _showImg () {
          if(!this.imgs) {
-             this.setState({
+            /* this.setState({
                 show: true
-            })
+            })*/
              return
          }
         this.setState({
@@ -75,6 +76,7 @@ export default class Imgs extends Component {
         const {src, alt, title, className} = this.props
         const {imageStatus, imgUrl, show} = this.state
         const img = show ? (src ? src: imgUrl) : imgUrl
+        console.log(show)
         return (
             <div ref={div => this.imgs = div} className="lazyImgWrapper">
                 <Img className={className} src={img} alt={alt} title={title} 

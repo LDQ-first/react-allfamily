@@ -148,6 +148,10 @@ const Container = styled.div`
             }
         }
     }
+    &.lazyArea {
+        display: flex;
+        flex-wrap: wrap;
+    }
     
     
 `

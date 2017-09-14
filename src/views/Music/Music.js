@@ -184,10 +184,9 @@ class Music extends Component {
     getSong = (list) => {
         const {isAutoplay , isPlaying, pause, changeSong} = this.props
         const { songid, albummid, songname, singer } = list
-        console.log(songid, albummid)
         const albumImgUrl = musicApi.albumImg(albummid)
         const songUrl = musicApi.song(songid)
-        console.log(albumImgUrl, '\n' , songUrl)
+      
         this.setState({
             albumImgUrl,
             songUrl,
@@ -231,7 +230,6 @@ class Music extends Component {
 
 
     playSong = () => {
-        console.log('play')
         const {songUrl} = this.state
         const {play} = this.props
         if(!songUrl) return
@@ -241,7 +239,6 @@ class Music extends Component {
     }
 
     pauseSong = () => {
-        console.log('pause')
         const {songUrl} = this.state
         const {pause} = this.props
         if(!songUrl) return
@@ -262,7 +259,6 @@ class Music extends Component {
         for (var i = 0; i < audio.buffered.length; i++) {
             spu += audio.buffered.end(i) - audio.buffered.start(i)
             loaded = spu / audio.duration
-          //  console.log(spu / audio.duration)
         }
         const {changeLoaded} = this.props
         changeLoaded(loaded)
@@ -279,7 +275,6 @@ class Music extends Component {
         } else if(this._musicPlayer.volume > 0 && isMuted && !this._musicPlayer.muted) {
             mute()
         }
-        console.log(isMuted, this._musicPlayer.muted , this._musicPlayer.volume)
         changeVolume(this._musicPlayer.volume)
     }
 
@@ -294,11 +289,8 @@ class Music extends Component {
 
 
     changeSong (status) {
-        console.log(status)
         const {disList, songIndex, beforeSong, nextSong} = this.props
         const jsDisList = Immutable.List(disList).toJS()
-        console.log(songIndex)
-        console.log(jsDisList.length)
         if(status === 'before' && songIndex > 0) {
             this.getSong(jsDisList[songIndex - 1])
             beforeSong()
@@ -328,7 +320,6 @@ class Music extends Component {
     changeMode () {
         const {mode, changeMode} = this.props
         
-        console.log(mode)
         switch(mode) {
             case 'loop':
                 changeMode('repeatOne')
@@ -355,8 +346,6 @@ class Music extends Component {
         const {mode, changeMode, isAutoplay, 
             songIndex, disList, chooseSong, nextSong} = this.props
         const jsDisList = Immutable.List(disList).toJS()
-        console.log(mode, isAutoplay, songIndex)
-        console.log(this._musicPlayer.loop)
 
         switch(mode) {
             case 'loop':
@@ -373,9 +362,8 @@ class Music extends Component {
                 break;
            case 'shuffle':
                 const randomIndex = Math.round(Math.random() * jsDisList.length - 1)
-                console.log(randomIndex)
                 this.getSong(jsDisList[randomIndex])
-                chooseSong(randomIndex)
+                chooseSong(randomIndex)      
                 break;
            case 'order':
                 if(songIndex < jsDisList.length - 1) {
@@ -423,7 +411,6 @@ class Music extends Component {
         }
         const clickX = e.pageX - 6 - allLeft
         if(clickX < 0) return
-        console.log(clickX)
         if(clickX <= _this.bar.offsetWidth ) {
             const timeRate = clickX / _this.bar.offsetWidth
             this._musicPlayer.currentTime  = this._musicPlayer.duration * timeRate
