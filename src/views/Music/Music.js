@@ -22,6 +22,12 @@ import {
    isAutoplaySelector,
    isMutedSelector,
    valueSelector,
+   modeSelector,
+   volumeSelector,
+   playedSelector,
+   loadedSelector,
+   durationSelector,
+   currentTimeSelector,
    isChangedSelector,
 } from '../../selector/music.js'
 import * as musicAction  from '../../redux/actions/music.js'
@@ -56,6 +62,12 @@ const mapStateToProps = (state) => ({
     isAutoplay: isAutoplaySelector(state),
     isMuted: isMutedSelector(state),
     value: valueSelector(state),
+    mode: modeSelector(state),
+    volume: volumeSelector(state),
+    played: playedSelector(state),
+    loaded: loadedSelector(state),
+    currentTime: currentTimeSelector(state),
+    duration: durationSelector(state),
     isChanged: isChangedSelector(state) 
 })
 
@@ -85,6 +97,12 @@ class Music extends Component {
             isMuted: PropTypes.bool,
             songIndex: PropTypes.number,
             value: PropTypes.number,
+            volume: PropTypes.number,
+            played: PropTypes.number,
+            loaded: PropTypes.number,
+            mode: PropTypes.string,
+            currentTime: PropTypes.string,
+            duration: PropTypes.string,
             isChanged: PropTypes.bool,
 
             play: PropTypes.func,
@@ -321,7 +339,7 @@ class Music extends Component {
              songid, currentSTime} = this.state
         const {
             songList, getDisLists, disList, lyricStatus,
-             isPlaying, play, pause, isAutoplay, isMuted, isChanged, changeSong,
+             isPlaying, play, pause, isAutoplay, isMuted, isChanged, changeSong, mode,
              beforeSong, nextSong,  chooseSong, songIndex, value
             } = this.props
         const jsSongList = Immutable.List(songList).toJS()
@@ -362,7 +380,7 @@ class Music extends Component {
                           duration={duration} currentTime={currentTime}   
 
                           isPlaying={isPlaying} play={play} pause={pause} isAutoplay = {isAutoplay} isMuted={isMuted} 
-                          changeSong={changeSong}
+                          changeSong={changeSong} mode={mode}
 
                           played={played} loaded={loaded}   
                            volume={volume}  lyric={lyric ? lyric : this.state.lyric} currentSTime={currentSTime} isChanged={isChanged}

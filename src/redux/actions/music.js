@@ -16,6 +16,12 @@ import {
     AUTOPLAY,
     MUTE,
     VALUE,
+    MODE,    
+    VOLUME,
+    PLAYED,
+    LOADED,
+    DURATION,
+    CURRENTTIME,
 
     BEFORE_SONG,
     NEXT_SONG,
@@ -62,6 +68,49 @@ export const changeValue = (value) => {
     return {
         type: VALUE,
         value: value
+    }
+}
+
+export const changeMode = (Mode) => {
+    return {
+        type: MODE,
+        Mode: Mode
+    }
+}
+
+
+export const changeVolume = (volume) => {
+    return {
+        type: VOLUME,
+        volume: volume
+    }
+}
+
+export const changePlayed = (played) => {
+    return {
+        type: PLAYED,
+        played: played
+    }
+}
+
+export const changeLoaded = (loaded) => {
+    return {
+        type: LOADED,
+        loaded: loaded
+    }
+}
+
+export const changeDuration = (duration) => {
+    return {
+        type: DURATION,
+        duration: duration
+    }
+}
+
+export const changeCurrentTime = (currentTime) => {
+    return {
+        type: CURRENTTIME,
+        currentTime: currentTime
     }
 }
 

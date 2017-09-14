@@ -37,6 +37,36 @@ export const valueSelector = createSelector(
     musicSongActionState => musicSongActionState.get('value')
 )
 
+export const modeSelector = createSelector(
+    musicSongActionSelector,
+    musicSongActionState => musicSongActionState.get('mode')
+)
+export const volumeSelector = createSelector(
+    musicSongActionSelector,
+    musicSongActionState => musicSongActionState.get('volume')
+)
+
+export const playedSelector = createSelector(
+    musicSongActionSelector,
+    musicSongActionState => musicSongActionState.get('played')
+)
+
+export const loadedSelector = createSelector(
+    musicSongActionSelector,
+    musicSongActionState => musicSongActionState.get('loaded')
+)
+
+export const durationSelector = createSelector(
+    musicSongActionSelector,
+    musicSongActionState => musicSongActionState.get('duration')
+)
+
+export const currentTimeSelector = createSelector(
+    musicSongActionSelector,
+    musicSongActionState => musicSongActionState.get('currentTime')
+)
+
+
 export const isChangedSelector = createSelector(
     musicSongActionSelector,
     musicSongActionState => musicSongActionState.get('isChanged')

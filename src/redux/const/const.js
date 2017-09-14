@@ -58,6 +58,13 @@ export const PAUSE = "PAUSE"
 export const AUTOPLAY = "AUTOPLAY"
 export const MUTE = "MUTE"
 export const VALUE = "VALUE"
+export const MODE = "MODE"
+export const VOLUME = "VOLUME"
+export const PLAYED = "PLAYED"
+export const LOADED = "LOADED"
+export const DURATION = "DURATION"
+export const CURRENTTIME = "CURRENTTIME"
+
 
 
 export const BEFORE_SONG = "BEFORE_SONG"
