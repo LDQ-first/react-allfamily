@@ -74,7 +74,6 @@ export default class Imgs extends Component {
         const {src, alt, title, className} = this.props
         const {imageStatus, imgUrl, show} = this.state
         const img = show ? (src ? src: imgUrl) : imgUrl
-        console.log(show)
         return (
             <div ref={div => this.imgs = div} className="lazyImgWrapper">
                 <Img className={className} src={img} alt={alt} title={title} 
