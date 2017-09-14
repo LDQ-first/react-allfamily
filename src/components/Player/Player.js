@@ -48,26 +48,6 @@ export default class Player extends Component {
         }
     }
 
-    constructor (props) {
-        super(props)
-        this.state = {
-
-        }
-    }
-
-
-    
-    
-    
-
-    
-    componentWillReceiveProps(nextProps) {
-       const {  _this, played,loaded, isPlaying,isAutoplay, volume, isMuted, lyric} = nextProps
-
-    }
-
-
-
     render() {
 
         const {_this, albumImgUrl, songname, singer, currentTime, duration, isAutoplay, volume, lyric, currentSTime,
@@ -83,7 +63,8 @@ export default class Player extends Component {
                             <div className={classNames('player-disco', {active: isPlaying})}>
                                 <div className="player-disco-cover"></div>
                                 <div className="player-disco-img" 
-                                    style={{background: `url(${albumImgUrl}) center/ cover no-repeat`}}>
+                                    style={{background: albumImgUrl ? 
+                                        `url(${albumImgUrl}) center/ cover no-repeat` : 'transparent'}}>
                                 </div>
                             </div>
                         </div>

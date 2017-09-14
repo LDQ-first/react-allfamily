@@ -121,7 +121,6 @@ export default class Lyric extends Component {
 
              if( newCurrentSTime === sec && 
              (!newLyricArray[i + 1] || newCurrentSTime < this.getSeconds(newLyricArray[i + 1]))) {
-                 console.log(i)
                  lines.map((line, i) => {
                     line.props.className = line.props.className.replace(' active', '')
                 })
@@ -134,7 +133,6 @@ export default class Lyric extends Component {
          }
 
          if(index > 2 && this.line) {
-             console.log(index)
              
              this.setState({
                  translateY: -(index) * this.line.offsetHeight

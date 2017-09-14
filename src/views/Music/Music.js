@@ -140,7 +140,6 @@ class Music extends Component {
     
     componentWillMount() {
         const {getSongLists, autoplay, isAutoplay, songList} = this.props
-        console.log(songList)
         if(!songList) {
             getSongLists()   
         }
