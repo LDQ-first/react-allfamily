@@ -26,7 +26,6 @@ const MusicDiv = styled.div`
         margin: 10px auto;
     }
     .music-player {
-        outline: 1px solid red;
         position: relative;
         border-bottom: 2px solid #CCC;
         .song-lists-expand {
@@ -38,13 +37,11 @@ const MusicDiv = styled.div`
         }
         .audio {
             display: none;
-           /* margin-bottom: 10px;*/
         }
         .player {
-            outline: 1px solid lightblue;
             display: flex;
             flex-direction: column;
-            background: #F4F4F4;
+            background: #FFF;
             .player-top {
                  display: flex;
                 justify-content: space-between;
@@ -187,11 +184,10 @@ const MusicDiv = styled.div`
                     
                 }
                 .player-info-lyric {
-                    outline: 1px solid pink;
                     flex: 1;
                     position: relative;
                     overflow: hidden;
-                    background: #F4F4F4;
+                    background: #FFF;
                     &::before {
                         content: ' ';
                         position: absolute;
@@ -201,7 +197,7 @@ const MusicDiv = styled.div`
                         overflow: hidden;
                         width: 100%;
                         height: 10%;
-                        background: linear-gradient(to bottom, white 0%, rgba(244, 244, 244, 0) 100%);
+                        background: linear-gradient(to bottom, white 0%, rgba(255, 255, 255, 0) 100%);
                     }
                     &::after {
                         content: ' ';
@@ -212,10 +208,9 @@ const MusicDiv = styled.div`
                         overflow: hidden;
                         width: 100%;
                         height: 33%;
-                        background: linear-gradient(to bottom, rgba(244, 244, 244, 0) 0%, rgba(244, 244, 244, 0.8) 100%);
+                        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 100%);
                     }
                     .player-lyrics-lines {
-                        outline: 1px solid red;
                         padding: 4px;
                         font-size: 14px;
                         position: relative;
@@ -229,7 +224,6 @@ const MusicDiv = styled.div`
                     }
                 }
                 .player-info-control {
-                    outline: 1px solid purple;
                     display: flex;
                     align-items: center;
                     width: 100%;
@@ -374,7 +368,6 @@ const MusicDiv = styled.div`
         }
     }
     .song-lists-wrapper {
-        outline: 1px solid lightgreen;
         .song-lists {
           .song-lists-header {
              position: relative;

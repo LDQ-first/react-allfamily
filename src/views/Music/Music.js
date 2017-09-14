@@ -500,10 +500,10 @@ class Music extends Component {
                             onChange={this.handleChange}
                             showLabels
                         >
-                            <BottomNavigationButton label="经典" icon={<RestoreIcon />} />
-                            <BottomNavigationButton label="日语" icon={<FavoriteIcon />} />
-                            <BottomNavigationButton label="民谣" icon={<LocationOnIcon />} />
-                            <BottomNavigationButton label="ACG" icon={<FolderIcon />} />
+                            <BottomNavigationButton  icon={<RestoreIcon />} />
+                            <BottomNavigationButton  icon={<FavoriteIcon />} />
+                            <BottomNavigationButton  icon={<LocationOnIcon />} />
+                            <BottomNavigationButton  icon={<FolderIcon />} />
                         </BottomNavigation>
 
                      </Collapse>
