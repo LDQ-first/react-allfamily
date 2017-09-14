@@ -331,6 +331,9 @@ const MusicDiv = styled.div`
                 }
                 .player-volume-wrapper {   
                     cursor: pointer;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
                     @media (min-width: 500px) {
                         margin: 0 8px;
                     }
@@ -340,17 +343,15 @@ const MusicDiv = styled.div`
                     @media (min-width: 1000px) {
                         margin: 0 1.5em;
                     }
-                    .player-volume {
-                        height: 40px;
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
+                    .player-volume { 
+                        .iconBtn {
+                            height: 40px;
+                        }
                     }
-                    .player-volume-bar-wrap {
+                    .player-volume-bar-wrapper {
                         width: 100px;
                         height: 4px;
                         .player-volume-bar {
-                            width: 100%;
                             height: 4px;
                             background: #aaa;
                             position: relative;

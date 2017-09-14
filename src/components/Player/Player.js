@@ -162,7 +162,7 @@ export default class Player extends Component {
                     <div className="player-bar-wrapper">
                         <div className="player-bar"
                             onClick = {(e) => {_this.clickBar(e, this)}}
-                        ref={bar => this.bar = bar}>
+                            ref={bar => this.bar = bar}>
                             <div className="player-loaded" 
                             style={{width: `${ loaded * 100 }%`}}></div>
                             <div className="player-played"                         
@@ -170,7 +170,8 @@ export default class Player extends Component {
                                 <span className="player-played-thumb"
                                 ref={thumb => this.thumb = thumb}
                                 draggable="true"
-                                onDrag = {(e) => {_this.dragThumb(e, this)} }></span>
+                                onDrag = {(e) => {_this.dragThumb(e, this)} }          
+                                ></span>
                             </div>
                         </div>
                     </div>
@@ -184,13 +185,15 @@ export default class Player extends Component {
                                 <IconButton className="iconBtn" onClick={() => {_this.mutePlayer()}}>
                                     <VolumeDownIcon/>
                                 </IconButton> 
-                        }
-                        <div className="player-volume-bar-wrap">
-                            <div className="player-volume-bar">
+                           }
+                        </div>
+                        <div className="player-volume-bar-wrapper" 
+                         ref={bar => this.volumeBar = bar}>
+                            <div className="player-volume-bar"
+                             onClick = {(e) => {_this.clickVolumeBar(e, this)}} >
                                 <div className="aplayer-volume" 
                                 style={{width: `${volume * 100}%`}}></div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>

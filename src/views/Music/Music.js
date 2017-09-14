@@ -280,11 +280,15 @@ class Music extends Component {
         } else if(this._musicPlayer.volume > 0 && isMuted && !this._musicPlayer.muted) {
             mute()
         }
+        console.log(isMuted, this._musicPlayer.muted , this._musicPlayer.volume)
         changeVolume(this._musicPlayer.volume)
     }
 
+
+   
+
     mutePlayer () {
-         const {mute, isMuted} = this.props
+         const {mute, isMuted, changeVolume} = this.props
          mute()
          this._musicPlayer.muted = !isMuted
     }
@@ -387,14 +391,27 @@ class Music extends Component {
     }
 
 
+    clickVolumeBar (e, _this) {
+        let obj = _this.volumeBar
+        let allLeft = 0
+        const clickX = e.pageX - obj.getBoundingClientRect().left
+        const volumeRate = clickX / _this.volumeBar.offsetWidth
+    
+        const {changeVolume} = this.props
+        this._musicPlayer.volume = volumeRate
+        changeVolume(volumeRate)  
+    }
+
     clickBar (e, _this) {
         let obj = _this.bar
         let allLeft = 0
         while(obj = obj.offsetParent) {
+            console.log(obj.offsetParent)
+            console.log(obj.offsetLeft)
             allLeft += obj.offsetLeft
         }
         const clickX = e.pageX - allLeft
-        const timeRate = clickX / _this.bar.offsetWidth
+        const timeRate = clickX / _this.bar.offsetWidth + 0.02
         this._musicPlayer.currentTime  = this._musicPlayer.duration * timeRate
         this.getTime()
 
@@ -402,23 +419,22 @@ class Music extends Component {
 
 
     dragThumb (e, _this) {
-        /*console.log(e.pageX)
-        console.log(e.target)*/
         let obj = e.target
         let allLeft = 0
         while(obj = obj.offsetParent) {
             allLeft += obj.offsetLeft
         }
-      /*  console.log(allLeft)*/
-        const clickX = e.pageX - allLeft
-        const newWidth = clickX + this._musicPlayer.currentTime  / this._musicPlayer.duration * _this.bar.offsetWidth 
-        if(newWidth <= _this.bar.offsetWidth ) {
-            const timeRate = newWidth / _this.bar.offsetWidth
-            console.log(newWidth)
+        const clickX = e.pageX - 6 - allLeft
+        if(clickX < 0) return
+        console.log(clickX)
+        if(clickX <= _this.bar.offsetWidth ) {
+            const timeRate = clickX / _this.bar.offsetWidth
             this._musicPlayer.currentTime  = this._musicPlayer.duration * timeRate
             this.getTime()
         }
     }
+
+   
 
     render() {
         const {open, songUrl, albumImgUrl, songname, singer, songid} = this.state
