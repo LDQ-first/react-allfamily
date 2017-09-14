@@ -76,118 +76,123 @@ export default class Player extends Component {
 
         return (
             <div className="player"  >
-                <div className="player-pic">
-                    <div className="player-disco-wrapper">
-                        <div className={classNames('player-needle', {active: isPlaying})}></div>
-                        <div className={classNames('player-disco', {active: isPlaying})}>
-                             <div className="player-disco-cover"></div>
-                             <div className="player-disco-img" 
-                                style={{background: `url(${albumImgUrl}) center/ cover no-repeat`}}>
-                             </div>
-                         </div>
+                <div className="player-top">
+                    <div className="player-pic">
+                        <div className="player-disco-wrapper">
+                            <div className={classNames('player-needle', {active: isPlaying})}></div>
+                            <div className={classNames('player-disco', {active: isPlaying})}>
+                                <div className="player-disco-cover"></div>
+                                <div className="player-disco-img" 
+                                    style={{background: `url(${albumImgUrl}) center/ cover no-repeat`}}>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="player-info"
+                    ref={info => this.info = info}
+                    >
+                        <header className="player-info-header">
+                            <div className="player-info-title">
+                                <h3 className="player-info-song">{songname}</h3>
+                                <h4 className="player-info-singer"> - {singer}</h4>
+                            </div>
+                            <div className="player-info-header-control">
+                                <FormControlLabel
+                                className="player-info-formControlLabel"
+                                color="primary"
+                                    control={
+                                        <Switch 
+                                        className="player-info-switch"
+                                        checked={isAutoplay}
+                                        onChange={(event) => _this.toggleAutoPlay()}
+                                        />
+                                    }
+                                    label="自动播放"
+                                />
+                            </div>
+                        
+                        </header>
+                        <Lyric _this={this} lyric={lyric} currentSTime={currentSTime} isChanged={isChanged} changeSong={changeSong}/>
+                        <footer className="player-info-control">
+                            
+                            <div className="player-changeSong-wrapper">
+                                <div className="player-changeSong">
+                                    <IconButton color="primary" aria-label="before" 
+                                        className={classNames('iconBtn', "player-changeSong-btn","player-changeSong-btn-before")}  
+                                        onClick = {() => {_this.changeSong('before')}}>
+                                            <SkipPreviousIcon  /> 
+                                    </IconButton>
+                                    { 
+                                    isPlaying ?  
+                                        <IconButton color="primary" aria-label="play" 
+                                            className={classNames('iconBtn', "player-btn","player-btn-pause")}  
+                                            onClick = {() => {_this.pauseSong()}}>
+                                                <PauseCircleOutlineIcon  /> 
+                                        </IconButton> : 
+                                        <IconButton color="primary" aria-label="play" 
+                                            className={classNames('iconBtn', "player-btn","player-btn-paly")}
+                                            onClick = {() => {_this.playSong()}}>
+                                                <PlayCircleOutlineIcon  />
+                                        </IconButton>
+                                    }
+                                    <IconButton color="primary" aria-label="next" 
+                                        className={classNames('iconBtn', "player-changeSong-btn","player-changeSong-btn-next")}  
+                                        onClick = {() => {_this.changeSong('next')}}>
+                                            <SkipNextIcon  /> 
+                                    </IconButton>
+                                </div>
+                            </div>
+                            <div className="player-time">
+                                <span className="player-ctime">{currentTime}</span> / 
+                                <span className="player-dtime">{duration}</span>
+                            </div>
+                            
+                            <div className="player-mode">
+                                <IconButton className="iconBtn" onClick={() => {_this.changeMode()}}>
+                                    {mode === 'loop' && <LoopIcon/>} 
+                                    {mode === 'repeatOne' && <RepeatOneIcon/>} 
+                                    {mode === 'shuffle' && <ShuffleIcon/>} 
+                                    {mode === 'order' && <PlaylistPlayIcon/>} 
+                                </IconButton>
+                            </div>
+                        </footer>
                     </div>
                 </div>
-                <div className="player-info"
-                ref={info => this.info = info}
-                >
-                    <header className="player-info-header">
-                        <div className="player-info-title">
-                            <h3 className="player-info-song">{songname}</h3>
-                            <h4 className="player-info-singer"> - {singer}</h4>
-                        </div>
-                        <div className="player-info-header-control">
-                             <FormControlLabel
-                               className="player-info-formControlLabel"
-                               color="primary"
-                                control={
-                                    <Switch 
-                                    className="player-info-switch"
-                                    checked={isAutoplay}
-                                    onChange={(event) => _this.toggleAutoPlay()}
-                                    />
-                                }
-                                label="自动播放"
-                              />
-                        </div>
-                       
-                    </header>
-                    <Lyric _this={this} lyric={lyric} currentSTime={currentSTime} isChanged={isChanged} changeSong={changeSong}/>
-                    <footer className="player-info-control">
-                        <div className="player-bar-wrapper">
-                            <div className="player-bar"
-                             onClick = {(e) => {_this.clickBar(e, this)}}
-                            ref={bar => this.bar = bar}>
-                                <div className="player-loaded" 
-                                style={{width: `${ loaded * 100 }%`}}></div>
-                                <div className="player-played"                         
-                                style={{width: `${ played * 100 }%`}}>
-                                    <span className="player-played-thumb"
-                                    ref={thumb => this.thumb = thumb}
-                                    draggable="true"
-                                    onDrag = {(e) => {_this.dragThumb(e, this)} }></span>
-                                </div>
-                                
+                <div className="player-control">
+                    <div className="player-bar-wrapper">
+                        <div className="player-bar"
+                            onClick = {(e) => {_this.clickBar(e, this)}}
+                        ref={bar => this.bar = bar}>
+                            <div className="player-loaded" 
+                            style={{width: `${ loaded * 100 }%`}}></div>
+                            <div className="player-played"                         
+                            style={{width: `${ played * 100 }%`}}>
+                                <span className="player-played-thumb"
+                                ref={thumb => this.thumb = thumb}
+                                draggable="true"
+                                onDrag = {(e) => {_this.dragThumb(e, this)} }></span>
                             </div>
                         </div>
-                        <div className="player-changeSong-wrapper">
-                            <div className="player-changeSong">
-                                <IconButton color="primary" aria-label="before" 
-                                    className={classNames('iconBtn', "player-changeSong-btn","player-changeSong-btn-before")}  
-                                    onClick = {() => {_this.changeSong('before')}}>
-                                        <SkipPreviousIcon  /> 
-                                </IconButton>
-                                { 
-                                isPlaying ?  
-                                    <IconButton color="primary" aria-label="play" 
-                                        className={classNames('iconBtn', "player-btn","player-btn-pause")}  
-                                        onClick = {() => {_this.pauseSong()}}>
-                                            <PauseCircleOutlineIcon  /> 
-                                    </IconButton> : 
-                                    <IconButton color="primary" aria-label="play" 
-                                        className={classNames('iconBtn', "player-btn","player-btn-paly")}
-                                        onClick = {() => {_this.playSong()}}>
-                                            <PlayCircleOutlineIcon  />
-                                    </IconButton>
-                                }
-                                <IconButton color="primary" aria-label="next" 
-                                    className={classNames('iconBtn', "player-changeSong-btn","player-changeSong-btn-next")}  
-                                    onClick = {() => {_this.changeSong('next')}}>
-                                        <SkipNextIcon  /> 
-                                </IconButton>
+                    </div>
+                    <div className="player-volume-wrapper">
+                        <div className="player-volume">
+                            { 
+                                isMuted ? 
+                                <IconButton className="iconBtn" onClick={() => {_this.mutePlayer()}}>
+                                    <VolumeOffIcon/>
+                                </IconButton> : 
+                                <IconButton className="iconBtn" onClick={() => {_this.mutePlayer()}}>
+                                    <VolumeDownIcon/>
+                                </IconButton> 
+                        }
+                        <div className="player-volume-bar-wrap">
+                            <div className="player-volume-bar">
+                                <div className="aplayer-volume" 
+                                style={{height: `${volume * 100}%`}}></div>
                             </div>
                         </div>
-                        <div className="player-time">
-                            <span className="player-ctime">{currentTime}</span> / 
-                            <span className="player-dtime">{duration}</span>
                         </div>
-                        <div className="player-volume-wrapper">
-                            <div className="player-volume">
-                                { 
-                                    isMuted ? 
-                                    <IconButton className="iconBtn" onClick={() => {_this.mutePlayer()}}>
-                                        <VolumeOffIcon/>
-                                    </IconButton> : 
-                                    <IconButton className="iconBtn" onClick={() => {_this.mutePlayer()}}>
-                                        <VolumeDownIcon/>
-                                    </IconButton> 
-                               }
-                               <div className="player-volume-bar-wrap">
-                                   <div className="player-volume-bar">
-                                       <div className="aplayer-volume" 
-                                       style={{height: `${volume * 100}%`}}></div>
-                                   </div>
-                               </div>
-                            </div>
-                        </div>
-                        <div className="player-mode">
-                            <IconButton className="iconBtn" onClick={() => {_this.changeMode()}}>
-                                {mode === 'loop' && <LoopIcon/>} 
-                                {mode === 'repeatOne' && <RepeatOneIcon/>} 
-                                {mode === 'shuffle' && <ShuffleIcon/>} 
-                                {mode === 'order' && <PlaylistPlayIcon/>} 
-                            </IconButton>
-                        </div>
-                    </footer>
+                    </div>
                 </div>
             </div>
         )

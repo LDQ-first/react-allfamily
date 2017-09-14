@@ -412,11 +412,12 @@ class Music extends Component {
       /*  console.log(allLeft)*/
         const clickX = e.pageX - allLeft
         const newWidth = clickX + this._musicPlayer.currentTime  / this._musicPlayer.duration * _this.bar.offsetWidth 
-        const timeRate = newWidth / _this.bar.offsetWidth
-        console.log(newWidth)
-        this._musicPlayer.currentTime  = this._musicPlayer.duration * timeRate
-        this.getTime()
-
+        if(newWidth <= _this.bar.offsetWidth ) {
+            const timeRate = newWidth / _this.bar.offsetWidth
+            console.log(newWidth)
+            this._musicPlayer.currentTime  = this._musicPlayer.duration * timeRate
+            this.getTime()
+        }
     }
 
     render() {

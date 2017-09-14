@@ -40,9 +40,15 @@ const MusicDiv = styled.div`
         .player {
             outline: 1px solid lightblue;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            /*justify-content: space-between;
+            align-items: center;*/
             background: #F4F4F4;
+            .player-top {
+                 display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
             .player-pic {
                 width: 120px;
                 height: 120px;
@@ -225,7 +231,7 @@ const MusicDiv = styled.div`
                     outline: 1px solid purple;
                     display: flex;
                     align-items: center;
-                    width: 92%;
+                    width: 100%;
                     position: relative;
                     z-index: 20;
                     height: 26px;
@@ -240,54 +246,7 @@ const MusicDiv = styled.div`
                         width: 24px;
                         height: 26px;
                     }
-                    .player-bar-wrapper {
-                        flex: 1;
-                        margin: 0 0.5em;
-                        position: absolute;
-                        top: -4px;
-                        left: -8px;
-                        width: 100%;
-                        cursor: pointer;
-                        .player-bar {
-                            height: 4px;
-                            position: relative;
-                            background: #CCC;
-                            .player-played {
-                                top: 0;
-                                left: 0;
-                                width: 100%;
-                                bottom: 0;
-                                position: absolute;
-                                transition: transform 0.2s linear;
-                                transform-origin: left;
-                                background: #2196f3;
-                                z-index: 1;
-                             }
-                             .player-loaded {
-                                top: 0;
-                                left: 0;
-                                width: 100%;
-                                bottom: 0;
-                                position: absolute;
-                                transition: transform 0.2s linear;
-                                transform-origin: left;
-                                background: #bbdefb;
-                             }
-                             .player-played-thumb {
-                                 position: absolute;
-                                 top: 0;
-                                 right: -6px;
-                                 margin-top: -6px;
-                                 margin-right: -10px;
-                                 height: 16px;
-                                 width: 16px;
-                                 border-radius: 50%;
-                                 background: ${thumbBlue};
-                                 cursor: pointer;
-                                 border: 2px solid ${thumbborderBlue};
-                             }
-                        }
-                    }
+                    
                     .player-changeSong-wrapper {
                         flex: 1; 
                         .player-changeSong {
@@ -312,57 +271,7 @@ const MusicDiv = styled.div`
                             margin: 0 1.5em;
                         }
                     }
-                    .player-volume-wrapper {   
-                        display: inline-flex; 
-                        position: relative;
-                        cursor: pointer;
-                        @media (min-width: 500px) {
-                            margin: 0 8px;
-                        }
-                        @media (min-width: 700px) {
-                            margin: 0 1em;
-                        }
-                        @media (min-width: 1000px) {
-                            margin: 0 1.5em;
-                        }
-                        &:hover {
-                            .player-volume-bar-wrap {
-                                display: block;
-                            }
-                        }
-                        .player-volume {
-                            display: inline-flex;
-                        }
-                        .player-volume-bar-wrap {
-                            position: absolute;
-                            bottom: 25px;
-                            right: -7px;
-                            width: 40px;
-                            height: 60px;
-                            z-index: 99;
-                            display: none;
-                            &:hover {
-                                display: block;
-                            }
-                            .player-volume-bar {
-                                position: absolute;
-                                bottom: 2px;
-                                right: 18px;
-                                width: 5px;
-                                height: 55px;
-                                background: #aaa;
-                                .aplayer-volume {
-                                    position: absolute;
-                                    bottom: 0;
-                                    right: 0;
-                                    width: 5px;
-                                    transition: all 0.1s ease;
-                                    background: ${dHeaderBlue}
-                                }
-                            }
-
-                        }
-                    }
+                   
                     .player-mode {
                         display: inline-flex;
                         @media (min-width: 500px) {
@@ -374,6 +283,108 @@ const MusicDiv = styled.div`
                         @media (min-width: 1000px) {
                             margin: 0 1.5em;
                         }
+                    }
+                }
+            }
+            .player-control {
+                margin-top: 4px;
+                height: 40px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .player-bar-wrapper {
+                    flex: 1;
+                    margin: 0 0.5em;
+                    cursor: pointer;
+                    .player-bar {
+                        height: 4px;
+                        position: relative;
+                        background: #CCC;
+                        .player-played {
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            bottom: 0;
+                            position: absolute;
+                            transition: transform 0.2s linear;
+                            transform-origin: left;
+                            background: #2196f3;
+                            z-index: 1;
+                            }
+                            .player-loaded {
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            bottom: 0;
+                            position: absolute;
+                            transition: transform 0.2s linear;
+                            transform-origin: left;
+                            background: #bbdefb;
+                            }
+                            .player-played-thumb {
+                                position: absolute;
+                                top: 0;
+                                right: -6px;
+                                margin-top: -6px;
+                                margin-right: -10px;
+                                height: 16px;
+                                width: 16px;
+                                border-radius: 50%;
+                                background: ${thumbBlue};
+                                cursor: pointer;
+                                border: 2px solid ${thumbborderBlue};
+                            }
+                    }
+                }
+                .player-volume-wrapper {   
+                    display: inline-flex; 
+                    position: relative;
+                    cursor: pointer;
+                    @media (min-width: 500px) {
+                        margin: 0 8px;
+                    }
+                    @media (min-width: 700px) {
+                        margin: 0 1em;
+                    }
+                    @media (min-width: 1000px) {
+                        margin: 0 1.5em;
+                    }
+                    &:hover {
+                        .player-volume-bar-wrap {
+                            display: block;
+                        }
+                    }
+                    .player-volume {
+                        display: inline-flex;
+                    }
+                    .player-volume-bar-wrap {
+                        position: absolute;
+                        bottom: 25px;
+                        right: -7px;
+                        width: 40px;
+                        height: 60px;
+                        z-index: 99;
+                        display: none;
+                        &:hover {
+                            display: block;
+                        }
+                        .player-volume-bar {
+                            position: absolute;
+                            bottom: 2px;
+                            right: 18px;
+                            width: 5px;
+                            height: 55px;
+                            background: #aaa;
+                            .aplayer-volume {
+                                position: absolute;
+                                bottom: 0;
+                                right: 0;
+                                width: 5px;
+                                transition: all 0.1s ease;
+                                background: ${dHeaderBlue}
+                            }
+                        }
+
                     }
                 }
             }
