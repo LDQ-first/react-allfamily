@@ -47,7 +47,7 @@ export default class DisList extends Component {
             })
         }
 
-        /*if( value === this.props.value)  return     
+        if( value === this.props.value)  return     
         chooseSong(0)
         const scrollTimer = setInterval(() => {
             if(this._disListsWrapper.scrollTop === 0 ) {
@@ -56,7 +56,7 @@ export default class DisList extends Component {
             else {
                 this._disListsWrapper.scrollTop -= this._disListsWrapper.scrollTop * 0.2
             }
-        }, 100)*/
+        }, 100)
         
     }
     
