@@ -393,7 +393,6 @@ class Music extends Component {
 
     clickVolumeBar (e, _this) {
         let obj = _this.volumeBar
-        let allLeft = 0
         const clickX = e.pageX - obj.getBoundingClientRect().left
         let volumeRate = clickX / _this.volumeBar.offsetWidth
         if(volumeRate > 1) {
@@ -406,13 +405,7 @@ class Music extends Component {
 
     clickBar (e, _this) {
         let obj = _this.bar
-        let allLeft = 0
-        while(obj = obj.offsetParent) {
-            console.log(obj.offsetParent)
-            console.log(obj.offsetLeft)
-            allLeft += obj.offsetLeft
-        }
-        const clickX = e.pageX - allLeft
+        const clickX = e.pageX - obj.getBoundingClientRect().left
         let timeRate = clickX / _this.bar.offsetWidth
         if(timeRate > 1) {
             timeRate = 1
