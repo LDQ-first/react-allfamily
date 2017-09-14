@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
 import ListSubheader from 'material-ui/List/ListSubheader'
 import AudiotrackIcon from 'material-ui-icons/Audiotrack'
+import FileDownloadIcon from 'material-ui-icons/FileDownload'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-
+import {musicApi} from '../../api/api.js' 
 
 
 export default class DisList extends Component {
@@ -81,21 +82,32 @@ export default class DisList extends Component {
 
         const disLists = jsDisList.map((list, index) => {
             return (
-                <ListItem key={index} className={className(index)} button 
+                <ListItem key={index} className={className(index)} 
                 ref={list => this._dislist = list}
-                onClick={() => { 
-                    this.chooseSong(index, list)
-                }}>
+                >
                     <span className="disList-cur"></span>
                     <ListItemIcon>
                         <AudiotrackIcon />
                     </ListItemIcon>
-                    <ListItemText inset disableTypography primary={
+                    <ListItemText inset disableTypography
+                            onClick={() => { 
+                            this.chooseSong(index, list)
+                        }}
+                     primary={
                         <div className="disList-content">
                             <h3 className="disList-title">{list.songname}</h3>
                             <h4 className="disList-subtitle">{list.singer} - {list.albumname}</h4>
                         </div>
                     } />
+                    <ListItemIcon className="downloadbtn" button
+                        >
+                        <a  
+                            rel="noopener noreferrer"
+                            href={musicApi.song(list.songid)}
+                            download>
+                            <FileDownloadIcon />
+                        </a>
+                    </ListItemIcon>
                 </ListItem>
             )
         })

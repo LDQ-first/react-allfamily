@@ -413,6 +413,12 @@ const MusicDiv = styled.div`
             background: ${disListsGreen};
             overflow: hidden;
             padding: 0;
+           
+            .downloadbtn {
+                position: relative;
+                z-index: 100;
+                cursor: pointer;
+            }
             .disLists-header {
                 background: ${dHeaderBlue};
                 color: #FFF;
@@ -441,6 +447,7 @@ const MusicDiv = styled.div`
                     display: none;
                 }
                 .disList-content {
+                     cursor: pointer;
                     .disList-title {
                         font-size: 1em;
                     }

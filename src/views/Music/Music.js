@@ -196,11 +196,7 @@ class Music extends Component {
         if(!isAutoplay && isPlaying) {
              pause()
          }
-
-        
-        
     }
-
 
     formatNum(num) {
         return num < 10 ? `0${num}` : num + '' 
