@@ -292,6 +292,7 @@ const MusicDiv = styled.div`
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                width: calc(100% - 30px);
                 .player-bar-wrapper {
                     flex: 1;
                     margin: 0 0.5em;
@@ -337,8 +338,8 @@ const MusicDiv = styled.div`
                     }
                 }
                 .player-volume-wrapper {   
-                    display: inline-flex; 
-                    position: relative;
+                    /*display: inline-flex; */
+                    /*position: relative;*/
                     cursor: pointer;
                     @media (min-width: 500px) {
                         margin: 0 8px;
@@ -349,37 +350,43 @@ const MusicDiv = styled.div`
                     @media (min-width: 1000px) {
                         margin: 0 1.5em;
                     }
-                    &:hover {
+                    /*&:hover {
                         .player-volume-bar-wrap {
                             display: block;
                         }
-                    }
+                    }*/
                     .player-volume {
-                        display: inline-flex;
+                        /*display: inline-flex;*/
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
                     }
                     .player-volume-bar-wrap {
-                        position: absolute;
+                        width: 100px;
+                        height: 30px;
+                       /* position: absolute;
                         bottom: 25px;
                         right: -7px;
                         width: 40px;
                         height: 60px;
                         z-index: 99;
-                        display: none;
-                        &:hover {
+                        display: none;*/
+                       /* &:hover {
                             display: block;
-                        }
+                        }*/
                         .player-volume-bar {
-                            position: absolute;
+                            /*position: absolute;
                             bottom: 2px;
-                            right: 18px;
-                            width: 5px;
-                            height: 55px;
+                            right: 18px;*/
+                            width: 100%;
+                            height: 4px;
                             background: #aaa;
+                            position: relative;
                             .aplayer-volume {
                                 position: absolute;
-                                bottom: 0;
-                                right: 0;
-                                width: 5px;
+                                top: 0;
+                                left: 0;
+                                height: 5px;
                                 transition: all 0.1s ease;
                                 background: ${dHeaderBlue}
                             }

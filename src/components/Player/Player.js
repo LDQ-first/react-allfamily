@@ -188,7 +188,7 @@ export default class Player extends Component {
                         <div className="player-volume-bar-wrap">
                             <div className="player-volume-bar">
                                 <div className="aplayer-volume" 
-                                style={{height: `${volume * 100}%`}}></div>
+                                style={{width: `${volume * 100}%`}}></div>
                             </div>
                         </div>
                         </div>
