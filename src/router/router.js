@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
+import { CSSTransitionGroup } from 'react-transition-group'
 import { ConnectedRouter } from 'react-router-redux'
 
 import Bundle from './bundle'
@@ -35,10 +36,10 @@ let open = false
 
 
 const getRouter = () => (
-    <ConnectedRouter history={createHistory()}>
+    <ConnectedRouter history={createHistory()}>  
         <div>
-            <NavMenu></NavMenu>
-            <Switch>
+            <NavMenu></NavMenu>  
+            <Switch>     
                 <Route exact path={home} component={createComponent(Home)}/>
                 <Route path={page1} component={createComponent(Page1)}/>
                 <Route path={counter} component={createComponent(Counter)}/>
@@ -48,6 +49,7 @@ const getRouter = () => (
                 <Route component={createComponent(NotFound)}/>
             </Switch>
         </div>
+         
     </ConnectedRouter>
 )
 export default getRouter

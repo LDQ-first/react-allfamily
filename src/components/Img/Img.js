@@ -31,7 +31,6 @@ export default class Imgs extends Component {
      
     _check (imgs) {
         const {winTop, winHeight} = this.state
-        console.log(imgs.offsetTop)
         if( winTop + winHeight > imgs.offsetTop  && 
             winTop < imgs.offsetTop + imgs.offsetHeight) {
             this.setState({
@@ -42,9 +41,9 @@ export default class Imgs extends Component {
 
     _showImg () {
          if(!this.imgs) {
-            /* this.setState({
+             this.setState({
                 show: true
-            })*/
+            })
              return
          }
         this.setState({
