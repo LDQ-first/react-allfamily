@@ -225,7 +225,7 @@ class Music extends Component {
             changeCurrentSTime(this._musicPlayer.currentTime)
        
        const {mode, isAutoplay,  songIndex} = this.props
-       console.log(mode, isAutoplay, songIndex)
+      // console.log(mode, isAutoplay, songIndex)
     }
 
     upsateTime () {
@@ -334,16 +334,19 @@ class Music extends Component {
         switch(mode) {
             case 'loop':
                 changeMode('repeatOne')
+                this._musicPlayer.loop = true
                 break;
             case 'repeatOne':
-                this._musicPlayer.loop = true
                 changeMode('shuffle')
+                this._musicPlayer.loop = false
                 break;
            case 'shuffle':
                 changeMode('order')
+                this._musicPlayer.loop = false
                 break;
            case 'order':
                 changeMode('loop')
+                this._musicPlayer.loop = false
                 break;
           default:
                break;
@@ -355,6 +358,7 @@ class Music extends Component {
             songIndex, disList, chooseSong, nextSong} = this.props
         const jsDisList = Immutable.List(disList).toJS()
         console.log(mode, isAutoplay, songIndex)
+        console.log(this._musicPlayer.loop)
 
         switch(mode) {
             case 'loop':
@@ -370,10 +374,16 @@ class Music extends Component {
                 
                 break;
            case 'shuffle':
-               
+                const randomIndex = Math.round(Math.random() * jsDisList.length - 1)
+                console.log(randomIndex)
+                this.getSong(jsDisList[randomIndex])
+                chooseSong(randomIndex)
                 break;
            case 'order':
-               
+                if(songIndex < jsDisList.length) {
+                    this.getSong(jsDisList[songIndex + 1])
+                    nextSong()
+                }
                 break;
           default:
                break;
