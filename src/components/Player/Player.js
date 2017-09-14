@@ -66,20 +66,6 @@ export default class Player extends Component {
 
     }
 
-    clickBar (e) {
-        console.log(e.pageX)
-        let obj = e.target
-        let allLeft = 0
-        while(obj = obj.offsetParent) {
-            allLeft += obj.offsetLeft
-        }
-        let clickX = e.pageX - allLeft
-        console.log(clickX)
-        console.log(e.target.offsetWidth)
-        
-
-    }
-
 
 
     render() {
@@ -129,7 +115,7 @@ export default class Player extends Component {
                     <footer className="player-info-control">
                         <div className="player-bar-wrapper">
                             <div className="player-bar"
-                             onClick = {(e) => {this.clickBar(e)}}
+                             onClick = {(e) => {_this.clickBar(e, this)}}
                             ref={bar => this.bar = bar}>
                                 <div className="player-loaded" 
                                 style={{width: `${ loaded * 100 }%`}}></div>

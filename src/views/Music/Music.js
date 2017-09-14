@@ -223,9 +223,6 @@ class Music extends Component {
             changeDuration(duration),
             changeCurrentTime(currentTime)
             changeCurrentSTime(this._musicPlayer.currentTime)
-       
-       const {mode, isAutoplay,  songIndex} = this.props
-      // console.log(mode, isAutoplay, songIndex)
     }
 
     upsateTime () {
@@ -311,7 +308,6 @@ class Music extends Component {
 
     getLyric (songid) {
         const {getLyrics, changeSong} = this.props
-        console.log(songid)
         changeSong(true)
         this.setState({
             lyric: ''
@@ -388,6 +384,20 @@ class Music extends Component {
           default:
                break;
         }
+
+    }
+
+
+    clickBar (e, _this) {
+        let obj = _this.bar
+        let allLeft = 0
+        while(obj = obj.offsetParent) {
+            allLeft += obj.offsetLeft
+        }
+        const clickX = e.pageX - allLeft
+        const timeRate = clickX / _this.bar.offsetWidth
+        this._musicPlayer.currentTime  = this._musicPlayer.duration * timeRate
+        this.getTime()
 
     }
 
