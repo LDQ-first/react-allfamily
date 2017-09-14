@@ -121,7 +121,10 @@ export default class Player extends Component {
                                 style={{width: `${ loaded * 100 }%`}}></div>
                                 <div className="player-played"                         
                                 style={{width: `${ played * 100 }%`}}>
-                                    <span className="player-played-thumb"></span>
+                                    <span className="player-played-thumb"
+                                    ref={thumb => this.thumb = thumb}
+                                    draggable="true"
+                                    onDrag = {(e) => {_this.dragThumb(e, this)} }></span>
                                 </div>
                                 
                             </div>

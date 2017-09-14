@@ -323,7 +323,6 @@ class Music extends Component {
     }
 
     changeMode () {
-      //  const modeArr = ['loop', 'repeatOne', 'shuffle', 'order']
         const {mode, changeMode} = this.props
         
         console.log(mode)
@@ -396,6 +395,25 @@ class Music extends Component {
         }
         const clickX = e.pageX - allLeft
         const timeRate = clickX / _this.bar.offsetWidth
+        this._musicPlayer.currentTime  = this._musicPlayer.duration * timeRate
+        this.getTime()
+
+    }
+
+
+    dragThumb (e, _this) {
+        /*console.log(e.pageX)
+        console.log(e.target)*/
+        let obj = e.target
+        let allLeft = 0
+        while(obj = obj.offsetParent) {
+            allLeft += obj.offsetLeft
+        }
+      /*  console.log(allLeft)*/
+        const clickX = e.pageX - allLeft
+        const newWidth = clickX + this._musicPlayer.currentTime  / this._musicPlayer.duration * _this.bar.offsetWidth 
+        const timeRate = newWidth / _this.bar.offsetWidth
+        console.log(newWidth)
         this._musicPlayer.currentTime  = this._musicPlayer.duration * timeRate
         this.getTime()
 
