@@ -181,5 +181,8 @@ export const lyricsSelector = createSelector(
 
 export const lyricSelector = createSelector(
     lyricsSelector,
-    lyricsState => lyricsState.get('lyric')
+    lyricsState => {
+        if(!lyricsState) return
+        return lyricsState.get('disList')
+    }
 )

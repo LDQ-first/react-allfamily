@@ -90,7 +90,7 @@ export default class DisList extends Component {
                     <ListItemIcon>
                         <AudiotrackIcon />
                     </ListItemIcon>
-                    <ListItemText inset disableTypography button
+                    <ListItemText inset disableTypography
                             onClick={() => { 
                             this.chooseSong(index, list)
                         }}

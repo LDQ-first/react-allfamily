@@ -18,10 +18,13 @@ const discoUrl = process.env.NODE_ENV === 'production'
 const MusicDiv = styled.div`
     max-width: 600px;
     min-width: 300px;
-    margin: 0 auto;
+    margin: 50px auto;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3),
                 0 3px 1px -2px rgba(0, 0, 0, 0.2),
                 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    @media (max-width: 50em) {
+        margin: 10px auto;
+    }
     .music-player {
         outline: 1px solid red;
         position: relative;
@@ -34,8 +37,8 @@ const MusicDiv = styled.div`
             width: 30px;
         }
         .audio {
-            display: block;
-            margin-bottom: 10px;
+            display: none;
+           /* margin-bottom: 10px;*/
         }
         .player {
             outline: 1px solid lightblue;
