@@ -54,9 +54,7 @@ export default class Player extends Component {
     constructor (props) {
         super(props)
         this.state = {
-          /* mode: 'loop',
-           loaded: 0,
-           played: 0*/
+
         }
     }
 
@@ -67,13 +65,7 @@ export default class Player extends Component {
 
     
     componentWillReceiveProps(nextProps) {
-       const {  played,loaded, isPlaying, _this, isAutoplay, volume, isMuted, lyric} = nextProps
-
-
-    /*   this.setState({
-           played ,
-           loaded
-       })*/
+       const {  _this, played,loaded, isPlaying,isAutoplay, volume, isMuted, lyric} = nextProps
 
 
     }
