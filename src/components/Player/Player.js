@@ -7,6 +7,9 @@ import PauseCircleOutlineIcon from 'material-ui-icons/PauseCircleOutline'
 import SkipNextIcon from 'material-ui-icons/SkipNext'
 import SkipPreviousIcon from 'material-ui-icons/SkipPrevious'
 import LoopIcon from 'material-ui-icons/Loop'
+import RepeatOneIcon from 'material-ui-icons/RepeatOne'
+import ShuffleIcon from 'material-ui-icons/Shuffle'
+import PlaylistPlayIcon from 'material-ui-icons/PlaylistPlay'
 import VolumeDownIcon from 'material-ui-icons/VolumeDown'
 import VolumeOffIcon from 'material-ui-icons/VolumeOff'
 import PropTypes from 'prop-types'
@@ -185,6 +188,9 @@ export default class Player extends Component {
                         <div className="player-mode" onClick={() => {}}>
                             <IconButton className="iconBtn" onClick={() => {}}>
                                 {mode === 'loop' && <LoopIcon/>} 
+                                {mode === 'repeatOne' && <RepeatOneIcon/>} 
+                                {mode === 'shuffle' && <ShuffleIcon/>} 
+                                {mode === 'order' && <PlaylistPlayIcon/>} 
                             </IconButton>
                         </div>
                     </footer>

@@ -132,11 +132,7 @@ class Music extends Component {
         super(porps)
         this.state = {
             index: 0,
-            open: true,
-           /* duration: '00:00',
-            currentTime: '00:00',
-            played: 0,
-            loaded: 0,*/
+            open: true
         }
     }
 
@@ -162,10 +158,6 @@ class Music extends Component {
              this._musicPlayer.autoplay = isAutoplay
          }
 
-/*
-         this.setState({
-             volume: this._musicPlayer.volume
-         })*/
          changeVolume(this._musicPlayer.volume)
                
     }
@@ -226,12 +218,6 @@ class Music extends Component {
         const duration = this.formatSongTime(this._musicPlayer.duration)
         const currentTime = this.formatSongTime(this._musicPlayer.currentTime)
         const played = this._musicPlayer.currentTime / this._musicPlayer.duration
-        /*this.setState({
-            duration,
-            currentTime,
-            played,
-            currentSTime: this._musicPlayer.currentTime
-        })*/
         const {changePlayed , changeDuration, changeCurrentTime, changeCurrentSTime} = this.props
             changePlayed(played),
             changeDuration(duration),
@@ -279,9 +265,6 @@ class Music extends Component {
             loaded = spu / audio.duration
           //  console.log(spu / audio.duration)
         }
-        /*this.setState({
-            loaded
-        })*/
         const {changeLoaded} = this.props
         changeLoaded(loaded)
         
@@ -298,10 +281,6 @@ class Music extends Component {
             mute()
         }
         changeVolume(this._musicPlayer.volume)
-         /*this.setState({
-             volume: this._musicPlayer.volume,
-             isMuted: this._musicPlayer.muted
-         })*/
     }
 
     mutePlayer () {
