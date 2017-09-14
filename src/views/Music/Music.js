@@ -380,7 +380,7 @@ class Music extends Component {
                 chooseSong(randomIndex)
                 break;
            case 'order':
-                if(songIndex < jsDisList.length) {
+                if(songIndex < jsDisList.length - 1) {
                     this.getSong(jsDisList[songIndex + 1])
                     nextSong()
                 }
