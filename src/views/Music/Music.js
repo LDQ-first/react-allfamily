@@ -323,6 +323,29 @@ class Music extends Component {
         })
     }
 
+    changeMode () {
+        const modeArr = ['loop', 'repeatOne', 'shuffle', 'order']
+        const {mode, changeMode} = this.props
+        console.log(mode)
+        switch(mode) {
+            case 'loop':
+                changeMode('repeatOne')
+                break;
+            case 'repeatOne':
+                changeMode('shuffle')
+                break;
+           case 'shuffle':
+                changeMode('order')
+                break;
+           case 'order':
+                changeMode('loop')
+                break;
+          default:
+               break;
+        }
+        
+
+    }
 
     render() {
         const {open, songUrl, albumImgUrl, songname, singer, songid} = this.state

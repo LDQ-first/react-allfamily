@@ -34,6 +34,7 @@ export default class Player extends Component {
             volume: PropTypes.volume,
             
             lyric: PropTypes.string,
+            mode: PropTypes.string,
             currentSTime: PropTypes.number,
             
 
@@ -53,9 +54,9 @@ export default class Player extends Component {
     constructor (props) {
         super(props)
         this.state = {
-           mode: 'loop',
+          /* mode: 'loop',
            loaded: 0,
-           played: 0
+           played: 0*/
         }
     }
 
@@ -69,10 +70,10 @@ export default class Player extends Component {
        const {  played,loaded, isPlaying, _this, isAutoplay, volume, isMuted, lyric} = nextProps
 
 
-       this.setState({
+    /*   this.setState({
            played ,
            loaded
-       })
+       })*/
 
 
     }
@@ -82,8 +83,7 @@ export default class Player extends Component {
     render() {
 
         const {_this, albumImgUrl, songname, singer, currentTime, duration, isAutoplay, volume, lyric, currentSTime,
-              isPlaying, isMuted, isChanged, changeSong} = this.props
-        const {mode, isMute, loaded, played} = this.state
+              isPlaying, isMuted, isChanged, changeSong, mode, loaded, played} = this.props
         
 
         return (
@@ -185,8 +185,8 @@ export default class Player extends Component {
                                </div>
                             </div>
                         </div>
-                        <div className="player-mode" onClick={() => {}}>
-                            <IconButton className="iconBtn" onClick={() => {}}>
+                        <div className="player-mode">
+                            <IconButton className="iconBtn" onClick={() => {_this.changeMode()}}>
                                 {mode === 'loop' && <LoopIcon/>} 
                                 {mode === 'repeatOne' && <RepeatOneIcon/>} 
                                 {mode === 'shuffle' && <ShuffleIcon/>} 

@@ -72,10 +72,11 @@ export const changeValue = (value) => {
     }
 }
 
-export const changeMode = (Mode) => {
+export const changeMode = (mode) => {
+    console.log()
     return {
         type: MODE,
-        Mode: Mode
+        mode: mode
     }
 }
 
