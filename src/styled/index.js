@@ -90,7 +90,7 @@ export default injectGlobal`
     .fade-enter.fade-enter-active {
         opacity: 1;
         transform: translateY(0);
-        transition: opacity 500ms ease-in;
+        transition: opacity 0.5s ease-in;
     }
 
     .fade-exit {
@@ -99,7 +99,7 @@ export default injectGlobal`
 
     .fade-exit.fade-exit-active {
         opacity: 0.01;
-        transition: opacity 300ms ease-in;
+        transition: opacity 0.3s ease-in;
     }
 `
 
@@ -152,7 +152,9 @@ const Container = styled.div`
         display: flex;
         flex-wrap: wrap;
     }
-    
+    .btn {
+        text-transform: lowercase;
+    }
     
 `
 

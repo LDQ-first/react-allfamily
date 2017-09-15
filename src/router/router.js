@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
-import { CSSTransitionGroup } from 'react-transition-group'
+import { CSSTransition , TransitionGroup} from 'react-transition-group'
 import { ConnectedRouter } from 'react-router-redux'
 
 import Bundle from './bundle'
@@ -24,6 +24,12 @@ import createHistory from 'history/createHashHistory'
 
 import {home, page1, counter, userinfo, github, music} from './link.js'
 
+
+import {Container} from '../styled/index.js'
+
+
+
+
 const createComponent = (component) => () => (
     <Bundle load={component}>
         {
@@ -37,19 +43,30 @@ let open = false
 
 const getRouter = () => (
     <ConnectedRouter history={createHistory()}>  
+       <Route render={({ location }) => (  
         <div>
             <NavMenu></NavMenu>  
-            <Switch>     
-                <Route exact path={home} component={createComponent(Home)}/>
-                <Route path={page1} component={createComponent(Page1)}/>
-                <Route path={counter} component={createComponent(Counter)}/>
-                <Route path={userinfo} component={createComponent(UserInfo)}/>
-                <Route path={github} component={createComponent(Github)}/>
-                <Route path={music} component={createComponent(Music)}/>
-                <Route component={createComponent(NotFound)}/>
-            </Switch>
+             <TransitionGroup>
+                <CSSTransition
+                     classNames="fade"
+                     enter = {true}
+                     exit = {true}
+                     timeout={{ enter: 5000, exit: 3000 }}
+                   >
+                <Switch key={location.key}>     
+                    <Route location={location}  exact path={home} component={createComponent(Home)}/>
+                    <Route location={location}  path={`${page1}/:id`} component={createComponent(Page1)}/>
+                    <Route location={location}  path={page1} component={createComponent(Page1)}/>
+                    <Route location={location}  path={counter} component={createComponent(Counter)}/>
+                    <Route location={location}  path={userinfo} component={createComponent(UserInfo)}/>
+                    <Route location={location}  path={github} component={createComponent(Github)}/>
+                    <Route location={location}  path={music} component={createComponent(Music)}/>
+                    <Route location={location}  component={createComponent(NotFound)}/>
+                </Switch>
+                </CSSTransition>
+             </TransitionGroup>
         </div>
-         
+       )} />
     </ConnectedRouter>
 )
 export default getRouter
