@@ -50,6 +50,8 @@ import { withRouter } from 'react-router'
                     >跳转到 page1?id=001</Button>
                     <Button className="btn" onClick={() => this._changeRoute(history, '/page1/001?id=001&page=1')}
                     >跳转到 page1/001?id=001&page=1</Button>
+                    <Button className="btn" onClick={() => this._changeRoute(history, '/page1/001?tag0=历史&tag1=音乐')}
+                    >跳转到 page1/001?tag0=历史&tag1=音乐</Button>
                 </div>
             </Container>
         )
