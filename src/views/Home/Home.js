@@ -6,7 +6,7 @@ import { withRouter } from 'react-router'
  class Home extends Component {
      static get propTypes() { 
         return { 
-            loaction: PropTypes.obj.isRequired,
+            location: PropTypes.obj.isRequired,
             history: PropTypes.obj.isRequired,
             match: PropTypes.obj.isRequired
         }
@@ -32,7 +32,7 @@ import { withRouter } from 'react-router'
 
     render() {
         console.log(this.props)
-        const {loaction, history, match} = this.props
+        const {location, history, match} = this.props
 
         return (
             <Container>
@@ -43,9 +43,13 @@ import { withRouter } from 'react-router'
                 </div>
                 <div>
                     <Button className="btn" onClick={() => this._changeRoute(history, '/page1')}
-                    >跳转到 Page1</Button>
+                    >跳转到 page1</Button>
                     <Button className="btn" onClick={() => this._changeRoute(history, '/page1/001')}
-                    >跳转到 Page1/001</Button>
+                    >跳转到 page1/001</Button>
+                    <Button className="btn" onClick={() => this._changeRoute(history, '/page1?id=001')}
+                    >跳转到 page1?id=001</Button>
+                    <Button className="btn" onClick={() => this._changeRoute(history, '/page1/001?id=001&page=1')}
+                    >跳转到 page1/001?id=001&page=1</Button>
                 </div>
             </Container>
         )
