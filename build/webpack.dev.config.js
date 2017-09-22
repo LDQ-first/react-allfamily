@@ -20,7 +20,7 @@ const devConfig = (baseConfig, {
     ],
     devServer: {
         /*contentBase: path.join(__dirname, '../dist'),*/
-        historyApiFallback: true,
+        historyApiFallback: true, //任意的404响应都被替代为index.html
         host: '0.0.0.0',  //手机局域网访问 http://10.30.4.227:5050
         hot: true,
         /*inline: true, //实时刷新*/
