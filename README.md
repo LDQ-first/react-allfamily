@@ -4,7 +4,7 @@
 > 使用React全家桶, Webpack, Bable, Immutable, Reselect, Axios, Fetch-jsonp, ESLint等  
 > 实现了按需加载, 模块热替换, async/await 处理异步, Immutable数据化等功能
 
-> [预览地址](http://ldq-first.github.io/react-allfamily/dist/#/)
+> [预览地址](http://ldqblog.me/react-allfamily/dist/#/)
 
 
 ## 技术栈

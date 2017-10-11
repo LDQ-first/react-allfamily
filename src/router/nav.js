@@ -58,12 +58,12 @@ class NavMenu extends Component {
                 primary: 'Github',
                 secondary: '',
                 icon: <FolderIcon className="list-icon"/>
-            },{
+            },/*{
                 to: music,
                 primary: 'Music',
                 secondary: '',
                 icon: <FolderIcon className="list-icon"/>
-            }]
+            }*/]
     }
 
     

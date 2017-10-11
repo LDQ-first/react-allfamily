@@ -88,7 +88,7 @@ module.exports =  {
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf|svg)((-|\?)?.*)?$/,
-                exclude: /static\/img/,
+                include: /font/,
                 loader: 'url-loader',
                 options: {
                     name: '/static/css/fonts/[name].[hash:8].[ext]',

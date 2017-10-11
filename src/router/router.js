@@ -13,7 +13,7 @@ import Counter from 'bundle-loader?lazy&name=counter!../views/Counter/Counter'
 import UserInfo from 'bundle-loader?lazy&name=userInfo!../views/UserInfo/UserInfo'
 import NotFound from 'bundle-loader?lazy&name=notFound!../views/NotFound/NotFound'
 import Github from 'bundle-loader?lazy&name=github!../views/Github/Github'
-import Music from 'bundle-loader?lazy&name=music!../views/Music/Music'
+/*import Music from 'bundle-loader?lazy&name=music!../views/Music/Music'*/
 
 
 import NavMenu from './nav'
@@ -22,7 +22,7 @@ import NavMenu from './nav'
 import createHistory from 'history/createHashHistory'
 
 
-import {home, page1, counter, userinfo, github, music} from './link.js'
+import {home, page1, counter, userinfo, github, /*music*/} from './link.js'
 
 
 import {Container} from '../styled/index.js'
@@ -60,7 +60,7 @@ const getRouter = () => (
                     <Route location={location}  path={counter} component={createComponent(Counter)}/>
                     <Route location={location}  path={userinfo} component={createComponent(UserInfo)}/>
                     <Route location={location}  path={github} component={createComponent(Github)}/>
-                    <Route location={location}  path={music} component={createComponent(Music)}/>
+                 {  /* <Route location={location}  path={music} component={createComponent(Music)}/>*/}
                     <Route location={location}  component={createComponent(NotFound)}/>
                 </Switch>
                 </CSSTransition>
